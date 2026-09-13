@@ -20,10 +20,47 @@ Waveguide centerlines have a nominal bend radius with locally constrained effect
 
 ## Follow-ups
 
-- Dedicated rotated sprite views and adjustable sprite/port presentation anchors.
-- Route segment construction costs, crossing layers, bridges, splitters, and per-tile editing.
-- Material-specific bend calibration, true arc geometry/clearance, optical delay and thermal environment.
-- Wire resistance/capacity, poles, and multi-source connected-component power allocation.
+- Dedicated rotated sprite views and adjustable sprite/port presentation anchors. (Served by milestone [006](006-world-interaction-and-onboarding.md).)
+- Route segment construction costs, crossing layers, bridges, splitters, and per-tile editing. **Route selection and in-place reshaping are implemented (2026-09-13);** costs, crossings, bridges, splitters and individual segment deletion remain open (see open decisions).
+- Material-specific bend calibration, true arc geometry/clearance, optical delay and thermal environment. **Open — needs agreed parameters.**
+- Wire resistance/capacity, poles, and multi-source connected-component power allocation. **Overload isolation and a wire-capacity ledger are implemented (2026-09-13);** resistance, poles and true multi-source sharing remain open.
+
+## Progress — 2026-09-13 (power, limits, diagnostics)
+
+Power allocation rewritten in `powerGrid` (src/sim/world.ts): wired components share the aggregate supply of their healthy generators and serve loads in stable build-id order. An overload now isolates only the excess loads instead of shutting every load on the generator down. `Stats` gained `overload` and `wireOverload`; diagnostics raises "Power bus overloaded" / "Power wire over capacity" with remedies, and the energy ledger shows isolated loads and overloaded wires. `WIRE_CAPACITY` is a provisional 240 per wire. No new equipment or save-schema change.
+
+Prototype scale raised from 40 machines / 128 field ports to `MACHINE_LIMIT=120`, `FIELD_PORT_LIMIT=400`, `LINK_LIMIT=512`, exported from the sim and used by placement and save validation. A headless case checks the cap boundaries.
+
+Diagnostics telemetry added in the UI layer only (`src/main.ts`): a rolling (120-sample, 1 s) client-side series of target power/heat/demand with an inline SVG trend, a min/max/avg summary, and a copyable report. It is not serialized and carries no research gate; baseline errors stay visible.
+
+Tests: 52 headless (power overload isolation, cap boundaries, editRoute, state resolver) and 16 browser (route editing, state laboratory, diagnostics trend) pass; the production build passes.
+
+## Open decisions / TBD (for the user or planning agent)
+
+These were intentionally not implemented to avoid inventing balance or art/content; each needs a decision before coding:
+
+1. **Paid transport segments — cost formula.** Options to pick: flat cost per half-tile segment vs. per whole tile vs. distance bands; whether starter routes and blueprint-restored routes stay free; refund-on-disconnect vs. lossy refund; and whether cost is charged on `connect`, `editRoute` and blueprint stamp. Mechanism is designed (`routeMetrics` length + a single cost function) but no numbers were chosen.
+2. **Splitters, underground crossings, bridges, power poles.** Need new sprites/palette entries and are research-gated in [007](007-technology-tree-design.md); implementing them now would preempt the research economy. `production-data.ts` already defines `splitter`, `underground`, and `power-pole` entries.
+3. **True multi-source bus.** The component allocator is ready, but generators currently have one output and loads one input, so components remain stars. Poles/interconnects and their art are the blocker.
+4. **Individual segment deletion** (splitting a route at a chosen point) vs. the current whole-route re-route. Needs a UX/ownership decision.
+5. **Diagnostics precision/automation progression.** The trend is currently ungated; decide whether more advanced diagnostics should be a research unlock (design says yes, baseline must stay free).
+6. **Bend/route calibration.** Needs chosen material/physics parameters for true arc geometry and routing profiles.
+
+## Hard-to-validate (notes for later review)
+
+- Power-allocation balance with many generators and mixed loads is unit-tested for isolation order only; it needs a playtest/benchmark, not just assertions.
+- The raised 120-machine / 400-port caps are unbenchmarked; large-network render and solve performance is unknown. Treat the numbers as provisional.
+- `wireOverload` cannot be exercised with current single-load feeds (each ≤125 units < 240), so the wire-capacity path is effectively untested until power poles exist.
+
+## Progress — 2026-09-13
+
+Route editing continuation. `editRoute(w,id,options)` (src/sim/world.ts) rebuilds an installed connection in place: it re-runs the same obstacle-aware `findRoute`, preserves the link id, endpoints, type and profile, and validates atomically (a blocked waypoint leaves the installed path untouched). Material packets are re-clamped to the new length with spacing preserved, and any packet that no longer fits is converted to scrap so mass stays accounted. Editing invalidates qualification.
+
+Presentation/UI: `Renderer.hitRoute` selects a route from its stored polyline using `segmentDistance` (src/sim/geometry.ts); the selected route renders with a gold highlight and bend markers, and while editing an `editing` view state draws the waypoint guide and handles. The inspector shows a route card (endpoints, length, bends, tight bends, profile, radius/in-transit) with Edit waypoints, 45°/90° profile, sharp/rounded radius, Direct path, and Disconnect actions. Clicking terrain while editing appends a half-tile waypoint and immediately re-routes; `D`/`B` toggle profile/radius; `Esc` finishes. No new art, equipment kind, save schema or research gate is involved.
+
+Tests: four headless cases cover identity/endpoint/profile preservation, atomic failure on a blocked waypoint, material mass/clamping, and qualification invalidation (`tests/transport.test.ts`). One browser case selects the starter belt, toggles its profile, adds a waypoint, clears it, and confirms no duplicate route is created (`tests/browser/outpost.spec.ts`, screenshot `test-results/route-editing.png`).
+
+Still open from the list above: paid segments, crossing layers/bridges, splitters, and per-tile deletion.
 
 ## Progress — 2026-09-12
 

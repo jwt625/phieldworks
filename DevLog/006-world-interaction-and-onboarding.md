@@ -56,7 +56,7 @@ Playable characters; complex combat/ecology; physical terrain collision beyond m
 
 - Tune investigation range, exposure thresholds, grace timing and defensive coverage using human pacing; currently these are explicit gameplay constants, not calibrated radiation biology.
 - Obtain production alpha cutouts, improve per-view port/art registration, add walk cycles and machinery damage/operating variants. Current matte-composited art can lose dark details against textured ground.
-- Build segment editing, route selection, splitters/crossing-layer controls and clearer radius previews; stored transport paths and core ports are ready for this.
+- Route selection and in-place waypoint editing are implemented (2026-09-13, see [005](005-ports-routing-and-presentation.md)); clearer radius/bend markers, splitters and crossing-layer controls remain to build on the same stored paths and core ports.
 - Add optional diagnostics trends/precision/automation as progression without hiding baseline errors. Characters, teams and RTS commands remain deferred under the accepted direct-camera decision.
 
 

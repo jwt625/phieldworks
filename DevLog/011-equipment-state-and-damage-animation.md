@@ -4,11 +4,24 @@ Started 2026-09-12. Continue the user's request for readable power/activity/dama
 
 ## Work plan
 
-- [ ] S1: Define state matrix and presentation-only state resolver for all nine equipment kinds and transported items.
-- [ ] S2: Generate nine four-orientation condition atlases with dark LEDs/screens: intact/off, light damage, severe damage, wreck.
-- [ ] S3: Generate damaged extractor/assembler motion loops, generator operation and sentry firing; generate distinct transported-item art.
-- [ ] S4: Integrate power/activity/thermal/damage selection, state-aware lights/effects and item/belt feedback; keep physics authoritative.
-- [ ] S5: Interactive state review, transition checks, screenshot/animation review and regression validation.
+- [x] S1: Define state matrix and presentation-only state resolver for all nine equipment kinds and transported items. (`src/equipment-state.ts`, `tests/equipment-state.test.ts`)
+- [x] S2: Generate nine four-orientation condition atlases with dark LEDs/screens: intact/off, light damage, severe damage, wreck. (assets generated and renderer-mapped; see S3 for the still-missing operation sheets)
+- [ ] S3: Generate damaged extractor/assembler motion loops, generator operation and sentry firing; generate distinct transported-item art. **Partial:** only `extractor-light-cycle-v1` exists; `extractor-severe-cycle-v1`, `assembler-light-cycle-v1`, `assembler-severe-cycle-v1`, `generator-cycle-v1`, `sentry-fire-v1`, `transport-items-v1` are prompted but absent.
+- [x] S4: Integrate power/activity/thermal/damage selection, state-aware lights/effects and item/belt feedback; keep physics authoritative. (`src/renderer.ts` `machine()`, `src/equipment-effects.ts`)
+- [x] S5: Interactive state review, transition checks, screenshot/animation review and regression validation. Review surface at `assets/states/index.html` + `src/state-review.ts`; headless coverage in `tests/equipment-state.test.ts`; browser regression added 2026-09-13 (`tests/browser/assets.spec.ts`, state-lab service/work/integrity axes, screenshot `test-results/equipment-state-lab.png`).
+
+## Status reconciliation (2026-09-13)
+
+The S1–S5 boxes above were previously all unchecked even though S1/S2/S4 were already committed (`26bc305`, `245fb43`) and S5's interface existed. Corrected here against HEAD. Remaining real gap: the S3 operation/damage-cycle/transported-item sheets, which the shipping renderer already references but silently falls back on (`renderer.ts` `generator-cycle-v1`, `sentry-fire-v1`, `transport-items-v1`, `renderer.ts:31,54`). The review page no longer references the absent `transport-items-v1.png`: `src/state-review.ts` now renders the item cards only when the sprite exists and otherwise shows a labelled "not generated yet" note, so the page no longer issues broken image requests.
+
+## Visual verification queue (for a vision-capable reviewer)
+
+No automated assertion currently checks rendered appearance; these need human/vision review:
+
+1. `test-results/route-editing.png` — confirm the selected material belt reads clearly: gold highlight, dashed waypoint guide, square waypoint handles, and amber bend markers. Verify route identity is obvious while editing.
+2. `test-results/initial-outpost.png`, `qualified-outpost.png`, `grid-routing-and-rotation.png`, `minimap-full-sector.png`, `perimeter-defense.png`, `contextual-onboarding.png`, `guided-qualified-outpost.png` — established outpost/instructional screens; re-check after any renderer change.
+3. `assets/states/index.html` — nine condition atlases across all four orientations and the power/work/integrity/thermal presets. Confirm: unpowered chassis has dark native LEDs and frozen mechanisms; damaged bodies persist while operating; wrecks are static; hot/tripped is independent of damage. The "Transported material silhouettes" section now shows a labelled placeholder until `transport-items-v1.png` exists; verify the placeholder reads acceptably.
+4. Missing-operation fallbacks — once S3 art lands, verify `generator-cycle-v1`, `sentry-fire-v1`, the light/severe extractor+assembler loops, and item silhouettes render instead of falling back to condition/static art.
 
 ## Orthogonal state matrix
 

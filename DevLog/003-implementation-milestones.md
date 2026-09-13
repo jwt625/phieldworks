@@ -64,3 +64,17 @@ Follow [006](006-world-interaction-and-onboarding.md) for the accepted feedback,
 ## M7 — Map, animation and technology asset continuation
 
 [010](010-map-animation-and-technology-assets.md) tracks the next art batch after commit `5c65d26`: four map textures, stateful debris/depletion, production and crawler animation, and a proposed technology-art graph. The new art is mapped independently of the simulation; no research economy or unlock gates are implied.
+
+## Status — 2026-09-13
+
+Verification at HEAD: `npm test` passes 52 headless checks, `npm run test:browser` passes 16 scenarios, `npm run build` passes. M1–M7 and the equipment-state work (011) are reconciled in their own documents. Implemented this pass: installed-route selection and in-place editing, connected-component power allocation with overload isolation and wire-capacity ledger, raised machine/port/link caps, diagnostics telemetry trend/report, and browser regression for the state laboratory (which no longer requests an absent asset). Still open and documented as **TBD for planning** in [005](005-ports-routing-and-presentation.md): paid transport-segment cost formula, splitters/underground crossings/bridges/power poles (art + research-gated), multi-source buses, individual segment deletion, diagnostics gating, bend calibration, and expanded-map/limits benchmarking. A vision-review queue for screenshots and the state laboratory is recorded in [011](011-equipment-state-and-damage-animation.md).
+
+## Visual verification queue (for a vision-capable reviewer)
+
+Automated tests assert state values, not appearance. These artifacts need visual review:
+
+- `test-results/route-editing.png` — route selection highlight, waypoint handles, bend markers and the editing guide read clearly, and the route identity is obvious.
+- `test-results/diagnostics-trends.png` — telemetry sparkline (target vs. heat), min/max/avg summary and the copy-report control are readable at panel width.
+- `test-results/equipment-state-lab.png` — nine condition/orientation previews plus the labelled "not generated yet" placeholder where transmitted-item art (S3) is absent.
+- Re-check after any renderer change: `initial-outpost.png`, `qualified-outpost.png`, `grid-routing-and-rotation.png`, `minimap-full-sector.png`, `perimeter-defense.png`, `contextual-onboarding.png`, `guided-qualified-outpost.png`.
+- **Hard to automate:** induce a power overload (add a second reference over the starter generator's wire) and confirm the ledger's "Isolated loads" row and the diagnostics issue read clearly without looking like a total failure.
