@@ -32,11 +32,20 @@ export class TechnologyPanel {
   this.el('tech-zoom-out').onclick=()=>this.zoom(this.scale-.15);
   this.el('tech-zoom-in').onclick=()=>this.zoom(this.scale+.15);
   this.el('tech-fit').onclick=()=>{const list=visibleTechnologies(this.getWorld(),this.full);this.zoom(Math.min(this.el('tech-viewport').clientWidth/this.width(list),this.el('tech-viewport').clientHeight/(4*rowHeight+65)));};
+  const viewport=this.el('tech-viewport');
+  viewport.addEventListener('wheel',e=>{e.preventDefault();const r=viewport.getBoundingClientRect();this.zoomAt(this.scale*Math.exp(-e.deltaY*.001),e.clientX-r.left,e.clientY-r.top);},{passive:false});
+  let pan:{x:number;y:number;left:number;top:number}|null=null,dragged=false;
+  viewport.addEventListener('pointerdown',e=>{if(e.button!==0)return;pan={x:e.clientX,y:e.clientY,left:viewport.scrollLeft,top:viewport.scrollTop};dragged=false;});
+  viewport.addEventListener('pointermove',e=>{if(!pan)return;const dx=e.clientX-pan.x,dy=e.clientY-pan.y;if(!dragged&&Math.abs(dx)+Math.abs(dy)>3){dragged=true;viewport.classList.add('panning');try{viewport.setPointerCapture(e.pointerId);}catch{}}if(dragged){viewport.scrollLeft=pan.left-dx;viewport.scrollTop=pan.top-dy;}});
+  const endPan=()=>{pan=null;viewport.classList.remove('panning');};viewport.addEventListener('pointerup',endPan);viewport.addEventListener('pointercancel',endPan);
+  viewport.addEventListener('click',e=>{if(dragged){e.stopPropagation();e.preventDefault();dragged=false;}},true);
   this.dialog.addEventListener('click',e=>{const product=(e.target as HTMLElement).closest<HTMLButtonElement>('[data-product]')?.dataset.product;if(product){this.mode='production';this.render();this.production.select(`product:${product}`);}const id=(e.target as HTMLElement).closest<HTMLButtonElement>('[data-tech]')?.dataset.tech;if(id){this.selected=id;this.render();const node=this.dialog.querySelector<HTMLButtonElement>(`[data-tech-node="${id}"]`);node?.focus({preventScroll:true});node?.scrollIntoView({block:'nearest',inline:'nearest'});}});
  }
  private el(id:string){return this.dialog.querySelector<HTMLElement>(`#${id}`)!;}
  private width(list:Technology[]){return (Math.max(...list.map(t=>t.column))+1)*columnWidth+24;}
- private zoom(scale:number){this.scale=Math.max(.2,Math.min(1.3,scale));this.render();}
+ private zoom(scale:number){const viewport=this.el('tech-viewport');this.zoomAt(scale,viewport.clientWidth/2,viewport.clientHeight/2);}
+ /** Zoom keeping the world point under (cx,cy) fixed, like the map camera. */
+ private zoomAt(scale:number,cx:number,cy:number){const viewport=this.el('tech-viewport');const x=(viewport.scrollLeft+cx)/this.scale,y=(viewport.scrollTop+cy)/this.scale;this.scale=Math.max(.2,Math.min(1.3,scale));this.render();viewport.scrollLeft=x*this.scale-cx;viewport.scrollTop=y*this.scale-cy;}
  open(){this.dialog.showModal();this.opener.setAttribute('aria-expanded','true');this.render();this.el('close-technology').focus();}
  private render(){
   const world=this.getWorld(),list=visibleTechnologies(world,this.full),ids=new Set(list.map(t=>t.id)),selected=technologyById.get(this.selected)!;

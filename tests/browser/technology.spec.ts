@@ -62,3 +62,19 @@ test('item graph traces recipes, producers, equipment upgrades and research unlo
  if(await page.locator('#technology-panel').isVisible())await page.locator('#close-technology').click();
  await expect(page.locator('#technology')).toBeFocused();expect(errors).toEqual([]);
 });
+
+test('technology map supports cursor-anchored wheel zoom and drag pan',async({page})=>{
+ await page.addInitScript(()=>localStorage.setItem('phieldworks.tutorial.v1',JSON.stringify({closed:true,index:0})));
+ await page.goto('/');await expect(page.locator('#runtime-status')).toHaveText('SIMULATION ONLINE');
+ await page.locator('#technology').click();
+ await page.locator('#tech-dev-toggle').click();
+ const before=Number((await page.locator('#tech-zoom').textContent())!.replace('%',''));
+ await page.locator('#tech-viewport').hover();await page.mouse.wheel(0,-400);
+ await expect.poll(async()=>Number((await page.locator('#tech-zoom').textContent())!.replace('%',''))).toBeGreaterThan(before);
+ const vp=page.locator('#tech-viewport');const metrics=await vp.evaluate(el=>({scrollWidth:el.scrollWidth,clientWidth:el.clientWidth}));expect(metrics.scrollWidth).toBeGreaterThan(metrics.clientWidth);
+ await vp.evaluate(el=>{el.scrollLeft=el.scrollWidth;});const atRight=await vp.evaluate(el=>el.scrollLeft);expect(atRight).toBeGreaterThan(0);
+ const box=(await vp.boundingBox())!;
+ await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2+160,box.y+box.height/2);await page.mouse.up();
+ await expect.poll(()=>vp.evaluate(el=>el.scrollLeft)).not.toBe(atRight);
+ await page.screenshot({path:'test-results/technology-zoom-pan.png',fullPage:true});
+});

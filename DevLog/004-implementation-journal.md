@@ -78,3 +78,14 @@ A new handoff queue arrived in [012](012-next-coding-handoffs.md) with a verifie
 - Corrected the stale in-game manual sentence that said an overloaded generator shuts all attached loads down.
 
 Not done: a connected large-field-network world-step/render and browser frame-pacing benchmark at the cap, multi-hardware runs, and the remaining P1–P5 work. Visual/verification needs are recorded in 012 (P0 remaining verification) and 013 (follow-up).
+
+
+## 2026-09-13 — Progression-map and minimap navigation
+
+UI-only navigation pass (P2 adjacent, no simulation or save change):
+
+- The research map (`#tech-viewport`, `src/ui/technology.ts`) now supports cursor-anchored mouse-wheel zoom (`zoomAt`) and drag-to-pan. Panning starts only after a small movement threshold and only captures the pointer mid-drag, so node clicks still work; a drag that starts on a node suppresses the resulting click. The existing `+ / − / Fit tree` buttons anchor at the viewport centre. `src/style.css` adds grab/grabbing cursors and `touch-action:none`.
+- The minimap (`src/ui/minimap.ts`) recenters the main camera on double-click/double-tap, so a macOS trackpad double-tap pans to that location; drag and arrow-key navigation are unchanged.
+- Tests: `tests/browser/technology.spec.ts` adds a wheel-zoom + drag-pan scenario (19 browser total) and `tests/browser/interactions.spec.ts` asserts minimap double-click moves the camera. `npm test` 55, browser 19, build pass.
+
+**Visual verification needed:** `test-results/technology-zoom-pan.png` — confirm wheel zoom keeps the point under the cursor fixed, the grab cursor reads correctly, and panning does not fight node clicks; and manually confirm the macOS trackpad double-tap recenters the minimap (the automated test uses a synthetic double-click).
