@@ -26,3 +26,17 @@ test('rotation, diagonal waypoints, bend profiles and material ports are usable'
  await page.locator('#save').click();await page.locator('#load').click();state=await snapshot(page);expect(state.entities.find((e:any)=>e.id===tuner.id).rotation).toBe(1);expect(state.links.find((l:any)=>l.id===route.id).path).toEqual(route.path);
  await page.screenshot({path:'test-results/grid-routing-and-rotation.png',fullPage:true});
 });
+
+test('installed routes can be selected and reshaped without disconnecting',async({page})=>{
+ await ready(page);await page.getByRole('button',{name:'Pause simulation',exact:true}).click();
+ await point(page,4.5,9.5);await expect(page.locator('#inspector')).toContainText('Material belt');
+ let state=await snapshot(page);const belt=state.links.find((l:any)=>l.type==='material');const before=JSON.stringify(belt.path);
+ await page.locator('[data-route-diagonal]').click();expect((await snapshot(page)).links.find((l:any)=>l.id===belt.id).diagonal).toBe(true);
+ await page.locator('[data-route-edit]').click();await expect(page.locator('#map-hint')).toContainText('Edit route');
+ await point(page,7,9.5);
+ await expect.poll(async()=>JSON.stringify((await snapshot(page)).links.find((l:any)=>l.id===belt.id).path)).not.toBe(before);
+ state=await snapshot(page);const edited=state.links.find((l:any)=>l.id===belt.id);expect(edited.path).toContainEqual({x:7,y:9.5});expect(edited.a).toEqual(belt.a);expect(edited.b).toEqual(belt.b);
+ await page.locator('[data-route-clear]').click();expect((await snapshot(page)).links.find((l:any)=>l.id===belt.id).path).not.toContainEqual({x:7,y:9.5});
+ await page.keyboard.press('Escape');expect((await snapshot(page)).links.filter((l:any)=>l.type==='material')).toHaveLength(1);
+ await page.screenshot({path:'test-results/route-editing.png',fullPage:true});
+});

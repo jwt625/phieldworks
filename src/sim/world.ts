@@ -12,10 +12,14 @@ export interface Deposit {id:string;x:number;y:number;w:number;h:number;remainin
 export interface Blueprint {entities:Entity[];links:Connection[];width:number;height:number}
 export interface Commission {state:'idle'|'testing'|'qualified'|'failed';elapsed:number;minimum:number;rating:number;reason:string;revision:number}
 export interface World {version:3;ecology:Ecology;time:number;nextId:number;entities:Entity[];links:Connection[];deposits:Deposit[];stock:{assemblies:number;crystal:number;scrap:number};produced:number;target:{x:number;y:number;health:number};frontier:boolean;controller:boolean;revision:number;commission:Commission;blueprint:Blueprint|null;events:{time:number;text:string}[];stats:Stats}
-export interface Stats {network:NetworkResult;targetPower:number;offTarget:number;radiated:number;heat:number;leaked:number;supply:number;demand:number;bendRadiation:number;propagationLoss:number;error:string;emitterFields:Record<string,Record<string,Complex>>}
+export interface Stats {network:NetworkResult;targetPower:number;offTarget:number;radiated:number;heat:number;leaked:number;supply:number;demand:number;overload:number;wireOverload:number;bendRadiation:number;propagationLoss:number;error:string;emitterFields:Record<string,Record<string,Complex>>}
 export const WIDTH=64,HEIGHT=36,DT=.1;
+/** Provisional scale guards. See README deliberate limits; large-factory performance is unbenchmarked. */
+export const MACHINE_LIMIT=120,FIELD_PORT_LIMIT=400,LINK_LIMIT=512;
+/** Per-wire provisional capacity; a single load never exceeds it today. Real buses await power poles. */
+export const WIRE_CAPACITY=240;
 const emptyNet=():NetworkResult=>({ports:{},absorbed:{},sourcePower:0,linkLoss:0,escaped:0,residual:0});
-const emptyStats=():Stats=>({network:emptyNet(),targetPower:0,offTarget:0,radiated:0,heat:0,leaked:0,supply:0,demand:0,bendRadiation:0,propagationLoss:0,error:'',emitterFields:{}});
+const emptyStats=():Stats=>({network:emptyNet(),targetPower:0,offTarget:0,radiated:0,heat:0,leaked:0,supply:0,demand:0,overload:0,wireOverload:0,bendRadiation:0,propagationLoss:0,error:'',emitterFields:{}});
 const blankCommission=():Commission=>({state:'idle',elapsed:0,minimum:Infinity,rating:0,reason:'Not commissioned',revision:0});
 export const center=(e:Entity)=>({x:e.x+footprint(e).w/2,y:e.y+footprint(e).h/2});
 export function event(w:World,text:string){w.events.unshift({time:w.time,text});w.events=w.events.slice(0,30);}
@@ -25,7 +29,7 @@ export function newEntity(kind:Kind,x:number,y:number,id:string,rotation:Rotatio
 export function invalidate(w:World,reason:string){w.revision++;if(w.commission.state==='testing'||w.commission.state==='qualified'){w.commission.state='failed';w.commission.reason=reason;event(w,`Qualification invalidated: ${reason}`);}}
 function overlap(x:number,y:number,aw:number,ah:number,b:{x:number;y:number;w:number;h:number}){return x<b.x+b.w&&x+aw>b.x&&y<b.y+b.h&&y+ah>b.y;}
 export function placementError(w:World,kind:Kind,x:number,y:number,extra:Entity[]=[],rotation:Rotation=0):string {
- const d={...DEFS[kind],...footprint({kind,rotation})};if(![0,1,2,3].includes(rotation))return 'Invalid rotation';if(w.entities.length+extra.length>=40)return 'Prototype limit: 40 machines';if([...w.entities,...extra].reduce((n,e)=>n+DEFS[e.kind].ports.length,0)+d.ports.length>128)return 'Prototype limit: 128 field ports';if(!Number.isInteger(x)||!Number.isInteger(y)||x<0||y<0||x+d.w>WIDTH||y+d.h>HEIGHT)return 'Outside the build area';
+ const d={...DEFS[kind],...footprint({kind,rotation})};if(![0,1,2,3].includes(rotation))return 'Invalid rotation';if(w.entities.length+extra.length>=MACHINE_LIMIT)return `Prototype limit: ${MACHINE_LIMIT} machines`;if([...w.entities,...extra].reduce((n,e)=>n+DEFS[e.kind].ports.length,0)+d.ports.length>FIELD_PORT_LIMIT)return `Prototype limit: ${FIELD_PORT_LIMIT} field ports`;if(!Number.isInteger(x)||!Number.isInteger(y)||x<0||y<0||x+d.w>WIDTH||y+d.h>HEIGHT)return 'Outside the build area';
  if(!w.frontier&&x+d.w>25)return 'Clear the armored organism to open the eastern frontier';
  if([...w.entities,...extra].some(e=>overlap(x,y,d.w,d.h,{x:e.x,y:e.y,...footprint(e)})))return 'Footprint occupied';
  if(w.links.some(l=>l.path.some((p,i)=>inside(p,{kind,x,y,rotation})||(i>0&&!segmentClear(l.path[i-1],p,[{kind,x,y,rotation}])))))return 'Route occupies footprint';
@@ -48,6 +52,17 @@ export function connect(w:World,type:Connection['type'],a:Endpoint,b:Endpoint,op
  w.links.push({id:`l${w.nextId++}`,type,a:{...a},b:{...b},path,diagonal:options.diagonal??false,radius,packets:[]});invalidate(w,'Routing changed');return '';
 }
 export function disconnect(w:World,id:string){const l=w.links.find(l=>l.id===id);if(!l)return;w.stock.scrap+=l.packets.length;w.links=w.links.filter(l=>l.id!==id);invalidate(w,'Routing changed');}
+/** Rebuild an installed route in place. Validation is atomic: the route is untouched on failure. */
+export function editRoute(w:World,id:string,options:RouteOptions={}):string {
+ const l=w.links.find(l=>l.id===id);if(!l)return 'Select a route to edit';
+ const ea=entity(w,l.a.node),eb=entity(w,l.b.node);if(!ea||!eb)return 'Route endpoint missing';
+ const pa=ports(ea,l.type)[l.a.port],pb=ports(eb,l.type)[l.b.port];if(!pa||!pb)return 'Route endpoints are invalid';
+ const radius=options.radius??l.radius,diagonal=options.diagonal??l.diagonal;if(!Number.isFinite(radius)||radius<0||radius>4)return 'Invalid bend radius';
+ const path=findRoute(pa,pb,w.entities,WIDTH,HEIGHT,{diagonal,radius,waypoints:options.waypoints,path:options.path});if(!path)return 'No valid grid route: check clearance and port direction';
+ l.path=path;l.diagonal=diagonal;l.radius=radius;
+ if(l.type==='material'){const length=routeMetrics(path).length,capacity=Math.floor(length*2)+1;let limit=length;const kept:number[]=[];for(const v of l.packets){const p=Math.min(v,limit);if(p<0)break;kept.push(p);limit=p-.5;if(kept.length>=capacity)break;}w.stock.scrap+=l.packets.length-kept.length;l.packets=kept;}
+ invalidate(w,'Routing changed');event(w,`Route ${id} rebuilt`);return '';
+}
 export function rotateEntity(w:World,id:string):string {
  const e=entity(w,id);if(!e)return 'Select equipment';if(w.links.some(l=>l.a.node===id||l.b.node===id))return 'Disconnect routes before rotating equipment';
  const rotation=((e.rotation+1)%4) as Rotation;
@@ -64,11 +79,24 @@ export function createWorld():World {
  w.events=[];w.revision=0;event(w,'Expedition bus online. Build a tuner and a second emitter to concentrate the field.');evaluate(w);return w;
 }
 function powerGrid(w:World){
- const generators=w.entities.filter(e=>e.kind==='generator'&&e.health>0&&!e.tripped);const supply=generators.length*240;
- const demand=w.entities.reduce((sum,e)=>sum+(e.health>0&&!e.tripped?DEFS[e.kind].watts:0),0);
- for(const e of w.entities)e.powered=e.health>0&&!e.tripped&&DEFS[e.kind].watts===0;
- for(const g of generators){const loads=w.links.filter(l=>l.type==='power'&&l.a.node===g.id).map(l=>entity(w,l.b.node)!).filter(e=>e.health>0&&!e.tripped);const localDemand=loads.reduce((sum,e)=>sum+DEFS[e.kind].watts,0);if(localDemand<=240)for(const e of loads)e.powered=true;}
- return {supply,demand};
+ const healthy=(e:Entity)=>e.health>0&&!e.tripped;
+ const generators=w.entities.filter(e=>e.kind==='generator'&&healthy(e));
+ const supply=generators.length*240;
+ const demand=w.entities.reduce((sum,e)=>sum+(healthy(e)?DEFS[e.kind].watts:0),0);
+ for(const e of w.entities)e.powered=healthy(e)&&DEFS[e.kind].watts===0;
+ const adj=new Map<string,string[]>();const add=(a:string,b:string)=>{if(!adj.has(a))adj.set(a,[]);adj.get(a)!.push(b);};
+ for(const l of w.links.filter(l=>l.type==='power')){add(l.a.node,l.b.node);add(l.b.node,l.a.node);}
+ // Connected components via wires; supply is shared, loads are served in stable id order so
+ // existing infrastructure stays up and only the excess is isolated in an overload.
+ const seen=new Set<string>();let overload=0;
+ for(const g of generators){if(seen.has(g.id))continue;const stack=[g.id];seen.add(g.id);const component:string[]=[];while(stack.length){const id=stack.pop()!;component.push(id);for(const n of adj.get(id)??[])if(!seen.has(n)){seen.add(n);stack.push(n);}}
+  const gens=component.filter(id=>entity(w,id)?.kind==='generator'&&healthy(entity(w,id)!)).length;
+  const loads=component.map(id=>entity(w,id)).filter((e):e is Entity=>!!e&&DEFS[e.kind].watts>0&&healthy(e)).sort((a,b)=>Number(a.id.slice(1))-Number(b.id.slice(1)));
+  let used=0;const capacity=gens*240;for(const load of loads){const watts=DEFS[load.kind].watts;if(used+watts<=capacity){load.powered=true;used+=watts;}else overload++;}
+ }
+ let wireOverload=0;
+ for(const l of w.links.filter(l=>l.type==='power')){const visited=new Set([l.a.node]);const stack=[l.b.node];let flow=0;while(stack.length){const id=stack.pop()!;if(visited.has(id))continue;visited.add(id);const e=entity(w,id);if(e&&e.powered&&DEFS[e.kind].watts>0)flow+=DEFS[e.kind].watts;for(const n of adj.get(id)??[])if(!visited.has(n))stack.push(n);}if(flow>WIRE_CAPACITY)wireOverload++;}
+ return {supply,demand,overload,wireOverload};
 }
 /** Geometry uses effective phase rad/tile, not real optical wavelength. */
 export function waveLinks(w:World):WaveLink[]{return w.links.filter(l=>l.type==='field').map(l=>{const m=routeMetrics(l.path,l.radius);return {a:l.a,b:l.b,amplitude:Math.exp(-.5*(m.propagationExponent+m.bendExponent)),phase:.31*m.length};});}
@@ -142,7 +170,7 @@ export function deserialize(raw:string):World {
  const finite=(v:unknown)=>typeof v==='number'&&Number.isFinite(v);const nonnegative=(v:unknown)=>finite(v)&&(v as number)>=0;
  const legacy=s?.version===1;if(legacy&&Array.isArray(s.entities)){s.version=2;for(const e of s.entities)if(e)e.rotation=0;}
  if(s?.version===2){s.version=3;s.ecology=newEcology();}
- if(s?.version!==3||!Array.isArray(s.entities)||s.entities.length>40||!Array.isArray(s.links)||s.links.length>120||!Array.isArray(s.deposits)||s.deposits.length>20||!nonnegative(s.time)||!Number.isSafeInteger(s.nextId)||s.nextId<1||!s.stock||!['assemblies','crystal','scrap'].every(k=>nonnegative(s.stock[k]))||!nonnegative(s.produced)||!s.target||!nonnegative(s.target.health)||!finite(s.target.x)||!finite(s.target.y)||typeof s.frontier!=='boolean'||typeof s.controller!=='boolean'||!nonnegative(s.revision))fail();
+ if(s?.version!==3||!Array.isArray(s.entities)||s.entities.length>MACHINE_LIMIT||!Array.isArray(s.links)||s.links.length>LINK_LIMIT||!Array.isArray(s.deposits)||s.deposits.length>20||!nonnegative(s.time)||!Number.isSafeInteger(s.nextId)||s.nextId<1||!s.stock||!['assemblies','crystal','scrap'].every(k=>nonnegative(s.stock[k]))||!nonnegative(s.produced)||!s.target||!nonnegative(s.target.health)||!finite(s.target.x)||!finite(s.target.y)||typeof s.frontier!=='boolean'||typeof s.controller!=='boolean'||!nonnegative(s.revision))fail();
  const eco=s.ecology;
  if(!eco||typeof eco.defenseReady!=='boolean'||!nonnegative(eco.grace)||eco.grace>30||!nonnegative(eco.threat)||eco.threat>60||!Array.isArray(eco.creatures)||eco.creatures.length>20)fail();
  const creatureIds=new Set<string>();for(const c of eco.creatures){if(!c||typeof c.id!=='string'||!/^c\d+$/.test(c.id)||creatureIds.has(c.id)||!['patrol','investigate','attack','flee'].includes(c.state)||![0,1,2,3].includes(c.heading)||!['x','y','health','exposure'].every(k=>nonnegative(c[k]))||c.x>WIDTH||c.y>HEIGHT||c.health>30||c.exposure>60||!c.target||!finite(c.target.x)||!finite(c.target.y))fail();creatureIds.add(c.id);}eco.shots=[];

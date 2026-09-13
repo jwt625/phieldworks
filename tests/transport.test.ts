@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {captureBlueprint,stampBlueprint,waveLinks,createWorld,newEntity,connect,disconnect,place,rotateEntity,step,evaluate,serialize,deserialize,ports,footprint,routeMetrics,type World} from '../src/sim/world';
+import {captureBlueprint,stampBlueprint,waveLinks,createWorld,newEntity,connect,disconnect,editRoute,place,rotateEntity,step,evaluate,serialize,deserialize,ports,footprint,routeMetrics,type World} from '../src/sim/world';
 import {inside,distance} from '../src/sim/geometry';
 import {findRoute,validPath} from '../src/sim/routing';
 const ticks=(w:World,n:number)=>{for(let i=0;i<n;i++)step(w);};
@@ -39,8 +39,10 @@ test('legacy v1 saves migrate to physical routes and explicit power wires',()=>{
  const w=createWorld(),old=JSON.parse(serialize(w));old.version=1;for(const e of old.entities)delete e.rotation;old.links=old.links.filter((l:any)=>l.type!=='power').map(({id,a,b,type}:any)=>({id,a,b,type}));const migrated=deserialize(JSON.stringify(old));assert.equal(migrated.version,3);assert.ok(migrated.links.some(l=>l.type==='power'));assert.ok(migrated.entities.every(e=>e.powered));assert.ok(migrated.links.every(l=>l.path.length>=3));
 });
 
-test('a generator overload removes power until its excess load is disconnected',()=>{
- const w=createWorld();w.stock.assemblies=100;assert.equal(place(w,'reference',20,20),'');const load=w.entities.at(-1)!,g=w.entities.find(e=>e.kind==='generator')!;assert.equal(connect(w,'power',{node:g.id,port:0},{node:load.id,port:0}),'');evaluate(w);assert.ok(w.stats.demand>240);assert.equal(w.entities.find(e=>e.kind==='assembler')!.powered,false);disconnect(w,w.links.at(-1)!.id);evaluate(w);assert.equal(w.entities.find(e=>e.kind==='assembler')!.powered,true);assert.equal(load.powered,false);
+test('a power overload shares supply, keeps earlier loads up and isolates only the excess',()=>{
+ const w=createWorld();w.stock.assemblies=100;assert.equal(place(w,'reference',20,20),'');const load=w.entities.at(-1)!,g=w.entities.find(e=>e.kind==='generator')!;assert.equal(connect(w,'power',{node:g.id,port:0},{node:load.id,port:0}),'');evaluate(w);
+ assert.ok(w.stats.demand>240);assert.equal(w.stats.overload,1);assert.equal(load.powered,false);assert.equal(w.entities.find(e=>e.kind==='assembler')!.powered,true);assert.equal(w.entities.find(e=>e.kind==='reference')!.powered,true);
+ disconnect(w,w.links.at(-1)!.id);evaluate(w);assert.equal(w.stats.overload,0);assert.equal(load.powered,false);assert.equal(w.entities.find(e=>e.kind==='assembler')!.powered,true);
 });
 
 
@@ -49,4 +51,24 @@ test('diagonal segments cannot cut through a newly placed footprint corner',()=>
 });
 test('blueprint route validation fails atomically before spending or placing',()=>{
  const w=createWorld();w.frontier=true;w.commission.state='qualified';assert.equal(captureBlueprint(w),'');w.stock.assemblies=300;w.blueprint!.links[0].path[1].x+=.25;const before=serialize(w);assert.ok(stampBlueprint(w,38,3));assert.equal(serialize(w),before);
+});
+test('editing an installed route preserves its identity, endpoints and profile',()=>{
+ const w=createWorld();const belt=w.links.find(l=>l.type==='material')!;const id=belt.id,a={...belt.a},b={...belt.b};const before=routeMetrics(belt.path).length;
+ assert.equal(editRoute(w,id,{waypoints:[{x:7,y:9.5}]}),'');const updated=w.links.find(l=>l.id===id)!;
+ assert.deepEqual(updated.a,a);assert.deepEqual(updated.b,b);assert.ok(updated.path.some(p=>p.x===7&&p.y===9.5));assert.ok(routeMetrics(updated.path).length>=before);
+ assert.equal(editRoute(w,id,{diagonal:true}),'');assert.equal(w.links.find(l=>l.id===id)!.diagonal,true);assert.equal(editRoute(w,id,{diagonal:false,waypoints:[]}),'');assert.equal(w.links.find(l=>l.id===id)!.diagonal,false);
+});
+test('a blocked route edit fails atomically and leaves the installed path unchanged',()=>{
+ const w=createWorld();const belt=w.links.find(l=>l.type==='material')!,before=JSON.stringify(belt.path);
+ assert.ok(editRoute(w,belt.id,{waypoints:[{x:4.5,y:12}]}));
+ assert.equal(JSON.stringify(w.links.find(l=>l.id===belt.id)!.path),before);assert.equal(w.links.find(l=>l.id===belt.id)!.path.some((p:any)=>p.y===12),false);
+});
+test('editing a material route preserves mass and clamps packets to the new length',()=>{
+ const w=createWorld();const belt=w.links.find(l=>l.type==='material')!;for(let i=0;i<40;i++)step(w);const packets=belt.packets.length,scrap=w.stock.scrap;
+ const mass=()=>w.entities.reduce((s,e)=>s+e.ore,0)+w.links.filter(l=>l.type==='material').reduce((s,l)=>s+l.packets.length,0)+w.stock.scrap+w.produced*2;
+ const conserved=mass();assert.equal(editRoute(w,belt.id,{waypoints:[{x:7,y:9.5}]}),'');
+ const length=routeMetrics(belt.path).length;assert.ok(belt.packets.length<=Math.floor(length*2)+1);assert.ok(belt.packets.every((v:number)=>v<=length));assert.ok(w.stock.scrap-scrap<=packets);assert.equal(mass(),conserved);assert.ok(belt.packets.every((v:number,i:number)=>i===0||belt.packets[i-1]-v>=.5-1e-8));
+});
+test('editing a route invalidates a qualified installation',()=>{
+ const w=createWorld();const l=w.links.find(l=>l.type==='field')!;w.commission.state='qualified';assert.equal(editRoute(w,l.id,{}),'');assert.equal(w.commission.state,'failed');
 });

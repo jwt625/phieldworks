@@ -5,6 +5,8 @@ export interface Issue {id:string;severity:'error'|'warning'|'info';object?:stri
 export function diagnose(w:World):Issue[]{
  const issues:Issue[]=[];const add=(object:string,title:string,remedy:string,severity:Issue['severity']='warning')=>issues.push({id:`${object}:${title}`,object,title,remedy,severity});
  if(w.stats.error)issues.push({id:'network',severity:'error',title:'Field network failed',remedy:w.stats.error});
+ if(w.stats.overload>0)issues.push({id:'power-overload',severity:'warning',title:'Power bus overloaded',remedy:`${w.stats.overload} load(s) isolated: demand exceeds generator supply. Later-built loads shut down first. Add a generator or disconnect a load.`});
+ if(w.stats.wireOverload>0)issues.push({id:'wire-overload',severity:'warning',title:'Power wire over capacity',remedy:'Split the feed across another generator or a shorter route; each wire carries limited current.'});
  for(const e of w.entities){const d=DEFS[e.kind];if(e.health<=0){add(e.id,'Equipment destroyed','Repair for 3 assemblies or recover the wreck.','error');continue;}
   if(e.health<100)add(e.id,'Equipment damaged','Inspect integrity. Repair for 3 assemblies; keep a powered sentry covering this machine before commissioning.');
   if(e.tripped)add(e.id,'Thermal protection tripped','Disconnect the live field input, then repair/reset.','error');

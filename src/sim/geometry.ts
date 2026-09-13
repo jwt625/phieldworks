@@ -19,6 +19,8 @@ export function ports(e:Body,type:Transport='field'):Port[]{
 export const inside=(p:Point,e:Body)=>{const f=footprint(e);return p.x>e.x&&p.x<e.x+f.w&&p.y>e.y&&p.y<e.y+f.h;};
 export const same=(a:Point,b:Point)=>a.x===b.x&&a.y===b.y;
 export const distance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
+/** World-space distance from p to the segment a–b, for route hit testing. */
+export function segmentDistance(p:Point,a:Point,b:Point){const dx=b.x-a.x,dy=b.y-a.y,length=dx*dx+dy*dy;if(length===0)return distance(p,a);const t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/length));return distance(p,{x:a.x+t*dx,y:a.y+t*dy});}
 export function routeMetrics(path:Point[],radius=.5){
  const corners:Point[]=[];for(const p of path){while(corners.length>=2){const a=corners.at(-2)!,b=corners.at(-1)!;if(Math.abs((b.x-a.x)*(p.y-b.y)-(b.y-a.y)*(p.x-b.x))>1e-8)break;corners.pop();}corners.push(p);}
  let length=0,bendExponent=0;const bends:{point:Point;radius:number;angle:number;bad:boolean}[]=[];
