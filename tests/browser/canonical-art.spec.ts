@@ -6,7 +6,7 @@ test('canonical art gallery covers the planned tree and supports held animation 
  await expect(page.locator('#art-count')).toContainText('27 / 27');
  await page.locator('[data-art-node=research]').click();
  await expect(page.locator('#art-detail')).toContainText('Research workbench');
- await expect(page.locator('#art-detail')).toContainText('Laboratory');
+ await expect(page.locator('#art-detail')).toContainText('Research laboratory');
  await page.locator('[data-select-art=qualification]').click();await expect(page.locator('#art-detail h2')).toHaveText('Qualified outpost');
  await page.locator('#art-search').fill('membrane');await expect(page.locator('[data-art-node=nanofab]')).toBeVisible();await expect(page.locator('[data-art-node=outpost]')).toBeHidden();await page.locator('#art-search').fill('');
  await expect(page.locator('#motion-cards canvas')).toHaveCount(10);

@@ -3,7 +3,8 @@ import {footprint,ports,inside,routeMetrics,type Rotation,type Point,type Transp
 import {findRoute,segmentClear,type RouteOptions} from './routing';
 export {footprint,ports,routeMetrics} from './geometry';
 import {c,polar,mul,add,power,type Complex} from './complex';
-import {source,hybrid,through,matched,solveNetwork,type NetworkResult,type Component,type Endpoint,type WaveLink} from './network';
+import {source,hybrid,through,matched,solveNetwork,FIELD_PORT_LIMIT,type NetworkResult,type Component,type Endpoint,type WaveLink} from './network';
+export {FIELD_PORT_LIMIT} from './network';
 import {DEFS,type Kind} from './definitions';
 export {DEFS,type Kind} from './definitions';
 export interface Entity {id:string;kind:Kind;x:number;y:number;rotation:Rotation;phase:number;temperature:number;health:number;tripped:boolean;protection:boolean;ore:number;progress:number;powered:boolean}
@@ -15,7 +16,7 @@ export interface World {version:3;ecology:Ecology;time:number;nextId:number;enti
 export interface Stats {network:NetworkResult;targetPower:number;offTarget:number;radiated:number;heat:number;leaked:number;supply:number;demand:number;overload:number;wireOverload:number;bendRadiation:number;propagationLoss:number;error:string;emitterFields:Record<string,Record<string,Complex>>}
 export const WIDTH=64,HEIGHT=36,DT=.1;
 /** Provisional scale guards. See README deliberate limits; large-factory performance is unbenchmarked. */
-export const MACHINE_LIMIT=120,FIELD_PORT_LIMIT=400,LINK_LIMIT=512;
+export const MACHINE_LIMIT=120,LINK_LIMIT=512;
 /** Per-wire provisional capacity; a single load never exceeds it today. Real buses await power poles. */
 export const WIRE_CAPACITY=240;
 const emptyNet=():NetworkResult=>({ports:{},absorbed:{},sourcePower:0,linkLoss:0,escaped:0,residual:0});
@@ -175,6 +176,7 @@ export function deserialize(raw:string):World {
  if(!eco||typeof eco.defenseReady!=='boolean'||!nonnegative(eco.grace)||eco.grace>30||!nonnegative(eco.threat)||eco.threat>60||!Array.isArray(eco.creatures)||eco.creatures.length>20)fail();
  const creatureIds=new Set<string>();for(const c of eco.creatures){if(!c||typeof c.id!=='string'||!/^c\d+$/.test(c.id)||creatureIds.has(c.id)||!['patrol','investigate','attack','flee'].includes(c.state)||![0,1,2,3].includes(c.heading)||!['x','y','health','exposure'].every(k=>nonnegative(c[k]))||c.x>WIDTH||c.y>HEIGHT||c.health>30||c.exposure>60||!c.target||!finite(c.target.x)||!finite(c.target.y))fail();creatureIds.add(c.id);}eco.shots=[];
  const ids=new Set<string>();for(const e of s.entities){if(!e||typeof e.id!=='string'||!/^e\d+$/.test(e.id)||ids.has(e.id)||!Object.hasOwn(DEFS,e.kind)||![0,1,2,3].includes(e.rotation)||!Number.isInteger(e.x)||!Number.isInteger(e.y)||!['phase','temperature','health','ore','progress'].every(k=>finite(e[k]))||e.health<0||e.health>100||e.ore<0||e.progress<0||Math.abs(e.phase)>180||e.temperature<0||typeof e.protection!=='boolean'||typeof e.tripped!=='boolean'||typeof e.powered!=='boolean')fail();ids.add(e.id);const d=footprint(e);if(e.x<0||e.y<0||e.x+d.w>WIDTH||e.y+d.h>HEIGHT)fail();}
+ if(s.entities.reduce((n:number,e:Entity)=>n+DEFS[e.kind].ports.length,0)>FIELD_PORT_LIMIT)fail();
  for(let i=0;i<s.entities.length;i++)for(let j=0;j<i;j++){const a=s.entities[i],b=s.entities[j],ad=footprint(a),bd=footprint(b);if(overlap(a.x,a.y,ad.w,ad.h,{...b,w:bd.w,h:bd.h}))fail();}
  const clean={...s,links:[],stats:emptyStats(),events:[],commission:blankCommission(),blueprint:null} as World;
  for(const dep of s.deposits)if(!dep||!['ore','crystal'].includes(dep.kind)||!['x','y','w','h','remaining'].every(k=>nonnegative(dep[k]))||dep.w<1||dep.h<1||dep.x+dep.w>WIDTH||dep.y+dep.h>HEIGHT||!Number.isInteger(dep.remaining))fail();

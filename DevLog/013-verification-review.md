@@ -44,3 +44,7 @@ World steps with starter field network plus disconnected sentries: 40/80/120 mac
 - [ ] P4: registration fixes and newly generated clips, actual event bindings, reduced motion and pause/hidden-modal behavior across every new state.
 - [ ] P3: true multi-source shared feeds and wire overload once topology permits it.
 - [ ] P5: unprompted human first-expedition playtest and pacing. Scripted completion does not answer whether the phase/commissioning loop is understandable or enjoyable.
+
+## Follow-up — 2026-09-13 (P0 remedy)
+
+The 400-vs-128 contradiction in the capacity section is resolved in code; evidence and remaining gaps are recorded in [012](012-next-coding-handoffs.md) P0 progress. Single supported cap is now `FIELD_PORT_LIMIT=256` across placement, save load and `solveNetwork`; the solver partitions disconnected components and reuses one LU factorization per block. Post-remedy benchmark (`DevLog/evidence/012-p0-solver-after.json`, Apple M4 Pro): 128 ports / 16 groups 1.14 ms p95 (was 167.71); 256 / 1 group 4.33 ms p95; 400 rejected. The stale field-manual sentence about an overloaded generator shutting all attached loads down was corrected to match isolation behavior. This does not satisfy the connected-world frame-pacing or human-pacing gates above, which remain open.

@@ -8,10 +8,22 @@ The immediate objective is a reliable first expedition followed by a playable in
 
 ## P0 — Capacity and solver reliability
 
-- [ ] Owner: simulation/performance. Reconcile `FIELD_PORT_LIMIT=400` with the hard-coded 128-port rejection in `solveNetwork`. Placement/load must never accept a layout which predictably fails solely because of contradictory limits. Start by using one supported cap; raise it only with measured evidence.
-- [ ] Partition disconnected field components, reuse matrix factorization across independent source right-hand sides where justified, and keep singular-network failures explicit. Avoid changing the conservation model to meet a frame budget.
+- [x] Owner: simulation/performance. Reconcile `FIELD_PORT_LIMIT=400` with the hard-coded 128-port rejection in `solveNetwork`. Placement/load must never accept a layout which predictably fails solely because of contradictory limits. Start by using one supported cap; raise it only with measured evidence.
+- [x] Partition disconnected field components, reuse matrix factorization across independent source right-hand sides where justified, and keep singular-network failures explicit. Avoid changing the conservation model to meet a frame budget.
 - [ ] Verification: boundary tests at cap−1/cap/cap+1 across placement, save load and solve; connected and disconnected fixtures; 1/4/16 independent source groups; compare port powers and residuals against the existing solver. Benchmark warmed median/p95 solve, world-step and render at 40/80/120 machines. Record hardware, topology, ports, links, groups and sample counts. Target ≤16 ms p95 world step at the supported cap; report failures without silently dropping ports.
-- [ ] Deliverable: reproducible benchmark command, results, consistent limits and regression tests. See 013 for this review's baseline evidence.
+- [x] Deliverable: reproducible benchmark command, results, consistent limits and regression tests. See 013 for this review's baseline evidence.
+
+### P0 progress — 2026-09-13
+
+Remedy implemented against baseline `deb2242`:
+
+- Single supported cap `FIELD_PORT_LIMIT=256`, defined in `src/sim/network.ts` and re-exported from `src/sim/world.ts`, and enforced by placement (`placementError`), save load (`deserialize`, new explicit port-count check) and the solver. `solveNetwork` no longer hard-codes 128.
+- `solveNetwork` now partitions the (non-symmetric) coupling graph into independent blocks, factors each block once with `factorLU` (partial pivoting), and reuses that factorization for every source group via `solveFactorization`. Singular blocks still raise `Singular wave network: undamped feedback loop`; the conservation/assembly code is unchanged. Blocks without a source are still factored so singular failures stay explicit.
+- Cap chosen from measurement: 256 ports / 1 group = 4.33 ms p95; 400 / 1 = 16.9 ms p95 (over the 16 ms target) → 400 rejected. 128 ports / 16 groups dropped from 168 ms (013 baseline) to 1.14 ms p95.
+- New regression tests: disconnected regions solve independently with zero cross-coupling; the solver enforces the same port cap as placement; the cap is enforced by save load; the existing singular/occupied/gain failures still pass. `tests/network.test.ts`, `tests/world.test.ts`.
+- Reproducible command: `npm run bench:review` (writes `test-results/performance-review.json`). Post-remedy report copied to `DevLog/evidence/012-p0-solver-after.json` (Apple M4 Pro, Node v23.7.0).
+
+**P0 remaining verification (not done):** the benchmark's world-step rows still use disconnected sentries, so a *connected* large-field-network world-step/render and browser frame-pacing measurement at the supported cap is outstanding; multi-machine hardware breadth; and visual confirmation that overload/isolation still reads correctly after the solver change. Treat the ≤16 ms claim as solver-only until that connected-world run exists.
 
 ## P1 — Persistent research and first manufacturing loop (after P0)
 

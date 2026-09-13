@@ -9,6 +9,7 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "tsx --test tests/*.test.ts",
     "test:browser": "playwright test",
+    "bench:review": "tsx scripts/benchmark-review.ts",
     "docs:progression": "tsx scripts/generate-progression-docs.ts"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';
 import {c,power,solveLinear} from '../src/sim/complex';
-import {source,hybrid,through,matched,solveNetwork,type WaveLink} from '../src/sim/network';
+import {source,hybrid,through,matched,solveNetwork,FIELD_PORT_LIMIT,type WaveLink} from '../src/sim/network';
 const close=(a:number,b:number)=>assert.ok(Math.abs(a-b)<1e-8,`${a} != ${b}`);
 const link=(a:string,ap:number,b:string,bp:number,phase=0,amplitude=1):WaveLink=>({a:{node:a,port:ap},b:{node:b,port:bp},phase,amplitude});
 test('pivoted complex solve handles an initially zero diagonal',()=>{const x=solveLinear([[c(0),c(1)],[c(1),c(0)]],[c(2),c(3)]);close(x[0][0],3);close(x[1][0],2);});
@@ -11,3 +11,5 @@ test('backreflection reaches and is absorbed by a matched source',()=>{const r=s
 test('split-route-recombine responds to phase and conserves power',()=>{const comps=[source('s',100),hybrid('split'),through('tune',Math.PI),hybrid('combine'),matched('use'),matched('reject')];const r=solveNetwork(comps,[link('s',0,'split',0),link('split',2,'tune',0),link('tune',1,'combine',0),link('split',3,'combine',1),link('combine',2,'use',0),link('combine',3,'reject',0)]);close(r.absorbed.use,0);close(r.absorbed.reject,100);close(r.residual,0);});
 test('undamped isolated feedback loop fails explicitly',()=>{assert.throws(()=>solveNetwork([source('s',1),through('loop')],[link('loop',0,'loop',1)]),/Singular/);});
 test('invalid and multiply occupied ports cannot silently corrupt topology',()=>{assert.throws(()=>solveNetwork([source('s',1),matched('a'),matched('b')],[link('s',0,'a',0),link('s',0,'b',0)]),/occupied/);assert.throws(()=>solveNetwork([source('s',1),matched('a')],[link('s',0,'a',0,0,2)]),/gain/);});
+test('disconnected field regions solve independently with no cross-coupling',()=>{const both=solveNetwork([source('s1',100),matched('l1'),source('s2',36),matched('l2')],[link('s1',0,'l1',0,0,.5),link('s2',0,'l2',0,0,.5)]);close(both.absorbed.l1,25);close(both.absorbed.l2,9);close(both.residual,0);});
+test('the solver enforces the same supported port cap as placement',()=>{const at=Array.from({length:FIELD_PORT_LIMIT},(_,i)=>matched(`m${i}`));const r=solveNetwork(at,[]);close(r.residual,0);assert.throws(()=>solveNetwork([...at,matched('extra')],[]),/wave ports/);});
