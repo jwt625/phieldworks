@@ -11,4 +11,5 @@ export const APPEARANCE:Record<Kind,Appearance>={
  emitter:{asset:'field-emitter',sheet:'field-emitter-turnaround-v2'},
  sentry:{asset:'power-unit',sheet:'perimeter-sentry-v1'},
  dump:{asset:'cooled-dump',sheet:'cooled-dump-turnaround-v2'},
+ 'fabrication-cell':{asset:'fabrication-cell-placeholder',scale:1.05},
 };

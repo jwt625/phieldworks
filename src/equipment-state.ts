@@ -18,6 +18,7 @@ export function equipmentState(w:World,e:Entity):EquipmentState {
  else if(e.kind==='generator'){moving=w.links.some(l=>l.type==='power'&&l.a.node===e.id&&w.entities.some(load=>load.id===l.b.node&&load.powered&&DEFS[load.kind].watts>0));work=moving?'running':'ready';}
  else if(e.kind==='sentry'){const p=center(e);moving=w.ecology.shots.some(s=>s.ttl>0&&Math.hypot(s.from.x-p.x,s.from.y-p.y)<.01);work=moving?'firing':'ready';}
  else if(e.kind==='dump'){moving=field||e.temperature>30;work=moving?'running':'ready';}
+ else if(e.kind==='fabrication-cell'){const job=w.jobs.find(j=>j.cell===e.id&&j.stage!=='complete');work=job?.stage==='exposing'?'running':'ready';moving=work==='running';}
  else work=field?'running':'no-field';
  const labels:Record<WorkState,string>={running:passive?'FIELD ACTIVE':e.kind==='dump'?'COOLING':'RUNNING',ready:'READY',starved:'WAITING FOR ORE',blocked:'OUTPUT FULL',exhausted:'NO RESOURCE', 'no-power':'POWER OFF','no-field':'NO FIELD',uncooled:'UNCOOLED',tripped:'TRIPPED',destroyed:'WRECK',firing:'FIRING'};
  return {condition,work,powered:e.powered&&!e.tripped&&condition!==3,passive,field:field&&condition!==3,moving,hot:e.temperature>65&&condition!==3,smoke:e.temperature>105&&condition!==3,label:labels[work],damageLabel:condition===1?'LIGHT DAMAGE':condition===2?'SEVERE DAMAGE':condition===3?'DESTROYED':''};

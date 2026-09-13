@@ -9,6 +9,7 @@ export const catalog:Record<Kind,{category:string;needs:string;output:string}>={
  tuner:{category:'Field',needs:'Field IN and OUT • room for two ports',output:'±180° phase trim; no electrical power; thermal drift'},
  emitter:{category:'Field',needs:'Field IN • 4 electrical power',output:'Directed field toward frontier target; stray light attracts wildlife'},
  dump:{category:'Field',needs:'Field IN • 2 electrical power for cooling',output:'Absorbs unused field; monitor temperature'},
- sentry:{category:'Defense',needs:'6 electrical power via POWER IN • perimeter location',output:'8-tile range; 12 damage/s to aggressive wildlife; ammunition abstracted'}
+ sentry:{category:'Defense',needs:'6 electrical power via POWER IN • perimeter location',output:'8-tile range; 12 damage/s to aggressive wildlife; ammunition abstracted'},
+ 'fabrication-cell':{category:'Production',needs:'18 assemblies • 12 electrical power via POWER IN • two assigned powered emitters',output:'Accepted precision parts from a reserved 2 assemblies + 1 crystal workpiece'}
 };
 export function requirements(kind:Kind){const d=DEFS[kind],c=catalog[kind];return `<b>${d.name}</b> · ${d.cost} assemblies · ${d.w} × ${d.h} tiles<br><span>Requires: ${c.needs}</span><br><span>Produces: ${c.output}</span>`;}

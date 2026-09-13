@@ -67,14 +67,20 @@ Honest deferral: process qualification still does not consume completed-cycle ev
 
 ## A-05 — buildable first cell
 
-- [ ] Add `fabrication-cell` to Kind/DEFS with 3×3 footprint, 18-assembly cost, 12-unit feed and no wave/material routing ports.
-- [ ] Define explicit power-port placement in geometry; preserve existing kinds' port locations and four rotations.
-- [ ] Add target/job creation and deletion to world commands. Integrate target absorption with declared cell cooling and process step ordering.
-- [ ] Use a visibly labeled placeholder in `presentation.ts`/renderer until reviewed art exists; do not accidentally fall back to an unrelated generator sprite.
-- [ ] Add a reusable no-stock-injection fixture in `scripts/precision-cell-fixture.ts` that starts with `createWorld`, completes frontier/crystal access, builds legal routes, makes a reject, recovers and makes accepted parts.
-- [ ] Audit actual resource spend, remaining recovery stock, input power, useful/guard margins and thermal equilibrium; revise provisional constants if needed and document the measured reason.
+- [x] Add `fabrication-cell` to Kind/DEFS with 3×3 footprint, 18-assembly cost, 12-unit feed and no wave/material routing ports.
+- [x] Define explicit power-port placement in geometry; preserve existing kinds' port locations and four rotations.
+- [x] Add target/job creation and deletion to world commands. Integrate target absorption with declared cell cooling and process step ordering.
+- [x] Use a visibly labeled placeholder in `presentation.ts`/renderer until reviewed art exists; do not accidentally fall back to an unrelated generator sprite.
+- [x] Add a reusable no-stock-injection fixture in `scripts/precision-cell-fixture.ts` that starts with `createWorld`, completes frontier/crystal access, builds legal routes, makes a reject, recovers and makes accepted parts.
+- [x] Audit actual resource spend, remaining recovery stock, input power, useful/guard margins and thermal equilibrium; revise provisional constants if needed and document the measured reason.
 
 Files: definitions, geometry, world, equipment-state, presentation; `tests/precision-cell.test.ts`. Gate: complete three valid standard cycles under local control and certificate monitoring. A failure in this fixture blocks production-art generation, not merely the final test report.
+
+**A-05 implementation note — 2026-09-13.** `fabrication-cell` is a 3×3, 18-assembly, 12-power load with no field or material ports and an explicit top-centre `POWER IN` `(1.5,0)` normal `(0,−1)` per 022. Placing one creates its process target, control domain (`useful − 4·guard`) and idle qualification; dismantling removes them and converts owned reject lots to scrap. `setDomainEnabled`, `bindDomainReference` and `beginProcessQualification` are the world commands that keep ownership/reference validation in the simulator. A cell absorbs its target's captured power; step order is evaluate → control trials → process exposure (returning per-cell absorbed power) → declared cell cooling `dT/dt = 0.05·P_abs − 0.4·(T−25)` → protection/damage, with `finalizeLostJobs` after both heat and wildlife destruction. Renderer draws an explicit dashed `FAB CELL / PLACEHOLDER` card for the kind instead of borrowing another sprite; equipment-state reports the cell as ready/exposing.
+
+Measured fixture (same machine, `scripts/precision-cell-fixture.ts`, no stock injection): a fresh `createWorld` playthrough reached the frontier, mined crystal and assembled the full 75-assembly standalone cell set from production alone, swept two-zone phase, produced one failed batch off-phase, then completed **three accepted cycles** and a qualified local certificate (`accepted 3`, `qualified true`, remaining crystal 211, remaining assemblies 30). Peak useful delivery over the sweep was ≈42 power units → ≈336 power·seconds, comfortably inside the 80–640 acceptance window with room on both sides; the provisional dose/guard constants were therefore **not** changed, and no constant was tuned to make the test pass.
+
+Honest limitation: with balanced two-emitter coherence, `useful + guard` is constant across phase, so a *recoverable* underdose with a ≤0.10 guard fraction only exists when captured power sits near the acceptance floor. The fixture therefore demonstrates rejection as an off-phase scrap and recovery to accepted parts; the recoverable-reject → rework path is covered by `tests/process-lifecycle.test.ts`. Reviewed cell art remains A-09/A-11 (the candidate pass is still opaque and unapproved).
 
 ## A-06 — contextual workflow
 

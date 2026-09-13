@@ -54,13 +54,37 @@ export function assignEmitter(w:World,emitterId:string,targetId:string|null):str
 }
 export function place(w:World,kind:Kind,x:number,y:number,rotation:Rotation=0):string {
  const error=placementError(w,kind,x,y,[],rotation);if(error)return error;if(w.stock.assemblies<DEFS[kind].cost)return 'Not enough assemblies';
- w.stock.assemblies-=DEFS[kind].cost;const created=newEntity(kind,x,y,`e${w.nextId++}`,rotation);w.entities.push(created);autoAssign(w,created);invalidate(w,'Installation changed');event(w,`${DEFS[kind].name} built`);return '';
+ w.stock.assemblies-=DEFS[kind].cost;const created=newEntity(kind,x,y,`e${w.nextId++}`,rotation);w.entities.push(created);autoAssign(w,created);if(kind==='fabrication-cell')createProcessCell(w,created);invalidate(w,'Installation changed');event(w,`${DEFS[kind].name} built`);return '';
 }
-export function remove(w:World,id:string):void {const e=entity(w,id);if(!e)return;for(const job of w.jobs.filter(j=>j.cell===id&&j.stage!=='complete'))finalizeLoss(w,job.id,'cell dismantled');w.stock.assemblies+=e.health>0?DEFS[e.kind].cost:0;w.stock.scrap+=e.ore;e.ore=0;w.entities=w.entities.filter(x=>x.id!==id);for(const t of w.targets)t.emitters=t.emitters.filter(x=>x!==id);for(const d of w.domains)d.tuners=d.tuners.filter(x=>x!==id);for(const l of w.links.filter(l=>l.a.node===id||l.b.node===id))disconnect(w,l.id);invalidate(w,'Equipment removed');event(w,e.health>0?'Equipment recovered; buffered ore becomes scrap':'Wreck cleared');}
+/** A cell owns exactly one process target/domain/qualification. Material is reserved from shared stock, not routed. */
+function createProcessCell(w:World,cell:Entity){const p=center(cell),targetId=`t${w.nextId++}`,domainId=`d${w.nextId++}`;
+ w.targets.push({id:targetId,kind:'process',owner:cell.id,x:p.x,y:p.y,health:0,emitters:[],contract:'standard-cell'});
+ w.domains.push({id:domainId,name:'Fabrication cell',target:targetId,reference:frontierDomain(w)?.reference??null,sensor:cell.id,tuners:[],enabled:false,objective:'useful-minus-guard',cursor:0});
+ w.qualifications.push({id:`q${w.nextId++}`,domain:domainId,target:targetId,status:'idle',signature:'',elapsed:0,minimum:-1,counters:0,dependencies:[],reason:'Not tested',code:''});
+}
+export function remove(w:World,id:string):void {const e=entity(w,id);if(!e)return;for(const job of w.jobs.filter(j=>j.cell===id&&j.stage!=='complete'))finalizeLoss(w,job.id,'cell dismantled');for(const target of w.targets.filter(t=>t.owner===id)){for(const d of w.domains.filter(d=>d.target===target.id))w.qualifications=w.qualifications.filter(q=>q.domain!==d.id);w.domains=w.domains.filter(d=>d.target!==target.id);}w.targets=w.targets.filter(t=>t.owner!==id);for(const l of w.process.lots)if(l.owner===id&&l.kind==='reject'){l.kind='scrap';l.disposition='spent';l.owner=null;}w.stock.assemblies+=e.health>0?DEFS[e.kind].cost:0;w.stock.scrap+=e.ore;e.ore=0;w.entities=w.entities.filter(x=>x.id!==id);for(const t of w.targets)t.emitters=t.emitters.filter(x=>x!==id);for(const d of w.domains)d.tuners=d.tuners.filter(x=>x!==id);for(const l of w.links.filter(l=>l.a.node===id||l.b.node===id))disconnect(w,l.id);invalidate(w,'Equipment removed');event(w,e.health>0?'Equipment recovered; buffered ore becomes scrap':'Wreck cleared');}
 /** Process lifecycle commands. Ownership/capacity are validated before any stock or lot mutation. */
 export function reserveProcess(w:World,targetId:string):string{const error=reserveProcessJob(w,targetId);if(!error)invalidate(w,'Process batch reserved');return error;}
 export function cancelProcess(w:World,jobId:string):string{const error=cancelProcessJob(w,jobId);if(!error)invalidate(w,'Process batch cancelled');return error;}
 export function reworkProcess(w:World,targetId:string):string{const error=reworkProcessJob(w,targetId);if(!error)invalidate(w,'Rework started');return error;}
+/** Begin the local process test: three consecutive accepted cycles under enabled control. */
+export function beginProcessQualification(w:World,targetId:string):string{
+ const domain=w.domains.find(d=>d.target===targetId);if(!domain)return 'No control domain for this target';
+ return startQualification(w,domain.id,'3 consecutive accepted standard cycles');
+}
+/** Domain commands validate ownership/reference before mutating so a domain cannot be enabled without a live source. */
+export function setDomainEnabled(w:World,domainId:string,on:boolean):string{
+ const domain=w.domains.find(d=>d.id===domainId);if(!domain)return 'No such control domain';
+ if(on&&!referenceReady(w,domain))return 'Bind a powered reference before enabling control';
+ domain.enabled=on;invalidate(w,'Controller mode changed');return '';
+}
+/** Bind a domain to a powered reference entity, creating its coherence binding on first use (each source defaults to its own group). */
+export function bindDomainReference(w:World,domainId:string,sourceId:string):string{
+ const domain=w.domains.find(d=>d.id===domainId);if(!domain)return 'No such control domain';
+ const source=entity(w,sourceId);if(!source||source.kind!=='reference')return 'Select a reference station';
+ let binding=w.references.find(r=>r.source===sourceId);if(!binding){binding={id:`r${w.nextId++}`,source:sourceId,group:sourceId};w.references.push(binding);}
+ domain.reference=binding.id;invalidate(w,'Reference binding changed');return '';
+}
 export function connect(w:World,type:Connection['type'],a:Endpoint,b:Endpoint,options:RouteOptions={}):string {
  const ea=entity(w,a.node),eb=entity(w,b.node);if(!ea||!eb||a.node===b.node)return 'Choose two different machines';
  if(!['field','material','power'].includes(type)||!Number.isInteger(a.port)||!Number.isInteger(b.port)||a.port<0||b.port<0)return 'Invalid port index';
@@ -185,8 +209,10 @@ export function step(w:World,dt=DT){if(!Number.isFinite(dt)||dt<=0||dt>.25)throw
   if(a.powered&&a.ore>=1&&(!l.packets.length||l.packets.at(-1)!>=.5)){a.ore--;l.packets.push(0);}
  }
  automaticControl(w,evaluate);
- stepProcess(w,dt);
- for(const e of w.entities){if(e.health<=0)continue;const absorbed=Math.max(0,w.stats.network.absorbed[e.id]??0);const heating=e.kind==='emitter'&&e.powered?absorbed*.08:absorbed;const condition=tunerOwner.has(e.id)?testingDomains.get(tunerOwner.get(e.id)!):undefined;const testDrift=condition?.kind==='frontier'?4*Math.sin(condition.elapsed*.3):0;const drift=e.kind==='tuner'?3+2*Math.sin(w.time*.12)+testDrift:0;const cooling=e.kind==='dump'?(e.powered?.28:.04):.18;e.temperature+=dt*(heating*.32+drift-cooling*(e.temperature-25));e.temperature=Math.max(25,e.temperature);
+ const processAbsorption=stepProcess(w,dt);
+ for(const e of w.entities){if(e.health<=0)continue;
+  if(e.kind==='fabrication-cell'){const absorbed=processAbsorption.get(e.id)??0;e.temperature+=dt*(.05*absorbed-.4*(e.temperature-25));e.temperature=Math.max(25,e.temperature);}
+  else{const absorbed=Math.max(0,w.stats.network.absorbed[e.id]??0);const heating=e.kind==='emitter'&&e.powered?absorbed*.08:absorbed;const condition=tunerOwner.has(e.id)?testingDomains.get(tunerOwner.get(e.id)!):undefined;const testDrift=condition?.kind==='frontier'?4*Math.sin(condition.elapsed*.3):0;const drift=e.kind==='tuner'?3+2*Math.sin(w.time*.12)+testDrift:0;const cooling=e.kind==='dump'?(e.powered?.28:.04):.18;e.temperature+=dt*(heating*.32+drift-cooling*(e.temperature-25));e.temperature=Math.max(25,e.temperature);}
   if(e.temperature>85&&e.protection&&!e.tripped){e.tripped=true;invalidate(w,'Thermal protection tripped');event(w,`${DEFS[e.kind].name} tripped at 85°C. Disconnect input and repair.`);}
   if(e.temperature>105){e.health=Math.max(0,e.health-(e.temperature-105)*dt*.45);if(e.health===0){w.stock.scrap+=DEFS[e.kind].cost+e.ore;e.ore=0;invalidate(w,'Equipment destroyed');event(w,`${DEFS[e.kind].name} destroyed by heat`);}}
  }

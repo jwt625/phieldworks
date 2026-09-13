@@ -105,6 +105,8 @@ export interface ProcessJob {
   interruptions:number;
   rework:boolean;
   lot:string|null;
+  /** World time the batch was reserved/started, so pre-test partial cycles are not qualification evidence. */
+  started:number;
   /** Monotonic terminal event sequence; never a repeating world-time phase. */
   event:number;
 }

@@ -47,7 +47,8 @@ export function startQualification(w:World,domainId:string,reason:string):string
  if(!domain.enabled)return 'Enable automatic phase control first';
  if(!referenceReady(w,domain))return 'Bind a powered reference before testing';
  const qualification=w.qualifications.find(q=>q.domain===domainId);if(!qualification)return 'No qualification record for this domain';
- qualification.status='testing';qualification.elapsed=0;qualification.minimum=-1;qualification.counters=0;qualification.signature=configurationSignature(w,domain);qualification.reason=reason;qualification.code='';
+ const target=w.targets.find(t=>t.id===domain.target);
+ qualification.status='testing';qualification.elapsed=target?.kind==='process'?w.time:0;qualification.minimum=-1;qualification.counters=0;qualification.signature=configurationSignature(w,domain);qualification.reason=reason;qualification.code='';
  return '';
 }
 

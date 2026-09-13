@@ -12,7 +12,8 @@ export function ports(e:Body,type:Transport='field'):Port[]{
  if(type==='field')local=d.ports.map((name,i)=>d.ports.length===4?make(name,i<2?0:d.w,i%2?1.5:.5,i<2?-1:1,0):make(name,d.ports.length===2?(i?d.w:0):e.kind==='reference'?d.w:0,d.h/2,d.ports.length===2?(i?1:-1):e.kind==='reference'?1:-1,0));
  if(type==='material'&&e.kind==='extractor')local=[make('ORE OUT',d.w/2,d.h,0,1,'output')];
  if(type==='material'&&e.kind==='assembler')local=[make('ORE IN',d.w/2,0,0,-1,'input')];
- if(type==='power'&&(d.watts>0||e.kind==='generator'))local=[make(e.kind==='generator'?'BUS OUT':'POWER IN',d.w/2,0,0,-1,e.kind==='generator'?'output':'input')];
+ if(type==='power'&&e.kind==='fabrication-cell')local=[make('POWER IN',d.w/2,0,0,-1,'input')];
+ else if(type==='power'&&(d.watts>0||e.kind==='generator'))local=[make(e.kind==='generator'?'BUS OUT':'POWER IN',d.w/2,0,0,-1,e.kind==='generator'?'output':'input')];
  const f=footprint(e);
  return local.map(p=>{const q=rotate({x:p.position.x-d.w/2,y:p.position.y-d.h/2},e.rotation);return {...p,position:{x:e.x+f.w/2+q.x,y:e.y+f.h/2+q.y},normal:rotate(p.normal,e.rotation)};});
 }

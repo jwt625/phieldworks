@@ -113,10 +113,10 @@ function loadRecords(s:Record<string,unknown>,w:World,fail:()=>never){
  const rawJobs=Array.isArray(s.jobs)?s.jobs as ProcessJob[]:[];
  if(rawJobs.length>MACHINE_LIMIT*2)fail();
  const jobIds=new Set<string>();
- for(const j of rawJobs){if(!j||typeof j.id!=='string'||!/^j\d+$/.test(j.id)||jobIds.has(j.id)||!(j.cell===null||(typeof j.cell==='string'&&entityIds.has(j.cell)))||typeof j.target!=='string'||!targetIds.has(j.target)||typeof j.recipe!=='string'||!Number.isInteger(j.version)||j.version<0||!['reserved','exposing','suspended','complete'].includes(j.stage)||!(j.outcome===null||['accepted','recoverable-reject','scrap'].includes(j.outcome))||!j.inputs||!nonnegative(j.inputs.assemblies)||!nonnegative(j.inputs.crystal)||typeof j.consumed!=='boolean'||!nonnegative(j.elapsed)||!nonnegative(j.useful)||!nonnegative(j.guard)||!Number.isInteger(j.interruptions)||j.interruptions<0||typeof j.rework!=='boolean'||!(j.lot===null||typeof j.lot==='string')||!Number.isInteger(j.event)||j.event<0||(j.stage==='complete')!==(j.event>0))fail();jobIds.add(j.id);}
+ for(const j of rawJobs){if(!j||typeof j.id!=='string'||!/^j\d+$/.test(j.id)||jobIds.has(j.id)||!(j.cell===null||(typeof j.cell==='string'&&entityIds.has(j.cell)))||typeof j.target!=='string'||!targetIds.has(j.target)||typeof j.recipe!=='string'||!Number.isInteger(j.version)||j.version<0||!['reserved','exposing','suspended','complete'].includes(j.stage)||!(j.outcome===null||['accepted','recoverable-reject','scrap'].includes(j.outcome))||!j.inputs||!nonnegative(j.inputs.assemblies)||!nonnegative(j.inputs.crystal)||typeof j.consumed!=='boolean'||!nonnegative(j.elapsed)||!nonnegative(j.useful)||!nonnegative(j.guard)||!Number.isInteger(j.interruptions)||j.interruptions<0||typeof j.rework!=='boolean'||!(j.lot===null||typeof j.lot==='string')||!(j.started===undefined||nonnegative(j.started))||!Number.isInteger(j.event)||j.event<0||(j.stage==='complete')!==(j.event>0))fail();jobIds.add(j.id);}
  w.targets=targets;w.references=references;w.domains=domains;w.qualifications=qualifications;
  w.process={accepted:proc.accepted,lots:proc.lots.map(l=>({...l,owner:l.owner??null,useful:l.useful??0,guard:l.guard??0}))};
- w.jobs=rawJobs.map(j=>({...j,inputs:{...j.inputs}}));
+ w.jobs=rawJobs.map(j=>({...j,inputs:{...j.inputs},started:j.started??0}));
  w.eventSeq=Number.isInteger(s.eventSeq)?s.eventSeq as number:w.jobs.reduce((n,j)=>Math.max(n,j.event),0);
 }
 

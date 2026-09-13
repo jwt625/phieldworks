@@ -27,7 +27,7 @@ export function reserve(w:World,targetId:string):string{
  const recipe=STARTER_RECIPE;
  if(w.stock.assemblies<recipe.inputs.assemblies||w.stock.crystal<recipe.inputs.crystal)return `Missing ingredients: ${recipe.inputs.assemblies} assemblies + ${recipe.inputs.crystal} crystal`;
  w.stock.assemblies-=recipe.inputs.assemblies;w.stock.crystal-=recipe.inputs.crystal;
- w.jobs.push({id:`j${w.nextId++}`,cell:target.owner,target:targetId,recipe:recipe.id,version:recipe.version,stage:'reserved',outcome:null,inputs:{...recipe.inputs},consumed:false,elapsed:0,useful:0,guard:0,interruptions:0,rework:false,lot:null,event:0});
+ w.jobs.push({id:`j${w.nextId++}`,cell:target.owner,target:targetId,recipe:recipe.id,version:recipe.version,stage:'reserved',outcome:null,inputs:{...recipe.inputs},consumed:false,elapsed:0,useful:0,guard:0,interruptions:0,rework:false,lot:null,started:w.time,event:0});
  pushEvent(w,`Reserved ${recipe.inputs.assemblies} assemblies + ${recipe.inputs.crystal} crystal`);
  return '';
 }
@@ -42,10 +42,21 @@ function decide(recipe:ProcessRecipe,useful:number,guard:number,rework:boolean):
 }
 function finish(w:World,job:ProcessJob,outcome:ProcessOutcome|null,text:string){job.stage='complete';job.outcome=outcome;job.event=++w.eventSeq;pushEvent(w,text);}
 function pushLot(w:World,job:ProcessJob,kind:'reject'|'scrap'){w.process.lots.push({id:`pl${w.nextId++}`,kind,recipe:job.recipe,version:job.version,parent:job.id,assemblies:job.inputs.assemblies,crystal:job.inputs.crystal,disposition:kind==='reject'?'recoverable':'spent',owner:kind==='reject'?job.cell:null,useful:job.useful,guard:job.guard});}
+/** A terminal batch is qualification evidence only while its domain test is active and the cycle began after the test. */
+function qualificationEvent(w:World,job:ProcessJob,outcome:ProcessOutcome){
+ const domain=w.domains.find(d=>d.target===job.target),qualification=domain?w.qualifications.find(q=>q.domain===domain.id):undefined;
+ if(!domain||!qualification||qualification.status!=='testing')return;
+ if(outcome==='accepted'){
+  if(!domain.enabled||job.started<qualification.elapsed)return;
+  qualification.counters++;
+  if(qualification.counters>=3){qualification.status='qualified';qualification.reason='Three consecutive accepted standard cycles';pushEvent(w,'Cell qualified: three consecutive accepted cycles');}
+ }else{qualification.status='failed';qualification.reason='Batch did not meet acceptance';qualification.code=outcome==='recoverable-reject'?'useful-underdose':'useful-overdose';}
+}
 function commit(w:World,job:ProcessJob,outcome:ProcessOutcome,recipe:ProcessRecipe){
  if(outcome==='accepted'){w.process.accepted++;finish(w,job,outcome,`Batch accepted · useful ${job.useful.toFixed(1)}`);}
  else if(outcome==='recoverable-reject'){pushLot(w,job,'reject');finish(w,job,outcome,`Batch underdosed · recoverable reject ${job.useful.toFixed(1)}/${recipe.usefulMin}`);}
  else {pushLot(w,job,'scrap');finish(w,job,outcome,`Batch scrapped · useful ${job.useful.toFixed(1)}`);}
+ qualificationEvent(w,job,outcome);
 }
 function complete(w:World,job:ProcessJob,recipe:ProcessRecipe){commit(w,job,decide(recipe,job.useful,job.guard,job.rework),recipe);}
 
@@ -72,13 +83,14 @@ export function rework(w:World,targetId:string):string{
  if(activeJob(w,target.owner))return 'This cell already has a batch in progress';
  const lot=recoverableLot(w,target.owner);if(!lot)return 'No recoverable reject lot at this cell';
  w.process.lots=w.process.lots.filter(l=>l.id!==lot.id);
- w.jobs.push({id:`j${w.nextId++}`,cell:target.owner,target:targetId,recipe:lot.recipe,version:lot.version,stage:'reserved',outcome:null,inputs:{assemblies:lot.assemblies,crystal:lot.crystal},consumed:true,elapsed:0,useful:lot.useful,guard:lot.guard,interruptions:0,rework:true,lot:lot.id,event:0});
+ w.jobs.push({id:`j${w.nextId++}`,cell:target.owner,target:targetId,recipe:lot.recipe,version:lot.version,stage:'reserved',outcome:null,inputs:{assemblies:lot.assemblies,crystal:lot.crystal},consumed:true,elapsed:0,useful:lot.useful,guard:lot.guard,interruptions:0,rework:true,lot:lot.id,started:w.time,event:0});
  pushEvent(w,'Rework started on a recoverable reject lot');
  return '';
 }
 
-/** One fixed-step process advance. Doses integrate only over the remaining active duration; suspension banks nothing. */
-export function step(w:World,dt:number):void{
+/** One fixed-step process advance. Doses integrate only over the remaining active duration; suspension banks nothing. Returns absorbed power per cell. */
+export function step(w:World,dt:number):Map<string,number>{
+ const absorption=new Map<string,number>();
  for(const job of w.jobs.filter(j=>j.stage!=='complete')){
   const target=processTarget(w,job.target);const recipe=recipeFor(job.recipe,job.version);
   if(!target){finalizeLoss(w,job.id,'target removed');continue;}
@@ -89,11 +101,12 @@ export function step(w:World,dt:number):void{
   const duration=job.rework?recipe.reworkSeconds:recipe.activeSeconds,remaining=duration-job.elapsed;
   if(remaining<=0){complete(w,job,recipe);continue;}
   const activeDt=Math.min(dt,remaining),reading=w.stats.targets[target.id];
-  if(reading){job.useful+=reading.useful*activeDt;job.guard+=reading.guard*activeDt;}
+  if(reading){job.useful+=reading.useful*activeDt;job.guard+=reading.guard*activeDt;if(job.cell!==null)absorption.set(job.cell,(absorption.get(job.cell)??0)+reading.captured);}
   job.elapsed+=activeDt;
   if(job.elapsed>=duration-1e-9)complete(w,job,recipe);
  }
  prune(w);
+ return absorption;
 }
 /** Bounded completed report: keep the last two completed jobs per cell; cumulative counters persist. */
 function prune(w:World){
