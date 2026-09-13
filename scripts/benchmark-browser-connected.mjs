@@ -1,0 +1,11 @@
+import {chromium} from '@playwright/test';import {readFileSync,writeFileSync} from 'node:fs';
+const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}),page=await browser.newPage({viewport:{width:1440,height:1000}});
+const base=process.env.PHIELDWORKS_REVIEW_URL??'http://127.0.0.1:5175';await page.addInitScript(()=>localStorage.setItem('phieldworks.tutorial.v1',JSON.stringify({closed:true,index:0})));
+const results=[];
+for(const [machines,groups,controller] of [[40,1,true],[80,1,true],[120,1,true],[120,16,false],[120,16,true]]){
+ await page.goto(base);await page.locator('#runtime-status').filter({hasText:'ONLINE'}).waitFor();const fixture=JSON.parse(readFileSync(`test-results/connected-${machines}-${groups}.json`,'utf8'));fixture.controller=controller;
+ await page.evaluate(s=>localStorage.setItem('fieldworks.save.v1',JSON.stringify(s)),fixture);await page.locator('#load').click();await page.waitForTimeout(500);
+ const result=await page.evaluate(async()=>{const intervals=[],start=performance.now(),simStart=window.phieldworks.snapshot().time;let last=start;await new Promise(resolve=>{function frame(now){intervals.push(now-last);last=now;if(now-start<3000)requestAnimationFrame(frame);else resolve();}requestAnimationFrame(frame);});const elapsed=last-start;intervals.sort((a,b)=>a-b);const stats=window.phieldworks.stats();return {samples:intervals.length,wallMs:elapsed,simSeconds:window.phieldworks.snapshot().time-simStart,p50FrameMs:intervals[Math.floor(intervals.length*.5)],p95FrameMs:intervals[Math.floor(intervals.length*.95)],maxFrameMs:intervals.at(-1),over33Ms:intervals.filter(x=>x>33.4).length,error:stats.error,residual:stats.network.residual};});
+ results.push({machines,groups,controller,...result});if(machines===120&&groups===16&&controller){await page.locator('#map-fit').count().then(async n=>{if(n)await page.locator('#map-fit').click();});await page.screenshot({path:'test-results/connected-cap-outpost.png'});}
+}
+const report={date:new Date().toISOString(),browser:await browser.version(),viewport:'1440x1000',mode:'headless Chrome; real app requestAnimationFrame intervals, not GPU timings',results};writeFileSync('test-results/connected-browser-performance.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));await browser.close();
