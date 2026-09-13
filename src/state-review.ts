@@ -1,4 +1,4 @@
-import {loadSprites,sprites} from './assets';
+import {loadSprites,sprites,spriteUrls} from './assets';
 import {Renderer,type View} from './renderer';
 import {createWorld,newEntity,DEFS,center,type Kind,type World,type Entity} from './sim/world';
 import {footprint} from './sim/geometry';
@@ -7,7 +7,6 @@ import {equipmentEffects} from './equipment-effects';
 const $=<T extends HTMLElement=HTMLElement>(id:string)=>document.getElementById(id) as T;
 const kinds=Object.keys(DEFS) as Kind[];
 $('state-cards').innerHTML=kinds.map(kind=>`<article class="card" data-kind="${kind}"><h2>${DEFS[kind].name}</h2><canvas width="360" height="300" aria-label="${DEFS[kind].name} state preview"></canvas><div class="state-label"></div><p>${DEFS[kind].description}</p><a class="source" href="./${kind}-condition-v1.png">Condition atlas ↗</a></article>`).join('');
-$('item-cards').innerHTML=['Ore nugget','Finished assembly','Precision crystal','Scrap'].map((name,i)=>`<div class="item"><div class="item-art" style="background-position:${i%2*100}% ${Math.floor(i/2)*100}%"></div>${name}</div>`).join('');
 const views=kinds.map(kind=>{const card=document.querySelector<HTMLElement>(`[data-kind="${kind}"]`)!,canvas=card.querySelector('canvas')!,view:View={rotation:0,diagonal:false,radius:.5,waypoints:[],selected:null,build:null,tool:'select',pending:null,overlay:false,grid:false,mouse:null,panX:0,panY:0,zoom:1};return {kind,card,renderer:new Renderer(canvas,view)};});
 function resize(){for(const {renderer:r} of views){r.view.zoom=1;r.resize();r.view.zoom=Math.min(r.width,r.height)/5.5/r.scale;r.resize();}}
 let paused=false,time=0,last=performance.now();$('pause-preview').onclick=()=>{paused=!paused;$('pause-preview').textContent=paused?'Resume animation':'Pause animation';};
@@ -24,4 +23,4 @@ function draw(now:number){const dt=Math.min(.1,(now-last)/1000);last=now;if(!pau
  requestAnimationFrame(draw);
 }
 window.addEventListener('resize',resize);
-await loadSprites();resize();$('review-status').textContent=`State assets loaded · ${kinds.filter(k=>sprites[`${k}-condition-v1`]).length}/9 condition atlases · synthetic state review`;requestAnimationFrame(draw);
+await loadSprites();resize();const itemArt=spriteUrls['transport-items-v1'];$('item-cards').innerHTML=itemArt?['Ore nugget','Finished assembly','Precision crystal','Scrap'].map((name,i)=>`<div class="item"><div class="item-art" style="background-image:url('${itemArt}');background-position:${i%2*100}% ${Math.floor(i/2)*100}%"></div>${name}</div>`).join(''):'<p class="missing-art">Transported-item silhouettes are not generated yet (state batch S3). The game falls back to plain packet markers until then.</p>';$('review-status').textContent=`State assets loaded · ${kinds.filter(k=>sprites[`${k}-condition-v1`]).length}/9 condition atlases · synthetic state review`;requestAnimationFrame(draw);
