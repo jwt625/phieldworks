@@ -1,0 +1,682 @@
+---
+config:
+  maxEdges: 1000
+---
+flowchart LR
+  tech_outpost["Automated outpost [research]"]
+  tech_fieldcraft["Field engineering [research]"]
+  tech_perimeter["Perimeter defense [research]"]
+  tech_frontier["Open the frontier [research]"]
+  tech_crystal["First crystal [research]"]
+  tech_qualification["Qualified outpost [research]"]
+  tech_research["Industrial research [research]"]
+  tech_logistics["Structured logistics [research]"]
+  product_industrial_dossier["Industrial dossier [item]"]
+  product_laboratory["Research laboratory [equipment]"]
+  tech_instrumentation["Instrumented networks [research]"]
+  tech_grid["Power distribution [research]"]
+  tech_materials["Prepared materials [research]"]
+  tech_modules["Modular construction [research]"]
+  tech_thermal["Thermal management [research]"]
+  tech_defense["Layered defenses [research]"]
+  tech_precision["Precision research [research]"]
+  tech_transport["Long-range transport [research]"]
+  product_precision_dossier["Precision dossier [item]"]
+  tech_coherent["Stable source arrays [research]"]
+  tech_pulses["Pulsed field delivery [research]"]
+  tech_fabrication["Precision fabrication [research]"]
+  tech_photonics["Integrated photonics [research]"]
+  tech_distributed["Distributed infrastructure [research]"]
+  product_systems_dossier["Systems dossier [item]"]
+  tech_adaptive["Adaptive aperture control [research]"]
+  tech_survey["Frontier observatories [research]"]
+  tech_nanofab["Large-area nanofabrication [research]"]
+  tech_aperture["Planetary aperture [research]"]
+  tech_sail["Lightsail assembly [research]"]
+  tech_launch["Launch the lightsail [research]"]
+  product_construction["Expedition construction kit [equipment]"]
+  product_ore["Mixed ferrous ore [resource]"]
+  product_extractor["Extractor [equipment]"]
+  product_assembly["Construction assembly [item]"]
+  product_assembler["Assembler [equipment]"]
+  product_generator["Power unit [equipment]"]
+  product_belt_route["Material belt route [capability]"]
+  product_wire_route["Electrical wire route [capability]"]
+  product_repair["Repair and recovery [capability]"]
+  product_reference["Reference station [equipment]"]
+  product_junction["Four-port junction [equipment]"]
+  product_tuner["Phase tuner [equipment]"]
+  product_emitter["Field emitter [equipment]"]
+  product_dump["Cooled dump [equipment]"]
+  product_field_route["Field link [capability]"]
+  product_diagnostics["Baseline diagnostics [capability]"]
+  product_phase_control["Automatic phase control [capability]"]
+  product_focused_field["Focused target delivery [capability]"]
+  product_sentry["Perimeter sentry [equipment]"]
+  product_defense_ready["Defense readiness [capability]"]
+  product_raw_crystal["Frontier crystal [resource]"]
+  product_eastern_access["Eastern frontier access [capability]"]
+  product_crystal_supply["Harvested crystal milestone [capability]"]
+  product_blueprint["Qualified outpost blueprint [capability]"]
+  product_workbench["Research workbench [equipment]"]
+  product_research_queue["Research queue [capability]"]
+  product_splitter["Belt splitter [equipment]"]
+  product_underground["Underground belt pair [equipment]"]
+  product_belt_segment["Constructible belt segment [item]"]
+  product_segment_editing["Transport segment editing [capability]"]
+  product_monitor["Monitor station [equipment]"]
+  product_probe["Branch probe [equipment]"]
+  product_power_pole["Power pole [equipment]"]
+  product_substation["Substation [equipment]"]
+  product_shared_bus["Shared electrical bus [capability]"]
+  product_copper_ore["Copper-rich ore [resource]"]
+  product_silica["Silica gravel [resource]"]
+  product_carbon["Carbon nodules [resource]"]
+  product_processor["Material processor [equipment]"]
+  product_steel["Structural steel [item]"]
+  product_conductor["Copper conductor [item]"]
+  product_ceramic["Ceramic substrate [item]"]
+  product_polished_crystal["Polished crystal [item]"]
+  product_control_board["Control board [item]"]
+  product_service_connector["Service connector [item]"]
+  product_module_blueprint["Selected-area blueprint [capability]"]
+  product_construction_request["Construction request [capability]"]
+  product_coolant["Coolant charge [item]"]
+  product_coolant_pipe["Coolant pipe [item]"]
+  product_pump["Coolant pump [equipment]"]
+  product_heat_exchanger["Heat exchanger [equipment]"]
+  product_branch_isolator["Branch isolation switch [equipment]"]
+  product_wall["Perimeter wall [equipment]"]
+  product_magazine["Sentry magazine [item]"]
+  product_repair_kit["Repair kit [item]"]
+  product_supplied_sentry["Supplied perimeter sentry [equipment]"]
+  product_repair_depot["Repair depot [equipment]"]
+  product_precision_lens["Precision lens [item]"]
+  product_actuator["Precision actuator [item]"]
+  product_resonator["Resonator core [item]"]
+  product_sensor["Sensor head [item]"]
+  product_freight_depot["Freight depot [equipment]"]
+  product_cargo_carrier["Cargo carrier [equipment]"]
+  product_restricted_conduit["Restricted-mode conduit [item]"]
+  product_locked_source["Reference-locked source [equipment]"]
+  product_gain_core["Gain core [item]"]
+  product_amplifier["Field amplifier [equipment]"]
+  product_return_guard["Return-power guard [equipment]"]
+  product_capacitor["Pulse capacitor [item]"]
+  product_pulse_driver["Pulse driver [equipment]"]
+  product_pulse_diagnostics["Pulse timing diagnostics [capability]"]
+  product_fabrication_cell["Field-assisted fabrication cell [equipment]"]
+  product_accepted_part["Accepted precision part [item]"]
+  product_wafer["Semiconductor wafer [item]"]
+  product_resist["Patterning resist [item]"]
+  product_patterned_die["Patterned die [item]"]
+  product_optical_coupler["Optical coupler [item]"]
+  product_photonic_module["Photonic module [item]"]
+  product_communication_module["Communication module [item]"]
+  product_relay["Communication relay [equipment]"]
+  product_regional_controller["Regional scheduler [equipment]"]
+  product_calibration_beacon["Calibration beacon [equipment]"]
+  product_sector_controller["Aperture sector controller [equipment]"]
+  product_observatory["Frontier observatory [equipment]"]
+  product_tracking_receiver["Tracking receiver [equipment]"]
+  product_site_survey["Surveyed aperture site [capability]"]
+  product_membrane_line["Membrane deposition line [equipment]"]
+  product_metrology_gantry["Metrology gantry [equipment]"]
+  product_sail_panel["Accepted sail panel [item]"]
+  product_aperture_sector["Aperture sector assembly [equipment]"]
+  product_qualified_sector["Qualified aperture sector [capability]"]
+  product_sail_dock["Lightsail assembly dock [equipment]"]
+  product_flight_sail["Inspected flight sail [item]"]
+  product_launch_cradle["Lightsail launch cradle [equipment]"]
+  product_launch_acceptance["Integrated launch acceptance [capability]"]
+  tech_outpost -.->|"prerequisite: Prerequisite"| tech_fieldcraft
+  tech_outpost -.->|"prerequisite: Prerequisite"| tech_perimeter
+  tech_fieldcraft -.->|"prerequisite: Prerequisite"| tech_frontier
+  tech_frontier -.->|"prerequisite: Prerequisite"| tech_crystal
+  tech_frontier -.->|"prerequisite: Prerequisite"| tech_qualification
+  tech_crystal -.->|"prerequisite: Prerequisite"| tech_research
+  tech_qualification -.->|"prerequisite: Prerequisite"| tech_research
+  tech_research -.->|"prerequisite: Prerequisite"| tech_logistics
+  product_industrial_dossier -->|"science: 40 consumed"| tech_logistics
+  product_laboratory -.->|"service: Researched in"| tech_logistics
+  tech_research -.->|"prerequisite: Prerequisite"| tech_instrumentation
+  product_industrial_dossier -->|"science: 30 consumed"| tech_instrumentation
+  product_laboratory -.->|"service: Researched in"| tech_instrumentation
+  tech_research -.->|"prerequisite: Prerequisite"| tech_grid
+  product_industrial_dossier -->|"science: 40 consumed"| tech_grid
+  product_laboratory -.->|"service: Researched in"| tech_grid
+  tech_research -.->|"prerequisite: Prerequisite"| tech_materials
+  product_industrial_dossier -->|"science: 50 consumed"| tech_materials
+  product_laboratory -.->|"service: Researched in"| tech_materials
+  tech_logistics -.->|"prerequisite: Prerequisite"| tech_modules
+  tech_qualification -.->|"prerequisite: Prerequisite"| tech_modules
+  tech_materials -.->|"prerequisite: Prerequisite"| tech_modules
+  product_industrial_dossier -->|"science: 60 consumed"| tech_modules
+  product_laboratory -.->|"service: Researched in"| tech_modules
+  tech_instrumentation -.->|"prerequisite: Prerequisite"| tech_thermal
+  tech_materials -.->|"prerequisite: Prerequisite"| tech_thermal
+  product_industrial_dossier -->|"science: 40 consumed"| tech_thermal
+  product_laboratory -.->|"service: Researched in"| tech_thermal
+  tech_grid -.->|"prerequisite: Prerequisite"| tech_defense
+  tech_perimeter -.->|"prerequisite: Prerequisite"| tech_defense
+  tech_materials -.->|"prerequisite: Prerequisite"| tech_defense
+  product_industrial_dossier -->|"science: 40 consumed"| tech_defense
+  product_laboratory -.->|"service: Researched in"| tech_defense
+  tech_materials -.->|"prerequisite: Prerequisite"| tech_precision
+  tech_instrumentation -.->|"prerequisite: Prerequisite"| tech_precision
+  product_industrial_dossier -->|"science: 60 consumed"| tech_precision
+  product_laboratory -.->|"service: Researched in"| tech_precision
+  tech_modules -.->|"prerequisite: Prerequisite"| tech_transport
+  tech_grid -.->|"prerequisite: Prerequisite"| tech_transport
+  tech_precision -.->|"prerequisite: Prerequisite"| tech_transport
+  product_industrial_dossier -->|"science: 80 consumed"| tech_transport
+  product_precision_dossier -->|"science: 80 consumed"| tech_transport
+  product_laboratory -.->|"service: Researched in"| tech_transport
+  tech_precision -.->|"prerequisite: Prerequisite"| tech_coherent
+  tech_thermal -.->|"prerequisite: Prerequisite"| tech_coherent
+  product_industrial_dossier -->|"science: 80 consumed"| tech_coherent
+  product_precision_dossier -->|"science: 80 consumed"| tech_coherent
+  product_laboratory -.->|"service: Researched in"| tech_coherent
+  tech_defense -.->|"prerequisite: Prerequisite"| tech_pulses
+  tech_thermal -.->|"prerequisite: Prerequisite"| tech_pulses
+  tech_precision -.->|"prerequisite: Prerequisite"| tech_pulses
+  product_industrial_dossier -->|"science: 80 consumed"| tech_pulses
+  product_precision_dossier -->|"science: 80 consumed"| tech_pulses
+  product_laboratory -.->|"service: Researched in"| tech_pulses
+  tech_precision -.->|"prerequisite: Prerequisite"| tech_fabrication
+  tech_modules -.->|"prerequisite: Prerequisite"| tech_fabrication
+  tech_thermal -.->|"prerequisite: Prerequisite"| tech_fabrication
+  product_industrial_dossier -->|"science: 100 consumed"| tech_fabrication
+  product_precision_dossier -->|"science: 100 consumed"| tech_fabrication
+  product_laboratory -.->|"service: Researched in"| tech_fabrication
+  tech_coherent -.->|"prerequisite: Prerequisite"| tech_photonics
+  tech_fabrication -.->|"prerequisite: Prerequisite"| tech_photonics
+  product_industrial_dossier -->|"science: 120 consumed"| tech_photonics
+  product_precision_dossier -->|"science: 120 consumed"| tech_photonics
+  product_laboratory -.->|"service: Researched in"| tech_photonics
+  tech_transport -.->|"prerequisite: Prerequisite"| tech_distributed
+  tech_photonics -.->|"prerequisite: Prerequisite"| tech_distributed
+  product_industrial_dossier -->|"science: 160 consumed"| tech_distributed
+  product_precision_dossier -->|"science: 160 consumed"| tech_distributed
+  product_systems_dossier -->|"science: 160 consumed"| tech_distributed
+  product_laboratory -.->|"service: Researched in"| tech_distributed
+  tech_photonics -.->|"prerequisite: Prerequisite"| tech_adaptive
+  tech_instrumentation -.->|"prerequisite: Prerequisite"| tech_adaptive
+  product_industrial_dossier -->|"science: 160 consumed"| tech_adaptive
+  product_precision_dossier -->|"science: 160 consumed"| tech_adaptive
+  product_systems_dossier -->|"science: 160 consumed"| tech_adaptive
+  product_laboratory -.->|"service: Researched in"| tech_adaptive
+  tech_pulses -.->|"prerequisite: Prerequisite"| tech_survey
+  tech_photonics -.->|"prerequisite: Prerequisite"| tech_survey
+  product_industrial_dossier -->|"science: 140 consumed"| tech_survey
+  product_precision_dossier -->|"science: 140 consumed"| tech_survey
+  product_systems_dossier -->|"science: 140 consumed"| tech_survey
+  product_laboratory -.->|"service: Researched in"| tech_survey
+  tech_photonics -.->|"prerequisite: Prerequisite"| tech_nanofab
+  tech_fabrication -.->|"prerequisite: Prerequisite"| tech_nanofab
+  product_industrial_dossier -->|"science: 180 consumed"| tech_nanofab
+  product_precision_dossier -->|"science: 180 consumed"| tech_nanofab
+  product_systems_dossier -->|"science: 180 consumed"| tech_nanofab
+  product_laboratory -.->|"service: Researched in"| tech_nanofab
+  tech_distributed -.->|"prerequisite: Prerequisite"| tech_aperture
+  tech_adaptive -.->|"prerequisite: Prerequisite"| tech_aperture
+  tech_survey -.->|"prerequisite: Prerequisite"| tech_aperture
+  product_industrial_dossier -->|"science: 250 consumed"| tech_aperture
+  product_precision_dossier -->|"science: 250 consumed"| tech_aperture
+  product_systems_dossier -->|"science: 250 consumed"| tech_aperture
+  product_laboratory -.->|"service: Researched in"| tech_aperture
+  tech_nanofab -.->|"prerequisite: Prerequisite"| tech_sail
+  product_industrial_dossier -->|"science: 250 consumed"| tech_sail
+  product_precision_dossier -->|"science: 250 consumed"| tech_sail
+  product_systems_dossier -->|"science: 250 consumed"| tech_sail
+  product_laboratory -.->|"service: Researched in"| tech_sail
+  tech_aperture -.->|"prerequisite: Prerequisite"| tech_launch
+  tech_sail -.->|"prerequisite: Prerequisite"| tech_launch
+  tech_outpost -.->|"unlocks: Recipe unlock"| product_construction
+  tech_outpost -.->|"unlocks: Access"| product_ore
+  product_extractor -.->|"produces: Extracted by"| product_ore
+  tech_outpost -.->|"unlocks: Recipe unlock"| product_assembly
+  product_ore -->|"ingredient: 2 consumed"| product_assembly
+  product_assembler -.->|"produces: Produced by"| product_assembly
+  tech_outpost -.->|"unlocks: Recipe unlock"| product_extractor
+  product_assembly -->|"ingredient: 8 consumed"| product_extractor
+  product_construction -.->|"produces: Produced by"| product_extractor
+  product_generator -.->|"service: Requires service"| product_extractor
+  tech_outpost -.->|"unlocks: Recipe unlock"| product_assembler
+  product_assembly -->|"ingredient: 10 consumed"| product_assembler
+  product_construction -.->|"produces: Produced by"| product_assembler
+  product_generator -.->|"service: Requires service"| product_assembler
+  tech_outpost -.->|"unlocks: Recipe unlock"| product_generator
+  product_assembly -->|"ingredient: 14 consumed"| product_generator
+  product_construction -.->|"produces: Produced by"| product_generator
+  tech_outpost -.->|"unlocks: Enables"| product_belt_route
+  product_extractor -.->|"service: Requires service"| product_belt_route
+  product_assembler -.->|"service: Requires service"| product_belt_route
+  tech_outpost -.->|"unlocks: Enables"| product_wire_route
+  product_generator -.->|"service: Requires service"| product_wire_route
+  tech_outpost -.->|"unlocks: Enables"| product_repair
+  product_assembly -->|"ingredient: 3 consumed"| product_repair
+  tech_fieldcraft -.->|"unlocks: Recipe unlock"| product_reference
+  product_assembly -->|"ingredient: 12 consumed"| product_reference
+  product_construction -.->|"produces: Produced by"| product_reference
+  product_generator -.->|"service: Requires service"| product_reference
+  tech_fieldcraft -.->|"unlocks: Recipe unlock"| product_junction
+  product_assembly -->|"ingredient: 5 consumed"| product_junction
+  product_construction -.->|"produces: Produced by"| product_junction
+  tech_fieldcraft -.->|"unlocks: Recipe unlock"| product_tuner
+  product_assembly -->|"ingredient: 6 consumed"| product_tuner
+  product_construction -.->|"produces: Produced by"| product_tuner
+  tech_fieldcraft -.->|"unlocks: Recipe unlock"| product_emitter
+  product_assembly -->|"ingredient: 10 consumed"| product_emitter
+  product_construction -.->|"produces: Produced by"| product_emitter
+  product_generator -.->|"service: Requires service"| product_emitter
+  product_reference -.->|"service: Requires service"| product_emitter
+  tech_fieldcraft -.->|"unlocks: Recipe unlock"| product_dump
+  product_assembly -->|"ingredient: 5 consumed"| product_dump
+  product_construction -.->|"produces: Produced by"| product_dump
+  product_generator -.->|"service: Requires service"| product_dump
+  tech_fieldcraft -.->|"unlocks: Enables"| product_field_route
+  product_reference -.->|"service: Requires service"| product_field_route
+  product_junction -.->|"service: Requires service"| product_field_route
+  tech_fieldcraft -.->|"unlocks: Enables"| product_diagnostics
+  tech_fieldcraft -.->|"unlocks: Enables"| product_phase_control
+  product_reference -.->|"service: Requires service"| product_phase_control
+  product_tuner -.->|"service: Requires service"| product_phase_control
+  tech_fieldcraft -.->|"unlocks: Enables"| product_focused_field
+  product_reference -.->|"service: Requires service"| product_focused_field
+  product_junction -.->|"service: Requires service"| product_focused_field
+  product_tuner -.->|"service: Requires service"| product_focused_field
+  product_emitter -.->|"service: Requires service"| product_focused_field
+  tech_perimeter -.->|"unlocks: Recipe unlock"| product_sentry
+  product_assembly -->|"ingredient: 8 consumed"| product_sentry
+  product_construction -.->|"produces: Produced by"| product_sentry
+  product_generator -.->|"service: Requires service"| product_sentry
+  tech_perimeter -.->|"unlocks: Enables"| product_defense_ready
+  product_sentry -.->|"service: Requires service"| product_defense_ready
+  tech_frontier -.->|"unlocks: Access"| product_raw_crystal
+  product_extractor -.->|"produces: Extracted by"| product_raw_crystal
+  tech_frontier -.->|"unlocks: Enables"| product_eastern_access
+  product_focused_field -.->|"service: Requires service"| product_eastern_access
+  tech_crystal -.->|"unlocks: Enables"| product_crystal_supply
+  product_raw_crystal -.->|"service: Requires service"| product_crystal_supply
+  tech_qualification -.->|"unlocks: Enables"| product_blueprint
+  product_reference -.->|"service: Requires service"| product_blueprint
+  product_phase_control -.->|"service: Requires service"| product_blueprint
+  tech_research -.->|"unlocks: Recipe unlock"| product_workbench
+  product_assembly -->|"ingredient: 12 consumed"| product_workbench
+  product_raw_crystal -->|"ingredient: 2 consumed"| product_workbench
+  product_construction -.->|"produces: Produced by"| product_workbench
+  product_generator -.->|"service: Requires service"| product_workbench
+  tech_research -.->|"unlocks: Recipe unlock"| product_laboratory
+  product_assembly -->|"ingredient: 8 consumed"| product_laboratory
+  product_raw_crystal -->|"ingredient: 3 consumed"| product_laboratory
+  product_construction -.->|"produces: Produced by"| product_laboratory
+  product_generator -.->|"service: Requires service"| product_laboratory
+  tech_research -.->|"unlocks: Recipe unlock"| product_industrial_dossier
+  product_assembly -->|"ingredient: 2 consumed"| product_industrial_dossier
+  product_raw_crystal -->|"ingredient: 1 consumed"| product_industrial_dossier
+  product_workbench -.->|"produces: Produced by"| product_industrial_dossier
+  tech_research -.->|"unlocks: Enables"| product_research_queue
+  product_laboratory -.->|"service: Requires service"| product_research_queue
+  tech_logistics -.->|"unlocks: Recipe unlock"| product_splitter
+  product_assembly -->|"ingredient: 4 consumed"| product_splitter
+  product_construction -.->|"produces: Produced by"| product_splitter
+  tech_logistics -.->|"unlocks: Recipe unlock"| product_underground
+  product_assembly -->|"ingredient: 6 consumed"| product_underground
+  product_construction -.->|"produces: Produced by"| product_underground
+  tech_logistics -.->|"unlocks: Recipe unlock"| product_belt_segment
+  product_assembly -->|"ingredient: 1 consumed"| product_belt_segment
+  product_construction -.->|"produces: Produced by"| product_belt_segment
+  tech_logistics -.->|"unlocks: Enables"| product_segment_editing
+  product_belt_segment -.->|"service: Requires service"| product_segment_editing
+  product_splitter -.->|"service: Requires service"| product_segment_editing
+  product_underground -.->|"service: Requires service"| product_segment_editing
+  tech_instrumentation -.->|"unlocks: Recipe unlock"| product_monitor
+  product_assembly -->|"ingredient: 6 consumed"| product_monitor
+  product_raw_crystal -->|"ingredient: 2 consumed"| product_monitor
+  product_construction -.->|"produces: Produced by"| product_monitor
+  product_generator -.->|"service: Requires service"| product_monitor
+  tech_instrumentation -.->|"unlocks: Recipe unlock"| product_probe
+  product_assembly -->|"ingredient: 2 consumed"| product_probe
+  product_raw_crystal -->|"ingredient: 1 consumed"| product_probe
+  product_construction -.->|"produces: Produced by"| product_probe
+  tech_grid -.->|"unlocks: Recipe unlock"| product_power_pole
+  product_assembly -->|"ingredient: 2 consumed"| product_power_pole
+  product_construction -.->|"produces: Produced by"| product_power_pole
+  tech_grid -.->|"unlocks: Recipe unlock"| product_substation
+  product_assembly -->|"ingredient: 12 consumed"| product_substation
+  product_raw_crystal -->|"ingredient: 2 consumed"| product_substation
+  product_construction -.->|"produces: Produced by"| product_substation
+  tech_grid -.->|"unlocks: Enables"| product_shared_bus
+  product_substation -.->|"service: Requires service"| product_shared_bus
+  product_power_pole -.->|"service: Requires service"| product_shared_bus
+  product_generator -.->|"service: Requires service"| product_shared_bus
+  tech_materials -.->|"unlocks: Access"| product_copper_ore
+  product_extractor -.->|"produces: Extracted by"| product_copper_ore
+  tech_materials -.->|"unlocks: Access"| product_silica
+  product_extractor -.->|"produces: Extracted by"| product_silica
+  tech_materials -.->|"unlocks: Access"| product_carbon
+  product_extractor -.->|"produces: Extracted by"| product_carbon
+  tech_materials -.->|"unlocks: Recipe unlock"| product_processor
+  product_assembly -->|"ingredient: 16 consumed"| product_processor
+  product_raw_crystal -->|"ingredient: 4 consumed"| product_processor
+  product_construction -.->|"produces: Produced by"| product_processor
+  product_generator -.->|"service: Requires service"| product_processor
+  tech_materials -.->|"unlocks: Recipe unlock"| product_steel
+  product_ore -->|"ingredient: 4 consumed"| product_steel
+  product_carbon -->|"ingredient: 1 consumed"| product_steel
+  product_processor -.->|"produces: Produced by"| product_steel
+  tech_materials -.->|"unlocks: Recipe unlock"| product_conductor
+  product_copper_ore -->|"ingredient: 2 consumed"| product_conductor
+  product_processor -.->|"produces: Produced by"| product_conductor
+  tech_materials -.->|"unlocks: Recipe unlock"| product_ceramic
+  product_silica -->|"ingredient: 2 consumed"| product_ceramic
+  product_ore -->|"ingredient: 1 consumed"| product_ceramic
+  product_processor -.->|"produces: Produced by"| product_ceramic
+  tech_materials -.->|"unlocks: Recipe unlock"| product_polished_crystal
+  product_raw_crystal -->|"ingredient: 2 consumed"| product_polished_crystal
+  product_processor -.->|"produces: Produced by"| product_polished_crystal
+  tech_materials -.->|"unlocks: Recipe unlock"| product_control_board
+  product_assembly -->|"ingredient: 2 consumed"| product_control_board
+  product_conductor -->|"ingredient: 2 consumed"| product_control_board
+  product_ceramic -->|"ingredient: 1 consumed"| product_control_board
+  product_processor -.->|"produces: Produced by"| product_control_board
+  tech_modules -.->|"unlocks: Recipe unlock"| product_service_connector
+  product_steel -->|"ingredient: 2 consumed"| product_service_connector
+  product_conductor -->|"ingredient: 2 consumed"| product_service_connector
+  product_control_board -->|"ingredient: 1 consumed"| product_service_connector
+  product_assembler -.->|"produces: Produced by"| product_service_connector
+  tech_modules -.->|"unlocks: Enables"| product_module_blueprint
+  product_blueprint -.->|"service: Requires service"| product_module_blueprint
+  product_service_connector -.->|"service: Requires service"| product_module_blueprint
+  tech_modules -.->|"unlocks: Enables"| product_construction_request
+  product_module_blueprint -.->|"service: Requires service"| product_construction_request
+  tech_thermal -.->|"unlocks: Recipe unlock"| product_coolant
+  product_carbon -->|"ingredient: 1 consumed"| product_coolant
+  product_raw_crystal -->|"ingredient: 1 consumed"| product_coolant
+  product_processor -.->|"produces: Produced by"| product_coolant
+  tech_thermal -.->|"unlocks: Recipe unlock"| product_coolant_pipe
+  product_conductor -->|"ingredient: 2 consumed"| product_coolant_pipe
+  product_steel -->|"ingredient: 1 consumed"| product_coolant_pipe
+  product_assembler -.->|"produces: Produced by"| product_coolant_pipe
+  tech_thermal -.->|"unlocks: Recipe unlock"| product_pump
+  product_assembly -->|"ingredient: 6 consumed"| product_pump
+  product_steel -->|"ingredient: 2 consumed"| product_pump
+  product_conductor -->|"ingredient: 4 consumed"| product_pump
+  product_construction -.->|"produces: Produced by"| product_pump
+  product_generator -.->|"service: Requires service"| product_pump
+  tech_thermal -.->|"unlocks: Recipe unlock"| product_heat_exchanger
+  product_assembly -->|"ingredient: 12 consumed"| product_heat_exchanger
+  product_steel -->|"ingredient: 6 consumed"| product_heat_exchanger
+  product_conductor -->|"ingredient: 8 consumed"| product_heat_exchanger
+  product_construction -.->|"produces: Produced by"| product_heat_exchanger
+  product_generator -.->|"service: Requires service"| product_heat_exchanger
+  product_pump -.->|"service: Requires service"| product_heat_exchanger
+  product_coolant_pipe -.->|"service: Requires service"| product_heat_exchanger
+  product_coolant -.->|"service: Requires service"| product_heat_exchanger
+  tech_thermal -.->|"unlocks: Recipe unlock"| product_branch_isolator
+  product_assembly -->|"ingredient: 4 consumed"| product_branch_isolator
+  product_ceramic -->|"ingredient: 2 consumed"| product_branch_isolator
+  product_polished_crystal -->|"ingredient: 1 consumed"| product_branch_isolator
+  product_construction -.->|"produces: Produced by"| product_branch_isolator
+  product_dump -.->|"service: Requires service"| product_branch_isolator
+  tech_defense -.->|"unlocks: Recipe unlock"| product_wall
+  product_steel -->|"ingredient: 2 consumed"| product_wall
+  product_ceramic -->|"ingredient: 2 consumed"| product_wall
+  product_construction -.->|"produces: Produced by"| product_wall
+  tech_defense -.->|"unlocks: Recipe unlock"| product_magazine
+  product_assembly -->|"ingredient: 1 consumed"| product_magazine
+  product_assembler -.->|"produces: Produced by"| product_magazine
+  tech_defense -.->|"unlocks: Recipe unlock"| product_repair_kit
+  product_assembly -->|"ingredient: 2 consumed"| product_repair_kit
+  product_conductor -->|"ingredient: 1 consumed"| product_repair_kit
+  product_assembler -.->|"produces: Produced by"| product_repair_kit
+  tech_defense -.->|"unlocks: Recipe unlock"| product_supplied_sentry
+  product_sentry -->|"ingredient: 1 consumed"| product_supplied_sentry
+  product_steel -->|"ingredient: 4 consumed"| product_supplied_sentry
+  product_control_board -->|"ingredient: 2 consumed"| product_supplied_sentry
+  product_construction -.->|"produces: Produced by"| product_supplied_sentry
+  product_generator -.->|"service: Requires service"| product_supplied_sentry
+  product_magazine -.->|"service: Requires service"| product_supplied_sentry
+  tech_defense -.->|"unlocks: Recipe unlock"| product_repair_depot
+  product_assembly -->|"ingredient: 10 consumed"| product_repair_depot
+  product_steel -->|"ingredient: 4 consumed"| product_repair_depot
+  product_control_board -->|"ingredient: 2 consumed"| product_repair_depot
+  product_construction -.->|"produces: Produced by"| product_repair_depot
+  product_generator -.->|"service: Requires service"| product_repair_depot
+  product_repair_kit -.->|"service: Requires service"| product_repair_depot
+  tech_precision -.->|"unlocks: Recipe unlock"| product_precision_dossier
+  product_industrial_dossier -->|"ingredient: 1 consumed"| product_precision_dossier
+  product_control_board -->|"ingredient: 1 consumed"| product_precision_dossier
+  product_polished_crystal -->|"ingredient: 1 consumed"| product_precision_dossier
+  product_workbench -.->|"produces: Produced by"| product_precision_dossier
+  tech_precision -.->|"unlocks: Recipe unlock"| product_precision_lens
+  product_polished_crystal -->|"ingredient: 2 consumed"| product_precision_lens
+  product_ceramic -->|"ingredient: 1 consumed"| product_precision_lens
+  product_processor -.->|"produces: Produced by"| product_precision_lens
+  tech_precision -.->|"unlocks: Recipe unlock"| product_actuator
+  product_steel -->|"ingredient: 2 consumed"| product_actuator
+  product_conductor -->|"ingredient: 4 consumed"| product_actuator
+  product_control_board -->|"ingredient: 1 consumed"| product_actuator
+  product_assembler -.->|"produces: Produced by"| product_actuator
+  tech_precision -.->|"unlocks: Recipe unlock"| product_resonator
+  product_polished_crystal -->|"ingredient: 2 consumed"| product_resonator
+  product_ceramic -->|"ingredient: 2 consumed"| product_resonator
+  product_conductor -->|"ingredient: 2 consumed"| product_resonator
+  product_processor -.->|"produces: Produced by"| product_resonator
+  tech_precision -.->|"unlocks: Recipe unlock"| product_sensor
+  product_precision_lens -->|"ingredient: 1 consumed"| product_sensor
+  product_control_board -->|"ingredient: 2 consumed"| product_sensor
+  product_assembler -.->|"produces: Produced by"| product_sensor
+  tech_transport -.->|"unlocks: Recipe unlock"| product_freight_depot
+  product_assembly -->|"ingredient: 16 consumed"| product_freight_depot
+  product_steel -->|"ingredient: 12 consumed"| product_freight_depot
+  product_service_connector -->|"ingredient: 4 consumed"| product_freight_depot
+  product_construction -.->|"produces: Produced by"| product_freight_depot
+  product_generator -.->|"service: Requires service"| product_freight_depot
+  tech_transport -.->|"unlocks: Recipe unlock"| product_cargo_carrier
+  product_steel -->|"ingredient: 12 consumed"| product_cargo_carrier
+  product_actuator -->|"ingredient: 4 consumed"| product_cargo_carrier
+  product_control_board -->|"ingredient: 4 consumed"| product_cargo_carrier
+  product_construction -.->|"produces: Produced by"| product_cargo_carrier
+  product_freight_depot -.->|"service: Requires service"| product_cargo_carrier
+  tech_transport -.->|"unlocks: Recipe unlock"| product_restricted_conduit
+  product_polished_crystal -->|"ingredient: 2 consumed"| product_restricted_conduit
+  product_ceramic -->|"ingredient: 2 consumed"| product_restricted_conduit
+  product_processor -.->|"produces: Produced by"| product_restricted_conduit
+  tech_coherent -.->|"unlocks: Recipe unlock"| product_locked_source
+  product_reference -->|"ingredient: 1 consumed"| product_locked_source
+  product_resonator -->|"ingredient: 2 consumed"| product_locked_source
+  product_control_board -->|"ingredient: 4 consumed"| product_locked_source
+  product_construction -.->|"produces: Produced by"| product_locked_source
+  product_generator -.->|"service: Requires service"| product_locked_source
+  product_reference -.->|"service: Requires service"| product_locked_source
+  tech_coherent -.->|"unlocks: Recipe unlock"| product_gain_core
+  product_polished_crystal -->|"ingredient: 4 consumed"| product_gain_core
+  product_ceramic -->|"ingredient: 2 consumed"| product_gain_core
+  product_resonator -->|"ingredient: 1 consumed"| product_gain_core
+  product_processor -.->|"produces: Produced by"| product_gain_core
+  tech_coherent -.->|"unlocks: Recipe unlock"| product_amplifier
+  product_assembly -->|"ingredient: 16 consumed"| product_amplifier
+  product_gain_core -->|"ingredient: 2 consumed"| product_amplifier
+  product_conductor -->|"ingredient: 8 consumed"| product_amplifier
+  product_construction -.->|"produces: Produced by"| product_amplifier
+  product_generator -.->|"service: Requires service"| product_amplifier
+  product_heat_exchanger -.->|"service: Requires service"| product_amplifier
+  tech_coherent -.->|"unlocks: Recipe unlock"| product_return_guard
+  product_dump -->|"ingredient: 1 consumed"| product_return_guard
+  product_branch_isolator -->|"ingredient: 1 consumed"| product_return_guard
+  product_sensor -->|"ingredient: 1 consumed"| product_return_guard
+  product_construction -.->|"produces: Produced by"| product_return_guard
+  product_heat_exchanger -.->|"service: Requires service"| product_return_guard
+  tech_pulses -.->|"unlocks: Recipe unlock"| product_capacitor
+  product_conductor -->|"ingredient: 4 consumed"| product_capacitor
+  product_ceramic -->|"ingredient: 4 consumed"| product_capacitor
+  product_carbon -->|"ingredient: 2 consumed"| product_capacitor
+  product_processor -.->|"produces: Produced by"| product_capacitor
+  tech_pulses -.->|"unlocks: Recipe unlock"| product_pulse_driver
+  product_emitter -->|"ingredient: 1 consumed"| product_pulse_driver
+  product_capacitor -->|"ingredient: 4 consumed"| product_pulse_driver
+  product_control_board -->|"ingredient: 4 consumed"| product_pulse_driver
+  product_construction -.->|"produces: Produced by"| product_pulse_driver
+  product_generator -.->|"service: Requires service"| product_pulse_driver
+  product_heat_exchanger -.->|"service: Requires service"| product_pulse_driver
+  tech_pulses -.->|"unlocks: Enables"| product_pulse_diagnostics
+  product_monitor -.->|"service: Requires service"| product_pulse_diagnostics
+  product_pulse_driver -.->|"service: Requires service"| product_pulse_diagnostics
+  tech_fabrication -.->|"unlocks: Recipe unlock"| product_fabrication_cell
+  product_assembler -->|"ingredient: 1 consumed"| product_fabrication_cell
+  product_steel -->|"ingredient: 8 consumed"| product_fabrication_cell
+  product_actuator -->|"ingredient: 2 consumed"| product_fabrication_cell
+  product_precision_lens -->|"ingredient: 2 consumed"| product_fabrication_cell
+  product_construction -.->|"produces: Produced by"| product_fabrication_cell
+  product_generator -.->|"service: Requires service"| product_fabrication_cell
+  product_emitter -.->|"service: Requires service"| product_fabrication_cell
+  product_heat_exchanger -.->|"service: Requires service"| product_fabrication_cell
+  tech_fabrication -.->|"unlocks: Recipe unlock"| product_accepted_part
+  product_polished_crystal -->|"ingredient: 2 consumed"| product_accepted_part
+  product_control_board -->|"ingredient: 1 consumed"| product_accepted_part
+  product_fabrication_cell -.->|"produces: Produced by"| product_accepted_part
+  tech_fabrication -.->|"unlocks: Recipe unlock"| product_wafer
+  product_raw_crystal -->|"ingredient: 4 consumed"| product_wafer
+  product_silica -->|"ingredient: 2 consumed"| product_wafer
+  product_processor -.->|"produces: Produced by"| product_wafer
+  tech_fabrication -.->|"unlocks: Recipe unlock"| product_resist
+  product_carbon -->|"ingredient: 2 consumed"| product_resist
+  product_raw_crystal -->|"ingredient: 1 consumed"| product_resist
+  product_processor -.->|"produces: Produced by"| product_resist
+  tech_photonics -.->|"unlocks: Recipe unlock"| product_patterned_die
+  product_wafer -->|"ingredient: 1 consumed"| product_patterned_die
+  product_resist -->|"ingredient: 1 consumed"| product_patterned_die
+  product_fabrication_cell -.->|"produces: Produced by"| product_patterned_die
+  tech_photonics -.->|"unlocks: Recipe unlock"| product_optical_coupler
+  product_precision_lens -->|"ingredient: 1 consumed"| product_optical_coupler
+  product_ceramic -->|"ingredient: 1 consumed"| product_optical_coupler
+  product_processor -.->|"produces: Produced by"| product_optical_coupler
+  tech_photonics -.->|"unlocks: Recipe unlock"| product_photonic_module
+  product_patterned_die -->|"ingredient: 2 consumed"| product_photonic_module
+  product_optical_coupler -->|"ingredient: 1 consumed"| product_photonic_module
+  product_control_board -->|"ingredient: 1 consumed"| product_photonic_module
+  product_fabrication_cell -.->|"produces: Produced by"| product_photonic_module
+  tech_photonics -.->|"unlocks: Recipe unlock"| product_systems_dossier
+  product_precision_dossier -->|"ingredient: 1 consumed"| product_systems_dossier
+  product_photonic_module -->|"ingredient: 1 consumed"| product_systems_dossier
+  product_accepted_part -->|"ingredient: 1 consumed"| product_systems_dossier
+  product_workbench -.->|"produces: Produced by"| product_systems_dossier
+  tech_distributed -.->|"unlocks: Recipe unlock"| product_communication_module
+  product_photonic_module -->|"ingredient: 2 consumed"| product_communication_module
+  product_control_board -->|"ingredient: 2 consumed"| product_communication_module
+  product_fabrication_cell -.->|"produces: Produced by"| product_communication_module
+  tech_distributed -.->|"unlocks: Recipe unlock"| product_relay
+  product_steel -->|"ingredient: 8 consumed"| product_relay
+  product_communication_module -->|"ingredient: 2 consumed"| product_relay
+  product_actuator -->|"ingredient: 1 consumed"| product_relay
+  product_construction -.->|"produces: Produced by"| product_relay
+  product_generator -.->|"service: Requires service"| product_relay
+  tech_distributed -.->|"unlocks: Recipe unlock"| product_regional_controller
+  product_assembly -->|"ingredient: 12 consumed"| product_regional_controller
+  product_control_board -->|"ingredient: 4 consumed"| product_regional_controller
+  product_communication_module -->|"ingredient: 2 consumed"| product_regional_controller
+  product_construction -.->|"produces: Produced by"| product_regional_controller
+  product_generator -.->|"service: Requires service"| product_regional_controller
+  product_relay -.->|"service: Requires service"| product_regional_controller
+  product_freight_depot -.->|"service: Requires service"| product_regional_controller
+  tech_adaptive -.->|"unlocks: Recipe unlock"| product_calibration_beacon
+  product_sensor -->|"ingredient: 2 consumed"| product_calibration_beacon
+  product_photonic_module -->|"ingredient: 2 consumed"| product_calibration_beacon
+  product_steel -->|"ingredient: 4 consumed"| product_calibration_beacon
+  product_construction -.->|"produces: Produced by"| product_calibration_beacon
+  product_generator -.->|"service: Requires service"| product_calibration_beacon
+  tech_adaptive -.->|"unlocks: Recipe unlock"| product_sector_controller
+  product_control_board -->|"ingredient: 6 consumed"| product_sector_controller
+  product_photonic_module -->|"ingredient: 4 consumed"| product_sector_controller
+  product_sensor -->|"ingredient: 2 consumed"| product_sector_controller
+  product_construction -.->|"produces: Produced by"| product_sector_controller
+  product_generator -.->|"service: Requires service"| product_sector_controller
+  product_calibration_beacon -.->|"service: Requires service"| product_sector_controller
+  tech_survey -.->|"unlocks: Recipe unlock"| product_observatory
+  product_steel -->|"ingredient: 16 consumed"| product_observatory
+  product_precision_lens -->|"ingredient: 4 consumed"| product_observatory
+  product_sensor -->|"ingredient: 4 consumed"| product_observatory
+  product_actuator -->|"ingredient: 2 consumed"| product_observatory
+  product_construction -.->|"produces: Produced by"| product_observatory
+  product_generator -.->|"service: Requires service"| product_observatory
+  tech_survey -.->|"unlocks: Recipe unlock"| product_tracking_receiver
+  product_sensor -->|"ingredient: 2 consumed"| product_tracking_receiver
+  product_photonic_module -->|"ingredient: 2 consumed"| product_tracking_receiver
+  product_actuator -->|"ingredient: 2 consumed"| product_tracking_receiver
+  product_construction -.->|"produces: Produced by"| product_tracking_receiver
+  product_generator -.->|"service: Requires service"| product_tracking_receiver
+  product_observatory -.->|"service: Requires service"| product_tracking_receiver
+  tech_survey -.->|"unlocks: Enables"| product_site_survey
+  product_observatory -.->|"service: Requires service"| product_site_survey
+  tech_nanofab -.->|"unlocks: Recipe unlock"| product_membrane_line
+  product_steel -->|"ingredient: 20 consumed"| product_membrane_line
+  product_actuator -->|"ingredient: 4 consumed"| product_membrane_line
+  product_photonic_module -->|"ingredient: 4 consumed"| product_membrane_line
+  product_accepted_part -->|"ingredient: 8 consumed"| product_membrane_line
+  product_construction -.->|"produces: Produced by"| product_membrane_line
+  product_generator -.->|"service: Requires service"| product_membrane_line
+  product_emitter -.->|"service: Requires service"| product_membrane_line
+  product_heat_exchanger -.->|"service: Requires service"| product_membrane_line
+  tech_nanofab -.->|"unlocks: Recipe unlock"| product_metrology_gantry
+  product_steel -->|"ingredient: 12 consumed"| product_metrology_gantry
+  product_sensor -->|"ingredient: 4 consumed"| product_metrology_gantry
+  product_actuator -->|"ingredient: 2 consumed"| product_metrology_gantry
+  product_photonic_module -->|"ingredient: 2 consumed"| product_metrology_gantry
+  product_construction -.->|"produces: Produced by"| product_metrology_gantry
+  product_generator -.->|"service: Requires service"| product_metrology_gantry
+  tech_nanofab -.->|"unlocks: Recipe unlock"| product_sail_panel
+  product_accepted_part -->|"ingredient: 2 consumed"| product_sail_panel
+  product_photonic_module -->|"ingredient: 1 consumed"| product_sail_panel
+  product_membrane_line -.->|"produces: Produced by"| product_sail_panel
+  product_metrology_gantry -.->|"service: Requires service"| product_sail_panel
+  tech_aperture -.->|"unlocks: Recipe unlock"| product_aperture_sector
+  product_locked_source -->|"ingredient: 2 consumed"| product_aperture_sector
+  product_amplifier -->|"ingredient: 4 consumed"| product_aperture_sector
+  product_emitter -->|"ingredient: 4 consumed"| product_aperture_sector
+  product_sector_controller -->|"ingredient: 1 consumed"| product_aperture_sector
+  product_return_guard -->|"ingredient: 2 consumed"| product_aperture_sector
+  product_steel -->|"ingredient: 40 consumed"| product_aperture_sector
+  product_construction -.->|"produces: Produced by"| product_aperture_sector
+  product_substation -.->|"service: Requires service"| product_aperture_sector
+  product_heat_exchanger -.->|"service: Requires service"| product_aperture_sector
+  product_relay -.->|"service: Requires service"| product_aperture_sector
+  product_tracking_receiver -.->|"service: Requires service"| product_aperture_sector
+  product_calibration_beacon -.->|"service: Requires service"| product_aperture_sector
+  product_site_survey -.->|"service: Requires service"| product_aperture_sector
+  tech_aperture -.->|"unlocks: Enables"| product_qualified_sector
+  product_aperture_sector -.->|"service: Requires service"| product_qualified_sector
+  tech_sail -.->|"unlocks: Recipe unlock"| product_sail_dock
+  product_steel -->|"ingredient: 40 consumed"| product_sail_dock
+  product_actuator -->|"ingredient: 8 consumed"| product_sail_dock
+  product_photonic_module -->|"ingredient: 8 consumed"| product_sail_dock
+  product_accepted_part -->|"ingredient: 16 consumed"| product_sail_dock
+  product_construction -.->|"produces: Produced by"| product_sail_dock
+  product_generator -.->|"service: Requires service"| product_sail_dock
+  product_metrology_gantry -.->|"service: Requires service"| product_sail_dock
+  tech_sail -.->|"unlocks: Recipe unlock"| product_flight_sail
+  product_sail_panel -->|"ingredient: 100 consumed"| product_flight_sail
+  product_photonic_module -->|"ingredient: 20 consumed"| product_flight_sail
+  product_sail_dock -.->|"produces: Produced by"| product_flight_sail
+  tech_launch -.->|"unlocks: Recipe unlock"| product_launch_cradle
+  product_sail_dock -->|"ingredient: 1 consumed"| product_launch_cradle
+  product_steel -->|"ingredient: 40 consumed"| product_launch_cradle
+  product_actuator -->|"ingredient: 8 consumed"| product_launch_cradle
+  product_sector_controller -->|"ingredient: 1 consumed"| product_launch_cradle
+  product_construction -.->|"produces: Produced by"| product_launch_cradle
+  product_generator -.->|"service: Requires service"| product_launch_cradle
+  product_tracking_receiver -.->|"service: Requires service"| product_launch_cradle
+  tech_launch -.->|"unlocks: Enables"| product_launch_acceptance
+  product_flight_sail -.->|"service: Requires service"| product_launch_acceptance
+  product_qualified_sector -.->|"service: Requires service"| product_launch_acceptance
+  product_tracking_receiver -.->|"service: Requires service"| product_launch_acceptance
+  product_launch_cradle -.->|"service: Requires service"| product_launch_acceptance
+  product_focused_field -->|"milestone: Demonstrate"| tech_frontier
+  product_raw_crystal -->|"milestone: Demonstrate"| tech_crystal
+  product_phase_control -->|"milestone: Demonstrate"| tech_qualification
+  product_reference -->|"milestone: Demonstrate"| tech_qualification
+  product_raw_crystal -->|"milestone: Demonstrate"| tech_research
+  product_blueprint -->|"milestone: Demonstrate"| tech_research
+  product_flight_sail -->|"milestone: Demonstrate"| tech_launch
+  product_qualified_sector -->|"milestone: Demonstrate"| tech_launch
