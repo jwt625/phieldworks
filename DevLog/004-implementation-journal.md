@@ -144,6 +144,16 @@ Evidence / validation: `npx tsc --noEmit` clean; `npm test` **66 headless** (58 
 Still open (handed to A-02/A-03/A-04): `w.frontier` remains a boolean rather than a `Milestones` record; migrated `target.emitters`/`domain.tuners` are descriptive only because field physics and automatic control still use every powered emitter/tuner until A-02/A-03 make assignment authoritative; qualification signatures/dependencies are empty and reason codes are placeholders; there is no process job yet. **Discrepancy flagged:** the working tree contains an uncommitted gated cell-asset candidate pass (`assets/animations/candidates/tranche-a/`, plus `assets/planning` review tooling and `evidence/tranche-a-asset-validation.json`) that post-dates the planning journal entry claiming no art was generated. The candidate sources are opaque (`production_ready:false`, alpha gate fail) and were deliberately left uncommitted pending A-09/A-10 review, not integrated as A-01 work.
 
 
+## 2026-09-13 — Tranche A-02 conserved target delivery
+
+Added `src/sim/targets.ts`: `coupledField` (reflectance 0.08, radiated fraction 0.92, distance capture), `projectFrontier` (historical single mode with `n=max(2, assigned emitter count)`) and `projectTwoZone` (orthonormal useful/guard modes, generalised so `useful+guard=Σ|x|²` for any emitter count and exactly `u=(x0+x1)/√2`, `v=(x0−x1)/√2` for the standard two). `evaluate` now partitions powered emitters by `target.emitters`, so each emitter delivers to at most one target; unassigned emitters still radiate into `offTarget`. It exposes `stats.targets[id]` (`useful`/`guard`/`captured`/`emitters`), `stats.protectiveAbsorption` and keeps the existing `targetPower`/`offTarget` totals. `assignEmitter(w,id,targetId|null)` moves ownership atomically; `place`/`stampBlueprint` auto-assign to the only frontier target/domain per the agreed default; `remove` releases ownership; the renderer's frontier beams now draw only assigned emitters. `network.ts` and `ecology.ts` were left unchanged: the solver already yields per-group incident fields and wildlife behaviour must not shift.
+
+Deliberate deferral: because A-02 has no process jobs, all process-target potential capture is credited to `protectiveAbsorption`; A-04/A-05 must gate it on the job/exposure state and add workpiece absorption to the cell thermal update exactly once (contract §2). Zero/one-emitter exposure gating remains A-04/A-05 policy.
+
+Evidence / validation: `npx tsc --noEmit` clean; `npm test` **75 headless** (66 + 9 new in `tests/process-fields.test.ts`, including the analytic (40,0)/(20,20)/(0,40) phase oracle, unequal inputs, independent-group phase insensitivity, missing emitter, reassignment, two targets and a closing ledger); `npm run build` passes; `npm run test:browser` **19/19**; `git diff --check` clean. The starter frontier fixture is unchanged.
+
+
+
 
 ## 2026-09-13 — First precision-cell asset candidates
 

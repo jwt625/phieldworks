@@ -20,13 +20,19 @@ Honest gaps left for later tasks: `w.frontier` is still a boolean milestone rath
 
 ## A-02 — target delivery
 
-- [ ] Add pure field projection in `src/sim/targets.ts` using the two-zone equations in 020.
-- [ ] Route each emitter to only one target, aggregate independent source groups correctly, expose target-specific readings and world totals.
-- [ ] Preserve frontier projection for its assigned emitters. Update renderer/ecology lookups without changing wildlife behavior as a side effect.
-- [ ] Count missed radiation, emitter local heat, protective absorption and process heat exactly once. Invalid field solve suspends processing with a fault; never continue using an old successful result.
-- [ ] Write analytic phase cases, unequal inputs, different groups, missing emitter, reassigning emitter, two targets and integrated ledger tests in `tests/process-fields.test.ts`.
+- [x] Add pure field projection in `src/sim/targets.ts` using the two-zone equations in 020.
+- [x] Route each emitter to only one target, aggregate independent source groups correctly, expose target-specific readings and world totals.
+- [x] Preserve frontier projection for its assigned emitters. Update renderer/ecology lookups without changing wildlife behavior as a side effect.
+- [x] Count missed radiation, emitter local heat, protective absorption and process heat exactly once. Invalid field solve suspends processing with a fault; never continue using an old successful result.
+- [x] Write analytic phase cases, unequal inputs, different groups, missing emitter, reassigning emitter, two targets and integrated ledger tests in `tests/process-fields.test.ts`.
 
 `network.ts` supplies per-group fields; avoid rewriting its LU/block solver in this task. Gate: constant captured power for analytic phase sweep, bounded target sum and unchanged starter field fixture.
+
+**A-02 implementation note — 2026-09-13.** Added `src/sim/targets.ts` with `captureEfficiency`/`coupledField`, the frontier single-mode projection (`n = max(2, assigned emitter count)`) and the process two-mode projection `u=(x0+x1)/√2`, `v=(x0−x1)/√2` generalised as `useful=|Σx|²/n`, `guard=Σ|x−mean|²` so `useful+guard=Σ|x|²` for any count. `evaluate` now partitions emitters by `target.emitters`, builds per-target per-group coupled fields, and reports `stats.targets[id]` plus `stats.protectiveAbsorption` alongside the existing world totals. The frontier fixture is unchanged because every original emitter is assigned and `projectFrontier` reproduces the old denominator. `network.ts` was **not** modified: its existing `ports[id][0].fields[group].a` already supplies the incident per-group amplitude the contract asks for, and the LU/block solver is untouched as instructed.
+
+Emitter ownership: `assignEmitter(w,id,targetId|null)` moves an emitter between targets atomically; `place` and `stampBlueprint` auto-assign new emitters to the frontier while it is the only target (and new tuners to the only domain), and `remove` releases ownership. This is the transitional default agreed with the user; A-07 will bind copied cells to their own targets.
+
+Deferred honestly: process/workpiece heat and shutter behaviour are not wired because there are no process jobs yet; `protectiveAbsorption` currently receives all process-target potential capture (no exposure can be active in A-02), and A-04/A-05 must make that conditional on the job state and add workpiece absorption to the cell thermal update exactly once. Zero/one-emitter exposure gating is likewise A-04/A-05 policy; A-02 only reports the bounded reading.
 
 ## A-03 — control and qualification
 

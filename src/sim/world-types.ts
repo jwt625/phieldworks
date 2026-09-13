@@ -20,7 +20,10 @@ export interface Blueprint {entities:Entity[];links:Connection[];width:number;he
 export interface Creature extends Point {id:string;health:number;state:'patrol'|'investigate'|'attack'|'flee';heading:number;target:Point;exposure:number}
 export interface Ecology {creatures:Creature[];defenseReady:boolean;grace:number;threat:number;shots:{from:Point;to:Point;ttl:number}[]}
 
-export interface Stats {network:NetworkResult;targetPower:number;offTarget:number;radiated:number;heat:number;leaked:number;supply:number;demand:number;overload:number;wireOverload:number;controlCursor:number;bendRadiation:number;propagationLoss:number;error:string;emitterFields:Record<string,Record<string,Complex>>}
+export interface ZoneReading {useful:number;guard:number;captured:number}
+export interface TargetReading extends ZoneReading {emitters:number}
+
+export interface Stats {network:NetworkResult;targetPower:number;targets:Record<string,TargetReading>;protectiveAbsorption:number;offTarget:number;radiated:number;heat:number;leaked:number;supply:number;demand:number;overload:number;wireOverload:number;controlCursor:number;bendRadiation:number;propagationLoss:number;error:string;emitterFields:Record<string,Record<string,Complex>>}
 
 /** A delivery target. Frontier armour health lives here because it is authoritative progress, not a derived field reading. */
 export type TargetKind = 'frontier' | 'process';

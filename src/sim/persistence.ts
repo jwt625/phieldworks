@@ -7,7 +7,7 @@ import type {NetworkResult} from './network';
 import {HEIGHT,LINK_LIMIT,LOT_LIMIT,MACHINE_LIMIT,WIDTH,type Blueprint,type Connection,type ControlDomain,type Entity,type ProcessInventory,type Qualification,type QualificationStatus,type ReferenceBinding,type Stats,type Target,type World} from './world-types';
 
 export const emptyNet = ():NetworkResult=>({ports:{},absorbed:{},sourcePower:0,linkLoss:0,escaped:0,residual:0});
-export const emptyStats = ():Stats=>({network:emptyNet(),targetPower:0,offTarget:0,radiated:0,heat:0,leaked:0,supply:0,demand:0,overload:0,wireOverload:0,controlCursor:0,bendRadiation:0,propagationLoss:0,error:'',emitterFields:{}});
+export const emptyStats = ():Stats=>({network:emptyNet(),targetPower:0,targets:{},protectiveAbsorption:0,offTarget:0,radiated:0,heat:0,leaked:0,supply:0,demand:0,overload:0,wireOverload:0,controlCursor:0,bendRadiation:0,propagationLoss:0,error:'',emitterFields:{}});
 export const newProcess = ():ProcessInventory=>({accepted:0,lots:[]});
 
 const finite=(v:unknown):v is number=>typeof v==='number'&&Number.isFinite(v);

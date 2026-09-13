@@ -2,8 +2,9 @@ import {newEcology,stepEcology} from './ecology';
 import {footprint,ports,inside,routeMetrics,type Rotation,type Point,type Transport} from './geometry';
 import {findRoute,segmentClear,type RouteOptions} from './routing';
 export {footprint,ports,routeMetrics} from './geometry';
-import {c,polar,mul,add,power,type Complex} from './complex';
+import {c,type Complex} from './complex';
 import {source,hybrid,through,matched,solveNetwork,FIELD_PORT_LIMIT,type NetworkResult,type Component,type Endpoint,type WaveLink} from './network';
+import {RADIATION_EFFICIENCY,coupledField,projectFrontier,projectTwoZone} from './targets';
 export {FIELD_PORT_LIMIT} from './network';
 import {DEFS,type Kind} from './definitions';
 export {DEFS,type Kind} from './definitions';
@@ -34,11 +35,24 @@ export function placementError(w:World,kind:Kind,x:number,y:number,extra:Entity[
  if(kind==='extractor'&&!w.deposits.some(dep=>dep.remaining>0&&overlap(x,y,d.w,d.h,dep)))return 'An extractor needs a resource deposit';
  return '';
 }
+/** Transitional default: while the frontier is the only domain/target, new equipment joins it; process targets require explicit assignment. */
+function autoAssign(w:World,e:Entity){
+ if(e.kind==='emitter'&&w.targets.length===1&&w.targets[0].kind==='frontier')w.targets[0].emitters.push(e.id);
+ else if(e.kind==='tuner'&&w.domains.length===1)w.domains[0].tuners.push(e.id);
+}
+/** Every emitter delivers to at most one target. Reassigning removes it from the previous target atomically. */
+export function assignEmitter(w:World,emitterId:string,targetId:string|null):string {
+ const e=entity(w,emitterId);if(!e||e.kind!=='emitter')return 'Select a field emitter';
+ if(targetId!==null&&!w.targets.some(t=>t.id===targetId))return 'Select a delivery target';
+ for(const t of w.targets)t.emitters=t.emitters.filter(id=>id!==emitterId);
+ if(targetId!==null)w.targets.find(t=>t.id===targetId)!.emitters.push(emitterId);
+ invalidate(w,'Delivery assignment changed');return '';
+}
 export function place(w:World,kind:Kind,x:number,y:number,rotation:Rotation=0):string {
  const error=placementError(w,kind,x,y,[],rotation);if(error)return error;if(w.stock.assemblies<DEFS[kind].cost)return 'Not enough assemblies';
- w.stock.assemblies-=DEFS[kind].cost;w.entities.push(newEntity(kind,x,y,`e${w.nextId++}`,rotation));invalidate(w,'Installation changed');event(w,`${DEFS[kind].name} built`);return '';
+ w.stock.assemblies-=DEFS[kind].cost;const created=newEntity(kind,x,y,`e${w.nextId++}`,rotation);w.entities.push(created);autoAssign(w,created);invalidate(w,'Installation changed');event(w,`${DEFS[kind].name} built`);return '';
 }
-export function remove(w:World,id:string):void {const e=entity(w,id);if(!e)return;w.stock.assemblies+=e.health>0?DEFS[e.kind].cost:0;w.stock.scrap+=e.ore;e.ore=0;w.entities=w.entities.filter(x=>x.id!==id);for(const l of w.links.filter(l=>l.a.node===id||l.b.node===id))disconnect(w,l.id);invalidate(w,'Equipment removed');event(w,e.health>0?'Equipment recovered; buffered ore becomes scrap':'Wreck cleared');}
+export function remove(w:World,id:string):void {const e=entity(w,id);if(!e)return;w.stock.assemblies+=e.health>0?DEFS[e.kind].cost:0;w.stock.scrap+=e.ore;e.ore=0;w.entities=w.entities.filter(x=>x.id!==id);for(const t of w.targets)t.emitters=t.emitters.filter(x=>x!==id);for(const d of w.domains)d.tuners=d.tuners.filter(x=>x!==id);for(const l of w.links.filter(l=>l.a.node===id||l.b.node===id))disconnect(w,l.id);invalidate(w,'Equipment removed');event(w,e.health>0?'Equipment recovered; buffered ore becomes scrap':'Wreck cleared');}
 export function connect(w:World,type:Connection['type'],a:Endpoint,b:Endpoint,options:RouteOptions={}):string {
  const ea=entity(w,a.node),eb=entity(w,b.node);if(!ea||!eb||a.node===b.node)return 'Choose two different machines';
  if(!['field','material','power'].includes(type)||!Number.isInteger(a.port)||!Number.isInteger(b.port)||a.port<0||b.port<0)return 'Invalid port index';
@@ -117,13 +131,25 @@ export function evaluate(w:World):Stats {
  const stats=emptyStats();Object.assign(stats,grid);
  try{stats.network=solveNetwork(comps,waveLinks(w));}catch(err){stats.error=err instanceof Error?err.message:'Wave solve failed';w.stats=stats;w.statsRevision=w.revision;return stats;}
  for(const l of w.links.filter(l=>l.type==='field')){const m=routeMetrics(l.path,l.radius),total=m.propagationExponent+m.bendExponent;const outgoing=(stats.network.ports[l.a.node]?.[l.a.port]?.outgoing??0)+(stats.network.ports[l.b.node]?.[l.b.port]?.outgoing??0);const loss=outgoing*(1-Math.exp(-total));stats.bendRadiation+=total?loss*m.bendExponent/total:0;stats.propagationLoss+=total?loss*m.propagationExponent/total:0;}
- let heat=0,radiated=0;const fields:Record<string,Complex>={};const emitters=w.entities.filter(e=>e.kind==='emitter'&&e.powered);const n=Math.max(2,emitters.length);const target=frontierTarget(w);
+ const targetOf=new Map<string,Target>();for(const t of w.targets)for(const id of t.emitters)targetOf.set(id,t);
+ const perTarget=new Map<string,{groups:Record<string,Complex[]>;count:number}>();
+ let heat=0,radiated=0;
  for(const e of w.entities){const absorbed=Math.max(0,stats.network.absorbed[e.id]??0);
-  if(e.kind==='emitter'&&e.powered){const p=center(e),distance=target?Math.hypot(p.x-target.x,p.y-target.y):0;const capture=target?Math.min(.88,50/(distance*distance+30)):0;const rad=absorbed*.92;radiated+=rad;heat+=absorbed-rad;
-   stats.emitterFields[e.id]={};for(const [group,value] of Object.entries(stats.network.ports[e.id]?.[0]?.fields??{})){const field=mul(value.a,polar(Math.sqrt((1-.08**2)*.92*capture/n),distance*.23));fields[group]=add(fields[group]??c(0),field);stats.emitterFields[e.id][group]=field;}
+  if(e.kind==='emitter'&&e.powered){const p=center(e),rad=absorbed*RADIATION_EFFICIENCY;radiated+=rad;heat+=absorbed-rad;
+   const target=targetOf.get(e.id);stats.emitterFields[e.id]={};
+   if(target){const distance=Math.hypot(p.x-target.x,p.y-target.y);let bucket=perTarget.get(target.id);if(!bucket){bucket={groups:{},count:0};perTarget.set(target.id,bucket);}bucket.count++;
+    for(const [group,value] of Object.entries(stats.network.ports[e.id]?.[0]?.fields??{})){const field=coupledField(value.a,distance);(bucket.groups[group]??=[]).push(field);stats.emitterFields[e.id][group]=field;}}
   }else heat+=absorbed;
  }
- stats.targetPower=Object.values(fields).reduce((s,v)=>s+power(v),0);stats.radiated=radiated;stats.offTarget=Math.max(0,radiated-stats.targetPower);stats.heat=heat;stats.leaked=stats.network.escaped+stats.network.linkLoss+stats.offTarget;w.stats=stats;w.statsRevision=w.revision;return stats;
+ let capturedTotal=0;stats.targetPower=0;stats.protectiveAbsorption=0;
+ for(const target of w.targets){const bucket=perTarget.get(target.id);
+  if(!bucket){stats.targets[target.id]={useful:0,guard:0,captured:0,emitters:0};continue;}
+  const reading=target.kind==='frontier'?projectFrontier(bucket.groups,bucket.count):projectTwoZone(bucket.groups);
+  stats.targets[target.id]={useful:reading.useful,guard:reading.guard,captured:reading.captured,emitters:bucket.count};
+  capturedTotal+=reading.captured;
+  if(target.kind==='frontier')stats.targetPower=reading.useful;else stats.protectiveAbsorption+=reading.captured;
+ }
+ stats.radiated=radiated;stats.offTarget=Math.max(0,radiated-capturedTotal);stats.heat=heat;stats.leaked=stats.network.escaped+stats.network.linkLoss+stats.offTarget;w.stats=stats;w.statsRevision=w.revision;return stats;
 }
 function automaticControl(w:World){
  const domain=frontierDomain(w);
@@ -181,5 +207,5 @@ export function stampBlueprint(w:World,x:number,y:number):string {
  const ids=new Map(bp.entities.map((e,i)=>[e.id,staged[i].id]));
  const draft={...w,entities:[...w.entities,...staged],links:[...w.links],events:[],qualifications:w.qualifications.map(q=>({...q})),nextId:w.nextId+staged.length};
  for(const l of bp.links){const error=connect(draft,l.type,{node:ids.get(l.a.node)!,port:l.a.port},{node:ids.get(l.b.node)!,port:l.b.port},{path:l.path.map(p=>({x:p.x+x,y:p.y+y})),radius:l.radius,diagonal:l.diagonal});if(error)return error;}
- w.nextId=draft.nextId;w.entities=draft.entities;w.links=draft.links;w.stock.assemblies-=cost;invalidate(w,'Blueprint placed — local commissioning required');event(w,'Blueprint placed; recheck power, deposits and phase at this site');return '';
+ w.nextId=draft.nextId;w.entities=draft.entities;w.links=draft.links;w.stock.assemblies-=cost;for(const e of staged)autoAssign(w,e);invalidate(w,'Blueprint placed — local commissioning required');event(w,'Blueprint placed; recheck power, deposits and phase at this site');return '';
 }
