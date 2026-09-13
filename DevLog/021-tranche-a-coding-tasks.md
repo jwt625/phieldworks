@@ -36,14 +36,18 @@ Deferred honestly: process/workpiece heat and shutter behaviour are not wired be
 
 ## A-03 — control and qualification
 
-- [ ] Move automatic control into `src/sim/control.ts`; commands validate ownership before any mutation.
-- [ ] Implement global fair trial scheduling with one selected tuner per world step. Domain cursor and restored trial stats must agree after plus/minus comparisons.
-- [ ] Add `src/sim/qualification.ts` for dependency closures, configuration signatures, current validity and stable reason codes. Keep cache invalidation separate.
-- [ ] Preserve frontier acceptance requirements; process qualification tracks three new whole accepted cycles once A-04 supplies events.
-- [ ] Remove global test-induced thermal drift from unrelated tuners; any test disturbance applies only to the declared domain and is recorded in the test contract. Use ordinary drift for the initial process qualification.
-- [ ] Test ownership conflicts, on/off independence, deterministic scheduling/load, unrelated repair, shared source and changed power load. Snapshot material/job/event/thermal state around trial evaluation.
+- [x] Move automatic control into `src/sim/control.ts`; commands validate ownership before any mutation.
+- [x] Implement global fair trial scheduling with one selected tuner per world step. Domain cursor and restored trial stats must agree after plus/minus comparisons.
+- [x] Add `src/sim/qualification.ts` for dependency closures, configuration signatures, current validity and stable reason codes. Keep cache invalidation separate.
+- [x] Preserve frontier acceptance requirements; process qualification tracks three new whole accepted cycles once A-04 supplies events.
+- [x] Remove global test-induced thermal drift from unrelated tuners; any test disturbance applies only to the declared domain and is recorded in the test contract. Use ordinary drift for the initial process qualification.
+- [x] Test ownership conflicts, on/off independence, deterministic scheduling/load, unrelated repair, shared source and changed power load. Snapshot material/job/event/thermal state around trial evaluation.
 
 Files: `world.ts`, `control.ts`, `qualification.ts`, `diagnostics.ts`; `tests/local-control.test.ts`, `tests/local-qualification.test.ts`. Gate: two domains retain separate state with bounded evaluation count. A-03 process-outcome hooks are completed with A-05 integration, not marked working early.
+
+**A-03 implementation note — 2026-09-13.** `control.ts` owns one world-level scheduling budget: one eligible tuner is trial-tuned per fixed step, round-robin over enabled referenced domains (`floor(time/dt) % domains`) and then that domain's persisted `cursor`. `automaticControl(w,evaluate)` takes the solver as a parameter so `control.ts` does not import the world façade, and it returns the exact evaluation count (2, or 3 when the `+` trial wins because the `-` trial already left current stats). Process domains use the `useful − 4·guard` objective; frontier keeps useful target power. `qualification.ts` computes the field/electrical dependency closure, a canonical configuration signature that excludes phase/temperature/progress, and live operating issues with stable codes. `invalidate` now revalidates by signature, so an unrelated repair on an independent supply leaves other certificates intact; manual `setPhase` explicitly fails the owning domain even though phase is outside the signature. `assignTuner`/`assignEmitter`/`setController` validate ownership and reference readiness before mutating. Per-domain test disturbance means only tuners owned by a frontier-testing domain get the artificial 4·sin drift; process testing uses ordinary drift. `diagnostics.ts` now reports missing/unavailable references and failed/stale certificates with their code.
+
+Honest deferral: process qualification does not accumulate or grant anything yet. `startQualification` snapshots the signature for any domain, but the three-whole-accepted-cycle counter is A-04/A-05 work; a process domain left `testing` stays `testing` and is never auto-qualified by the 20 s frontier timer. Guard/dose reason codes are defined but only the frontier `useful-underdose`/`dependency-changed` paths are exercised.
 
 ## A-04 — process lifecycle and inventory
 

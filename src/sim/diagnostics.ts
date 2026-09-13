@@ -1,6 +1,7 @@
 import type {World} from './world';
 import {DEFS} from './definitions';
 import {ports,routeMetrics,footprint} from './geometry';
+import {referenceReady} from './control';
 export interface Issue {id:string;severity:'error'|'warning'|'info';object?:string;title:string;remedy:string}
 export function diagnose(w:World):Issue[]{
  const issues:Issue[]=[];const add=(object:string,title:string,remedy:string,severity:Issue['severity']='warning')=>issues.push({id:`${object}:${title}`,object,title,remedy,severity});
@@ -18,5 +19,10 @@ export function diagnose(w:World):Issue[]{
  }
  for(const l of w.links){if(l.type==='field'&&routeMetrics(l.path,l.radius).bends.some(b=>b.bad))add(l.a.node,`Tight bends on ${l.id}`,'Inspect this route. Disconnect and rebuild with rounded bends and longer straight approaches.');if(l.type==='material'&&l.packets.length&&l.packets[0]>=routeMetrics(l.path).length)add(l.b.node,'Belt receiver blocked','Restore receiver power or free its ore buffer.');}
  if(w.ecology.defenseReady&&w.ecology.threat>=20)issues.push({id:'wildlife',severity:'warning',object:w.ecology.creatures.find(c=>c.health>0)?.id,title:w.ecology.grace>0?'Wildlife exposure rising — defense grace period':'Wildlife attracted by stray field',remedy:'Reduce open ports and sharp bends. Keep perimeter sentries powered near exposed machines.'});
+ for(const domain of w.domains){const qualification=w.qualifications.find(q=>q.domain===domain.id);
+  if(!domain.reference)add(domain.id,'Control domain has no reference','Assign a powered reference station before tuning or testing.');
+  else if(!referenceReady(w,domain))add(domain.id,'Reference unavailable','Power and repair the reference station for this domain.');
+  if(qualification&&(qualification.status==='failed'||qualification.status==='stale'))add(domain.id,qualification.status==='stale'?'Qualification is stale':'Qualification failed',`${qualification.reason}${qualification.code?` (${qualification.code})`:''}`);
+ }
  return issues.sort((a,b)=>({error:0,warning:1,info:2}[a.severity]-{error:0,warning:1,info:2}[b.severity]));
 }

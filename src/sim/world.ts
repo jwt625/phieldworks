@@ -5,6 +5,8 @@ export {footprint,ports,routeMetrics} from './geometry';
 import {c,type Complex} from './complex';
 import {source,hybrid,through,matched,solveNetwork,FIELD_PORT_LIMIT,type NetworkResult,type Component,type Endpoint,type WaveLink} from './network';
 import {RADIATION_EFFICIENCY,coupledField,projectFrontier,projectTwoZone} from './targets';
+import {automaticControl,referenceReady} from './control';
+import {revalidate,startQualification} from './qualification';
 export {FIELD_PORT_LIMIT} from './network';
 import {DEFS,type Kind} from './definitions';
 export {DEFS,type Kind} from './definitions';
@@ -25,7 +27,7 @@ export function newEntity(kind:Kind,x:number,y:number,id:string,rotation:Rotatio
 export function frontierTarget(w:World):Target|undefined{return w.targets.find(t=>t.kind==='frontier');}
 export function frontierDomain(w:World):ControlDomain|undefined{const t=frontierTarget(w);return t?w.domains.find(d=>d.target===t.id):undefined;}
 export function frontierQualification(w:World):Qualification|undefined{const d=frontierDomain(w);return d?w.qualifications.find(q=>q.domain===d.id):undefined;}
-export function invalidate(w:World,reason:string){w.revision++;let changed=false;for(const q of w.qualifications)if(q.status==='testing'||q.status==='qualified'){q.status='failed';q.reason=reason;q.code='dependency-changed';changed=true;}if(changed)event(w,`Qualification invalidated: ${reason}`);}
+export function invalidate(w:World,reason:string){w.revision++;if(revalidate(w,reason))event(w,`Qualification invalidated: ${reason}`);}
 function overlap(x:number,y:number,aw:number,ah:number,b:{x:number;y:number;w:number;h:number}){return x<b.x+b.w&&x+aw>b.x&&y<b.y+b.h&&y+ah>b.y;}
 export function placementError(w:World,kind:Kind,x:number,y:number,extra:Entity[]=[],rotation:Rotation=0):string {
  const d={...DEFS[kind],...footprint({kind,rotation})};if(![0,1,2,3].includes(rotation))return 'Invalid rotation';if(w.entities.length+extra.length>=MACHINE_LIMIT)return `Prototype limit: ${MACHINE_LIMIT} machines`;if([...w.entities,...extra].reduce((n,e)=>n+DEFS[e.kind].ports.length,0)+d.ports.length>FIELD_PORT_LIMIT)return `Prototype limit: ${FIELD_PORT_LIMIT} field ports`;if(!Number.isInteger(x)||!Number.isInteger(y)||x<0||y<0||x+d.w>WIDTH||y+d.h>HEIGHT)return 'Outside the build area';
@@ -80,7 +82,15 @@ export function rotateEntity(w:World,id:string):string {
  const rotation=((e.rotation+1)%4) as Rotation;
  const error=placementError({...w,entities:w.entities.filter(v=>v.id!==id)},e.kind,e.x,e.y,[],rotation);if(error)return error;e.rotation=rotation;invalidate(w,'Equipment rotated');return '';
 }
-export function setPhase(w:World,id:string,degrees:number){const e=entity(w,id);if(!e||e.kind!=='tuner'||!Number.isFinite(degrees))return;e.phase=Math.max(-180,Math.min(180,degrees));invalidate(w,'Manual phase adjustment');}
+export function setPhase(w:World,id:string,degrees:number){const e=entity(w,id);if(!e||e.kind!=='tuner'||!Number.isFinite(degrees))return;e.phase=Math.max(-180,Math.min(180,degrees));w.revision++;let changed=false;for(const d of w.domains)if(d.tuners.includes(id))for(const q of w.qualifications)if(q.domain===d.id&&(q.status==='testing'||q.status==='qualified')){q.status='failed';q.reason='Manual phase adjustment';q.code='dependency-changed';changed=true;}if(changed)event(w,'Qualification invalidated: Manual phase adjustment');}
+/** A tuner belongs to at most one domain. Manual tuner edits deliberately fall outside the configuration signature. */
+export function assignTuner(w:World,tunerId:string,domainId:string|null):string{
+ const e=entity(w,tunerId);if(!e||e.kind!=='tuner')return 'Select a phase tuner';
+ if(domainId!==null&&!w.domains.some(d=>d.id===domainId))return 'Select a control domain';
+ for(const d of w.domains)d.tuners=d.tuners.filter(id=>id!==tunerId);
+ if(domainId!==null)w.domains.find(d=>d.id===domainId)!.tuners.push(tunerId);
+ invalidate(w,'Tuner assignment changed');return '';
+}
 export function repair(w:World,id:string):string{const e=entity(w,id);if(!e)return 'Select equipment';if(w.stock.assemblies<3)return 'Repair needs 3 assemblies';w.stock.assemblies-=3;e.health=100;e.temperature=25;e.tripped=false;invalidate(w,'Equipment repaired');event(w,`${DEFS[e.kind].name} repaired and reset`);return '';}
 export function createWorld():World {
   const w:World={version:4,ecology:newEcology(),time:0,nextId:1,entities:[],links:[],deposits:[{id:'starter',x:3,y:5,w:4,h:4,remaining:1400,kind:'ore'},{id:'reserve',x:3,y:17,w:4,h:3,remaining:900,kind:'ore'},{id:'remote-ore',x:38,y:5,w:4,h:4,remaining:1200,kind:'ore'},{id:'frontier',x:29,y:7,w:4,h:4,remaining:500,kind:'crystal'}],stock:{assemblies:28,crystal:0,scrap:0},produced:0,targets:[],references:[],domains:[],qualifications:[],process:newProcess(),frontier:false,revision:0,statsRevision:-1,blueprint:null,events:[],stats:emptyStats()};
@@ -151,28 +161,12 @@ export function evaluate(w:World):Stats {
  }
  stats.radiated=radiated;stats.offTarget=Math.max(0,radiated-capturedTotal);stats.heat=heat;stats.leaked=stats.network.escaped+stats.network.linkLoss+stats.offTarget;w.stats=stats;w.statsRevision=w.revision;return stats;
 }
-function automaticControl(w:World){
- const domain=frontierDomain(w);
- if(!domain?.enabled||!w.entities.some(e=>e.kind==='reference'&&e.powered))return;
- const tuners=w.entities.filter(e=>e.kind==='tuner'&&e.health>0&&!e.tripped);if(!tuners.length)return;
- // Bound work: one tuner per step on a deterministic cursor, and reuse the step's evaluation as the
- // baseline instead of re-solving it. Two trial phases are compared; only a winning trial re-settles
- // stats, so unchanged candidates cost nothing beyond the two trials.
- const cursor=Math.floor(w.time/DT)%tuners.length,e=tuners[cursor],original=e.phase,baseStats=w.stats,base=baseStats.targetPower;
- e.phase=wrap(original+2);const plus=evaluate(w).targetPower;
- e.phase=wrap(original-2);const minus=evaluate(w).targetPower;
- const improved=Math.max(plus,minus)>base+1e-6;
- if(!improved){e.phase=original;w.stats=baseStats;}
- else if(plus>=minus){e.phase=wrap(original+2);evaluate(w);}
- else e.phase=wrap(original-2);
- w.stats.controlCursor=cursor;
-}
-const wrap=(x:number)=>((x+180)%360+360)%360-180;
-export function setController(w:World,on:boolean){const d=frontierDomain(w);if(d)d.enabled=on;invalidate(w,'Controller mode changed');event(w,on?'Automatic phase control enabled':'Automatic phase control disabled');}
-export function beginCommission(w:World):string{evaluate(w);if(!w.frontier)return 'Clear the frontier first';const q=frontierQualification(w);if(!q)return 'No frontier qualification record';if(!frontierDomain(w)?.enabled)return 'Enable automatic phase control first';if(w.stats.targetPower<35)return 'Establish at least 35 target power before testing';q.status='testing';q.elapsed=0;q.minimum=-1;q.counters=0;q.signature='';q.reason='20 s thermal drift test · minimum 32 target power';q.code='';event(w,'Commissioning started: 20 s drift profile');return '';}
-export function cancelCommission(w:World){const q=frontierQualification(w);if(!q)return;q.status='idle';q.reason='Cancelled; not qualified';q.elapsed=0;q.minimum=-1;}
+export function setController(w:World,on:boolean):string{const d=frontierDomain(w);if(!d)return 'No frontier control domain';if(on&&!referenceReady(w,d))return 'Bind a powered reference before enabling control';d.enabled=on;invalidate(w,'Controller mode changed');event(w,on?'Automatic phase control enabled':'Automatic phase control disabled');return '';}
+export function beginCommission(w:World):string{evaluate(w);if(!w.frontier)return 'Clear the frontier first';const domain=frontierDomain(w);if(!domain)return 'No frontier control domain';if(!domain.enabled)return 'Enable automatic phase control first';if(w.stats.targetPower<35)return 'Establish at least 35 target power before testing';const error=startQualification(w,domain.id,'20 s thermal drift test · minimum 32 target power');if(!error)event(w,'Commissioning started: 20 s drift profile');return error;}
+export function cancelCommission(w:World){const q=frontierQualification(w);if(!q)return;q.status='idle';q.reason='Cancelled; not qualified';q.elapsed=0;q.minimum=-1;q.signature='';}
 export function step(w:World,dt=DT){if(!Number.isFinite(dt)||dt<=0||dt>.25)throw new Error('Step must be between 0 and 0.25 seconds');w.time+=dt;if(w.statsRevision!==w.revision)evaluate(w);
- const qualification=frontierQualification(w),testing=qualification?.status==='testing'?qualification:undefined;
+ const tunerOwner=new Map<string,string>();for(const d of w.domains)for(const id of d.tuners)tunerOwner.set(id,d.id);
+ const testingDomains=new Map<string,{kind:string;elapsed:number}>();for(const q of w.qualifications){if(q.status!=='testing')continue;const t=w.targets.find(x=>x.id===q.target);testingDomains.set(q.domain,{kind:t?.kind??'',elapsed:q.elapsed});}
  for(const e of w.entities){if(!e.powered)continue;
   if(e.kind==='extractor'){const d=w.deposits.find(d=>d.remaining>0&&overlap(e.x,e.y,footprint(e).w,footprint(e).h,d)&&(d.kind==='ore'||w.frontier));if(d){e.progress+=dt;while(e.progress>=.65&&d.remaining>0&&(d.kind==='crystal'||e.ore<20)){e.progress-=.65;d.remaining--;if(d.kind==='crystal')w.stock.crystal++;else e.ore++;}e.progress=Math.min(e.progress,.65);}}
   if(e.kind==='assembler'){if(e.ore>=2){e.progress+=dt;if(e.progress>=1.4){e.progress-=1.4;e.ore-=2;w.stock.assemblies++;w.produced++;}}else e.progress=0;}
@@ -184,16 +178,16 @@ export function step(w:World,dt=DT){if(!Number.isFinite(dt)||dt<=0||dt>.25)throw
   if(l.packets.length&&l.packets[0]>=length&&b.powered&&b.ore<20){b.ore++;l.packets.shift();}
   if(a.powered&&a.ore>=1&&(!l.packets.length||l.packets.at(-1)!>=.5)){a.ore--;l.packets.push(0);}
  }
- automaticControl(w);
- for(const e of w.entities){if(e.health<=0)continue;const absorbed=Math.max(0,w.stats.network.absorbed[e.id]??0);const heating=e.kind==='emitter'&&e.powered?absorbed*.08:absorbed;const drift=e.kind==='tuner'?3+2*Math.sin(w.time*.12)+(testing?4*Math.sin(testing.elapsed*.3):0):0;const cooling=e.kind==='dump'?(e.powered?.28:.04):.18;e.temperature+=dt*(heating*.32+drift-cooling*(e.temperature-25));e.temperature=Math.max(25,e.temperature);
+ automaticControl(w,evaluate);
+ for(const e of w.entities){if(e.health<=0)continue;const absorbed=Math.max(0,w.stats.network.absorbed[e.id]??0);const heating=e.kind==='emitter'&&e.powered?absorbed*.08:absorbed;const condition=tunerOwner.has(e.id)?testingDomains.get(tunerOwner.get(e.id)!):undefined;const testDrift=condition?.kind==='frontier'?4*Math.sin(condition.elapsed*.3):0;const drift=e.kind==='tuner'?3+2*Math.sin(w.time*.12)+testDrift:0;const cooling=e.kind==='dump'?(e.powered?.28:.04):.18;e.temperature+=dt*(heating*.32+drift-cooling*(e.temperature-25));e.temperature=Math.max(25,e.temperature);
   if(e.temperature>85&&e.protection&&!e.tripped){e.tripped=true;invalidate(w,'Thermal protection tripped');event(w,`${DEFS[e.kind].name} tripped at 85°C. Disconnect input and repair.`);}
   if(e.temperature>105){e.health=Math.max(0,e.health-(e.temperature-105)*dt*.45);if(e.health===0){w.stock.scrap+=DEFS[e.kind].cost+e.ore;e.ore=0;invalidate(w,'Equipment destroyed');event(w,`${DEFS[e.kind].name} destroyed by heat`);}}
  }
  evaluate(w);
  if(!w.frontier){const target=frontierTarget(w);if(target){target.health=Math.max(0,target.health-Math.max(0,w.stats.targetPower-32)*dt*3);if(target.health===0){w.frontier=true;event(w,'Frontier cleared. Crystal access and commissioning unlocked.');}}}
  const integrity=w.entities.reduce((sum,e)=>sum+e.health,0);for(const message of stepEcology(w,dt))event(w,message);if(w.entities.reduce((sum,e)=>sum+e.health,0)<integrity){invalidate(w,'Wildlife damaged equipment');evaluate(w);}
- const test=frontierQualification(w);if(test&&test.status==='testing'){test.elapsed+=dt;test.minimum=test.minimum<0?w.stats.targetPower:Math.min(test.minimum,w.stats.targetPower);if(w.stats.error||w.stats.targetPower<32||w.entities.some(e=>e.health<=0||e.tripped)){test.status='failed';test.reason='Output fell below 32 or equipment protection failed';event(w,'Commissioning failed. Inspect the network and retry.');}else if(test.elapsed>=20){test.status='qualified';test.reason='Passed 20 s drift profile; rating valid for this topology';event(w,`Module qualified at ${test.minimum.toFixed(1)} target power. Blueprint ready.`);}}
- if(test&&test.status==='qualified'&&(w.stats.targetPower<32||w.stats.error)){test.status='failed';test.reason='Operating conditions left the qualified range';event(w,'Qualification lost: output below operating limit');}
+ revalidate(w,'Dependencies changed');
+ const test=frontierQualification(w);if(test?.status==='testing'){test.elapsed+=dt;test.minimum=test.minimum<0?w.stats.targetPower:Math.min(test.minimum,w.stats.targetPower);if(test.elapsed>=20){test.status='qualified';test.reason='Passed 20 s drift profile; rating valid for this topology';event(w,`Module qualified at ${test.minimum.toFixed(1)} target power. Blueprint ready.`);}}
 }
 export function captureBlueprint(w:World):string {
  const qualification=frontierQualification(w);if(qualification?.status!=='qualified')return 'Commission the installation before recording a blueprint';
