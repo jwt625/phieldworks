@@ -24,6 +24,8 @@ Browser tests use installed Google Chrome at its standard macOS path when availa
 
 ## First objective
 
+Open **Technology** in the header to inspect the proposed progression. **Research** shows 27 technology nodes with individually linked unlocks. **Items & equipment** draws the concrete recipe and equipment graph: 99 resources, manufactured items, machines/tooling and operating capabilities, connected by 551 prerequisite, unlock, ingredient, producer, service, science and milestone edges. Enable **Dev: full tree** to inspect all 126 nodes. Search for an item, follow its inputs and consumers, or choose the complete ingredient ancestry/all-connections views. This is a design preview: proposed recipes and research spending are not implemented. See the [design](DevLog/007-technology-tree-design.md), [complete item/equipment specification and branch diagrams](DevLog/009-production-dependencies.md), and [animation plan](DevLog/008-animation-production-plan.md). Asset generation follows design approval. Run `npm run docs:progression` to regenerate the catalog diagrams after editing the design data.
+
 The expedition starts with a working extractor, assembler, power unit, reference source, junction, emitter, and dump. Resources are finite. The starter assembler produces replacement construction parts automatically.
 
 1. Open **Tutorial** for the guided route. Inspect the reserve ore patch and assembler. Build a **perimeter sentry at (22, 10)** and wire generator BUS OUT → sentry POWER IN. Its 8-tile range covers the eastern field branches. The first powered sentry starts a 30-second grace period; afterward sustained stray field can agitate crawlers. Add defenses as your outpost grows.
@@ -71,6 +73,8 @@ The prototype caps builds at 40 machines and 128 field ports. Equipment uses sep
 - [Milestones and TODOs](DevLog/003-implementation-milestones.md)
 - [Ports/routing architecture and next TODOs](DevLog/005-ports-routing-and-presentation.md)
 - [World interaction/onboarding milestone and playtest checklist](DevLog/006-world-interaction-and-onboarding.md)
+- [Proposed technology tree, dependencies and research economy](DevLog/007-technology-tree-design.md)
+- [Existing equipment and creature animation specification](DevLog/008-animation-production-plan.md)
 - [Generated world art and exact prompt set](assets/world-generation-notes.md), [turnaround gallery](assets/world/index.html)
 - [Implementation journal](DevLog/004-implementation-journal.md)
 - [Asset proposal](DevLog/002-asset-plan.md), [asset gallery](assets/index.html)

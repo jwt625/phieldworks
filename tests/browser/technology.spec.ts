@@ -1,0 +1,64 @@
+import {test,expect} from '@playwright/test';
+
+test('technology roadmap exposes proposals and dependencies without changing the expedition',async({page})=>{
+ await page.addInitScript(()=>localStorage.setItem('phieldworks.tutorial.v1',JSON.stringify({closed:true,index:0})));
+ await page.goto('/');await expect(page.locator('#runtime-status')).toHaveText('SIMULATION ONLINE');
+ await page.locator('#technology').click();
+ const dialog=page.getByRole('dialog',{name:'From outpost to planetary instrument.'});await expect(dialog).toBeVisible();
+ const before=await page.evaluate(()=>(window as any).phieldworks.snapshot());
+ await expect(page.locator('#tech-detail')).toContainText('more than 32');
+ await expect(page.locator('[data-tech-node="launch"]')).toHaveCount(0);
+ await page.locator('#tech-dev-toggle').click();await expect(page.locator('#tech-dev-toggle')).toHaveAttribute('aria-pressed','true');
+ await page.locator('[data-tech-node="launch"]').click();
+ await expect(page.locator('#tech-detail')).toContainText('4 qualified sectors');
+ await page.locator('#tech-detail').getByRole('button',{name:'Planetary aperture',exact:true}).click();
+ await expect(page.locator('#tech-detail')).toContainText('250 × Industrial dossier + Precision dossier + Systems dossier');
+ await page.locator('#tech-fit').click();
+ await page.screenshot({path:'test-results/technology-full-tree.png',fullPage:true});
+ await page.locator('#tech-dev-toggle').click();await expect(page.locator('[data-tech-node="launch"]')).toHaveCount(0);
+ await page.screenshot({path:'test-results/technology-upcoming.png',fullPage:true});
+ expect(await page.evaluate(()=>(window as any).phieldworks.snapshot())).toEqual(before);
+ await page.keyboard.press('Escape');await expect(dialog).not.toBeVisible();await expect(page.locator('#technology')).toBeFocused();
+ await page.locator('#technology').click();await page.setViewportSize({width:1024,height:768});
+ await expect(page.locator('#close-technology')).toBeInViewport();
+ await page.locator('#close-technology').click();await expect(dialog).not.toBeVisible();
+});
+
+test('item graph traces recipes, producers, equipment upgrades and research unlocks',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.addInitScript(()=>localStorage.setItem('phieldworks.tutorial.v1',JSON.stringify({closed:true,index:0})));
+ await page.goto('/');await expect(page.locator('#runtime-status')).toHaveText('SIMULATION ONLINE');
+ await page.locator('#technology').click();const before=await page.evaluate(()=>(window as any).phieldworks.snapshot());
+ await page.locator('#tech-dev-toggle').click();await page.locator('[data-tech-node="materials"]').click();
+ await page.locator('#tech-detail').getByRole('button',{name:'Control board',exact:false}).click();
+ await expect(page.locator('#production-panel')).toBeVisible();await expect(page.locator('#production-detail h3')).toHaveText('Control board');
+ await expect(page.locator('.production-recipe')).toContainText('2 Copper conductor + 1 Ceramic substrate');
+ await expect(page.locator('[data-graph-node="product:conductor"]')).toHaveCount(1);
+ await expect(page.locator('[data-graph-node="product:processor"]')).toHaveCount(1);
+ await expect(page.locator('[data-relation="ingredient"]').first()).toBeAttached();
+ await page.locator('#production-detail').getByRole('button',{name:'2 × Copper conductor',exact:true}).click();
+ await expect(page.locator('#production-detail h3')).toHaveText('Copper conductor');
+ await expect(page.locator('#production-detail')).toContainText('Control board');
+ await page.locator('#production-search').fill('Photonic module');
+ await page.locator('#production-results').getByRole('button',{name:'Photonic module · item',exact:true}).click();
+ await expect(page.locator('.production-recipe')).toContainText('2 Patterned die + 1 Optical coupler + 1 Control board');
+ await page.locator('#production-fit').click();await page.screenshot({path:'test-results/production-photonic-chain.png',fullPage:true});
+ await page.locator('#production-search').fill('aperture sector assembly');await page.locator('#production-results button').click();
+ await expect(page.locator('.production-recipe')).toContainText('2 Reference-locked source + 4 Field amplifier + 4 Field emitter');
+ await page.locator('#production-scope').selectOption('all');
+ await expect(page.locator('[data-graph-node]')).toHaveCount(126);
+ await page.locator('#production-fit').click();await page.screenshot({path:'test-results/production-full-graph.png',fullPage:true});
+ await page.locator('#production-search').fill('Inspected flight sail');await page.locator('#production-results button').click();
+ await expect(page.locator('.production-recipe')).toContainText('100 Accepted sail panel + 20 Photonic module');
+ await page.locator('#production-detail').getByRole('button',{name:'Lightsail assembly',exact:true}).click();
+ await page.locator('#production-detail').getByRole('button',{name:'Open research details'}).click();
+ await expect(page.locator('#tech-detail h3')).toHaveText('Lightsail assembly');
+ await page.locator('#view-production').click();await page.locator('#tech-dev-toggle').click();
+ await expect(page.locator('[data-graph-node="product:flight-sail"]')).toHaveCount(0);
+ expect(await page.evaluate(()=>(window as any).phieldworks.snapshot())).toEqual(before);
+ await page.setViewportSize({width:1024,height:768});await expect(page.locator('#close-technology')).toBeInViewport();
+ await page.locator('#production-search').fill('assembly');await page.keyboard.press('Escape');
+ // Native search fields may clear on Escape first; dialog close still has an explicit control.
+ if(await page.locator('#technology-panel').isVisible())await page.locator('#close-technology').click();
+ await expect(page.locator('#technology')).toBeFocused();expect(errors).toEqual([]);
+});
