@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "status": "candidate-production",
+  "baseline_commit": "cd002b4",
+  "runtime_loader": false,
+  "authority": "DevLog/022-tranche-a-assets.md",
+  "candidate_directory": "assets/animations/candidates/tranche-a/",
+  "review_record": "assets/planning/tranche-a-review.json",
+  "equipment": {
+    "runtime_id": "fabrication-cell",
+    "footprint_tiles": [
+      3,
+      3
+    ],
+    "rotation_values": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rotation_rule": "Quarter-turn world-space coordinates about footprint center; use separately rendered views",
+    "ports": [
+      {
+        "id": "POWER IN",
+        "transport": "power",
+        "role": "input",
+        "rotation_0_position_tiles": [
+          1.5,
+          0
+        ],
+        "rotation_0_normal": [
+          0,
+          -1
+        ]
+      }
+    ],
+    "wave_ports": [],
+    "material_ports": [],
+    "workpiece_anchor_tiles": [
+      1.5,
+      1.5
+    ],
+    "sprite_ground_anchor": "Measured after source review, not assumed from atlas cell center",
+    "dynamic_layers": [
+      "field",
+      "useful/guard diagnostics",
+      "status",
+      "thermal",
+      "job result"
+    ]
+  },
+  "generation_policy": {
+    "generate_now": true,
+    "reason": "User authorized starting asset tasks on 2026-09-13. Initial direction and correction candidates produced before A-05; production alpha, playable-cell registration and variant expansion gates remain unmet.",
+    "estimated_selected_outputs": 28,
+    "maximum_initial_batch": 1,
+    "output_count_is_not_tool_call_count": true,
+    "preserve_originals": true,
+    "true_alpha_required": true,
+    "source_sidecar_required": true,
+    "directions_per_initial_generation": 1,
+    "review_sizes_px": [
+      32,
+      48,
+      96
+    ],
+    "viewport_sizes": [
+      [
+        1280,
+        800
+      ],
+      [
+        1440,
+        1000
+      ]
+    ],
+    "initial_candidate_calls_completed": 3
+  },
+  "jobs": [
+    {
+      "id": "TA-CELL-STATIC",
+      "type": "generation",
+      "depends_on": [],
+      "gate": "A-09 placeholder review",
+      "outputs": 4,
+      "variants": [
+        "rotation-0",
+        "rotation-1",
+        "rotation-2",
+        "rotation-3"
+      ],
+      "purpose": "Intact cell chassis with integrated workpiece tooling",
+      "prompt": "Create one production game sprite of a compact 3 by 3 tile precision fabrication cell, matching the attached PHIELDWORKS starter reference station and assembler camera, lighting and material language. Sealed industrial enclosure, ceramic optical access, stable square foundation, recessed central workpiece fixture and one visible electrical connector at the registered edge. Two external emitters illuminate the internal tooling through access apertures; do not add a wave-guide connector or a material conveyor port. Preserve a readable broad silhouette at 48 pixels. No text, logos, people, painted beams, status glow, grid or checkerboard. True transparent background. Keep all hardware inside the supplied footprint guide. Render only the requested direction; do not rotate the canvas image.",
+      "reference_inputs": [
+        "assets/world/reference-control-station-turnaround-v2.png",
+        "assets/world/compact-assembler-turnaround-v2.png"
+      ],
+      "registration": "One rotation-0 source first. Other directions reference its approved silhouette and the corresponding port/footprint overlay.",
+      "source_path": null,
+      "sha256": null,
+      "measured_size": null,
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "status": "needs-correction",
+      "candidate_ids": [
+        "fabrication-cell-r0-intact-v1",
+        "fabrication-cell-r0-intact-v2",
+        "fabrication-cell-r0-intact-v3-matte"
+      ],
+      "review_selection": "fabrication-cell-r0-intact-v3-matte",
+      "review_selection_scope": "Silhouette only; not a registered or production-selected source."
+    },
+    {
+      "id": "TA-CELL-CONDITION",
+      "type": "generation",
+      "depends_on": [
+        "TA-CELL-STATIC"
+      ],
+      "gate": "All static views registered",
+      "outputs": 12,
+      "variants": [
+        "0-light",
+        "0-severe",
+        "0-wreck",
+        "1-light",
+        "1-severe",
+        "1-wreck",
+        "2-light",
+        "2-severe",
+        "2-wreck",
+        "3-light",
+        "3-severe",
+        "3-wreck"
+      ],
+      "purpose": "Three condition variants for each view",
+      "prompt": "Edit the attached approved fabrication-cell direction into the requested physical condition. Keep exactly the same camera, square foundation, electrical port, workpiece anchor and scale. Light damage: limited damaged cladding. Severe: clearly broken tooling and enclosure while preserving identifiable footprint. Wreck: inert collapsed enclosure with stable held silhouette. Do not add smoke, colored fault lights, beams or lettering; these are runtime effects. True alpha. One condition and one direction per output.",
+      "reference_inputs": [],
+      "registration": "Compare foundation and port landmarks to intact source in overlay. No independent new chassis design.",
+      "source_path": null,
+      "sha256": null,
+      "measured_size": null,
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "status": "planned"
+    },
+    {
+      "id": "TA-CELL-TOOLING",
+      "type": "generation",
+      "depends_on": [
+        "TA-CELL-STATIC"
+      ],
+      "gate": "Static views and process event definitions reviewed",
+      "outputs": 8,
+      "variants": [
+        "0-load",
+        "0-unload",
+        "1-load",
+        "1-unload",
+        "2-load",
+        "2-unload",
+        "3-load",
+        "3-unload"
+      ],
+      "purpose": "Optional registered tooling poses for actual job transitions",
+      "prompt": "Using the approved fabrication cell and the supplied fixture overlay, make only the requested loading or unloading tooling pose in the requested direction. The foundation, enclosure, electrical connector and workpiece center must remain pixel-aligned. Change only the small tray or shutter mechanism. No recoil, moving whole machine, camera shift, painted exposure light or text. True transparent background. Return one pose rather than a full animation sheet.",
+      "reference_inputs": [],
+      "registration": "Prefer small registered attachment overlays. Reject chassis drift. Runtime tween or static state is acceptable; do not require arbitrary frame counts.",
+      "source_path": null,
+      "sha256": null,
+      "measured_size": null,
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "status": "planned"
+    },
+    {
+      "id": "TA-PROCESS-ITEMS",
+      "type": "generation",
+      "depends_on": [
+        "TA-CELL-STATIC"
+      ],
+      "gate": "Item meaning and fixture scale reviewed",
+      "outputs": 4,
+      "variants": [
+        "blank",
+        "accepted-part",
+        "recoverable-reject",
+        "process-scrap"
+      ],
+      "purpose": "Workpiece and inventory silhouettes",
+      "prompt": "Create the requested single PHIELDWORKS precision workpiece icon on true transparency, using the attached cell fixture and existing item style. Blank: simple mounted optical substrate. Accepted: intact precisely patterned optical component. Recoverable reject: same physical part with visibly incomplete processing, no checkmark or warning glyph. Scrap: broken unusable material. These distinctions must remain readable at 32 and 48 pixels through shape, not color alone. No text, floating badge, people, checkerboard or baked status light.",
+      "reference_inputs": [],
+      "registration": "Each output has its own crop and attachment transform. Item appearance does not claim a new belt implementation.",
+      "source_path": null,
+      "sha256": null,
+      "measured_size": null,
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "status": "planned"
+    },
+    {
+      "id": "TA-PROCESS-OVERLAYS",
+      "type": "code-native",
+      "depends_on": [],
+      "gate": "A-02 readings and A-06 inspector contracts",
+      "outputs": 0,
+      "variants": [
+        "useful-zone",
+        "guard-zone",
+        "dose-band",
+        "assignment-line",
+        "shuttered",
+        "result-indicator"
+      ],
+      "purpose": "Runtime diagnostic overlays and accessible equivalents",
+      "prompt": null,
+      "reference_inputs": [],
+      "registration": "Draw in renderer/DOM from real state; never image-generate text, charts or diagnostic markers.",
+      "source_path": null,
+      "sha256": null,
+      "measured_size": null,
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "status": "planned"
+    },
+    {
+      "id": "TA-REGISTER",
+      "type": "registration",
+      "depends_on": [
+        "TA-CELL-STATIC",
+        "TA-CELL-CONDITION",
+        "TA-CELL-TOOLING",
+        "TA-PROCESS-ITEMS"
+      ],
+      "gate": "Selected source pixels reviewed",
+      "outputs": 0,
+      "variants": [],
+      "purpose": "Measure and record alpha, frame rectangles, anchors and port landmarks",
+      "prompt": null,
+      "reference_inputs": [],
+      "registration": "Explicit measured records; no automatic equal-grid slicing and no filename-based promotion.",
+      "source_path": null,
+      "sha256": null,
+      "measured_size": null,
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "status": "planned"
+    },
+    {
+      "id": "TA-INTEGRATE",
+      "type": "integration",
+      "depends_on": [
+        "TA-REGISTER",
+        "TA-PROCESS-OVERLAYS"
+      ],
+      "gate": "A-11 runtime and browser review",
+      "outputs": 0,
+      "variants": [],
+      "purpose": "Promote registered art and bind process states/events",
+      "prompt": null,
+      "reference_inputs": [],
+      "registration": "Load only reviewed sources. Check actual terrain, all rotations, paused/unpowered/reduced-motion states and completion event replay.",
+      "source_path": null,
+      "sha256": null,
+      "measured_size": null,
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "status": "planned"
+    }
+  ]
+}

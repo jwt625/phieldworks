@@ -30,6 +30,8 @@ HUD and art contracts begin in A and accompany each tranche. Exact block reducti
 
 ## A — Local industrial loop
 
+Detailed execution package: [019](019-tranche-a-plan.md), [020 contracts](020-tranche-a-contracts.md), [021 file-level TODO](021-tranche-a-coding-tasks.md), and [022 assets](022-tranche-a-assets.md). These specify provisional implementation defaults; A remains unimplemented.
+
 Goal: manufacture a useful precision part by delivering an appropriate field to a workpiece, then repeat that success in an independently managed cell.
 
 - [ ] Define target, control-domain, qualification and selected-module contracts. Separate coherent reference identity from equipment identity; establish sensor/actuator ownership and external service bindings.

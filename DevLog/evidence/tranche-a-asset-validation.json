@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-13",
+  "baseline_commit": "cd002b4",
+  "scope": "initial asset candidates and review tooling",
+  "build": "pass",
+  "planning_validator": "pass",
+  "browser_audit_page_errors": [],
+  "candidate_count": 3,
+  "production_ready": false,
+  "alpha_gate": "fail; all three sources opaque",
+  "runtime_integration": "not performed",
+  "simulation_tests": "not rerun",
+  "review_record": "assets/planning/tranche-a-review.json"
+}

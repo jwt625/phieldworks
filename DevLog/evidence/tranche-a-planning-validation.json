@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "scope": "planning artifacts only; runtime, images and human acceptance remain untested",
+  "codingTasks": 13,
+  "assetJobs": 7,
+  "plannedRasterOutputs": 28,
+  "checkedLocalLinks": 20,
+  "cachedReferences": 4,
+  "cachedBytes": 7394270
+}

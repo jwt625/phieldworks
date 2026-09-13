@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-13",
+  "status": "candidate-production",
+  "authorization": "User requested starting asset tasks after approving the planning package. Generate review candidates now; gameplay, production registration and integration gates remain pending.",
+  "geometry_review": {
+    "status": "planned-interface-reviewed",
+    "guide_path": "assets/planning/tranche-a-footprint-guide.png",
+    "note": "3×3 footprint, north-midpoint power port, central workpiece reviewed against existing rectangular renderer. A-05 playable cell does not exist; final port/chassis registration remains pending.",
+    "runtime_validated": false
+  },
+  "candidates": [
+    {
+      "id": "fabrication-cell-r0-intact-v1",
+      "job": "TA-CELL-STATIC",
+      "variant": "rotation-0",
+      "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v1.png",
+      "provenance_path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v1.png.source.json",
+      "status": "rejected-background",
+      "measurements": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "bytes": 2085059,
+        "sha256": "c422faca3c2aae1987d332b18d942ea57d951a5138486b4ff3c5324edba188ae",
+        "transparentFraction": 0,
+        "partialAlphaFraction": 0,
+        "cornerRGBA": [
+          253,
+          254,
+          254,
+          255
+        ]
+      },
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "workpiece_landmark_px": null,
+      "notes": [
+        "Painted checkerboard; RGB output has no alpha.",
+        "Do not integrate or treat checkerboard as transparency."
+      ],
+      "evidence_paths": [],
+      "production_ready": false
+    },
+    {
+      "id": "fabrication-cell-r0-intact-v2",
+      "job": "TA-CELL-STATIC",
+      "variant": "rotation-0",
+      "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v2.png",
+      "provenance_path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v2.png.source.json",
+      "status": "rejected-background",
+      "measurements": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "bytes": 2067511,
+        "sha256": "e256eb08f2db41bc9f9cab05bc0f4ddc4a97837cd7bac022fec241cf004ac3cb",
+        "transparentFraction": 0,
+        "partialAlphaFraction": 0,
+        "cornerRGBA": [
+          253,
+          253,
+          253,
+          255
+        ]
+      },
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "workpiece_landmark_px": null,
+      "notes": [
+        "Painted checkerboard; RGB output has no alpha.",
+        "Do not integrate or treat checkerboard as transparency."
+      ],
+      "evidence_paths": [],
+      "production_ready": false
+    },
+    {
+      "id": "fabrication-cell-r0-intact-v3-matte",
+      "job": "TA-CELL-STATIC",
+      "variant": "rotation-0",
+      "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v3-matte.png",
+      "provenance_path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v3-matte.png.source.json",
+      "status": "needs-alpha",
+      "measurements": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "bytes": 1864379,
+        "sha256": "7452850bab22855f3e613b8a9825bd852451eae53daed2dbd469fc78e16ea78e",
+        "transparentFraction": 0,
+        "partialAlphaFraction": 0,
+        "cornerRGBA": [
+          24,
+          46,
+          50,
+          255
+        ]
+      },
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "workpiece_landmark_px": null,
+      "notes": [
+        "Opaque dark-matte review source; not a transparent production sprite.",
+        "Silhouette and material family are distinguishable beside existing reference/assembler at 96 px.",
+        "At 48 px the enclosure reads, but workpiece detail needs the inspector; at 32 px interior detail collapses.",
+        "Matte rectangle is clearly visible on light/game-terrain backgrounds. All three candidates have zero transparent pixels.",
+        "North electrical socket, central workpiece and ground-plane anchors remain unregistered.",
+        "Background is not perfectly uniform despite the matte prompt; no chroma-key or lighten workaround has been promoted."
+      ],
+      "evidence_paths": [
+        "assets/planning/tranche-a-review-1440.png",
+        "assets/planning/tranche-a-review-1280.png",
+        "assets/planning/tranche-a-sizes-light.png",
+        "assets/planning/tranche-a-sizes-dark.png",
+        "assets/planning/tranche-a-sizes-checker.png",
+        "assets/planning/tranche-a-sizes-terrain.png"
+      ],
+      "production_ready": false
+    }
+  ],
+  "selected_candidate": "fabrication-cell-r0-intact-v3-matte",
+  "selection_scope": "Silhouette/material review only; no production or runtime selection.",
+  "audit": {
+    "command": "node scripts/audit-tranche-a-assets.mjs",
+    "timestamp": "2026-09-13T21:23:59.224Z",
+    "source_pixels": "unmodified",
+    "page_errors": [],
+    "all_sources_have_alpha": false
+  },
+  "visual_review": {
+    "date": "2026-09-13",
+    "reviewer": "assistant",
+    "status": "silhouette-reviewed-production-blocked",
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        1280,
+        800
+      ]
+    ],
+    "sizes_px": [
+      32,
+      48,
+      96,
+      192
+    ],
+    "human_user_review": false,
+    "next_actions": [
+      "Obtain actual alpha for the master direction without destroying dark materials.",
+      "Validate crop/ground/workpiece/socket against the playable A-05 cell before production registration.",
+      "Only then extend the master to distinct directions, conditions and event poses."
+    ]
+  }
+}

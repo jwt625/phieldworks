@@ -63,6 +63,8 @@ Placement, save loading and solving now share a 256-field-port cap, with 120 mac
 
 ## Current development checkpoint
 
+[Tranche A execution package](DevLog/019-tranche-a-plan.md) now specifies the first precision cell at file level: local simulation/save contracts, coding TODOs, asset job manifest, and cached technical references. It is planning only; numerical defaults await the no-cheat gameplay fixture. Validate the package offline with `node scripts/validate-tranche-a-plan.mjs`. The [first cell asset review](assets/planning/tranche-a-review.html) now contains three candidates, measured alpha results and size/terrain comparisons. Serve it through Vite; production registration remains pending.
+
 [Fusion energy planning](DevLog/018-fusion-energy-roadmap.md) adds energy alongside manufacturing and propulsion, sharing equipment families and research across all three. Sustained fusion power is planned as a final-launch requirement, with manufactured fuel cartridges for the initial fuel economy. Experimental ignition and net electricity are separate milestones; these systems are not implemented.
 
 The next gameplay direction is documented in [016 — coherence, industry and lightsail design](DevLog/016-coherence-industry-and-lightsail-design.md): field-assisted manufacturing, local controller/target/qualification domains, specialized wave transport, two beam/sail progression tracks, and a cleaner menu-based HUD. [017 — implementation tranches](DevLog/017-industrial-gameplay-tranches.md) replaces the earlier queue ordering with a first precision-cell slice followed by network foundations, research, regional industry and a sail demonstrator. These are plans, not implemented features; campaign-setting and pacing preferences remain provisional.

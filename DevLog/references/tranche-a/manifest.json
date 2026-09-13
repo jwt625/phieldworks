@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "id": "R1",
+      "title": "Beam shaping for ultrafast materials processing",
+      "url": "https://arxiv.org/pdf/2010.12851v1",
+      "landing_url": "https://arxiv.org/abs/2010.12851",
+      "resolved_url": "https://arxiv.org/pdf/2010.12851v1",
+      "path": "beam-shaping-2010.12851v1.pdf",
+      "accessed": "2026-09-13",
+      "bytes": 4694278,
+      "sha256": "e4fd7fdeae462b4f4a5698c4c92fa1e7d768fa6aa54afa2e8c455f14da5dc867",
+      "content_type": "application/pdf",
+      "purpose": "Process motivation; no game constants",
+      "redistribution": "Reference snapshot; original authors retain rights. Not a game asset; check source license before redistribution."
+    },
+    {
+      "id": "R2",
+      "title": "MIT 6.974 Chapter 2: Classical Electromagnetism and Optics",
+      "url": "https://www.ocw.mit.edu/courses/6-974-fundamentals-of-photonics-quantum-electronics-spring-2006/8e54d1625e9e71eb5b4e4998e6967e4e_chapter2.pdf",
+      "landing_url": "https://www.ocw.mit.edu/courses/6-974-fundamentals-of-photonics-quantum-electronics-spring-2006/8e54d1625e9e71eb5b4e4998e6967e4e_chapter2.pdf",
+      "resolved_url": "https://www.ocw.mit.edu/courses/6-974-fundamentals-of-photonics-quantum-electronics-spring-2006/8e54d1625e9e71eb5b4e4998e6967e4e_chapter2.pdf",
+      "path": "mit-photonics-chapter2.pdf",
+      "accessed": "2026-09-13",
+      "bytes": 2549639,
+      "sha256": "a9a961fe121323a11f505a1bca634c79594ae977e066d4f577c299947823b8f6",
+      "content_type": "application/pdf",
+      "purpose": "Beam-splitter scattering and power normalization",
+      "redistribution": "Reference snapshot; original authors retain rights. Not a game asset; check source license before redistribution."
+    },
+    {
+      "id": "R3",
+      "title": "W3C APG Dialog (Modal) Pattern",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/",
+      "landing_url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/",
+      "resolved_url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/",
+      "path": "w3c-modal-dialog.html",
+      "accessed": "2026-09-13",
+      "bytes": 43147,
+      "sha256": "fbfeb87677a4500e2e78f39dd5208c219a5b84b0e3727c4e83c0b89a71dc1213",
+      "content_type": "text/html; charset=utf-8",
+      "purpose": "Focus and modal interaction",
+      "redistribution": "Reference snapshot; original authors retain rights. Not a game asset; check source license before redistribution."
+    },
+    {
+      "id": "R4",
+      "title": "LLNL Exploring Energy Security",
+      "url": "https://lasers.llnl.gov/science/energy-security",
+      "landing_url": "https://lasers.llnl.gov/science/energy-security",
+      "resolved_url": "https://lasers.llnl.gov/science/energy-security",
+      "path": "llnl-energy-security.html",
+      "accessed": "2026-09-13",
+      "bytes": 107206,
+      "sha256": "096c76401f729d79c102ac42deb94a67c8d86590a98c8c19bb89903e72f945cf",
+      "content_type": "text/html; charset=UTF-8",
+      "purpose": "Future energy-boundary separation",
+      "redistribution": "Reference snapshot; original authors retain rights. Not a game asset; check source license before redistribution."
+    }
+  ]
+}

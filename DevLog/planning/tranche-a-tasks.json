@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "status": "asset-candidates-started",
+  "baseline_commit": "cd002b4",
+  "authority": "DevLog/019-tranche-a-plan.md",
+  "notes": [
+    "Gameplay implementation remains unstarted. A-09/A-10 began limited candidate work under explicit user instruction; dependencies for production completion remain unmet.",
+    "Paths under creates describe future outputs and need not exist yet.",
+    "B-AUDIT is independent; do not launch coding agents merely because work could run concurrently."
+  ],
+  "tasks": [
+    {
+      "id": "A-01",
+      "title": "Extract local types and migrate save v4",
+      "depends_on": [],
+      "modifies": [
+        "src/sim/world.ts",
+        "src/sim/ecology.ts"
+      ],
+      "creates": [
+        "src/sim/world-types.ts",
+        "src/sim/persistence.ts",
+        "tests/local-persistence.test.ts"
+      ],
+      "acceptance": "v1/v2/v3 fixtures preserve physical state; v4 validates local IDs and ownership; certificates become stale",
+      "status": "planned",
+      "kind": "implementation"
+    },
+    {
+      "id": "A-02",
+      "title": "Target assignment and conserved two-zone delivery",
+      "depends_on": [
+        "A-01"
+      ],
+      "modifies": [
+        "src/sim/world.ts",
+        "src/sim/network.ts",
+        "src/sim/ecology.ts",
+        "src/renderer.ts"
+      ],
+      "creates": [
+        "src/sim/targets.ts",
+        "tests/process-fields.test.ts"
+      ],
+      "acceptance": "Analytic phase/group cases and total world ledger; frontier baseline unchanged; no emitter double delivery",
+      "status": "planned",
+      "kind": "implementation"
+    },
+    {
+      "id": "A-03",
+      "title": "Local controllers and dependency-based qualification",
+      "depends_on": [
+        "A-02"
+      ],
+      "modifies": [
+        "src/sim/world.ts",
+        "src/sim/diagnostics.ts"
+      ],
+      "creates": [
+        "src/sim/control.ts",
+        "src/sim/qualification.ts",
+        "tests/local-control.test.ts",
+        "tests/local-qualification.test.ts"
+      ],
+      "acceptance": "Exclusive ownership; bounded fair scheduling; local and shared-service invalidation; trial evaluation has no side effects",
+      "status": "planned",
+      "kind": "implementation"
+    },
+    {
+      "id": "A-04",
+      "title": "Process reservations, exposure and rework",
+      "depends_on": [
+        "A-02"
+      ],
+      "modifies": [
+        "src/sim/world.ts",
+        "src/sim/ecology.ts",
+        "src/sim/persistence.ts"
+      ],
+      "creates": [
+        "src/sim/process.ts",
+        "src/sim/process-recipes.ts",
+        "tests/process-lifecycle.test.ts"
+      ],
+      "acceptance": "Every interruption conserves owned batches; cumulative-dose rework once; exactly-once result across load",
+      "status": "planned",
+      "kind": "implementation"
+    },
+    {
+      "id": "A-05",
+      "title": "Buildable cell and no-cheat bootstrap fixture",
+      "depends_on": [
+        "A-03",
+        "A-04"
+      ],
+      "modifies": [
+        "src/sim/definitions.ts",
+        "src/sim/geometry.ts",
+        "src/sim/world.ts",
+        "src/equipment-state.ts",
+        "src/presentation.ts"
+      ],
+      "creates": [
+        "scripts/precision-cell-fixture.ts",
+        "tests/precision-cell.test.ts"
+      ],
+      "acceptance": "Actual starter resources fund cell; wired power and routes valid; three accepted cycles qualify; output enters inventory",
+      "status": "planned",
+      "kind": "implementation"
+    },
+    {
+      "id": "A-06",
+      "title": "Contextual process inspector and tutorial",
+      "depends_on": [
+        "A-05"
+      ],
+      "modifies": [
+        "src/main.ts",
+        "src/style.css",
+        "src/renderer.ts",
+        "src/ui/tutorial.ts",
+        "src/sim/diagnostics.ts"
+      ],
+      "creates": [
+        "src/ui/process-inspector.ts",
+        "src/ui/domain-inspector.ts",
+        "tests/browser/precision-cell.spec.ts"
+      ],
+      "acceptance": "Keyboard binding/tuning; predicted versus actual result; explain failed part; preserve frontier journey",
+      "status": "planned",
+      "kind": "implementation"
+    },
+    {
+      "id": "A-07",
+      "title": "Selected blueprints and transactional deployment",
+      "depends_on": [
+        "A-05"
+      ],
+      "modifies": [
+        "src/sim/world.ts",
+        "src/sim/persistence.ts",
+        "src/renderer.ts",
+        "src/main.ts"
+      ],
+      "creates": [
+        "src/sim/blueprints.ts",
+        "src/ui/blueprint-inspector.ts",
+        "tests/local-blueprints.test.ts",
+        "tests/browser/local-blueprints.spec.ts"
+      ],
+      "acceptance": "Fresh identities; empty inventories; external slot preview; failed placement leaves state unchanged; independent second cell",
+      "status": "planned",
+      "kind": "implementation"
+    },
+    {
+      "id": "A-08",
+      "title": "Build, operations and session menu shell",
+      "depends_on": [
+        "A-06",
+        "A-07"
+      ],
+      "modifies": [
+        "src/main.ts",
+        "src/style.css",
+        "index.html",
+        "src/ui/tutorial.ts",
+        "src/ui/technology.ts"
+      ],
+      "creates": [
+        "src/ui/operations.ts",
+        "src/ui/build-menu.ts",
+        "src/ui/session-menu.ts",
+        "src/ui/pause-state.ts",
+        "tests/browser/menus.spec.ts"
+      ],
+      "acceptance": "Modal focus/pause ownership; live inspector; keyboard placement; navigation and diagnostic parity",
+      "status": "planned",
+      "kind": "implementation"
+    },
+    {
+      "id": "A-09",
+      "title": "Prepare cell visual contract and placeholder review",
+      "depends_on": [
+        "A-05"
+      ],
+      "modifies": [
+        "src/renderer.ts",
+        "src/presentation.ts"
+      ],
+      "creates": [
+        "assets/planning/tranche-a-review.json"
+      ],
+      "acceptance": "Review footprint, power-port overlay, workpiece access and 48/96 px silhouette before generation",
+      "status": "in-progress",
+      "kind": "implementation",
+      "scope_override": "User authorized beginning asset work before A-05. Planned geometry review and initial-direction candidates only; no playable validation, production registration, remaining variants or integration claimed."
+    },
+    {
+      "id": "A-10",
+      "title": "Generate and register cell asset family",
+      "depends_on": [
+        "A-09"
+      ],
+      "modifies": [],
+      "creates": [
+        "assets/animations/candidates/tranche-a/",
+        "assets/planning/tranche-a-review.json"
+      ],
+      "acceptance": "One-direction source accepted before turnarounds; true alpha measured; each view/condition/event crop and anchor reviewed",
+      "status": "in-progress",
+      "kind": "asset-generation",
+      "scope_override": "User authorized beginning asset work before A-05. Planned geometry review and initial-direction candidates only; no playable validation, production registration, remaining variants or integration claimed."
+    },
+    {
+      "id": "A-11",
+      "title": "Integrate art and real process events",
+      "depends_on": [
+        "A-06",
+        "A-10"
+      ],
+      "modifies": [
+        "src/assets.ts",
+        "src/presentation.ts",
+        "src/renderer.ts",
+        "src/equipment-state.ts",
+        "src/equipment-effects.ts",
+        "src/state-review.ts",
+        "tests/browser/assets.spec.ts"
+      ],
+      "creates": [
+        "tests/browser/process-art.spec.ts"
+      ],
+      "acceptance": "Only reviewed sources promoted; anchored ports; completion once; pause/power/reduced-motion correct in world",
+      "status": "planned",
+      "kind": "implementation"
+    },
+    {
+      "id": "A-12",
+      "title": "Integrated acceptance and measured playtest",
+      "depends_on": [
+        "A-08",
+        "A-11"
+      ],
+      "modifies": [
+        "scripts/benchmark-connected.ts",
+        "scripts/connected-review-fixture.ts",
+        "README.md",
+        "DevLog/004-implementation-journal.md",
+        "DevLog/017-industrial-gameplay-tranches.md"
+      ],
+      "creates": [
+        "DevLog/evidence/tranche-a/",
+        "tests/browser/precision-expedition.spec.ts"
+      ],
+      "acceptance": "Fresh expedition with recoverable failure and two cells; performance/convergence reported; human evidence distinguished",
+      "status": "planned",
+      "kind": "verification"
+    },
+    {
+      "id": "B-AUDIT",
+      "title": "Separate performance baseline and reuse investigation",
+      "depends_on": [],
+      "modifies": [
+        "scripts/benchmark-connected.ts",
+        "scripts/benchmark-browser-connected.mjs",
+        "src/sim/network.ts",
+        "src/sim/world.ts"
+      ],
+      "creates": [
+        "DevLog/evidence/tranche-a/performance-investigation.md"
+      ],
+      "acceptance": "Same-machine before/after; no assumed speedup; \u226416 ms p95 assessed separately from validity cap",
+      "status": "planned",
+      "kind": "verification"
+    }
+  ]
+}

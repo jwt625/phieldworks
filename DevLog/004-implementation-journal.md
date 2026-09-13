@@ -120,3 +120,25 @@ The user added a NIF-inspired fusion energy pillar and explicitly selected fusio
 Created [018](018-fusion-energy-roadmap.md) with primary-source physics references, proposed equipment/asset families, research dependencies, a shared-platform capability matrix, shot/plant energy accounting and staged delivery. Updated 016/017, the technology/handoff entry points and README. The roadmap separates optical coherence from pulse synchronization/smoothing and separates target ignition from sustained net electricity. D-F1/D-F2 add experimental and energy-plant milestones while preserving the first precision cell as next implementation.
 
 No runtime catalog, recipes, code or assets changed. Remaining choices include commercial target architecture, fuel feedstock access and repetition/cooling balance. Documentation link and change-whitespace checks apply; no simulation tests or new performance claims belong to this planning pass.
+
+
+## 2026-09-13 — Tranche A research and file-level execution package
+
+The user authorized targeted background research, caching core references, and detailed tranche-A documents/manifests/TODOs. Added [019](019-tranche-a-plan.md) for scope/gates, [020](020-tranche-a-contracts.md) for simulation/persistence/UI contracts, [021](021-tranche-a-coding-tasks.md) for 12 A work packages plus an independent performance investigation, and [022](022-tranche-a-assets.md) for gated cell art production. JSON manifests record coding dependencies and seven asset jobs with 28 proposed selected raster outputs; none has been generated or implemented by this pass.
+
+Resolved planning defaults include exclusive emitter assignment, orthonormal useful/guard target modes, explicit source-group identity, globally bounded local tuning, shared-stock recipe reservations, one cumulative-dose rework attempt, local qualification dependencies, v4 migration and transactional selected blueprints. Dose/cost/thermal numbers remain provisional. The two-cell budget is arithmetic, not a demonstrated route-valid bootstrap or playtest result.
+
+Cached four primary references (laser-processing paper, MIT optics notes, W3C modal pattern, LLNL energy boundary) with URLs, byte counts and SHA-256 checksums under [references/tranche-a](references/tranche-a/README.md). Notes distinguish external evidence from game abstractions. Updated README and 012/014/017 entry points.
+
+Validation: `node scripts/validate-tranche-a-plan.mjs` passes task/asset DAGs, IDs, existing/prerequisite paths, local document links, planned source/measurement status, output counts, analytic example arithmetic and all four cached-file hashes. `node --check scripts/validate-tranche-a-plan.mjs` and `git diff --check` pass. [Planning validation output](evidence/tranche-a-planning-validation.json) is distinct from gameplay evidence. Game code and runtime assets are unchanged; simulation/build/browser suites were not rerun. Human playtesting, actual no-cheat bootstrap and new performance measurements remain implementation gates.
+
+
+## 2026-09-13 — First precision-cell asset candidates
+
+The user requested starting asset tasks. Read the imagegen skill and used the built-in image tool. Prepared a code-native 3×3 footprint guide and an interactive [review gallery](../assets/planning/tranche-a-review.html) using existing terrain/sprite references. A-05 is not implemented; this is explicitly early candidate work, with production registration and integration still gated.
+
+Generated one intact rotation-0 cell, attempted a targeted alpha correction, then generated an opaque dark-matte version for silhouette review. All three original PNGs and exact prompt/source sidecars are saved under `assets/animations/candidates/tranche-a/`. Every source is 1254×1254 RGB with zero transparent pixels. The first two have painted checkerboards and are rejected for background; v3-matte is a silhouette reference with `needs-alpha` status. No pixels were postprocessed and no candidate was promoted into runtime loading.
+
+Added `scripts/audit-tranche-a-assets.mjs`, measured hashes/alpha, and captured 1280×800 / 1440×1000 review pages plus light/dark/checker/terrain size panels. Browser audit reports zero page errors. Visual inspection finds clear machinery identity at 96px, reduced workpiece readability at 48px and an unacceptable matte rectangle on light/terrain backgrounds. Ground/port/workpiece registration remains unmeasured. Other directions, damage and operation batches remain planned. The next asset action is obtaining actual alpha and validating the master against the playable cell.
+
+Validation for this asset pass: `npm run build`, `node scripts/validate-tranche-a-plan.mjs`, syntax checks and `git diff --check` pass. The candidate audit reports three source hashes verified, zero transparent pixels, and zero browser page errors. Simulation suites were not rerun because no gameplay implementation changed.
