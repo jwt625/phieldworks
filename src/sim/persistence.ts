@@ -4,7 +4,7 @@ import {findRoute} from './routing';
 import {newEcology} from './ecology';
 import {FIELD_PORT_LIMIT} from './network';
 import type {NetworkResult} from './network';
-import {HEIGHT,LINK_LIMIT,LOT_LIMIT,MACHINE_LIMIT,WIDTH,type Blueprint,type Connection,type ControlDomain,type Entity,type ProcessInventory,type Qualification,type QualificationStatus,type ReferenceBinding,type Stats,type Target,type World} from './world-types';
+import {HEIGHT,LINK_LIMIT,LOT_LIMIT,MACHINE_LIMIT,WIDTH,type Blueprint,type Connection,type ControlDomain,type Entity,type ProcessInventory,type ProcessJob,type Qualification,type QualificationStatus,type ReferenceBinding,type Stats,type Target,type World} from './world-types';
 
 export const emptyNet = ():NetworkResult=>({ports:{},absorbed:{},sourcePower:0,linkLoss:0,escaped:0,residual:0});
 export const emptyStats = ():Stats=>({network:emptyNet(),targetPower:0,targets:{},protectiveAbsorption:0,offTarget:0,radiated:0,heat:0,leaked:0,supply:0,demand:0,overload:0,wireOverload:0,controlCursor:0,bendRadiation:0,propagationLoss:0,error:'',emitterFields:{}});
@@ -109,8 +109,15 @@ function loadRecords(s:Record<string,unknown>,w:World,fail:()=>never){
  const proc=s.process as ProcessInventory|undefined;
  if(!proc||!Number.isInteger(proc.accepted)||proc.accepted<0||!Array.isArray(proc.lots)||proc.lots.length>LOT_LIMIT)fail();
  const lotIds=new Set<string>();
- for(const lot of proc.lots){if(!lot||typeof lot.id!=='string'||!/^pl\d+$/.test(lot.id)||lotIds.has(lot.id)||!['reject','scrap'].includes(lot.kind)||typeof lot.recipe!=='string'||!Number.isInteger(lot.version)||lot.version<0||typeof lot.parent!=='string'||!nonnegative(lot.assemblies)||!nonnegative(lot.crystal)||!['recoverable','spent'].includes(lot.disposition))fail();lotIds.add(lot.id);}
- w.targets=targets;w.references=references;w.domains=domains;w.qualifications=qualifications;w.process={accepted:proc.accepted,lots:proc.lots.map(l=>({...l}))};
+ for(const lot of proc.lots){if(!lot||typeof lot.id!=='string'||!/^pl\d+$/.test(lot.id)||lotIds.has(lot.id)||!['reject','scrap'].includes(lot.kind)||typeof lot.recipe!=='string'||!Number.isInteger(lot.version)||lot.version<0||typeof lot.parent!=='string'||!nonnegative(lot.assemblies)||!nonnegative(lot.crystal)||!['recoverable','spent'].includes(lot.disposition)||!(lot.owner===undefined||lot.owner===null||(typeof lot.owner==='string'&&entityIds.has(lot.owner)))||!(lot.useful===undefined||nonnegative(lot.useful))||!(lot.guard===undefined||nonnegative(lot.guard)))fail();lotIds.add(lot.id);}
+ const rawJobs=Array.isArray(s.jobs)?s.jobs as ProcessJob[]:[];
+ if(rawJobs.length>MACHINE_LIMIT*2)fail();
+ const jobIds=new Set<string>();
+ for(const j of rawJobs){if(!j||typeof j.id!=='string'||!/^j\d+$/.test(j.id)||jobIds.has(j.id)||!(j.cell===null||(typeof j.cell==='string'&&entityIds.has(j.cell)))||typeof j.target!=='string'||!targetIds.has(j.target)||typeof j.recipe!=='string'||!Number.isInteger(j.version)||j.version<0||!['reserved','exposing','suspended','complete'].includes(j.stage)||!(j.outcome===null||['accepted','recoverable-reject','scrap'].includes(j.outcome))||!j.inputs||!nonnegative(j.inputs.assemblies)||!nonnegative(j.inputs.crystal)||typeof j.consumed!=='boolean'||!nonnegative(j.elapsed)||!nonnegative(j.useful)||!nonnegative(j.guard)||!Number.isInteger(j.interruptions)||j.interruptions<0||typeof j.rework!=='boolean'||!(j.lot===null||typeof j.lot==='string')||!Number.isInteger(j.event)||j.event<0||(j.stage==='complete')!==(j.event>0))fail();jobIds.add(j.id);}
+ w.targets=targets;w.references=references;w.domains=domains;w.qualifications=qualifications;
+ w.process={accepted:proc.accepted,lots:proc.lots.map(l=>({...l,owner:l.owner??null,useful:l.useful??0,guard:l.guard??0}))};
+ w.jobs=rawJobs.map(j=>({...j,inputs:{...j.inputs}}));
+ w.eventSeq=Number.isInteger(s.eventSeq)?s.eventSeq as number:w.jobs.reduce((n,j)=>Math.max(n,j.event),0);
 }
 
 /** Migrate v1/v2/v3 geometry/ecology state into explicit frontier target/domain/qualification records. */
@@ -125,7 +132,7 @@ function migrateRecords(s:{target:{x:number;y:number;health:number};controller:b
  w.domains=[{id:domainId,name:'Frontier',target:targetId,reference:first?.id??null,sensor:null,tuners:w.entities.filter(e=>e.kind==='tuner').map(e=>e.id),enabled:s.controller===true&&first!==null,objective:'target-power',cursor:0}];
  const status:QualificationStatus=s.commission?.state==='qualified'?'stale':'idle';
  w.qualifications=[{id:alloc('q'),domain:domainId,target:targetId,status,signature:'',elapsed:0,minimum:-1,counters:0,dependencies:[],reason:status==='stale'?'Loaded legacy certificate — re-verify':'Loaded installation — recommission to verify rating',code:''}];
- w.process=newProcess();
+ w.process=newProcess();w.jobs=[];w.eventSeq=0;
 }
 
 /** A loaded certificate is not fresh evidence: reset partial tests and stale existing qualifications. */
@@ -151,7 +158,7 @@ export function deserializeCore(raw:string):World{
  if(!eco||typeof eco.defenseReady!=='boolean'||!nonnegative(eco.grace)||eco.grace>30||!nonnegative(eco.threat)||eco.threat>60||!Array.isArray(eco.creatures)||eco.creatures.length>20)fail();
  const creatureIds=new Set<string>();for(const c of eco.creatures){if(!c||typeof c.id!=='string'||!/^c\d+$/.test(c.id)||creatureIds.has(c.id)||!['patrol','investigate','attack','flee'].includes(c.state)||![0,1,2,3].includes(c.heading)||!['x','y','health','exposure'].every(k=>nonnegative(c[k]))||c.x>WIDTH||c.y>HEIGHT||c.health>30||c.exposure>60||!c.target||!finite(c.target.x)||!finite(c.target.y))fail();creatureIds.add(c.id);}eco.shots=[];
  const entities=validateEntities(s.entities,fail);
- const clean:World={version:4,ecology:eco,time:s.time,nextId:s.nextId,entities,links:[],deposits:[],stock:s.stock,produced:s.produced,targets:[],references:[],domains:[],qualifications:[],process:newProcess(),frontier:s.frontier,revision:s.revision,statsRevision:-1,blueprint:null,events:[],stats:emptyStats()};
+ const clean:World={version:4,ecology:eco,time:s.time,nextId:s.nextId,entities,links:[],deposits:[],stock:s.stock,produced:s.produced,targets:[],references:[],domains:[],qualifications:[],process:newProcess(),jobs:[],eventSeq:0,frontier:s.frontier,revision:s.revision,statsRevision:-1,blueprint:null,events:[],stats:emptyStats()};
  for(const dep of s.deposits)if(!dep||!['ore','crystal'].includes(dep.kind)||!['x','y','w','h','remaining'].every(k=>nonnegative(dep[k]))||dep.w<1||dep.h<1||dep.x+dep.w>WIDTH||dep.y+dep.h>HEIGHT||!Number.isInteger(dep.remaining))fail();
  clean.deposits=s.deposits;
  clean.links=buildLinks(entities,s.links,legacy,fail);

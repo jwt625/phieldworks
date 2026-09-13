@@ -80,8 +80,34 @@ export interface ProcessLot {
   assemblies:number;
   crystal:number;
   disposition:'recoverable' | 'spent';
+  /** Cell that may rework a recoverable lot; null for shared scrap. */
+  owner:string|null;
+  useful:number;
+  guard:number;
 }
 export interface ProcessInventory {accepted:number;lots:ProcessLot[]}
+
+export type ProcessStage = 'reserved' | 'exposing' | 'suspended' | 'complete';
+export type ProcessOutcome = 'accepted' | 'recoverable-reject' | 'scrap';
+export interface ProcessJob {
+  id:string;
+  cell:string|null;
+  target:string;
+  recipe:string;
+  version:number;
+  stage:ProcessStage;
+  outcome:ProcessOutcome|null;
+  inputs:{assemblies:number;crystal:number};
+  consumed:boolean;
+  elapsed:number;
+  useful:number;
+  guard:number;
+  interruptions:number;
+  rework:boolean;
+  lot:string|null;
+  /** Monotonic terminal event sequence; never a repeating world-time phase. */
+  event:number;
+}
 
 export interface World {
   version:4;
@@ -98,6 +124,8 @@ export interface World {
   domains:ControlDomain[];
   qualifications:Qualification[];
   process:ProcessInventory;
+  jobs:ProcessJob[];
+  eventSeq:number;
   frontier:boolean;
   revision:number;
   statsRevision:number;

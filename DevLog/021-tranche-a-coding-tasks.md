@@ -51,15 +51,19 @@ Honest deferral: process qualification does not accumulate or grant anything yet
 
 ## A-04 — process lifecycle and inventory
 
-- [ ] Add versioned starter recipe constants to `src/sim/process-recipes.ts`. Keep the preview catalog untouched.
-- [ ] Add `src/sim/process.ts` with atomic reservation, consume-on-first-exposure, dose accumulation, suspend/resume, terminal commit and one cumulative-dose rework.
-- [ ] Store batch provenance and separate process waste from legacy scrap. Enforce capacity before consuming inputs; expose full storage as a blocker.
-- [ ] Clamp final exposure integration to the remaining active duration rather than integrating a whole step beyond eight seconds. Do not bank progress while suspended.
-- [ ] Finalize batch loss through one helper from thermal destruction, wildlife destruction, dismantling and cancellation.
-- [ ] Extend persistence validation/roundtrip fixtures to all stages, terminal-event boundaries and rework ownership.
-- [ ] Test missing one ingredient, two simultaneous cells competing for last stock, double cancel/complete, no-dose batch, threshold boundaries, changed dt partition, pause, repair, reload and exhausted reject storage.
+- [x] Add versioned starter recipe constants to `src/sim/process-recipes.ts`. Keep the preview catalog untouched.
+- [x] Add `src/sim/process.ts` with atomic reservation, consume-on-first-exposure, dose accumulation, suspend/resume, terminal commit and one cumulative-dose rework.
+- [x] Store batch provenance and separate process waste from legacy scrap. Enforce capacity before consuming inputs; expose full storage as a blocker.
+- [x] Clamp final exposure integration to the remaining active duration rather than integrating a whole step beyond eight seconds. Do not bank progress while suspended.
+- [x] Finalize batch loss through one helper from thermal destruction, wildlife destruction, dismantling and cancellation.
+- [x] Extend persistence validation/roundtrip fixtures to all stages, terminal-event boundaries and rework ownership.
+- [x] Test missing one ingredient, two simultaneous cells competing for last stock, double cancel/complete, no-dose batch, threshold boundaries, changed dt partition, pause, repair, reload and exhausted reject storage.
 
 Files: `process.ts`, `process-recipes.ts`, `world.ts`, `ecology.ts`, `persistence.ts`; `tests/process-lifecycle.test.ts`. Gate: batch/output audit closes across every interruption; no positive result from a pure preview.
+
+**A-04 implementation note — 2026-09-13.** `process-recipes.ts` holds the versioned `standard-cell@1` constants (2 assemblies + 1 crystal, 8 s, useful 80–640, guard fraction ≤0.10, 8 s rework); the preview catalog is untouched. `process.ts` owns reservation (stock debited immediately, provenance marked `consumed` only on the first active exposure step), dose integration reading `stats.targets[target].useful/guard`, suspension with no banked progress, terminal commit once with a monotonic `eventSeq`, one cumulative-dose rework that consumes the owned reject lot atomically, and a single `finalizeLoss` path used by cancellation, dismantling and destruction. The final tick clamps `activeDt` to the remaining duration. `World` gained `jobs` and `eventSeq`; `ProcessLot` gained `owner`/`useful`/`guard`, all defaulted on load so A-01-era v4 saves still validate. `world.ts` exposes `reserveProcess`/`cancelProcess`/`reworkProcess` plus `processPreview`/`processBlocker`, calls the process step after control and before thermal integration, and finalizes lost jobs after heat and wildlife destruction. `ecology.ts` needed no change: wildlife sets health to zero and the world step routes that through `finalizeLostJobs`, so both destruction paths share the helper.
+
+Honest deferral: process qualification still does not consume completed-cycle events (three consecutive accepted cycles remain A-05 integration), and no UI/reservation surface exists yet (A-06). Workpiece heat/cell cooling is A-05, so `finalizeLoss` covers loss but process thermal absorption is not yet added to a cell's temperature. `ProcessLot` capacity is enforced by blocking reservation at the bounded lot count; automatic merging of identical spent provenance summaries is not implemented.
 
 ## A-05 — buildable first cell
 
