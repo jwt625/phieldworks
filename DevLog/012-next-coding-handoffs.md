@@ -23,7 +23,7 @@ Remedy implemented against baseline `deb2242`:
 - New regression tests: disconnected regions solve independently with zero cross-coupling; the solver enforces the same port cap as placement; the cap is enforced by save load; the existing singular/occupied/gain failures still pass. `tests/network.test.ts`, `tests/world.test.ts`.
 - Reproducible command: `npm run bench:review` (writes `test-results/performance-review.json`). Post-remedy report copied to `DevLog/evidence/012-p0-solver-after.json` (Apple M4 Pro, Node v23.7.0).
 
-**P0 remaining verification (not done):** the benchmark's world-step rows still use disconnected sentries, so a *connected* large-field-network world-step/render and browser frame-pacing measurement at the supported cap is outstanding; multi-machine hardware breadth; and visual confirmation that overload/isolation still reads correctly after the solver change. Treat the ≤16 ms claim as solver-only until that connected-world run exists.
+**Historical P0 verification queue (subsequently exercised in 015):** the benchmark's world-step rows still use disconnected sentries, so a *connected* large-field-network world-step/render and browser frame-pacing measurement at the supported cap is outstanding; multi-machine hardware breadth; and visual confirmation that overload/isolation still reads correctly after the solver change. Treat the ≤16 ms claim as solver-only until that connected-world run exists.
 
 ## P1 — Persistent research and first manufacturing loop (after P0)
 
@@ -61,3 +61,15 @@ Planning decisions for a first balance pass: charge `ceil(route length / 4)` ass
 ## Shared completion gate
 
 Run `npm test`, `npm run build`, relevant Playwright scenarios, and `git diff --check`. Regenerate `npm run docs:progression` only if design data changes. Tests must assert observable contracts, not mirror implementation. Preserve unrelated work. Update this log and the relevant feature log with evidence; never mark generated art as runtime integration or a passing automated assertion as visual approval.
+
+
+## Reconciliation after 6f4e40f — 2026-09-13
+
+Remote navigation update `0c7cc54` is also incorporated: technology wheel zoom/drag pan and minimap double-click recenter are implemented. Preserve those controls during P2 changes; physical trackpad gesture behavior still requires device testing.
+
+- P0 consistency and factorization changes are implemented. Exact cap boundaries and LU reference comparison pass. Connected-world and browser pacing checks have now run: **performance acceptance failed**, so prioritize [P0.1 in 015](015-connected-world-validation.md). Do not mark P0 performance complete. Further hardware breadth remains open.
+- P1 remains unimplemented. Data/persistence work can proceed on the small starter scenario while P0.1 is addressed; acceptance at large scale must wait. Clarify input ownership: reserve a complete research-unit pack set atomically at work start, refund only unconsumed reservations on queue cancellation, and account destroyed machine buffers as scrap. Persist partial work and reservation ownership, never reserve the same packs in two laboratories.
+- P2 art mapping is **partially complete**: 27 canonical illustrations, in-game detail previews and a canonical gallery exist; four targeted art/progression browser scenarios passed at the checkpoint. The old 18-node gallery still exists. Runtime queue binding depends on P1; do not reimplement the existing recipe graph. Add clear legacy-gallery navigation, explicit artwork review status, trace/heat legend units and dense-map label prioritization.
+- P3 remains unimplemented; the provisional price/refund/route ownership decisions above still apply. No generator-to-generator or shared-feed test is possible before new bus topology.
+- P4 remains unimplemented in the world. Original condition-row bleed and event/anchor issues persist. Select sources by explicit reviewed status, not merely by the highest filename version. A candidate with a repaired background can still fail motion or camera registration.
+- P5 human pacing remains open. Scripted commissioning is evidence of reachability, not usability.

@@ -34,7 +34,7 @@ Run `npx tsx scripts/benchmark-review.ts`; machine: Apple M5, macOS arm64, Node 
 | 128 | 12.51 ms | 44.32 ms | 167.71 ms |
 | 130 / 256 / 400 | rejected | rejected | rejected |
 
-**P0 failure:** world placement/save cap is 400, but `solveNetwork` rejects over 128. A world with only 33 junctions (132 ports) reports `Prototype limit: 128 wave ports`, even with no connected sources. Existing cap tests check placement but never solve the accepted large world. Do not describe 400 as supported. The 128-port/16-group solve also substantially exceeds the 50 ms fixed-step interval.
+**P0 failure:** world placement/save cap is 400, but `solveNetwork` rejects over 128. A world with only 33 junctions (132 ports) reports `Prototype limit: 128 wave ports`, even with no connected sources. Existing cap tests check placement but never solve the accepted large world. Do not describe 400 as supported. The 128-port/16-group solve also substantially exceeds the 100 ms fixed-step interval (DT=.1).
 
 World steps with starter field network plus disconnected sentries: 40/80/120 machines p95 0.20/0.19/0.11 ms (25 warmups, 100 samples). These cheap disconnected loads do not validate large field networks. Browser canvas CPU submission at the same counts initially measured p95 1.0/1.1/1.8 ms (15 warmups, 50 samples); GPU raster/presentation and frame pacing are excluded. Full raw reports: `test-results/performance-review.json`, `visual-review.json`.
 
@@ -48,3 +48,6 @@ World steps with starter field network plus disconnected sentries: 40/80/120 mac
 ## Follow-up — 2026-09-13 (P0 remedy)
 
 The 400-vs-128 contradiction in the capacity section is resolved in code; evidence and remaining gaps are recorded in [012](012-next-coding-handoffs.md) P0 progress. Single supported cap is now `FIELD_PORT_LIMIT=256` across placement, save load and `solveNetwork`; the solver partitions disconnected components and reuses one LU factorization per block. Post-remedy benchmark (`DevLog/evidence/012-p0-solver-after.json`, Apple M4 Pro): 128 ports / 16 groups 1.14 ms p95 (was 167.71); 256 / 1 group 4.33 ms p95; 400 rejected. The stale field-manual sentence about an overloaded generator shutting all attached loads down was corrected to match isolation behavior. This does not satisfy the connected-world frame-pacing or human-pacing gates above, which remain open.
+
+
+Connected-world checks have now been executed after P0. See [015](015-connected-world-validation.md) for the failed performance gate, browser pacing, and the next bounded coding remedy. Original visual findings remain open until their corresponding presentation fixes are implemented.
