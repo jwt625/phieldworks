@@ -1,5 +1,9 @@
 # Next coding handoffs
 
+> Planning addition: [018](018-fusion-energy-roadmap.md) and the D-F1/D-F2 extensions in [017](017-industrial-gameplay-tranches.md) add experimental fusion and sustained net energy. Share infrastructure/research across manufacturing, energy and propulsion. Final launch requires sustained fusion supply; conventional power bootstraps it.
+
+> Current planning authority: [016 — coherence, industry and lightsail design](016-coherence-industry-and-lightsail-design.md) and [017 — implementation tranches](017-industrial-gameplay-tranches.md), approved for documentation on 2026-09-13. The A–E sequence in 017 supersedes the future P1–P5 ordering below. Retain the historical implementation evidence and applicable accounting/verification contracts. Start with local targets/controllers/qualification and the first precision cell; research follows that working process. Remaining P0.1 performance work maps to tranche B and can be investigated alongside A. This update does not mark new mechanics implemented.
+
 2026-09-13. Baseline: `0bd3935`. Read 000–011 and current simulation, presentation, UI and tests. This is a task queue for coding subagents; unchecked work is not implemented. Execute in the dependency order below; independent owners may work in separate branches. Each handoff must report changed files, commands/results and remaining limitations.
 
 ## Objective and scope

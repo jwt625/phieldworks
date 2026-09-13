@@ -101,3 +101,22 @@ Pulled `11d2987` (connected-world validation). The 256-port cap is consistent bu
 - Validation: 58 headless, 19 browser, build, `git diff --check` all pass.
 
 Still open: ≤16 ms p95 step is unmet for control-on and 16-group connected cases (topology/assembly caching or low-rank phase-trial updates, or a performance cap distinct from the 256 validity bound). P1–P5 not started. Uncommitted.
+
+## 2026-09-13 — Industrial gameplay design iteration C
+
+The user approved the discussion outline and requested documentation of the new design and planning. Created [016](016-coherence-industry-and-lightsail-design.md) for decisions/contracts and [017](017-industrial-gameplay-tranches.md) for A–E delivery gates. Accepted direction links material production to field-assisted processing, develops both beam-drive and sail engineering, replaces global control/qualification with local domains, specializes wave connections, investigates boundary-port reduction and reorganizes the HUD around menus/contextual inspection.
+
+The unanswered setting, manual-tuning and challenge-emphasis questions are recorded as provisional working defaults, not individual user selections. The campaign recommendation is one planet plus an orbital launch layer. Exact recipe balance and mission parameters remain open.
+
+Linked the new authority from 000, 001, 003, 007, 012 and README. The old handoff contracts and historical evidence remain available; 017 replaces their future ordering and accounts for already implemented P0.1 improvements. The existing research catalog/generated diagrams and assets await the scoped implementation passes. No simulation, UI, catalog or asset changes were made.
+
+Documentation validation: local Markdown file targets and whitespace checked. Simulation/build/browser suites were not rerun for this documentation-only change; prior regression/performance evidence is attributed to its recorded checkpoint in 017.
+
+
+## 2026-09-13 — Fusion energy and shared infrastructure
+
+The user added a NIF-inspired fusion energy pillar and explicitly selected fusion as required for final launch and manufactured fuel cartridges as the initial fuel model. A further instruction requires manufacturing, fusion and propulsion to share infrastructure, equipment and research wherever possible.
+
+Created [018](018-fusion-energy-roadmap.md) with primary-source physics references, proposed equipment/asset families, research dependencies, a shared-platform capability matrix, shot/plant energy accounting and staged delivery. Updated 016/017, the technology/handoff entry points and README. The roadmap separates optical coherence from pulse synchronization/smoothing and separates target ignition from sustained net electricity. D-F1/D-F2 add experimental and energy-plant milestones while preserving the first precision cell as next implementation.
+
+No runtime catalog, recipes, code or assets changed. Remaining choices include commercial target architecture, fuel feedstock access and repetition/cooling balance. Documentation link and change-whitespace checks apply; no simulation tests or new performance claims belong to this planning pass.

@@ -1,5 +1,9 @@
 # Technology and production progression — revision B
 
+> Fusion extension: [018](018-fusion-energy-roadmap.md) adds proposed energy research to the shared manufacturing/beam/sail foundation. Fusion is required for final launch, with manufactured fuel cartridges initially. Audit new capabilities against existing equipment and prefer shared chassis/tooling/parts; the current generated catalog has not yet been changed.
+
+> Revision C direction is recorded in [016](016-coherence-industry-and-lightsail-design.md), with delivery in [017](017-industrial-gameplay-tranches.md). The 27/99 catalog below remains the existing preview data, awaiting a deliberate catalog revision in tranche C. Local control and a playable precision cell now precede the research rollout; the final fixed-power launch proposal will be replaced by a coupled beam/sail mission contract. Existing recipes and artwork are not automatically revised or implemented by that design approval.
+
 Date: 2026-09-12. Status: detailed design and inspection UI; proposed research and recipes are not implemented. Asset generation still awaits approval.
 
 ## What changed after review

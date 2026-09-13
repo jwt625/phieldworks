@@ -1,5 +1,7 @@
 # Gameplay decisions and frontier experiment
 
+> Continuation: [016](016-coherence-industry-and-lightsail-design.md) preserves this first-loop history and advances the next reward toward field-assisted manufacturing, independent control domains and two lightsail engineering tracks. Its accepted direction supersedes conflicting future assumptions here; [017](017-industrial-gameplay-tranches.md) defines delivery gates.
+
 Date: 2026-09-11
 
 This augments [the original design](000-design-doc.md). It records the discussion following that document without replacing the long-term vision. Confirmed decisions below take precedence over conflicting interpretations of the original; proposed details are implementation hypotheses to playtest.

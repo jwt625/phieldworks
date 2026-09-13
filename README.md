@@ -63,7 +63,11 @@ Placement, save loading and solving now share a 256-field-port cap, with 120 mac
 
 ## Current development checkpoint
 
-The next coding queue is in [012 — coding handoffs](DevLog/012-next-coding-handoffs.md), with explicit TODOs and verification requirements. [013 — verification review](DevLog/013-verification-review.md) records visual findings, the overload experiment and capacity benchmarks. [014 — asset production tracker](DevLog/014-asset-production-tracker.md) records saved sources, correction status and the resume order.
+[Fusion energy planning](DevLog/018-fusion-energy-roadmap.md) adds energy alongside manufacturing and propulsion, sharing equipment families and research across all three. Sustained fusion power is planned as a final-launch requirement, with manufactured fuel cartridges for the initial fuel economy. Experimental ignition and net electricity are separate milestones; these systems are not implemented.
+
+The next gameplay direction is documented in [016 — coherence, industry and lightsail design](DevLog/016-coherence-industry-and-lightsail-design.md): field-assisted manufacturing, local controller/target/qualification domains, specialized wave transport, two beam/sail progression tracks, and a cleaner menu-based HUD. [017 — implementation tranches](DevLog/017-industrial-gameplay-tranches.md) replaces the earlier queue ordering with a first precision-cell slice followed by network foundations, research, regional industry and a sail demonstrator. These are plans, not implemented features; campaign-setting and pacing preferences remain provisional.
+
+The earlier detailed contracts and implementation history remain in [012 — coding handoffs](DevLog/012-next-coding-handoffs.md), mapped to the new tranches in 017. [013 — verification review](DevLog/013-verification-review.md) records visual findings, the overload experiment and capacity benchmarks. [014 — asset production tracker](DevLog/014-asset-production-tracker.md) records saved sources, correction status and the resume order.
 
 ## Project map
 

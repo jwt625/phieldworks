@@ -1,5 +1,7 @@
 # First playable outpost — implementation milestones
 
+> This file records the first playable's historical milestones. The next delivery sequence is [017 — industrial gameplay tranches](017-industrial-gameplay-tranches.md), based on [016 — design iteration C](016-coherence-industry-and-lightsail-design.md). All A–E work remains planned; current performance evidence is in [015](015-connected-world-validation.md).
+
 Started: 2026-09-11. First playable complete; ports/routing continuation tracked in [005](005-ports-routing-and-presentation.md).
 
 Scope: desktop-browser prototype using TypeScript, a canvas world, and DOM UI. Implement a small complete resource-frontier loop with a renderer-independent simulation. The original artwork supported the first loop; the world-interaction milestone adds terrain and dedicated orientation sheets. This is the first short scenario, not the full 30–45 minute balanced slice.
