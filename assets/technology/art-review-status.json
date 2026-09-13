@@ -1,0 +1,191 @@
+{
+  "date": "2026-09-13",
+  "scope": "Explicit review selections, not runtime sprite approval. PNG versions are never auto-promoted.",
+  "entries": {
+    "tech-outpost": {
+      "path": "assets/technology/nodes/outpost-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-fieldcraft": {
+      "path": "assets/technology/nodes/fieldcraft-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-perimeter": {
+      "path": "assets/technology/nodes/perimeter-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-frontier": {
+      "path": "assets/technology/nodes/frontier-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-crystal": {
+      "path": "assets/technology/nodes/crystal-v2.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate. Corrected source inspected: lettering/people removed and full silhouette contained."
+    },
+    "tech-qualification": {
+      "path": "assets/technology/nodes/qualification-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-research": {
+      "path": "assets/technology/nodes/research-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-logistics": {
+      "path": "assets/technology/nodes/logistics-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-instrumentation": {
+      "path": "assets/technology/nodes/instrumentation-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-grid": {
+      "path": "assets/technology/nodes/grid-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-materials": {
+      "path": "assets/technology/nodes/materials-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-modules": {
+      "path": "assets/technology/nodes/modules-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-thermal": {
+      "path": "assets/technology/nodes/thermal-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-defense": {
+      "path": "assets/technology/nodes/defense-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-precision": {
+      "path": "assets/technology/nodes/precision-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-transport": {
+      "path": "assets/technology/nodes/transport-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-coherent": {
+      "path": "assets/technology/nodes/coherent-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-pulses": {
+      "path": "assets/technology/nodes/pulses-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-fabrication": {
+      "path": "assets/technology/nodes/fabrication-v2.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate. Corrected source inspected: lettering/people removed and full silhouette contained."
+    },
+    "tech-photonics": {
+      "path": "assets/technology/nodes/photonics-v2.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate. Corrected source inspected: lettering/people removed and full silhouette contained."
+    },
+    "tech-distributed": {
+      "path": "assets/technology/nodes/distributed-v2.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate. Corrected source inspected: lettering/people removed and full silhouette contained."
+    },
+    "tech-adaptive": {
+      "path": "assets/technology/nodes/adaptive-v2.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate. Corrected source inspected: lettering/people removed and full silhouette contained."
+    },
+    "tech-survey": {
+      "path": "assets/technology/nodes/survey-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-nanofab": {
+      "path": "assets/technology/nodes/nanofab-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-aperture": {
+      "path": "assets/technology/nodes/aperture-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "tech-sail": {
+      "path": "assets/technology/nodes/sail-v2.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate. Corrected source inspected: lettering/people removed and full silhouette contained."
+    },
+    "tech-launch": {
+      "path": "assets/technology/nodes/launch-v1.png",
+      "status": "reviewed-concept",
+      "notes": "Reviewed technology illustration only; product sprites and research implementation are separate."
+    },
+    "extractor-severe-cycle-v1": {
+      "path": "assets/animations/candidates/extractor-severe-cycle-v2.png",
+      "status": "needs-motion-correction",
+      "notes": "Matte repaired; front and rear poses remain too similar, drill phases are subtle, and chassis/scale drift needs correction. Severe damage reads weakly. Not port registered."
+    },
+    "assembler-light-cycle-v1": {
+      "path": "assets/animations/candidates/assembler-light-cycle-v2.png",
+      "status": "needs-motion-correction",
+      "notes": "Matte repaired, but the first row still rotates the hopper/chassis across columns. Reject that row for playback; four stable directions and anchors are required."
+    },
+    "assembler-severe-cycle-v1": {
+      "path": "assets/animations/candidates/assembler-severe-cycle-v2.png",
+      "status": "needs-motion-correction",
+      "notes": "Matte repaired and damage visible, but first-row hopper direction changes and frame scale/base positions drift. Rebuild fixed-view sequences before world use."
+    },
+    "generator-cycle-v1": {
+      "path": "assets/animations/candidates/generator-cycle-v2.png",
+      "status": "needs-registration",
+      "notes": "Recovered correction removes checkerboard. Fan motion is subtle; measure foundation/port drift and verify running/off distinction before world use."
+    },
+    "sentry-fire-v1": {
+      "path": "assets/animations/candidates/sentry-fire-v2.png",
+      "status": "needs-registration",
+      "notes": "Matte repaired. Four aim views and barrel recoil are visible; validate fixed base/port alignment and shot-event timing before world use."
+    },
+    "transport-items-v1": {
+      "path": "assets/animations/candidates/transport-items-v2.png",
+      "status": "reviewed-item-concept",
+      "notes": "Recovered matte correction has four distinct ore/assembly/crystal/scrap silhouettes. Requires individual crop/scale and compositing review on terrain before transport integration."
+    },
+    "guardian-idle-v1": {
+      "path": "assets/animations/candidates/guardian-idle-v2.png",
+      "status": "needs-registration",
+      "notes": "Matte repaired. Four same-view breathing poses preserve rock-armored identity; measure ground-contact drift before world use."
+    },
+    "guardian-collapse-v1": {
+      "path": "assets/animations/candidates/guardian-collapse-v2.png",
+      "status": "needs-registration",
+      "notes": "Matte repaired. Clear four-stage collapse ends in rubble; register fixed ground position and persist terminal remains before world use."
+    },
+    "crawler-attack-v1": {
+      "path": "assets/animations/candidates/crawler-attack-v2.png",
+      "status": "needs-motion-correction",
+      "notes": "Matte repaired and strike poses visible, but front-row strike reverses facing and shifts body center. Correct fixed camera/facing and ground anchors before world use."
+    },
+    "crawler-death-v1": {
+      "path": "assets/animations/candidates/crawler-death-v2.png",
+      "status": "needs-motion-correction",
+      "notes": "Matte repaired; terminal collapsed poses read clearly. First two direction rows are near duplicates rather than true quarter-turn views; register consistent body scale and contacts before world use."
+    }
+  }
+}

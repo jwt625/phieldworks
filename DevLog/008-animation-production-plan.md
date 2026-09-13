@@ -70,4 +70,4 @@ Every delivered atlas needs a sidecar manifest listing frame rectangles, directi
 
 ## Checkpoint — 2026-09-13
 
-Generation has started after approval. Existing operating sheets and nine new candidate clips do not yet complete the frame/state specification below. The user paused work for documentation/commits; see [014](014-asset-production-tracker.md) for saved corrections, source failures and remaining clips.
+Generation has started after approval. Existing operating sheets and nine new candidate clips do not yet complete the frame/state specification below. Work resumed after documentation/commits: all 16 source corrections are saved and reviewed. See [014](014-asset-production-tracker.md) for per-sheet failures, registration gates and remaining clips.

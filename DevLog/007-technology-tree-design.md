@@ -119,4 +119,4 @@ The full catalog contains 5 resources, 31 manufactured items, 43 equipment/tooli
 
 ## Checkpoint — 2026-09-13
 
-Design approval was followed by generation. All 27 canonical nodes now have illustrations; research spending and new machines remain planned. See [014](014-asset-production-tracker.md) for the paused production checkpoint.
+Design approval was followed by generation. All 27 canonical nodes now have illustrations; research spending and new machines remain planned. See [014](014-asset-production-tracker.md) for reviewed source selections and current production status.
