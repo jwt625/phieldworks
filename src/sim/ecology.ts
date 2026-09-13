@@ -1,11 +1,10 @@
-import type {World,Entity} from './world';
+import type {Ecology,Entity,World} from './world-types';
 import {footprint,ports,routeMetrics,type Point} from './geometry';
-export interface Creature extends Point {id:string;health:number;state:'patrol'|'investigate'|'attack'|'flee';heading:number;target:Point;exposure:number}
-export interface Ecology {creatures:Creature[];defenseReady:boolean;grace:number;threat:number;shots:{from:Point;to:Point;ttl:number}[]}
 export function newEcology():Ecology {return {creatures:[{id:'c1',x:23,y:19,health:30,state:'patrol',heading:0,target:{x:26,y:23},exposure:0},{id:'c2',x:33,y:16,health:30,state:'patrol',heading:2,target:{x:31,y:21},exposure:0},{id:'c3',x:10,y:24,health:30,state:'patrol',heading:0,target:{x:15,y:22},exposure:0}],defenseReady:false,grace:30,threat:0,shots:[]};}
 const center=(e:Entity)=>({x:e.x+footprint(e).w/2,y:e.y+footprint(e).h/2});
 const dist=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
-function blocked(w:World,p:Point){return p.x<.5||p.y<.5||p.x>63.5||p.y>35.5||w.entities.some(e=>{const f=footprint(e);return p.x>e.x-.25&&p.x<e.x+f.w+.25&&p.y>e.y-.25&&p.y<e.y+f.h+.25;})||(!w.frontier&&dist(p,w.target)<2.4);}
+const frontier=(w:World)=>w.targets.find(t=>t.kind==='frontier');
+function blocked(w:World,p:Point){const ft=frontier(w);return p.x<.5||p.y<.5||p.x>63.5||p.y>35.5||w.entities.some(e=>{const f=footprint(e);return p.x>e.x-.25&&p.x<e.x+f.w+.25&&p.y>e.y-.25&&p.y<e.y+f.h+.25;})||(!w.frontier&&!!ft&&dist(p,{x:ft.x,y:ft.y})<2.4);}
 /** Bounded, deterministic creature ecology. Exposure is a game signal, not irradiance. */
 export function stepEcology(w:World,dt:number):string[]{
  const eco=w.ecology,messages:string[]=[];eco.shots=eco.shots.filter(s=>(s.ttl-=dt)>0);

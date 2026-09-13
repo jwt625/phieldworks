@@ -1,4 +1,4 @@
-import type {World,Kind} from '../sim/world';
+import {frontierDomain,type World,type Kind} from '../sim/world';
 export interface TutorialContext {world:World;selection:string|null;cameraMoved:boolean;tool:string;build:Kind|null;diagnosticsOpen:boolean}
 interface Lesson {title:string;text:string;anchor:string;focus?:{x:number;y:number};done:(c:TutorialContext)=>boolean}
 const lessons:Lesson[]=[
@@ -11,7 +11,7 @@ const lessons:Lesson[]=[
  {title:'Add and power a second emitter',text:'Build a Field emitter at (20, 12). Choose Wire; click the power unit BUS OUT, then the new emitter POWER IN. Each load needs its own wire.',anchor:'#tool-power',done:c=>c.world.entities.filter(e=>e.kind==='emitter'&&e.powered).length>=2},
  {title:'Complete the second field branch',text:'Choose Field link. Connect junction D → tuner IN, then tuner OUT → second emitter IN. Click terrain for waypoints. B selects bend radius; sharp bends radiate more.',anchor:'#tool-field',done:c=>{const t=c.world.entities.find(e=>e.kind==='tuner');return !!t&&c.world.links.filter(l=>l.type==='field'&&(l.a.node===t.id||l.b.node===t.id)).length===2;}},
  {title:'Inspect problems before tuning',text:'Open Diagnostics. Each active issue explains the failure and a remedy; Locate selects and centers its object. Action failures and events remain in the history. Basic error visibility is always available.',anchor:'#issues',done:c=>c.diagnosticsOpen},
- {title:'Concentrate the field',text:'Inspect the phase tuner and adjust Relative phase. Compare On target and Off target. Enable Automatic phase control to track thermal drift; more than 32 on target damages the stationary armored frontier guardian.',anchor:'#controller',done:c=>c.world.controller&&c.world.frontier},
+ {title:'Concentrate the field',text:'Inspect the phase tuner and adjust Relative phase. Compare On target and Off target. Enable Automatic phase control to track thermal drift; more than 32 on target damages the stationary armored frontier guardian.',anchor:'#controller',done:c=>frontierDomain(c.world)?.enabled===true&&c.world.frontier},
  {title:'Qualify your outpost',text:'Run the 20-second acceptance test, then Record qualified blueprint. If wildlife interrupts the test, inspect Diagnostics, let sentries clear nearby threats, repair damage and retry. Your layout is reusable; each new site still needs local qualification.',anchor:'#commission',done:c=>!!c.world.blueprint}
 ];
 const key='phieldworks.tutorial.v1';

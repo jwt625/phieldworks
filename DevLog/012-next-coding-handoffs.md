@@ -79,3 +79,8 @@ Remote navigation update `0c7cc54` is also incorporated: technology wheel zoom/d
 - P3 remains unimplemented; the provisional price/refund/route ownership decisions above still apply. No generator-to-generator or shared-feed test is possible before new bus topology.
 - P4 remains unimplemented in the world. Original condition-row bleed and event/anchor issues persist. Select sources by explicit reviewed status, not merely by the highest filename version. A candidate with a repaired background can still fail motion or camera registration.
 - P5 human pacing remains open. Scripted commissioning is evidence of reachability, not usability.
+
+## Tranche A progress — 2026-09-13
+
+- A-01 (local records + save v4) is implemented. `World` is now `version:4` with explicit target/reference/domain/qualification records and a bounded process inventory; the writable `target`/`controller`/`commission` globals and the façade↔persistence import cycle are removed. Loading a qualified certificate now marks it `stale`. `npm test` 66 pass, `npm run build` passes, `npm run test:browser` 19/19. Details and remaining gaps in [021](021-tranche-a-coding-tasks.md) and the [journal](004-implementation-journal.md). A-02 is next; it makes emitter assignment authoritative, which A-01 deliberately deferred.
+- The gated cell-asset candidate pass present in the working tree is still uncommitted and unapproved (`production_ready:false`, alpha gate fail); do not treat it as A-09/A-10 completion.

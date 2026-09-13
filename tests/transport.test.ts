@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {captureBlueprint,stampBlueprint,waveLinks,createWorld,newEntity,connect,disconnect,editRoute,place,rotateEntity,step,evaluate,serialize,deserialize,ports,footprint,routeMetrics,type World} from '../src/sim/world';
+import {captureBlueprint,stampBlueprint,waveLinks,createWorld,newEntity,connect,disconnect,editRoute,place,rotateEntity,step,evaluate,serialize,deserialize,ports,footprint,routeMetrics,frontierQualification,type World} from '../src/sim/world';
 import {inside,distance} from '../src/sim/geometry';
 import {findRoute,validPath} from '../src/sim/routing';
 const ticks=(w:World,n:number)=>{for(let i=0;i<n;i++)step(w);};
@@ -36,7 +36,7 @@ test('save preserves routes, orientation and packets; rejects broken geometry an
  const packed=JSON.parse(serialize(w));packed.links.find((l:any)=>l.type==='material').packets=[1,1];assert.throws(()=>deserialize(JSON.stringify(packed)),/Invalid/);
 });
 test('legacy v1 saves migrate to physical routes and explicit power wires',()=>{
- const w=createWorld(),old=JSON.parse(serialize(w));old.version=1;for(const e of old.entities)delete e.rotation;old.links=old.links.filter((l:any)=>l.type!=='power').map(({id,a,b,type}:any)=>({id,a,b,type}));const migrated=deserialize(JSON.stringify(old));assert.equal(migrated.version,3);assert.ok(migrated.links.some(l=>l.type==='power'));assert.ok(migrated.entities.every(e=>e.powered));assert.ok(migrated.links.every(l=>l.path.length>=3));
+ const w=createWorld(),old=JSON.parse(serialize(w));old.version=1;for(const e of old.entities)delete e.rotation;old.links=old.links.filter((l:any)=>l.type!=='power').map(({id,a,b,type}:any)=>({id,a,b,type}));old.target={x:28,y:13,health:600};old.controller=false;old.commission={state:'idle',elapsed:0,minimum:null,rating:0,reason:'',revision:0};delete old.targets;delete old.references;delete old.domains;delete old.qualifications;delete old.process;const migrated=deserialize(JSON.stringify(old));assert.equal(migrated.version,4);assert.ok(migrated.links.some(l=>l.type==='power'));assert.ok(migrated.entities.every(e=>e.powered));assert.ok(migrated.links.every(l=>l.path.length>=3));
 });
 
 test('a power overload shares supply, keeps earlier loads up and isolates only the excess',()=>{
@@ -50,7 +50,7 @@ test('diagonal segments cannot cut through a newly placed footprint corner',()=>
  const w=createWorld();w.links=[{id:'l99',type:'field',a:{node:'e4',port:0},b:{node:'e5',port:0},path:[{x:17,y:12.5},{x:17.5,y:12}],diagonal:true,radius:.5,packets:[]}];assert.match(place(w,'tuner',17,12),/Route/);
 });
 test('blueprint route validation fails atomically before spending or placing',()=>{
- const w=createWorld();w.frontier=true;w.commission.state='qualified';assert.equal(captureBlueprint(w),'');w.stock.assemblies=300;w.blueprint!.links[0].path[1].x+=.25;const before=serialize(w);assert.ok(stampBlueprint(w,38,3));assert.equal(serialize(w),before);
+ const w=createWorld();w.frontier=true;frontierQualification(w)!.status='qualified';assert.equal(captureBlueprint(w),'');w.stock.assemblies=300;w.blueprint!.links[0].path[1].x+=.25;const before=serialize(w);assert.ok(stampBlueprint(w,38,3));assert.equal(serialize(w),before);
 });
 test('editing an installed route preserves its identity, endpoints and profile',()=>{
  const w=createWorld();const belt=w.links.find(l=>l.type==='material')!;const id=belt.id,a={...belt.a},b={...belt.b};const before=routeMetrics(belt.path).length;
@@ -70,5 +70,5 @@ test('editing a material route preserves mass and clamps packets to the new leng
  const length=routeMetrics(belt.path).length;assert.ok(belt.packets.length<=Math.floor(length*2)+1);assert.ok(belt.packets.every((v:number)=>v<=length));assert.ok(w.stock.scrap-scrap<=packets);assert.equal(mass(),conserved);assert.ok(belt.packets.every((v:number,i:number)=>i===0||belt.packets[i-1]-v>=.5-1e-8));
 });
 test('editing a route invalidates a qualified installation',()=>{
- const w=createWorld();const l=w.links.find(l=>l.type==='field')!;w.commission.state='qualified';assert.equal(editRoute(w,l.id,{}),'');assert.equal(w.commission.state,'failed');
+ const w=createWorld();const l=w.links.find(l=>l.type==='field')!;frontierQualification(w)!.status='qualified';assert.equal(editRoute(w,l.id,{}),'');assert.equal(frontierQualification(w)!.status,'failed');
 });

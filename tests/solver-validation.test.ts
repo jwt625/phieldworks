@@ -9,7 +9,7 @@ test('reused LU solves multiple complex right-hand sides like the independent Ga
  }
 });
 test('cap minus one, cap and cap plus one agree across save, placement and solve',()=>{
- for(const portCount of [FIELD_PORT_LIMIT-1,FIELD_PORT_LIMIT,FIELD_PORT_LIMIT+1]){const w=createWorld();w.entities=[];w.links=[];w.frontier=true;w.nextId=1000;const junctions=Math.floor((FIELD_PORT_LIMIT-1)/4);for(let i=0;i<junctions;i++)w.entities.push(newEntity('junction',1+i%16*3,1+Math.floor(i/16)*3,`e${w.nextId++}`));while(w.entities.reduce((n,e)=>n+DEFS[e.kind].ports.length,0)<portCount){const i=w.entities.length-junctions;w.entities.push(newEntity('dump',1+i*3,16,`e${w.nextId++}`));}
+ for(const portCount of [FIELD_PORT_LIMIT-1,FIELD_PORT_LIMIT,FIELD_PORT_LIMIT+1]){const w=createWorld();w.entities=[];w.links=[];w.targets=[];w.references=[];w.domains=[];w.qualifications=[];w.frontier=true;w.nextId=1000;const junctions=Math.floor((FIELD_PORT_LIMIT-1)/4);for(let i=0;i<junctions;i++)w.entities.push(newEntity('junction',1+i%16*3,1+Math.floor(i/16)*3,`e${w.nextId++}`));while(w.entities.reduce((n,e)=>n+DEFS[e.kind].ports.length,0)<portCount){const i=w.entities.length-junctions;w.entities.push(newEntity('dump',1+i*3,16,`e${w.nextId++}`));}
   const solve=()=>solveNetwork(w.entities.map(e=>matched(e.id,DEFS[e.kind].ports.length)),[]);
   if(portCount<=FIELD_PORT_LIMIT){assert.doesNotThrow(solve);assert.equal(deserialize(serialize(w)).stats.error,'');}else{assert.throws(solve,/wave ports/);assert.throws(()=>deserialize(serialize(w)),/Invalid/);}
   assert.equal(!!placementError(w,'dump',60,30),portCount>=FIELD_PORT_LIMIT);

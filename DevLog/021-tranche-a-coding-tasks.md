@@ -4,13 +4,19 @@
 
 ## A-01 — local records and persistence
 
-- [ ] Extract shared types into `src/sim/world-types.ts`, avoiding a runtime circular import from ecology/process modules back into the world façade.
-- [ ] Move schema normalization/validation into `src/sim/persistence.ts`; keep public serialize/deserialize exports stable during transition.
-- [ ] Add local target/domain/reference/qualification records and bounded process inventory fields. Migrate v1/v2/v3 saves through their existing geometry/ecology rules into v4.
-- [ ] Replace writable global target/controller/commission state; temporary read adapters must derive from the frontier domain, not maintain a second authority.
-- [ ] Update ecology target lookup and introduce fixtures for absent reference, stale certificate, legacy blueprint, invalid identities and old malformed saves.
+- [x] Extract shared types into `src/sim/world-types.ts`, avoiding a runtime circular import from ecology/process modules back into the world façade.
+- [x] Move schema normalization/validation into `src/sim/persistence.ts`; keep public serialize/deserialize exports stable during transition.
+- [x] Add local target/domain/reference/qualification records and bounded process inventory fields. Migrate v1/v2/v3 saves through their existing geometry/ecology rules into v4.
+- [x] Replace writable global target/controller/commission state; temporary read adapters must derive from the frontier domain, not maintain a second authority.
+- [x] Update ecology target lookup and introduce fixtures for absent reference, stale certificate, legacy blueprint, invalid identities and old malformed saves.
 
 Files: `world.ts`, `world-types.ts`, `persistence.ts`, `ecology.ts`; new `tests/local-persistence.test.ts`. Gate: runtime build and existing frontier tests pass before changing process physics. A transitional record may have no process jobs, but v4 loader changes in A-04 must retain compatibility with these saves.
+
+**A-01 implementation note — 2026-09-13.** Implemented on baseline `cd002b4` (planning package committed first). `World.version` is now `4` with `targets`, `references`, `domains`, `qualifications` and a bounded `process` inventory; `w.target`/`w.controller`/`w.commission` are gone and all consumers (world, ecology, renderer, minimap, tutorial, main, benchmark fixtures) read `frontierTarget`/`frontierDomain`/`frontierQualification`. Per the user's direction this was a full consumer migration, not temporary getters. `persistence.ts` imports no world runtime and `world.ts` exports a thin `deserialize` that delegates normalization/migration to `deserializeCore` then calls `evaluate`, so the façade↔persistence runtime cycle is avoided.
+
+Deliberate behavior change: loading any save with a `qualified` qualification now sets it to `stale` (partial tests reset to `idle`), per contract §5/§6. The previous loader discarded the certificate to `idle`. Tests and browser specs were updated accordingly.
+
+Honest gaps left for later tasks: `w.frontier` is still a boolean milestone rather than a `Milestones` record; migration fills `target.emitters` and `domain.tuners` but field physics and automatic control still operate on all powered emitters/tuners until A-02/A-03 make the assignment authoritative; qualification `signature`/`dependencies` are empty and reason `code`s are only `dependency-changed`/empty until A-03. `frontierQualification.minimum` uses `-1` as the "no sample" sentinel because `Infinity` is not JSON-safe.
 
 ## A-02 — target delivery
 
