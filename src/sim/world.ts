@@ -12,15 +12,15 @@ export interface Connection {id:string;a:Endpoint;b:Endpoint;type:Transport;path
 export interface Deposit {id:string;x:number;y:number;w:number;h:number;remaining:number;kind:'ore'|'crystal'}
 export interface Blueprint {entities:Entity[];links:Connection[];width:number;height:number}
 export interface Commission {state:'idle'|'testing'|'qualified'|'failed';elapsed:number;minimum:number;rating:number;reason:string;revision:number}
-export interface World {version:3;ecology:Ecology;time:number;nextId:number;entities:Entity[];links:Connection[];deposits:Deposit[];stock:{assemblies:number;crystal:number;scrap:number};produced:number;target:{x:number;y:number;health:number};frontier:boolean;controller:boolean;revision:number;commission:Commission;blueprint:Blueprint|null;events:{time:number;text:string}[];stats:Stats}
-export interface Stats {network:NetworkResult;targetPower:number;offTarget:number;radiated:number;heat:number;leaked:number;supply:number;demand:number;overload:number;wireOverload:number;bendRadiation:number;propagationLoss:number;error:string;emitterFields:Record<string,Record<string,Complex>>}
+export interface World {version:3;ecology:Ecology;time:number;nextId:number;entities:Entity[];links:Connection[];deposits:Deposit[];stock:{assemblies:number;crystal:number;scrap:number};produced:number;target:{x:number;y:number;health:number};frontier:boolean;controller:boolean;revision:number;statsRevision:number;commission:Commission;blueprint:Blueprint|null;events:{time:number;text:string}[];stats:Stats}
+export interface Stats {network:NetworkResult;targetPower:number;offTarget:number;radiated:number;heat:number;leaked:number;supply:number;demand:number;overload:number;wireOverload:number;controlCursor:number;bendRadiation:number;propagationLoss:number;error:string;emitterFields:Record<string,Record<string,Complex>>}
 export const WIDTH=64,HEIGHT=36,DT=.1;
 /** Provisional scale guards. See README deliberate limits; large-factory performance is unbenchmarked. */
 export const MACHINE_LIMIT=120,LINK_LIMIT=512;
 /** Per-wire provisional capacity; a single load never exceeds it today. Real buses await power poles. */
 export const WIRE_CAPACITY=240;
 const emptyNet=():NetworkResult=>({ports:{},absorbed:{},sourcePower:0,linkLoss:0,escaped:0,residual:0});
-const emptyStats=():Stats=>({network:emptyNet(),targetPower:0,offTarget:0,radiated:0,heat:0,leaked:0,supply:0,demand:0,overload:0,wireOverload:0,bendRadiation:0,propagationLoss:0,error:'',emitterFields:{}});
+const emptyStats=():Stats=>({network:emptyNet(),targetPower:0,offTarget:0,radiated:0,heat:0,leaked:0,supply:0,demand:0,overload:0,wireOverload:0,controlCursor:0,bendRadiation:0,propagationLoss:0,error:'',emitterFields:{}});
 const blankCommission=():Commission=>({state:'idle',elapsed:0,minimum:Infinity,rating:0,reason:'Not commissioned',revision:0});
 export const center=(e:Entity)=>({x:e.x+footprint(e).w/2,y:e.y+footprint(e).h/2});
 export function event(w:World,text:string){w.events.unshift({time:w.time,text});w.events=w.events.slice(0,30);}
@@ -72,7 +72,7 @@ export function rotateEntity(w:World,id:string):string {
 export function setPhase(w:World,id:string,degrees:number){const e=entity(w,id);if(!e||e.kind!=='tuner'||!Number.isFinite(degrees))return;e.phase=Math.max(-180,Math.min(180,degrees));invalidate(w,'Manual phase adjustment');}
 export function repair(w:World,id:string):string{const e=entity(w,id);if(!e)return 'Select equipment';if(w.stock.assemblies<3)return 'Repair needs 3 assemblies';w.stock.assemblies-=3;e.health=100;e.temperature=25;e.tripped=false;invalidate(w,'Equipment repaired');event(w,`${DEFS[e.kind].name} repaired and reset`);return '';}
 export function createWorld():World {
- const w:World={version:3,ecology:newEcology(),time:0,nextId:1,entities:[],links:[],deposits:[{id:'starter',x:3,y:5,w:4,h:4,remaining:1400,kind:'ore'},{id:'reserve',x:3,y:17,w:4,h:3,remaining:900,kind:'ore'},{id:'remote-ore',x:38,y:5,w:4,h:4,remaining:1200,kind:'ore'},{id:'frontier',x:29,y:7,w:4,h:4,remaining:500,kind:'crystal'}],stock:{assemblies:28,crystal:0,scrap:0},produced:0,target:{x:28,y:13,health:600},frontier:false,controller:false,revision:0,commission:blankCommission(),blueprint:null,events:[],stats:emptyStats()};
+  const w:World={version:3,ecology:newEcology(),time:0,nextId:1,entities:[],links:[],deposits:[{id:'starter',x:3,y:5,w:4,h:4,remaining:1400,kind:'ore'},{id:'reserve',x:3,y:17,w:4,h:3,remaining:900,kind:'ore'},{id:'remote-ore',x:38,y:5,w:4,h:4,remaining:1200,kind:'ore'},{id:'frontier',x:29,y:7,w:4,h:4,remaining:500,kind:'crystal'}],stock:{assemblies:28,crystal:0,scrap:0},produced:0,target:{x:28,y:13,health:600},frontier:false,controller:false,revision:0,statsRevision:-1,commission:blankCommission(),blueprint:null,events:[],stats:emptyStats()};
  const seed=(kind:Kind,x:number,y:number)=>{const e=newEntity(kind,x,y,`e${w.nextId++}`);w.entities.push(e);return e.id;};
  const gen=seed('generator',9,3),ex=seed('extractor',3,5),as=seed('assembler',3,11),ref=seed('reference',10,9),j=seed('junction',14,9),em=seed('emitter',20,5),dump=seed('dump',14,15);
  connect(w,'material',{node:ex,port:0},{node:as,port:0});connect(w,'field',{node:ref,port:0},{node:j,port:0});connect(w,'field',{node:j,port:2},{node:em,port:0});connect(w,'field',{node:j,port:1},{node:dump,port:0});
@@ -95,8 +95,10 @@ function powerGrid(w:World){
   const loads=component.map(id=>entity(w,id)).filter((e):e is Entity=>!!e&&DEFS[e.kind].watts>0&&healthy(e)).sort((a,b)=>Number(a.id.slice(1))-Number(b.id.slice(1)));
   let used=0;const capacity=gens*240;for(const load of loads){const watts=DEFS[load.kind].watts;if(used+watts<=capacity){load.powered=true;used+=watts;}else overload++;}
  }
+ // A load has one feed and no power output, so each wire carries exactly its receiver's draw.
+ // Revisit this direct calculation if power poles/buses ever allow chained feeds.
  let wireOverload=0;
- for(const l of w.links.filter(l=>l.type==='power')){const visited=new Set([l.a.node]);const stack=[l.b.node];let flow=0;while(stack.length){const id=stack.pop()!;if(visited.has(id))continue;visited.add(id);const e=entity(w,id);if(e&&e.powered&&DEFS[e.kind].watts>0)flow+=DEFS[e.kind].watts;for(const n of adj.get(id)??[])if(!visited.has(n))stack.push(n);}if(flow>WIRE_CAPACITY)wireOverload++;}
+ for(const l of w.links)if(l.type==='power'){const e=entity(w,l.b.node);const flow=e&&e.powered?DEFS[e.kind].watts:0;if(flow>WIRE_CAPACITY)wireOverload++;}
  return {supply,demand,overload,wireOverload};
 }
 /** Geometry uses effective phase rad/tile, not real optical wavelength. */
@@ -112,7 +114,7 @@ export function evaluate(w:World):Stats {
   if(e.kind==='emitter')return {id:e.id,s:[[c(.08)]]};return matched(e.id);
  });
  const stats=emptyStats();Object.assign(stats,grid);
- try{stats.network=solveNetwork(comps,waveLinks(w));}catch(err){stats.error=err instanceof Error?err.message:'Wave solve failed';w.stats=stats;return stats;}
+ try{stats.network=solveNetwork(comps,waveLinks(w));}catch(err){stats.error=err instanceof Error?err.message:'Wave solve failed';w.stats=stats;w.statsRevision=w.revision;return stats;}
  for(const l of w.links.filter(l=>l.type==='field')){const m=routeMetrics(l.path,l.radius),total=m.propagationExponent+m.bendExponent;const outgoing=(stats.network.ports[l.a.node]?.[l.a.port]?.outgoing??0)+(stats.network.ports[l.b.node]?.[l.b.port]?.outgoing??0);const loss=outgoing*(1-Math.exp(-total));stats.bendRadiation+=total?loss*m.bendExponent/total:0;stats.propagationLoss+=total?loss*m.propagationExponent/total:0;}
  let heat=0,radiated=0;const fields:Record<string,Complex>={};const emitters=w.entities.filter(e=>e.kind==='emitter'&&e.powered);const n=Math.max(2,emitters.length);
  for(const e of w.entities){const absorbed=Math.max(0,stats.network.absorbed[e.id]??0);
@@ -120,14 +122,28 @@ export function evaluate(w:World):Stats {
    stats.emitterFields[e.id]={};for(const [group,value] of Object.entries(stats.network.ports[e.id]?.[0]?.fields??{})){const field=mul(value.a,polar(Math.sqrt((1-.08**2)*.92*capture/n),distance*.23));fields[group]=add(fields[group]??c(0),field);stats.emitterFields[e.id][group]=field;}
   }else heat+=absorbed;
  }
- stats.targetPower=Object.values(fields).reduce((s,v)=>s+power(v),0);stats.radiated=radiated;stats.offTarget=Math.max(0,radiated-stats.targetPower);stats.heat=heat;stats.leaked=stats.network.escaped+stats.network.linkLoss+stats.offTarget;w.stats=stats;return stats;
+ stats.targetPower=Object.values(fields).reduce((s,v)=>s+power(v),0);stats.radiated=radiated;stats.offTarget=Math.max(0,radiated-stats.targetPower);stats.heat=heat;stats.leaked=stats.network.escaped+stats.network.linkLoss+stats.offTarget;w.stats=stats;w.statsRevision=w.revision;return stats;
 }
-function automaticControl(w:World){if(!w.controller||!w.entities.some(e=>e.kind==='reference'&&e.powered))return;for(const e of w.entities.filter(e=>e.kind==='tuner'&&e.health>0&&!e.tripped)){const original=e.phase;const base=evaluate(w).targetPower;e.phase=original+2;const plus=evaluate(w).targetPower;e.phase=original-2;const minus=evaluate(w).targetPower;e.phase=original;if(Math.max(plus,minus)>base+1e-6)e.phase=wrap(original+(plus>minus?2:-2));}evaluate(w);}
+function automaticControl(w:World){
+ if(!w.controller||!w.entities.some(e=>e.kind==='reference'&&e.powered))return;
+ const tuners=w.entities.filter(e=>e.kind==='tuner'&&e.health>0&&!e.tripped);if(!tuners.length)return;
+ // Bound work: one tuner per step on a deterministic cursor, and reuse the step's evaluation as the
+ // baseline instead of re-solving it. Two trial phases are compared; only a winning trial re-settles
+ // stats, so unchanged candidates cost nothing beyond the two trials.
+ const cursor=Math.floor(w.time/DT)%tuners.length,e=tuners[cursor],original=e.phase,baseStats=w.stats,base=baseStats.targetPower;
+ e.phase=wrap(original+2);const plus=evaluate(w).targetPower;
+ e.phase=wrap(original-2);const minus=evaluate(w).targetPower;
+ const improved=Math.max(plus,minus)>base+1e-6;
+ if(!improved){e.phase=original;w.stats=baseStats;}
+ else if(plus>=minus){e.phase=wrap(original+2);evaluate(w);}
+ else e.phase=wrap(original-2);
+ w.stats.controlCursor=cursor;
+}
 const wrap=(x:number)=>((x+180)%360+360)%360-180;
 export function setController(w:World,on:boolean){w.controller=on;invalidate(w,'Controller mode changed');event(w,on?'Automatic phase control enabled':'Automatic phase control disabled');}
 export function beginCommission(w:World):string{evaluate(w);if(!w.frontier)return 'Clear the frontier first';if(!w.controller)return 'Enable automatic phase control first';if(w.stats.targetPower<35)return 'Establish at least 35 target power before testing';w.commission={state:'testing',elapsed:0,minimum:Infinity,rating:0,reason:'20 s thermal drift test · minimum 32 target power',revision:w.revision};event(w,'Commissioning started: 20 s drift profile');return '';}
 export function cancelCommission(w:World){w.commission.state='idle';w.commission.reason='Cancelled; not qualified';w.commission.rating=0;}
-export function step(w:World,dt=DT){if(!Number.isFinite(dt)||dt<=0||dt>.25)throw new Error('Step must be between 0 and 0.25 seconds');w.time+=dt;evaluate(w);
+export function step(w:World,dt=DT){if(!Number.isFinite(dt)||dt<=0||dt>.25)throw new Error('Step must be between 0 and 0.25 seconds');w.time+=dt;if(w.statsRevision!==w.revision)evaluate(w);
  for(const e of w.entities){if(!e.powered)continue;
   if(e.kind==='extractor'){const d=w.deposits.find(d=>d.remaining>0&&overlap(e.x,e.y,footprint(e).w,footprint(e).h,d)&&(d.kind==='ore'||w.frontier));if(d){e.progress+=dt;while(e.progress>=.65&&d.remaining>0&&(d.kind==='crystal'||e.ore<20)){e.progress-=.65;d.remaining--;if(d.kind==='crystal')w.stock.crystal++;else e.ore++;}e.progress=Math.min(e.progress,.65);}}
   if(e.kind==='assembler'){if(e.ore>=2){e.progress+=dt;if(e.progress>=1.4){e.progress-=1.4;e.ore-=2;w.stock.assemblies++;w.produced++;}}else e.progress=0;}
@@ -164,7 +180,7 @@ export function stampBlueprint(w:World,x:number,y:number):string {
  for(const l of bp.links){const error=connect(draft,l.type,{node:ids.get(l.a.node)!,port:l.a.port},{node:ids.get(l.b.node)!,port:l.b.port},{path:l.path.map(p=>({x:p.x+x,y:p.y+y})),radius:l.radius,diagonal:l.diagonal});if(error)return error;}
  w.nextId=draft.nextId;w.entities=draft.entities;w.links=draft.links;w.stock.assemblies-=cost;invalidate(w,'Blueprint placed — local commissioning required');event(w,'Blueprint placed; recheck power, deposits and phase at this site');return '';
 }
-export function serialize(w:World){const {stats,...save}=w;return JSON.stringify(save);}
+export function serialize(w:World){const {stats,statsRevision,...save}=w;return JSON.stringify(save);}
 /** Reject malformed saves rather than allowing NaNs, missing endpoints or unbounded solves. */
 export function deserialize(raw:string):World {
  const s=JSON.parse(raw);const fail=()=>{throw new Error('Invalid or unsupported save');};

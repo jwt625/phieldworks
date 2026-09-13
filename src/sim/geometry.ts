@@ -21,11 +21,15 @@ export const same=(a:Point,b:Point)=>a.x===b.x&&a.y===b.y;
 export const distance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
 /** World-space distance from p to the segment a–b, for route hit testing. */
 export function segmentDistance(p:Point,a:Point,b:Point){const dx=b.x-a.x,dy=b.y-a.y,length=dx*dx+dy*dy;if(length===0)return distance(p,a);const t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/length));return distance(p,{x:a.x+t*dx,y:a.y+t*dy});}
-export function routeMetrics(path:Point[],radius=.5){
+export interface RouteMetrics {length:number;bends:{point:Point;radius:number;angle:number;bad:boolean}[];propagationExponent:number;bendExponent:number}
+function computeRouteMetrics(path:Point[],radius=.5):RouteMetrics{
  const corners:Point[]=[];for(const p of path){while(corners.length>=2){const a=corners.at(-2)!,b=corners.at(-1)!;if(Math.abs((b.x-a.x)*(p.y-b.y)-(b.y-a.y)*(p.x-b.x))>1e-8)break;corners.pop();}corners.push(p);}
  let length=0,bendExponent=0;const bends:{point:Point;radius:number;angle:number;bad:boolean}[]=[];
  for(let i=1;i<corners.length;i++)length+=distance(corners[i-1],corners[i]);
  for(let i=1;i<corners.length-1;i++){const a=corners[i-1],b=corners[i],c=corners[i+1],u=distance(a,b),v=distance(b,c);const angle=Math.acos(Math.max(-1,Math.min(1,((b.x-a.x)*(c.x-b.x)+(b.y-a.y)*(c.y-b.y))/(u*v))));const effective=Math.min(radius,Math.min(u,v)/2/Math.tan(angle/2));const bad=effective<.5-1e-8;bends.push({point:b,radius:effective,angle,bad});bendExponent+=.001*(angle/(Math.PI/2))*(1+8*Math.max(0,1-effective/.5)**2);}
  return {length,bends,propagationExponent:.012*length,bendExponent};
 }
+/** Paths are immutable after install; cache by array identity and radius so per-step evaluation reuses metrics. */
+const metricsCache=new WeakMap<Point[],Map<number,RouteMetrics>>();
+export function routeMetrics(path:Point[],radius=.5):RouteMetrics{let byRadius=metricsCache.get(path);if(!byRadius){byRadius=new Map();metricsCache.set(path,byRadius);}let cached=byRadius.get(radius);if(!cached){cached=computeRouteMetrics(path,radius);byRadius.set(radius,cached);}return cached;}
 export function pointAt(path:Point[],travel:number):Point {for(let i=1;i<path.length;i++){const n=distance(path[i-1],path[i]);if(travel<=n){const t=Math.max(0,travel/n);return {x:path[i-1].x+(path[i].x-path[i-1].x)*t,y:path[i-1].y+(path[i].y-path[i-1].y)*t};}travel-=n;}return path.at(-1)!;}

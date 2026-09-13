@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-13T16:55:32.333Z",
+  "browser": "152.0.7977.84",
+  "viewport": "1440x1000",
+  "mode": "headless Chrome; real app requestAnimationFrame intervals, not GPU timings",
+  "results": [
+    {
+      "machines": 40,
+      "groups": 1,
+      "controller": true,
+      "samples": 181,
+      "wallMs": 3001.7999999046324,
+      "simSeconds": 3.0000000000000018,
+      "p50FrameMs": 16.699999999999818,
+      "p95FrameMs": 16.799999999999727,
+      "maxFrameMs": 16.800000000000182,
+      "over33Ms": 0,
+      "error": "",
+      "residual": -8.032248626384201e-15
+    },
+    {
+      "machines": 80,
+      "groups": 1,
+      "controller": true,
+      "samples": 181,
+      "wallMs": 3013.4999997138975,
+      "simSeconds": 3.0000000000000018,
+      "p50FrameMs": 16.699999999999818,
+      "p95FrameMs": 16.700000000000273,
+      "maxFrameMs": 16.800000000000182,
+      "over33Ms": 0,
+      "error": "",
+      "residual": 1.3650730187497894e-14
+    },
+    {
+      "machines": 120,
+      "groups": 1,
+      "controller": true,
+      "samples": 181,
+      "wallMs": 3014.099999713898,
+      "simSeconds": 3.100000000000002,
+      "p50FrameMs": 16.699999999999818,
+      "p95FrameMs": 16.799999999999727,
+      "maxFrameMs": 16.800000000000182,
+      "over33Ms": 0,
+      "error": "",
+      "residual": 1.3650730187497894e-14
+    },
+    {
+      "machines": 120,
+      "groups": 16,
+      "controller": false,
+      "samples": 181,
+      "wallMs": 3013.5999999046326,
+      "simSeconds": 3.0000000000000018,
+      "p50FrameMs": 16.699999999999818,
+      "p95FrameMs": 16.700000000000273,
+      "maxFrameMs": 16.800000000000182,
+      "over33Ms": 0,
+      "error": "",
+      "residual": 1.8590660897074767e-12
+    },
+    {
+      "machines": 120,
+      "groups": 16,
+      "controller": true,
+      "samples": 152,
+      "wallMs": 3008.699999809265,
+      "simSeconds": 3.0000000000000018,
+      "p50FrameMs": 16.699999999999818,
+      "p95FrameMs": 33.39999999999998,
+      "maxFrameMs": 33.40000000000009,
+      "over33Ms": 7,
+      "error": "",
+      "residual": 1.8590660897074767e-12
+    }
+  ]
+}

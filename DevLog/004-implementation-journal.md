@@ -89,3 +89,15 @@ UI-only navigation pass (P2 adjacent, no simulation or save change):
 - Tests: `tests/browser/technology.spec.ts` adds a wheel-zoom + drag-pan scenario (19 browser total) and `tests/browser/interactions.spec.ts` asserts minimap double-click moves the camera. `npm test` 55, browser 19, build pass.
 
 **Visual verification needed:** `test-results/technology-zoom-pan.png` — confirm wheel zoom keeps the point under the cursor fixed, the grab cursor reads correctly, and panning does not fight node clicks; and manually confirm the macOS trackpad double-tap recenters the minimap (the automated test uses a synthetic double-click).
+
+
+## 2026-09-13 — Connected-world performance (P0.1)
+
+Pulled `11d2987` (connected-world validation). The 256-port cap is consistent but connected factories with automatic control failed the 16 ms p95 step target and even stalled the real app. Implemented the P0.1 remedy:
+
+- `routeMetrics` memoized by path identity + radius; power wire flow computed directly from receiver draw; `automaticControl` bounded to one tuner per step on a deterministic cursor with the step baseline reused; `step` skips the redundant leading evaluate via a new stripped `statsRevision` field. `Stats.controlCursor` added.
+- Results (M4 Pro): p95 step control-off 18.0→8.5 ms and control-on 191.5→24.3 ms at 120 machines/1 source; browser real-app pacing restored to real-time (120/16 control-on 33.4 ms p95 vs ~1117 ms before, 3.0 sim s in 3.0 wall s). Full table and caveats in [015](015-connected-world-validation.md); evidence `DevLog/evidence/015-p0.1-connected-step.json` and `015-p0.1-connected-browser.json`.
+- Added the requested connected numeric-reference test (shared source group, split/recombine, reflective loads → finite per-port fields, zero residual).
+- Validation: 58 headless, 19 browser, build, `git diff --check` all pass.
+
+Still open: ≤16 ms p95 step is unmet for control-on and 16-group connected cases (topology/assembly caching or low-rank phase-trial updates, or a performance cap distinct from the 256 validity bound). P1–P5 not started. Uncommitted.

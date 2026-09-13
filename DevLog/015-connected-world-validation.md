@@ -34,6 +34,31 @@ Code explains the additional cost: `automaticControl` evaluates baseline/plus/mi
 
 P1 research contracts and persistence work can proceed independently, using the small starter scenario. Large-factory acceptance remains blocked on P0.1. P4 crop/anchor and event binding work is also independent. Human pacing, true shared power feeds and wire-overload verification remain outstanding feature-dependent tasks.
 
+## P0.1 progress — 2026-09-13
+
+Remedy implemented against the same connected fixtures (Apple M4 Pro, Node v23.7.0, `npx tsx scripts/benchmark-connected.ts`):
+
+| Machines | Sources | p95 off before → after | p95 on before → after |
+| --- | ---: | --- | --- |
+| 40 | 1 | 6.11 → **2.16** ms | 57.08 → **4.43** ms |
+| 80 | 1 | 17.97 → **8.25** ms | 198.45 → **25.19** ms |
+| 120 | 1 | 18.01 → **8.53** ms | 191.52 → **24.29** ms |
+| 120 | 4 | 24.45 → **13.74** ms | 288.71 → **33.15** ms |
+| 120 | 16 | 60.68 → **20.62** ms | 643.32 → **54.78** ms |
+
+Changes (no conservation or limit change):
+
+- `routeMetrics` is memoized by path identity and radius (`src/sim/geometry.ts`); paths are immutable after install, so per-step evaluation, material transit and diagnostics reuse the result.
+- `powerGrid` computes wire flow directly from each receiver's draw instead of a per-link graph search; correct while a load has one feed and no power output, with a comment to revisit for poles/buses.
+- `automaticControl` is bounded to **one tuner per step** on a deterministic cursor (derived from simulated time), reuses the step's evaluation as the baseline, compares ±2°, and only re-settles stats when a trial wins. `Stats.controlCursor` exposes the cursor. The previous code re-solved the baseline for every tuner and every step (up to ~24 full evaluations/step with 7 tuners).
+- `step` skips the redundant leading `evaluate` when nothing changed since the previous end-of-step evaluation, gated by a new `statsRevision` (stripped from saves; `evaluate` stamps `w.revision`). Topology edits still invalidate and force a re-solve.
+
+Real-app pacing (`node scripts/benchmark-browser-connected.mjs`, headless Chrome 1440×1000, 3 s samples): 40/80/120 machines and 120/16 sources control-off now hold **16.7 ms p95 frame**, no frames over 33.4 ms, and advance 3.0 simulation seconds in 3.0 wall seconds. 120/16 control-on is 33.4 ms p95 with 7/181 frames over 33.4 ms and still real-time — previously ~1117 ms p95 with 0.8 sim s in 3.32 wall s. Preserved: `DevLog/evidence/015-p0.1-connected-step.json`, `015-p0.1-connected-browser.json`.
+
+Added the requested connected numerical-reference test: shared source group through split/recombine with reflective loads must keep finite per-port complex fields and a zero residual (`tests/network.test.ts`).
+
+**Still not met / remaining P0.1:** the ≤16 ms p95 *step* target is met for control-off at 1 and 4 source groups and all 40-machine cases, but not for control-on at 80/120 machines nor for 120 machines / 16 groups (20.6 off, 54.8 on). Context caching for topology/block membership and invariant assembly, and cheap trial updates (e.g. low-rank phase perturbation) remain; alternatively a *performance-supported* cap distinct from the 256 validity bound must be defined without silently dropping machinery. `controlCursor` reports position, not convergence time. Browser numbers are single-machine and not GPU profiling.
+
 ## Asset continuation scope
 
 Review the nine saved revisions from 014, recover completed interrupted outputs before generating duplicates, complete the five genuinely missing corrections, and add explicit per-asset review outcomes. New machinery/creature state sources must remain candidates until registration and event bindings pass. Node illustrations do not implement their 99 product unlocks.

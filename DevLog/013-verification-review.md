@@ -51,3 +51,7 @@ The 400-vs-128 contradiction in the capacity section is resolved in code; eviden
 
 
 Connected-world checks have now been executed after P0. See [015](015-connected-world-validation.md) for the failed performance gate, browser pacing, and the next bounded coding remedy. Original visual findings remain open until their corresponding presentation fixes are implemented.
+
+## Follow-up — 2026-09-13 (P0.1 remedy)
+
+Bounded control work and metric/power caching were implemented; connected-world step p95 fell from 18.0→8.5 ms (control off) and 191.5→24.3 ms (control on) at 120 machines/1 source, and real-app pacing returned to real-time (33.4 ms p95 worst case at 120/16 control-on, previously ~1117 ms). The ≤16 ms p95 step target is still unmet for control-on and 16-group connected cases. Evidence: `DevLog/evidence/015-p0.1-connected-step.json` and `015-p0.1-connected-browser.json`. See [015](015-connected-world-validation.md) for the remaining levers.
