@@ -1,0 +1,19 @@
+// Reads PNG metadata/pixels for review. Never edits or re-encodes generated artwork.
+import {readFileSync,writeFileSync,existsSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {chromium} from '@playwright/test';
+const pass=JSON.parse(readFileSync('assets/technology/generation-pass-03.json','utf8'));
+const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+const page=await browser.newPage({viewport:{width:1440,height:1000}});
+const base=process.env.PHIELDWORKS_REVIEW_URL??'http://127.0.0.1:5175';
+await page.goto(base+'/assets/technology/nodes/index.html');
+const entries=[];
+for(const initial of pass.jobs){const j={...initial,path:existsSync(initial.path.replace('-v1.png','-v2.png'))?initial.path.replace('-v1.png','-v2.png'):initial.path};if(!existsSync(j.path)){entries.push({id:j.id,path:j.path,status:'pending'});continue;}
+ const bytes=readFileSync(j.path),width=bytes.readUInt32BE(16),height=bytes.readUInt32BE(20),colorType=bytes[25];
+ const measurement=await page.evaluate(async({path,columns,rows})=>{const im=new Image();im.src='/'+path;await im.decode();const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(im,0,0);const p=ctx.getImageData(0,0,im.width,im.height).data;let transparent=0,partial=0;for(let i=3;i<p.length;i+=4){if(p[i]===0)transparent++;else if(p[i]<255)partial++;}const frames=[];for(let r=0;r<rows;r++)for(let col=0;col<columns;col++){const x0=Math.round(col*im.width/columns),x1=Math.round((col+1)*im.width/columns),y0=Math.round(r*im.height/rows),y1=Math.round((r+1)*im.height/rows);let minX=x1,minY=y1,maxX=-1,maxY=-1,edge=0;for(let y=y0;y<y1;y++)for(let x=x0;x<x1;x++){const i=(y*im.width+x)*4;const visible=p[i+3]>30&&Math.max(p[i],p[i+1],p[i+2])>85;if(!visible)continue;minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);if(x-x0<3||x1-x<=3||y-y0<3||y1-y<=3)edge++;}frames.push({source:[x0,y0,x1-x0,y1-y0],visibleBounds:maxX<0?null:[minX,minY,maxX-minX+1,maxY-minY+1],edgeBrightPixels:edge,anchor:[.5,.8],anchorStatus:'provisional normalized cell anchor; not port registered'});}return {transparentFraction:transparent/(im.width*im.height),partialAlphaFraction:partial/(im.width*im.height),frames};},j);
+ entries.push({id:j.id,technology:j.technology,path:j.path,category:j.category,status:j.category==='technology'?'generated-concept':'generated-review-candidate',width,height,colorType,sha256:createHash('sha256').update(bytes).digest('hex'),columns:j.columns,rows:j.rows,directions:j.rows===4?[0,90,180,270]:[0],playback:j.category==='animation'?(/death|collapse|attack|fire/.test(j.id)?'one-shot-hold-last':'loop'):null,fps:j.category==='animation'?6:null,source:JSON.parse(readFileSync(j.path+'.source.json','utf8')).source,...measurement});
+}
+writeFileSync('assets/technology/pass-03-manifest.json',JSON.stringify({date:new Date().toISOString(),promptSet:'generation-pass-03.json',sourcePixels:'unmodified',notes:'Technology art does not implement research or buildings. Animation candidates require verified crops, anchors and event bindings before world use.',entries},null,2)+'\n');
+await page.screenshot({path:'test-results/canonical-technology-art.png',fullPage:true});
+await page.locator('#motion').scrollIntoViewIfNeeded();await page.locator('#motion-step').click();await page.locator('#motion-direction').selectOption('2');await page.screenshot({path:'test-results/animation-candidates-review.png',fullPage:true});
+console.log(JSON.stringify({saved:entries.filter(e=>e.status!=='pending').length,total:entries.length,alpha:entries.filter(e=>e.transparentFraction>0).map(e=>e.id),edgeWarnings:entries.filter(e=>e.category==='animation'&&e.frames.some(f=>f.edgeBrightPixels>0)).map(e=>e.id)}));await browser.close();

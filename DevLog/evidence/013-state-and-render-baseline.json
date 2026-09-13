@@ -1,0 +1,724 @@
+{
+  "fixture": "e17",
+  "overload": {
+    "stats": {
+      "network": {
+        "ports": {
+          "e4": [
+            {
+              "incoming": 0.12485759092448553,
+              "outgoing": 100,
+              "fields": {
+                "e4": {
+                  "a": [
+                    0.3263888348342011,
+                    -0.13538064640138975
+                  ],
+                  "b": [
+                    10,
+                    0
+                  ]
+                },
+                "e17": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                }
+              }
+            }
+          ],
+          "e5": [
+            {
+              "incoming": 96.46402934831231,
+              "outgoing": 0.12943435161064,
+              "fields": {
+                "e4": {
+                  "a": [
+                    7.016765003468583,
+                    6.872338629201186
+                  ],
+                  "b": [
+                    0.14096571717598516,
+                    -0.33100304861390656
+                  ]
+                },
+                "e17": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                }
+              }
+            },
+            {
+              "incoming": 0,
+              "outgoing": 0.12943435161064,
+              "fields": {
+                "e4": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0.14096571717598516,
+                    -0.33100304861390656
+                  ]
+                },
+                "e17": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                }
+              }
+            },
+            {
+              "incoming": 0.25886870322128,
+              "outgoing": 48.23201467415617,
+              "fields": {
+                "e4": {
+                  "a": [
+                    0.19935562905992815,
+                    -0.4681090005366275
+                  ],
+                  "b": [
+                    4.961602115945085,
+                    4.859477247318422
+                  ]
+                },
+                "e17": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                }
+              }
+            },
+            {
+              "incoming": 0,
+              "outgoing": 48.23201467415617,
+              "fields": {
+                "e4": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    4.961602115945085,
+                    4.859477247318422
+                  ]
+                },
+                "e17": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                }
+              }
+            }
+          ],
+          "e6": [
+            {
+              "incoming": 44.168992044137546,
+              "outgoing": 0.2826815490824804,
+              "fields": {
+                "e4": {
+                  "a": [
+                    -6.517959665355896,
+                    1.298150162705073
+                  ],
+                  "b": [
+                    -0.5214367732284717,
+                    0.10385201301640584
+                  ]
+                },
+                "e17": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                }
+              }
+            }
+          ],
+          "e7": [
+            {
+              "incoming": 0.11900598848322877,
+              "outgoing": 0,
+              "fields": {
+                "e4": {
+                  "a": [
+                    0.2285003830945253,
+                    0.2584445074070717
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                },
+                "e17": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                }
+              }
+            }
+          ],
+          "e17": [
+            {
+              "incoming": 0,
+              "outgoing": 0,
+              "fields": {
+                "e4": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                },
+                "e17": {
+                  "a": [
+                    0,
+                    0
+                  ],
+                  "b": [
+                    0,
+                    0
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "absorbed": {
+          "e4": 0.124857590924492,
+          "e5": -2.842170943040401e-14,
+          "e6": 43.88631049505506,
+          "e7": 0.11900598848322877,
+          "e17": 0
+        },
+        "sourcePower": 100,
+        "linkLoss": 7.637811251381067,
+        "escaped": 48.23201467415617,
+        "residual": 7.105427357601002e-15
+      },
+      "targetPower": 8.815590754465209,
+      "offTarget": 31.559814900985454,
+      "radiated": 40.37540565545066,
+      "heat": 3.754768419012121,
+      "leaked": 87.42964082652269,
+      "supply": 240,
+      "demand": 270,
+      "overload": 1,
+      "wireOverload": 0,
+      "bendRadiation": 0.776601367379798,
+      "propagationLoss": 6.86120988400127,
+      "error": "",
+      "emitterFields": {
+        "e6": {
+          "e4": [
+            1.0093380105757435,
+            -2.7922799886243874
+          ],
+          "e17": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "powered": [
+      {
+        "id": "e1",
+        "kind": "generator",
+        "powered": true
+      },
+      {
+        "id": "e2",
+        "kind": "extractor",
+        "powered": true
+      },
+      {
+        "id": "e3",
+        "kind": "assembler",
+        "powered": true
+      },
+      {
+        "id": "e4",
+        "kind": "reference",
+        "powered": true
+      },
+      {
+        "id": "e5",
+        "kind": "junction",
+        "powered": true
+      },
+      {
+        "id": "e6",
+        "kind": "emitter",
+        "powered": true
+      },
+      {
+        "id": "e7",
+        "kind": "dump",
+        "powered": true
+      },
+      {
+        "id": "e17",
+        "kind": "reference",
+        "powered": false
+      }
+    ]
+  },
+  "states": [
+    {
+      "preset": "off",
+      "rotation": "0",
+      "cards": [
+        {
+          "kind": "extractor",
+          "work": "no-power",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "POWER OFF · INTACT"
+        },
+        {
+          "kind": "assembler",
+          "work": "no-power",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "POWER OFF · INTACT"
+        },
+        {
+          "kind": "generator",
+          "work": "no-power",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "POWER OFF · INTACT"
+        },
+        {
+          "kind": "reference",
+          "work": "no-power",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "POWER OFF · INTACT"
+        },
+        {
+          "kind": "junction",
+          "work": "no-field",
+          "condition": "0",
+          "moving": "false",
+          "powered": "true",
+          "label": "NO FIELD · INTACT"
+        },
+        {
+          "kind": "tuner",
+          "work": "no-field",
+          "condition": "0",
+          "moving": "false",
+          "powered": "true",
+          "label": "NO FIELD · INTACT"
+        },
+        {
+          "kind": "emitter",
+          "work": "no-power",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "POWER OFF · INTACT"
+        },
+        {
+          "kind": "sentry",
+          "work": "no-power",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "POWER OFF · INTACT"
+        },
+        {
+          "kind": "dump",
+          "work": "no-power",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "POWER OFF · INTACT"
+        }
+      ]
+    },
+    {
+      "preset": "light",
+      "rotation": "1",
+      "cards": [
+        {
+          "kind": "extractor",
+          "work": "running",
+          "condition": "1",
+          "moving": "true",
+          "powered": "true",
+          "label": "RUNNING · LIGHT DAMAGE"
+        },
+        {
+          "kind": "assembler",
+          "work": "running",
+          "condition": "1",
+          "moving": "true",
+          "powered": "true",
+          "label": "RUNNING · LIGHT DAMAGE"
+        },
+        {
+          "kind": "generator",
+          "work": "running",
+          "condition": "1",
+          "moving": "true",
+          "powered": "true",
+          "label": "RUNNING · LIGHT DAMAGE"
+        },
+        {
+          "kind": "reference",
+          "work": "running",
+          "condition": "1",
+          "moving": "false",
+          "powered": "true",
+          "label": "RUNNING · LIGHT DAMAGE"
+        },
+        {
+          "kind": "junction",
+          "work": "running",
+          "condition": "1",
+          "moving": "false",
+          "powered": "true",
+          "label": "FIELD ACTIVE · LIGHT DAMAGE"
+        },
+        {
+          "kind": "tuner",
+          "work": "running",
+          "condition": "1",
+          "moving": "false",
+          "powered": "true",
+          "label": "FIELD ACTIVE · LIGHT DAMAGE"
+        },
+        {
+          "kind": "emitter",
+          "work": "running",
+          "condition": "1",
+          "moving": "false",
+          "powered": "true",
+          "label": "RUNNING · LIGHT DAMAGE"
+        },
+        {
+          "kind": "sentry",
+          "work": "firing",
+          "condition": "1",
+          "moving": "true",
+          "powered": "true",
+          "label": "FIRING · LIGHT DAMAGE"
+        },
+        {
+          "kind": "dump",
+          "work": "running",
+          "condition": "1",
+          "moving": "true",
+          "powered": "true",
+          "label": "COOLING · LIGHT DAMAGE"
+        }
+      ]
+    },
+    {
+      "preset": "severe",
+      "rotation": "2",
+      "cards": [
+        {
+          "kind": "extractor",
+          "work": "running",
+          "condition": "2",
+          "moving": "true",
+          "powered": "true",
+          "label": "RUNNING · SEVERE DAMAGE"
+        },
+        {
+          "kind": "assembler",
+          "work": "running",
+          "condition": "2",
+          "moving": "true",
+          "powered": "true",
+          "label": "RUNNING · SEVERE DAMAGE"
+        },
+        {
+          "kind": "generator",
+          "work": "running",
+          "condition": "2",
+          "moving": "true",
+          "powered": "true",
+          "label": "RUNNING · SEVERE DAMAGE"
+        },
+        {
+          "kind": "reference",
+          "work": "running",
+          "condition": "2",
+          "moving": "false",
+          "powered": "true",
+          "label": "RUNNING · SEVERE DAMAGE"
+        },
+        {
+          "kind": "junction",
+          "work": "running",
+          "condition": "2",
+          "moving": "false",
+          "powered": "true",
+          "label": "FIELD ACTIVE · SEVERE DAMAGE"
+        },
+        {
+          "kind": "tuner",
+          "work": "running",
+          "condition": "2",
+          "moving": "false",
+          "powered": "true",
+          "label": "FIELD ACTIVE · SEVERE DAMAGE"
+        },
+        {
+          "kind": "emitter",
+          "work": "running",
+          "condition": "2",
+          "moving": "false",
+          "powered": "true",
+          "label": "RUNNING · SEVERE DAMAGE"
+        },
+        {
+          "kind": "sentry",
+          "work": "firing",
+          "condition": "2",
+          "moving": "true",
+          "powered": "true",
+          "label": "FIRING · SEVERE DAMAGE"
+        },
+        {
+          "kind": "dump",
+          "work": "running",
+          "condition": "2",
+          "moving": "true",
+          "powered": "true",
+          "label": "COOLING · SEVERE DAMAGE"
+        }
+      ]
+    },
+    {
+      "preset": "wreck",
+      "rotation": "3",
+      "cards": [
+        {
+          "kind": "extractor",
+          "work": "destroyed",
+          "condition": "3",
+          "moving": "false",
+          "powered": "false",
+          "label": "WRECK · DESTROYED"
+        },
+        {
+          "kind": "assembler",
+          "work": "destroyed",
+          "condition": "3",
+          "moving": "false",
+          "powered": "false",
+          "label": "WRECK · DESTROYED"
+        },
+        {
+          "kind": "generator",
+          "work": "destroyed",
+          "condition": "3",
+          "moving": "false",
+          "powered": "false",
+          "label": "WRECK · DESTROYED"
+        },
+        {
+          "kind": "reference",
+          "work": "destroyed",
+          "condition": "3",
+          "moving": "false",
+          "powered": "false",
+          "label": "WRECK · DESTROYED"
+        },
+        {
+          "kind": "junction",
+          "work": "destroyed",
+          "condition": "3",
+          "moving": "false",
+          "powered": "false",
+          "label": "WRECK · DESTROYED"
+        },
+        {
+          "kind": "tuner",
+          "work": "destroyed",
+          "condition": "3",
+          "moving": "false",
+          "powered": "false",
+          "label": "WRECK · DESTROYED"
+        },
+        {
+          "kind": "emitter",
+          "work": "destroyed",
+          "condition": "3",
+          "moving": "false",
+          "powered": "false",
+          "label": "WRECK · DESTROYED"
+        },
+        {
+          "kind": "sentry",
+          "work": "destroyed",
+          "condition": "3",
+          "moving": "false",
+          "powered": "false",
+          "label": "WRECK · DESTROYED"
+        },
+        {
+          "kind": "dump",
+          "work": "destroyed",
+          "condition": "3",
+          "moving": "false",
+          "powered": "false",
+          "label": "WRECK · DESTROYED"
+        }
+      ]
+    },
+    {
+      "preset": "trip",
+      "rotation": "0",
+      "cards": [
+        {
+          "kind": "extractor",
+          "work": "tripped",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "TRIPPED · INTACT · HOT"
+        },
+        {
+          "kind": "assembler",
+          "work": "tripped",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "TRIPPED · INTACT · HOT"
+        },
+        {
+          "kind": "generator",
+          "work": "tripped",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "TRIPPED · INTACT · HOT"
+        },
+        {
+          "kind": "reference",
+          "work": "tripped",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "TRIPPED · INTACT · HOT"
+        },
+        {
+          "kind": "junction",
+          "work": "tripped",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "TRIPPED · INTACT · HOT"
+        },
+        {
+          "kind": "tuner",
+          "work": "tripped",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "TRIPPED · INTACT · HOT"
+        },
+        {
+          "kind": "emitter",
+          "work": "tripped",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "TRIPPED · INTACT · HOT"
+        },
+        {
+          "kind": "sentry",
+          "work": "tripped",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "TRIPPED · INTACT · HOT"
+        },
+        {
+          "kind": "dump",
+          "work": "tripped",
+          "condition": "0",
+          "moving": "false",
+          "powered": "false",
+          "label": "TRIPPED · INTACT · HOT"
+        }
+      ]
+    }
+  ],
+  "renders": [
+    {
+      "machines": 40,
+      "samples": 50,
+      "warmup": 15,
+      "medianMs": 0.6999999284744263,
+      "p95Ms": 0.8999999761581421,
+      "note": "CPU canvas submission only; excludes GPU presentation"
+    },
+    {
+      "machines": 80,
+      "samples": 50,
+      "warmup": 15,
+      "medianMs": 0.8000000715255737,
+      "p95Ms": 1,
+      "note": "CPU canvas submission only; excludes GPU presentation"
+    },
+    {
+      "machines": 120,
+      "samples": 50,
+      "warmup": 15,
+      "medianMs": 0.9000000953674316,
+      "p95Ms": 1.2999999523162842,
+      "note": "CPU canvas submission only; excludes GPU presentation"
+    }
+  ]
+}

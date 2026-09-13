@@ -1,0 +1,222 @@
+{
+  "date": "2026-09-13T07:37:27.687Z",
+  "platform": "darwin",
+  "arch": "arm64",
+  "cpu": "Apple M5",
+  "node": "v25.9.0",
+  "results": [
+    {
+      "kind": "solve",
+      "ports": 40,
+      "groups": 1,
+      "links": 20,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 2.4868995751603507e-14,
+      "medianMs": 0.8136250000000018,
+      "p95Ms": 1.541041000000007
+    },
+    {
+      "kind": "solve",
+      "ports": 40,
+      "groups": 4,
+      "links": 20,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 3.552713678800501e-14,
+      "medianMs": 1.5981250000000387,
+      "p95Ms": 2.451459
+    },
+    {
+      "kind": "solve",
+      "ports": 40,
+      "groups": 16,
+      "links": 20,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 2.842170943040401e-14,
+      "medianMs": 5.8024580000000014,
+      "p95Ms": 9.591167000000041
+    },
+    {
+      "kind": "solve",
+      "ports": 80,
+      "groups": 1,
+      "links": 40,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 4.263256414560601e-14,
+      "medianMs": 3.006375000000048,
+      "p95Ms": 3.168124999999918
+    },
+    {
+      "kind": "solve",
+      "ports": 80,
+      "groups": 4,
+      "links": 40,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 4.263256414560601e-14,
+      "medianMs": 10.405332999999928,
+      "p95Ms": 10.835874999999987
+    },
+    {
+      "kind": "solve",
+      "ports": 80,
+      "groups": 16,
+      "links": 40,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 8.526512829121202e-14,
+      "medianMs": 40.304790999999796,
+      "p95Ms": 40.93412500000022
+    },
+    {
+      "kind": "solve",
+      "ports": 128,
+      "groups": 1,
+      "links": 64,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 5.950795411990839e-14,
+      "medianMs": 11.274457999999868,
+      "p95Ms": 12.509999999999764
+    },
+    {
+      "kind": "solve",
+      "ports": 128,
+      "groups": 4,
+      "links": 64,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 8.526512829121202e-14,
+      "medianMs": 42.48341699999946,
+      "p95Ms": 44.322291999999834
+    },
+    {
+      "kind": "solve",
+      "ports": 128,
+      "groups": 16,
+      "links": 64,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 1.1368683772161603e-13,
+      "medianMs": 164.8662919999997,
+      "p95Ms": 167.7050419999996
+    },
+    {
+      "kind": "solve",
+      "ports": 130,
+      "groups": 1,
+      "links": 65,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 128 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 130,
+      "groups": 4,
+      "links": 65,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 128 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 130,
+      "groups": 16,
+      "links": 65,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 128 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 256,
+      "groups": 1,
+      "links": 128,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 128 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 256,
+      "groups": 4,
+      "links": 128,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 128 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 256,
+      "groups": 16,
+      "links": 128,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 128 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 400,
+      "groups": 1,
+      "links": 200,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 128 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 400,
+      "groups": 4,
+      "links": 200,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 128 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 400,
+      "groups": 16,
+      "links": 200,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 128 wave ports"
+    },
+    {
+      "kind": "world-step",
+      "machines": 40,
+      "topology": "starter network + disconnected sentries",
+      "samples": 100,
+      "warmup": 25,
+      "medianMs": 0.109375,
+      "p95Ms": 0.19745900000089023
+    },
+    {
+      "kind": "world-step",
+      "machines": 80,
+      "topology": "starter network + disconnected sentries",
+      "samples": 100,
+      "warmup": 25,
+      "medianMs": 0.10691699999915727,
+      "p95Ms": 0.18983300000036252
+    },
+    {
+      "kind": "world-step",
+      "machines": 120,
+      "topology": "starter network + disconnected sentries",
+      "samples": 100,
+      "warmup": 25,
+      "medianMs": 0.09383300000081363,
+      "p95Ms": 0.10604099999909522
+    },
+    {
+      "kind": "cap-reproduction",
+      "machines": 33,
+      "ports": 132,
+      "error": "Prototype limit: 128 wave ports"
+    }
+  ]
+}

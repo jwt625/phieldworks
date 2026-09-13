@@ -1,0 +1,3890 @@
+{
+  "date": "2026-09-13T08:26:21.810Z",
+  "promptSet": "generation-pass-03.json",
+  "sourcePixels": "unmodified",
+  "notes": "Technology art does not implement research or buildings. Animation candidates require verified crops, anchors and event bindings before world use.",
+  "entries": [
+    {
+      "id": "tech-outpost",
+      "technology": "outpost",
+      "path": "assets/technology/nodes/outpost-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "c5d787ef691194ac2f43c14aab8fad616d786339e28cc5768297f42afc573f09",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-ce4d8d3d-f4d4-48cc-805b-1a550bf63ab6.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            40,
+            115,
+            1175,
+            969
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-fieldcraft",
+      "technology": "fieldcraft",
+      "path": "assets/technology/nodes/fieldcraft-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "9853088a24a9970f3b093bac33673c7815a53436cfd562df88eec1d69cf4ce5e",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-5e0c03e5-2c77-4cb9-9908-90232d5c8840.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            67,
+            116,
+            1112,
+            966
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-perimeter",
+      "technology": "perimeter",
+      "path": "assets/technology/nodes/perimeter-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "15dfcebf89fe757111e4604fe023a559a4134bcfe31861760c73a538ce933eea",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-20eb0a26-1786-48fa-b224-83ca838361c3.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            141,
+            118,
+            940,
+            986
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-frontier",
+      "technology": "frontier",
+      "path": "assets/technology/nodes/frontier-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "8f5bfd09308e1a03b7d693481d27e375248b49f1b2a809afe715284b0cd44c8b",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-96803252-1c35-42a9-a352-34369b418cae.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            83,
+            143,
+            1079,
+            917
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-crystal",
+      "technology": "crystal",
+      "path": "assets/technology/nodes/crystal-v2.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "18fd071f1b09093ca273a8147d19f5b5b41781852a5f976a0a95a4570cef3c00",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-d09f82ec-7e77-4f8c-b0fe-9284793bca46.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            60,
+            111,
+            1142,
+            932
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-qualification",
+      "technology": "qualification",
+      "path": "assets/technology/nodes/qualification-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "a8f58dd940a9fa4e6fa0ec2dc2167a9351d377dc5f550cc8feb7a2d35cda2b25",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-b8d0eb1a-7f06-4cd5-89d3-3063308548cd.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            54,
+            61,
+            1184,
+            1108
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-research",
+      "technology": "research",
+      "path": "assets/technology/nodes/research-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "3f5238dd5971a6f10684abbdfdcb53435cb35c21c30572fbcb7478bde17f0d4c",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-cff12f66-03bc-43a7-b9cd-154cf72741e9.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            102,
+            61,
+            1068,
+            1043
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-logistics",
+      "technology": "logistics",
+      "path": "assets/technology/nodes/logistics-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "c6f25e87012f4429fd4dec20a59fc7082625c54c9dca07f320297bf86dd2a98f",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-aec3075e-cb97-45f7-94b8-171703421480.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            73,
+            101,
+            1115,
+            994
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-instrumentation",
+      "technology": "instrumentation",
+      "path": "assets/technology/nodes/instrumentation-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "a25dc1729ae0cb1593071061f2424800c77691a36f4496ee5a067d770f11bfda",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-7fbd93cf-1f28-419e-b7df-375b5b2cfe7a.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            80,
+            52,
+            1106,
+            1123
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-grid",
+      "technology": "grid",
+      "path": "assets/technology/nodes/grid-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "5f099e6a886ad2e13d744056e9ca9cff0f3aad91e7febc12086e68f431da7b37",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-c1362ce1-7e0c-4acd-bdf1-6de0d647e87f.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            0,
+            74,
+            1254,
+            1072
+          ],
+          "edgeBrightPixels": 33,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-materials",
+      "technology": "materials",
+      "path": "assets/technology/nodes/materials-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "d946d903105f539bf2c00ef75e7d0f4cfbfa6340dacc809e72f860763d0e4d96",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-aeb290bc-10df-4f3e-979f-cedb2e0b2c60.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            57,
+            100,
+            1152,
+            1011
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-modules",
+      "technology": "modules",
+      "path": "assets/technology/nodes/modules-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "2ee6c1a84cdccae6f09bb1796b3dfa0e01136a66424005d3ac4b09220fdd3037",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-5c26fa0c-9052-4a3a-89b1-aaa19c027e25.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            28,
+            99,
+            1188,
+            963
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-thermal",
+      "technology": "thermal",
+      "path": "assets/technology/nodes/thermal-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "b2125c583315df7f022aa523e74a3838c777dcbf05f66986fd63c8908fd5c17d",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-1bd07a2f-f84b-4adf-a2c7-d0b0e5a72d82.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            38,
+            89,
+            1178,
+            906
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-defense",
+      "technology": "defense",
+      "path": "assets/technology/nodes/defense-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "2832a95f22087adaf0b0216b93e2703300cd39c28efe3f8628044e80b4f42138",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-aa02c0fb-6ea9-4eda-9de8-277f5dfc0cc4.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            29,
+            122,
+            1194,
+            999
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-precision",
+      "technology": "precision",
+      "path": "assets/technology/nodes/precision-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "56838e96aa8c9329a9febcd8c89c7dd5e9e5a917d7cd9f7636937983bc579ae5",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-e1ae67e1-1d67-46bf-935d-0a6eb29f70d3.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            55,
+            176,
+            1156,
+            922
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-transport",
+      "technology": "transport",
+      "path": "assets/technology/nodes/transport-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "79a8a3a384fdb83672fdfef97c5779f8ca3b342112e6f06811440e3df064f5cc",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-c80e7d97-19d8-4881-a1a4-2a030d64cbb2.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            65,
+            55,
+            1125,
+            1016
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-coherent",
+      "technology": "coherent",
+      "path": "assets/technology/nodes/coherent-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "8430c6bf7f53991d0354a9fa9ab24e0366f206f60aecb65e2c6615d5b38ab025",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-7f403f2a-4c04-4991-853b-1b58d2ec034c.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            82,
+            165,
+            1090,
+            882
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-pulses",
+      "technology": "pulses",
+      "path": "assets/technology/nodes/pulses-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "18e53a6479a913d2ceb03cad7de4d3304c78bb2703a906f45277918d31c960d4",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-b9999a72-6618-407d-8d69-4b2508223bd2.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            68,
+            117,
+            1114,
+            1007
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-fabrication",
+      "technology": "fabrication",
+      "path": "assets/technology/nodes/fabrication-v2.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "d42a50f0b9805d4f24d218e6f0ffb6205f0499feb13906e17617a2ac456c580d",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-3459f559-b242-4237-88af-5a718cd1e907.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            60,
+            74,
+            1148,
+            1030
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-photonics",
+      "technology": "photonics",
+      "path": "assets/technology/nodes/photonics-v2.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "9ca2ea9a8220a73d13226bf6a8287db70ab18fb8fbbd8c72a9a1ef798c1c5d85",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-9c6c2690-5bd1-48d3-acb7-1713fea1d703.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            254,
+            64,
+            755,
+            1082
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-distributed",
+      "technology": "distributed",
+      "path": "assets/technology/nodes/distributed-v2.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "29772ef6f26e6dd76e85a228235682c480b0a17f84c18d4f447c9afe91592558",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-9b71d18e-a70f-4a5a-ac76-a359a439b18f.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            67,
+            53,
+            1120,
+            1107
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-adaptive",
+      "technology": "adaptive",
+      "path": "assets/technology/nodes/adaptive-v2.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "b6eb3b5e769a728acd7be946a4462061a6f32859a17ad66c6d200105f649337b",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-a388b72b-c536-4dee-8fa1-3b860f5ad361.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            54,
+            36,
+            1152,
+            1113
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-survey",
+      "technology": "survey",
+      "path": "assets/technology/nodes/survey-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "2b335f8eeaf5ad42c78ae2d934b319357a530d2b39621bccb683ce1f8e5219cb",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-f3ccdd7c-4672-445a-bc06-c77710c7a432.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            141,
+            101,
+            916,
+            950
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-nanofab",
+      "technology": "nanofab",
+      "path": "assets/technology/nodes/nanofab-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "4956e8c2fdc5b22ef717d949619ffa111a37aed22e64d682723201239804c779",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-46501a86-804d-4cee-87ff-0c5a0cd50566.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            29,
+            119,
+            1190,
+            996
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-aperture",
+      "technology": "aperture",
+      "path": "assets/technology/nodes/aperture-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "009523fd69411b98e110165cda1373616fba63d4d11d97cdc93bf4d5aa0b9916",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-17c679f2-a547-4386-b26c-593d4744bfdf.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            91,
+            67,
+            1108,
+            1019
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-sail",
+      "technology": "sail",
+      "path": "assets/technology/nodes/sail-v2.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "5c0f1a78a2d7dc7c82bce931d4dc1213eb4c8e06b43b38b19b5a6977626d5412",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-ecde5822-8949-4ea7-a7e4-fe72db5282ec.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            34,
+            78,
+            1185,
+            1058
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "tech-launch",
+      "technology": "launch",
+      "path": "assets/technology/nodes/launch-v1.png",
+      "category": "technology",
+      "status": "generated-concept",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "7da012cd068f7c255164f0c9c2a770972029fb3c89fe54eef8026f1281dbaef1",
+      "columns": 1,
+      "rows": 1,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-ac2b6da4-76a6-4312-8dab-cbb57a287090.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "visibleBounds": [
+            186,
+            61,
+            884,
+            1013
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "extractor-severe-cycle-v1",
+      "path": "assets/animations/candidates/extractor-severe-cycle-v2.png",
+      "category": "animation",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "380950f84a233159be5efda23df89ddc7b2bf2337fd1bcd43c48cf1d0479bc96",
+      "columns": 4,
+      "rows": 4,
+      "directions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "playback": "loop",
+      "fps": 6,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-3bab094e-cfcb-48fe-a00b-89a33544ba94.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            33,
+            49,
+            268,
+            257
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            347,
+            50,
+            250,
+            244
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            661,
+            50,
+            250,
+            244
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            974,
+            50,
+            250,
+            244
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            42,
+            342,
+            251,
+            255
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            352,
+            340,
+            246,
+            258
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            665,
+            347,
+            246,
+            251
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            978,
+            340,
+            246,
+            258
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            52,
+            649,
+            227,
+            292
+          ],
+          "edgeBrightPixels": 136,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            362,
+            654,
+            227,
+            287
+          ],
+          "edgeBrightPixels": 10,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            675,
+            654,
+            227,
+            230
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            988,
+            654,
+            228,
+            287
+          ],
+          "edgeBrightPixels": 12,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            37,
+            941,
+            259,
+            250
+          ],
+          "edgeBrightPixels": 119,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            347,
+            941,
+            248,
+            243
+          ],
+          "edgeBrightPixels": 33,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            660,
+            943,
+            248,
+            241
+          ],
+          "edgeBrightPixels": 6,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            973,
+            941,
+            249,
+            243
+          ],
+          "edgeBrightPixels": 38,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "assembler-light-cycle-v1",
+      "path": "assets/animations/candidates/assembler-light-cycle-v2.png",
+      "category": "animation",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "8b5353eb5ac27f7cdb990cdfb1f3db668f4527ff508458dd07c05451a341aac1",
+      "columns": 4,
+      "rows": 4,
+      "directions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "playback": "loop",
+      "fps": 6,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-779617ac-a381-49ff-8e37-3c4e6cb6faf5.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            60,
+            38,
+            249,
+            264
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            363,
+            78,
+            246,
+            226
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            655,
+            78,
+            258,
+            229
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            961,
+            65,
+            246,
+            240
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            58,
+            324,
+            241,
+            303
+          ],
+          "edgeBrightPixels": 6,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            366,
+            377,
+            242,
+            221
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            664,
+            384,
+            243,
+            214
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            965,
+            323,
+            239,
+            304
+          ],
+          "edgeBrightPixels": 34,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            51,
+            627,
+            252,
+            314
+          ],
+          "edgeBrightPixels": 129,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            363,
+            679,
+            248,
+            216
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            662,
+            678,
+            252,
+            218
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            962,
+            627,
+            246,
+            314
+          ],
+          "edgeBrightPixels": 166,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            57,
+            941,
+            250,
+            255
+          ],
+          "edgeBrightPixels": 92,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            364,
+            974,
+            248,
+            222
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            662,
+            977,
+            249,
+            219
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            971,
+            941,
+            240,
+            253
+          ],
+          "edgeBrightPixels": 88,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "assembler-severe-cycle-v1",
+      "path": "assets/animations/candidates/assembler-severe-cycle-v2.png",
+      "category": "animation",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "5a0837945f7f45a74e0be418bd662077971722d001af918eae73bd2e4792a670",
+      "columns": 4,
+      "rows": 4,
+      "directions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "playback": "loop",
+      "fps": 6,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-84465810-f881-41e4-b5ab-721f61ca0cad.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            52,
+            56,
+            255,
+            254
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            362,
+            83,
+            248,
+            227
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            666,
+            81,
+            247,
+            228
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            973,
+            37,
+            247,
+            271
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            49,
+            355,
+            252,
+            249
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            362,
+            395,
+            239,
+            210
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            670,
+            396,
+            239,
+            208
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            979,
+            345,
+            235,
+            259
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            44,
+            659,
+            256,
+            247
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            359,
+            679,
+            253,
+            227
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            666,
+            687,
+            250,
+            219
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            973,
+            656,
+            248,
+            285
+          ],
+          "edgeBrightPixels": 10,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            50,
+            951,
+            256,
+            250
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            362,
+            979,
+            257,
+            222
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            672,
+            985,
+            252,
+            217
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            979,
+            941,
+            250,
+            260
+          ],
+          "edgeBrightPixels": 49,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "generator-cycle-v1",
+      "path": "assets/animations/candidates/generator-cycle-v1.png",
+      "category": "animation",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "e2fc1a02f8dc7684b5bed6bead2514404ba53342b734375e7437f840435fd734",
+      "columns": 4,
+      "rows": 4,
+      "directions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "playback": "loop",
+      "fps": 6,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-1d41874d-015b-467d-b75e-e780b34e4cee.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3692,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3637,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3628,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3598,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3615,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3660,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3693,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3559,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3519,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3571,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3537,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3567,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3519,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3526,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3536,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "sentry-fire-v1",
+      "path": "assets/animations/candidates/sentry-fire-v1.png",
+      "category": "animation",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "7cf86fa754ddbdd7960265ad2e0b6597e28b97a3ba0e8c09f844825de6b97cf6",
+      "columns": 4,
+      "rows": 4,
+      "directions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "playback": "one-shot-hold-last",
+      "fps": 6,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-14db7a9e-8017-4f5b-a519-7d0f0ce7db4e.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "transport-items-v1",
+      "path": "assets/animations/candidates/transport-items-v1.png",
+      "category": "items",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 6,
+      "sha256": "0479d679a8abae70f960ce3bbfbb917b52933ef2e0fbb0e4b8ba88d29a9d38d4",
+      "columns": 2,
+      "rows": 2,
+      "directions": [
+        0
+      ],
+      "playback": null,
+      "fps": null,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-f6d75e2c-5d20-49e1-a257-041d60ec161b.png",
+      "transparentFraction": 0.6554903097965299,
+      "partialAlphaFraction": 0.34408934471890906,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            107,
+            76,
+            432,
+            469
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            701,
+            78,
+            466,
+            476
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            165,
+            680,
+            314,
+            489
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            719,
+            700,
+            457,
+            473
+          ],
+          "edgeBrightPixels": 0,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "guardian-idle-v1",
+      "path": "assets/animations/candidates/guardian-idle-v1.png",
+      "category": "animation",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "61d7f510a4497c550d4977ed43fbc721d3ed887ff16b88b442eba94b63672361",
+      "columns": 2,
+      "rows": 2,
+      "directions": [
+        0
+      ],
+      "playback": "loop",
+      "fps": 6,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-76a9fe3c-62bb-4295-a190-2fc05c253e34.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "edgeBrightPixels": 7488,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "edgeBrightPixels": 7488,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "edgeBrightPixels": 7488,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "edgeBrightPixels": 7488,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "guardian-collapse-v1",
+      "path": "assets/animations/candidates/guardian-collapse-v1.png",
+      "category": "animation",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "b9e5ee89cf7c31808ee1ffe6576adb8729063b41a733b926816d0ae5ebf34013",
+      "columns": 2,
+      "rows": 2,
+      "directions": [
+        0
+      ],
+      "playback": "one-shot-hold-last",
+      "fps": 6,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-314bf897-ddcc-47ac-8ce2-26a946a52e3a.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "edgeBrightPixels": 7488,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "edgeBrightPixels": 7488,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "edgeBrightPixels": 7488,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "visibleBounds": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "edgeBrightPixels": 7488,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "crawler-attack-v1",
+      "path": "assets/animations/candidates/crawler-attack-v1.png",
+      "category": "animation",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "abc1659a79f20cc3fd9813e7e53a4f263531fa0b3416495b18d1a32d94df0a7e",
+      "columns": 4,
+      "rows": 4,
+      "directions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "playback": "one-shot-hold-last",
+      "fps": 6,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-c8d45fcd-50c3-4450-9011-4c6e6c7cf1da.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3660,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3658,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3731,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3664,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3653,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    },
+    {
+      "id": "crawler-death-v1",
+      "path": "assets/animations/candidates/crawler-death-v1.png",
+      "category": "animation",
+      "status": "generated-review-candidate",
+      "width": 1254,
+      "height": 1254,
+      "colorType": 2,
+      "sha256": "404f920e4d2c5a047832f1219520ee16b7c73c5e1d297bd864707849ba000187",
+      "columns": 4,
+      "rows": 4,
+      "directions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "playback": "one-shot-hold-last",
+      "fps": 6,
+      "source": "/Users/sophia/.codex/generated_images/01a09876-89eb-77b0-b0a3-21aaa9221c9c/exec-2745a69f-75b4-48cd-8852-662962524c45.png",
+      "transparentFraction": 0,
+      "partialAlphaFraction": 0,
+      "frames": [
+        {
+          "source": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3715,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "visibleBounds": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "edgeBrightPixels": 3732,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "visibleBounds": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "visibleBounds": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "edgeBrightPixels": 3726,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        },
+        {
+          "source": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "visibleBounds": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "edgeBrightPixels": 3720,
+          "anchor": [
+            0.5,
+            0.8
+          ],
+          "anchorStatus": "provisional normalized cell anchor; not port registered"
+        }
+      ]
+    }
+  ]
+}

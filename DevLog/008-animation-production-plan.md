@@ -66,3 +66,8 @@ The current guardian needs only its existing view for the first animation pilot;
 4. **Precision and systems:** derive assets from approved tech unlocks: source-lock equipment, pulse driver, fabrication cell, freight carrier, relay, observatory, membrane line, aperture and sail dock. Each receives an explicit input/output/service silhouette and state sheet before generation.
 
 Every delivered atlas needs a sidecar manifest listing frame rectangles, direction order, anchor coordinates, intended state bindings, prompt and source provenance. The reviewer should see a looping contact sheet and an in-game scene, including paused, damaged, unpowered and obstructed states. No asset generation begins until the technology design is approved.
+
+
+## Checkpoint — 2026-09-13
+
+Generation has started after approval. Existing operating sheets and nine new candidate clips do not yet complete the frame/state specification below. The user paused work for documentation/commits; see [014](014-asset-production-tracker.md) for saved corrections, source failures and remaining clips.

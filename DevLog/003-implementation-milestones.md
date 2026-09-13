@@ -78,3 +78,8 @@ Automated tests assert state values, not appearance. These artifacts need visual
 - `test-results/equipment-state-lab.png` — nine condition/orientation previews plus the labelled "not generated yet" placeholder where transmitted-item art (S3) is absent.
 - Re-check after any renderer change: `initial-outpost.png`, `qualified-outpost.png`, `grid-routing-and-rotation.png`, `minimap-full-sector.png`, `perimeter-defense.png`, `contextual-onboarding.png`, `guided-qualified-outpost.png`.
 - **Hard to automate:** induce a power overload (add a second reference over the starter generator's wire) and confirm the ledger's "Isolated loads" row and the diagnostics issue read clearly without looking like a total failure.
+
+
+## Checkpoint — 2026-09-13
+
+The queued visual and capacity checks were carried out; see [013](013-verification-review.md). Passing baseline tests did not catch the 400/128-port mismatch or condition-atlas bleed. Coding remedies and acceptance gates are in [012](012-next-coding-handoffs.md).

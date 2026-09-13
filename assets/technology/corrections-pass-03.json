@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-13",
+  "tool": "built-in image_gen",
+  "jobs": [
+    {
+      "id": "tech-crystal",
+      "path": "assets/technology/nodes/crystal-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/technology/nodes/crystal-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit this technology illustration. Keep the same equipment identity, camera, palette, lighting and mechanical composition. REMOVE EVERY printed word, letter, number, logo, emblem, slogan, banner and decorative signage from machinery and scene. Reconstruct clean unmarked ceramic/metal in their place. No people or humanoid workers anywhere.  Uniform dark teal #101b1d background. No added UI or graphics. Final image must contain absolutely no typography, signage, symbols or branding."
+    },
+    {
+      "id": "tech-fabrication",
+      "path": "assets/technology/nodes/fabrication-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/technology/nodes/fabrication-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit this technology illustration. Keep the same equipment identity, camera, palette, lighting and mechanical composition. REMOVE EVERY printed word, letter, number, logo, emblem, slogan, banner and decorative signage from machinery and scene. Reconstruct clean unmarked ceramic/metal in their place. No people or humanoid workers anywhere.  Uniform dark teal #101b1d background. No added UI or graphics. Final image must contain absolutely no typography, signage, symbols or branding."
+    },
+    {
+      "id": "tech-adaptive",
+      "path": "assets/technology/nodes/adaptive-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/technology/nodes/adaptive-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit this technology illustration. Keep the same equipment identity, camera, palette, lighting and mechanical composition. REMOVE EVERY printed word, letter, number, logo, emblem, slogan, banner and decorative signage from machinery and scene. Reconstruct clean unmarked ceramic/metal in their place. No people or humanoid workers anywhere.  Uniform dark teal #101b1d background. No added UI or graphics. Final image must contain absolutely no typography, signage, symbols or branding."
+    },
+    {
+      "id": "tech-distributed",
+      "path": "assets/technology/nodes/distributed-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/technology/nodes/distributed-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit this technology illustration. Keep the same equipment identity, camera, palette, lighting and mechanical composition. REMOVE EVERY printed word, letter, number, logo, emblem, slogan, banner and decorative signage from machinery and scene. Reconstruct clean unmarked ceramic/metal in their place. No people or humanoid workers anywhere.  Uniform dark teal #101b1d background. No added UI or graphics. Final image must contain absolutely no typography, signage, symbols or branding."
+    },
+    {
+      "id": "tech-photonics",
+      "path": "assets/technology/nodes/photonics-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/technology/nodes/photonics-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit this technology illustration. Keep the same equipment identity, camera, palette, lighting and mechanical composition. REMOVE EVERY printed word, letter, number, logo, emblem, slogan, banner and decorative signage from machinery and scene. Reconstruct clean unmarked ceramic/metal in their place. No people or humanoid workers anywhere. Pull camera back so the entire tall machine, including its upper mechanism, is visible with 12 percent empty margin on every side; shorten loose fibers so nothing crosses image edges. Uniform dark teal #101b1d background. No added UI or graphics. Final image must contain absolutely no typography, signage, symbols or branding."
+    },
+    {
+      "id": "tech-sail",
+      "path": "assets/technology/nodes/sail-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/technology/nodes/sail-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit this technology illustration. Keep the same equipment identity, camera, palette, lighting and mechanical composition. REMOVE EVERY printed word, letter, number, logo, emblem, slogan, banner and decorative signage from machinery and scene. Reconstruct clean unmarked ceramic/metal in their place. No people or humanoid workers anywhere.  Uniform dark teal #101b1d background. No added UI or graphics. Final image must contain absolutely no typography, signage, symbols or branding."
+    },
+    {
+      "id": "extractor-severe-cycle-v1",
+      "path": "assets/animations/candidates/extractor-severe-cycle-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/extractor-severe-cycle-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 4 equal columns and 4 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row.  No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. "
+    },
+    {
+      "id": "assembler-light-cycle-v1",
+      "path": "assets/animations/candidates/assembler-light-cycle-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/assembler-light-cycle-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 4 equal columns and 4 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row. Correct orientation layout: each ROW uses one fixed physical ground-plane direction throughout all four arm-motion frames. Row 1 front, row 2 turned90, row3rear180,row4turned270. Only the arm moves across columns; foundation, hopper and cables must never rotate during a row. No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. "
+    },
+    {
+      "id": "assembler-severe-cycle-v1",
+      "path": "assets/animations/candidates/assembler-severe-cycle-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/assembler-severe-cycle-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 4 equal columns and 4 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row.  No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. "
+    },
+    {
+      "id": "generator-cycle-v1",
+      "path": "assets/animations/candidates/generator-cycle-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/generator-cycle-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 4 equal columns and 4 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row.  No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. "
+    },
+    {
+      "id": "sentry-fire-v1",
+      "path": "assets/animations/candidates/sentry-fire-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/sentry-fire-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 4 equal columns and 4 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row.  No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. "
+    },
+    {
+      "id": "transport-items-v1",
+      "path": "assets/animations/candidates/transport-items-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/transport-items-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 2 equal columns and 2 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row.  No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. All four inventory objects remain distinct, no text."
+    },
+    {
+      "id": "guardian-idle-v1",
+      "path": "assets/animations/candidates/guardian-idle-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/guardian-idle-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 2 equal columns and 2 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row.  No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. "
+    },
+    {
+      "id": "guardian-collapse-v1",
+      "path": "assets/animations/candidates/guardian-collapse-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/guardian-collapse-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 2 equal columns and 2 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row.  No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. "
+    },
+    {
+      "id": "crawler-attack-v1",
+      "path": "assets/animations/candidates/crawler-attack-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/crawler-attack-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 4 equal columns and 4 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row.  No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. "
+    },
+    {
+      "id": "crawler-death-v1",
+      "path": "assets/animations/candidates/crawler-death-v2.png",
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/animations/candidates/crawler-death-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target is this sprite atlas. Replace the entire background, including painted white/gray checker squares and colored edge fringe, with a perfectly uniform opaque near-black teal #101b1d. This is deliberately a SOLID OPAQUE MATTE, do not simulate transparency and do not paint any checker pattern. Keep every subject's identity, motion phase, condition, camera and lighting. EXACTLY 4 equal columns and 4 equal rows. Shrink subjects uniformly if needed to fit comfortably within each cell with at least 12 percent empty margins; static foundation centers aligned in each row.  No words, labels, symbols, borders, bright edge halos or new effects. Preserve actual damage and moving mechanisms. "
+    }
+  ]
+}

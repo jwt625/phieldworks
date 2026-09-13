@@ -65,3 +65,8 @@ Power off → no lit LEDs and no work motion. Powered but no ore → lit ready i
 - Generated `assets/states/sentry-condition-v1.png`; source recorded in state-provenance.json; review pending.
 
 - Generated `assets/states/extractor-light-cycle-v1.png`; source recorded in state-provenance.json; review pending.
+
+
+## Checkpoint — 2026-09-13
+
+S3 now has initial sources for all six formerly absent sheets in `assets/animations/candidates/`, with three saved machinery corrections. They remain review-only: several initial sheets painted checkerboards, registration is unverified, and runtime still uses the existing fallbacks. The visual queue was reviewed with concrete failures recorded in [013](013-verification-review.md); generation/resume status is in [014](014-asset-production-tracker.md).

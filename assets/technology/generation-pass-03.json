@@ -1,0 +1,365 @@
+{
+  "date": "2026-09-13",
+  "tool": "built-in image_gen",
+  "jobs": [
+    {
+      "id": "tech-outpost",
+      "technology": "outpost",
+      "title": "Automated outpost",
+      "category": "technology",
+      "path": "assets/technology/nodes/outpost-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: Compact extraction-and-assembly production cell: drill at left, short ore belt, articulated assembly arm at right, copper turbine behind. Three machines on one tidy industrial foundation. Gameplay meaning: The expedition brings the tools to rebuild its own supply chain."
+    },
+    {
+      "id": "tech-fieldcraft",
+      "technology": "fieldcraft",
+      "title": "Field engineering",
+      "category": "technology",
+      "path": "assets/technology/nodes/fieldcraft-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: One four-port ceramic junction linked to a small phase carriage and angled field emitter; copper plumbing and cyan connector rings make the branch legible. Gameplay meaning: Discover how routing and relative phase change useful delivery."
+    },
+    {
+      "id": "tech-perimeter",
+      "technology": "perimeter",
+      "title": "Perimeter defense",
+      "category": "technology",
+      "path": "assets/technology/nodes/perimeter-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A squat twin-barrel perimeter sentry with cream ceramic hood, horizontal cyan sensor slit and bolted dark pedestal. No firing effects. Gameplay meaning: Give the player a defense before field exposure can provoke attacks."
+    },
+    {
+      "id": "tech-frontier",
+      "technology": "frontier",
+      "title": "Open the frontier",
+      "category": "technology",
+      "path": "assets/technology/nodes/frontier-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A broken mineral-armored guardian shell beside an opened passage toward pale blue crystal, a small coherent emitter at the edge. Clearly an environmental achievement, not a new machine. Gameplay meaning: Concentrate useful power to remove the armored guardian."
+    },
+    {
+      "id": "tech-crystal",
+      "technology": "crystal",
+      "title": "First crystal",
+      "category": "technology",
+      "path": "assets/technology/nodes/crystal-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A harvested pale blue precision crystal in a steel transport cradle beside a compact drill head. Distinct crystal silhouette dominates. Gameplay meaning: Make the new territory feed the next industrial tier."
+    },
+    {
+      "id": "tech-qualification",
+      "technology": "qualification",
+      "title": "Qualified outpost",
+      "category": "technology",
+      "path": "assets/technology/nodes/qualification-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A rugged commissioning console beside a folded modular installation plan and a physical green acceptance lamp. No letters or checkmark UI; this is an engineering achievement. Gameplay meaning: Finish an engineering experiment with a reusable operating contract."
+    },
+    {
+      "id": "tech-research",
+      "technology": "research",
+      "title": "Industrial research",
+      "category": "technology",
+      "path": "assets/technology/nodes/research-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A ceramic research workbench sample-transfer arm beside a compact covered laboratory carousel with six sample sockets and a rugged ochre industrial dossier cartridge. Gameplay meaning: Turn surplus production into lasting capabilities."
+    },
+    {
+      "id": "tech-logistics",
+      "technology": "logistics",
+      "title": "Structured logistics",
+      "category": "technology",
+      "path": "assets/technology/nodes/logistics-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A clear Y-shaped conveyor splitter with visible hinged gate and two short belts, plus paired low underground entrance and exit hoods. Gameplay meaning: Expand material routing without rebuilding every connection."
+    },
+    {
+      "id": "tech-instrumentation",
+      "technology": "instrumentation",
+      "title": "Instrumented networks",
+      "category": "technology",
+      "path": "assets/technology/nodes/instrumentation-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A freestanding industrial monitor with a dark cyan trace screen and a tethered branch probe clamped around a field connector. No lettering or legible digits. Gameplay meaning: See trends and isolate causes before increasing output."
+    },
+    {
+      "id": "tech-grid",
+      "technology": "grid",
+      "title": "Power distribution",
+      "category": "technology",
+      "path": "assets/technology/nodes/grid-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A heavy substation with copper busbars, ceramic insulators, a visible breaker and two utility poles. Strong electrical distribution silhouette. Gameplay meaning: Supply several production districts with understandable capacity limits."
+    },
+    {
+      "id": "tech-materials",
+      "technology": "materials",
+      "title": "Prepared materials",
+      "category": "technology",
+      "path": "assets/technology/nodes/materials-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A horizontal ceramic polishing drum and feed rollers beside four prepared products: polished crystal, steel billet, copper conductor and ceramic substrate. Gameplay meaning: Convert frontier resources into repeatable manufacturing inputs."
+    },
+    {
+      "id": "tech-modules",
+      "technology": "modules",
+      "title": "Modular construction",
+      "category": "technology",
+      "path": "assets/technology/nodes/modules-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: Two compact prefabricated industrial cells joined by chunky keyed service connectors, a lifting frame over one module. Modular construction, no humanoid workers. Gameplay meaning: Replicate selected production cells with explicit service boundaries."
+    },
+    {
+      "id": "tech-thermal",
+      "technology": "thermal",
+      "title": "Thermal management",
+      "category": "technology",
+      "path": "assets/technology/nodes/thermal-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A broad finned heat exchanger with twin fans, a copper pump and closed coolant pipes, cool teal reservoir. No fire. Gameplay meaning: Build a stable operating envelope for stronger fields."
+    },
+    {
+      "id": "tech-defense",
+      "technology": "defense",
+      "title": "Layered defenses",
+      "category": "technology",
+      "path": "assets/technology/nodes/defense-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A supplied twin-barrel sentry with a distinct side magazine rack, low wall section and a small repair-depot arm. Visibly upgraded perimeter hardware. Gameplay meaning: Protect a growing perimeter with a supplied defense economy."
+    },
+    {
+      "id": "tech-precision",
+      "technology": "precision",
+      "title": "Precision research",
+      "category": "technology",
+      "path": "assets/technology/nodes/precision-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A precision sample fixture with polished crystal held between micrometer jaws, a control board and a slim teal precision dossier cartridge. Gameplay meaning: Measure prepared samples to unlock precision engineering."
+    },
+    {
+      "id": "tech-transport",
+      "technology": "transport",
+      "title": "Long-range transport",
+      "category": "technology",
+      "path": "assets/technology/nodes/transport-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A short rugged autonomous cargo carrier docking at a freight station with a loading arm and a sealed field-conduit service port. No tracks extending outside composition. Gameplay meaning: Carry material and field services between independently powered outposts."
+    },
+    {
+      "id": "tech-coherent",
+      "technology": "coherent",
+      "title": "Stable source arrays",
+      "category": "technology",
+      "path": "assets/technology/nodes/coherent-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: Two matched cylindrical sources sharing a narrow ceramic reference spine, separate copper amplifier heatsink, small return-power protection block. Symmetric stable source array. Gameplay meaning: Coordinate separate sources without hiding return power or drift."
+    },
+    {
+      "id": "tech-pulses",
+      "technology": "pulses",
+      "title": "Pulsed field delivery",
+      "category": "technology",
+      "path": "assets/technology/nodes/pulses-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A pulse driver: bank of three squat capacitor cylinders, heavy switching bridge and single field output aperture. Ochre charge indicator. No giant laser beam. Gameplay meaning: Trade peak delivery, duty cycle and heat against armored threats."
+    },
+    {
+      "id": "tech-fabrication",
+      "technology": "fabrication",
+      "title": "Precision fabrication",
+      "category": "technology",
+      "path": "assets/technology/nodes/fabrication-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: An enclosed precision fabrication cell with a horizontal inspection stage, optical processing head and separate accepted-part tray and reject chute. Gameplay meaning: Make good parts per minute the next field-engineering reward."
+    },
+    {
+      "id": "tech-photonics",
+      "technology": "photonics",
+      "title": "Integrated photonics",
+      "category": "technology",
+      "path": "assets/technology/nodes/photonics-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: An open wafer carrier under a precision patterning head, with a small packaged photonic module and two tiny ceramic optical couplers in foreground. Gameplay meaning: Combine stable fields and accepted parts into integrated systems."
+    },
+    {
+      "id": "tech-distributed",
+      "technology": "distributed",
+      "title": "Distributed infrastructure",
+      "category": "technology",
+      "path": "assets/technology/nodes/distributed-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: Two communications relay masts flanking a compact cargo scheduling terminal, directional dishes facing different districts, subtle cyan link indicators. Gameplay meaning: Keep remote production districts supplied and synchronized."
+    },
+    {
+      "id": "tech-adaptive",
+      "technology": "adaptive",
+      "title": "Adaptive aperture control",
+      "category": "technology",
+      "path": "assets/technology/nodes/adaptive-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A sector controller cabinet with three small calibration beacons surrounding a segmented hexagonal emitter tile, one beacon emitting a restrained cyan ring. Gameplay meaning: Maintain coherent delivery across a changing environment."
+    },
+    {
+      "id": "tech-survey",
+      "technology": "survey",
+      "title": "Frontier observatories",
+      "category": "technology",
+      "path": "assets/technology/nodes/survey-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A squat observatory with a rotating open dome and large tilted tracking receiver, small survey tripod beside it. Clear surveying silhouette. Gameplay meaning: Survey safe construction corridors and track distant targets."
+    },
+    {
+      "id": "tech-nanofab",
+      "technology": "nanofab",
+      "title": "Large-area nanofabrication",
+      "category": "technology",
+      "path": "assets/technology/nodes/nanofab-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A wide membrane production line: paired tension rollers stretch a thin iridescent film beneath a metrology gantry and deposition head. Film is continuous and flat. Gameplay meaning: Scale inspected precision parts into continuous functional surfaces."
+    },
+    {
+      "id": "tech-aperture",
+      "technology": "aperture",
+      "title": "Planetary aperture",
+      "category": "technology",
+      "path": "assets/technology/nodes/aperture-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A large hexagonal aperture sector made of seven aligned ceramic emitter facets, copper cooling manifold around its edge and small sector control pedestal. Gameplay meaning: Assemble qualified sectors into a single controlled instrument."
+    },
+    {
+      "id": "tech-sail",
+      "technology": "sail",
+      "title": "Lightsail assembly",
+      "category": "technology",
+      "path": "assets/technology/nodes/sail-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A lightsail assembly dock with four tension arms holding an ultrathin silvery square membrane and compact corner rigging. Industrial manufacturing context. Gameplay meaning: Produce and inspect the payload that gives the planetary factory a purpose."
+    },
+    {
+      "id": "tech-launch",
+      "technology": "launch",
+      "title": "Launch the lightsail",
+      "category": "technology",
+      "path": "assets/technology/nodes/launch-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "prompt": "Use case: stylized-concept. Asset type: PHIELDWORKS technology node illustration, one square 1024x1024 image. Fixed orthographic oblique top-down camera, upper-left soft light. Chunky readable painterly 3D industrial game art, weathered off-white ceramic, charcoal steel, exposed copper, restrained cyan indicators. Single centered coherent composition filling 75 percent of canvas with generous empty margin. Dark uniform teal #101b1d backdrop, no scene horizon, no text, labels, numbers, logos, border, watermark or UI. Distinct silhouette readable at 48 and 96 pixels. This is a technology illustration, not a sprite atlas. Subject: A deployed delicate square lightsail separating above its release cradle, four distant small aperture sectors beneath it aligned upward. Compact emblem-like scene of successful launch, no rocket. Gameplay meaning: Turn the industrialized planet into a precision instrument."
+    },
+    {
+      "id": "extractor-severe-cycle-v1",
+      "category": "animation",
+      "path": "assets/animations/candidates/extractor-severe-cycle-v1.png",
+      "columns": 4,
+      "rows": 4,
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/states/extractor-condition-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS animation atlas. Reference image is identity reference ONLY, preserve its exact machine or creature identity, material palette and anatomy. Produce ONE square sprite sheet with exactly 4 columns and 4 rows, 16 complete subjects. ROWS are four physically turned ground-plane orientations: original, 90, rear 180, 270 degrees. COLUMNS are chronological animation frames of the SAME orientation. Use severely damaged third-row identity: cracked ceramic and exposed copper persist identically in every frame, functional drill survives. Four drill phases: raised, halfway down, fully down, halfway raised. Housing never moves. Fixed orthographic oblique top-down camera and upper-left lighting. LOCK static chassis/base, scale, anchor, connectors and background across every motion frame; move only named mechanisms. Center each subject in its equal cell with 20 percent padding and completely empty gutters; nothing crosses cell boundaries. Physically redraw other directions, never rotate or mirror a flat image. True transparent RGBA background, no painted checkerboard, no matte, no cast ground shadow. No text, numerals, labels, borders, logos, watermark, smoke, flash or beam effects."
+    },
+    {
+      "id": "assembler-light-cycle-v1",
+      "category": "animation",
+      "path": "assets/animations/candidates/assembler-light-cycle-v1.png",
+      "columns": 4,
+      "rows": 4,
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/states/assembler-condition-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS animation atlas. Reference image is identity reference ONLY, preserve its exact machine or creature identity, material palette and anatomy. Produce ONE square sprite sheet with exactly 4 columns and 4 rows, 16 complete subjects. ROWS are four physically turned ground-plane orientations: original, 90, rear 180, 270 degrees. COLUMNS are chronological animation frames of the SAME orientation. Use lightly damaged second-row identity with one chipped corner and scuffed panel. Four phases: arm raised over input, grip at tray, press lowered on work stage, arm lifted returning. Damage locations never change. Fixed orthographic oblique top-down camera and upper-left lighting. LOCK static chassis/base, scale, anchor, connectors and background across every motion frame; move only named mechanisms. Center each subject in its equal cell with 20 percent padding and completely empty gutters; nothing crosses cell boundaries. Physically redraw other directions, never rotate or mirror a flat image. True transparent RGBA background, no painted checkerboard, no matte, no cast ground shadow. No text, numerals, labels, borders, logos, watermark, smoke, flash or beam effects."
+    },
+    {
+      "id": "assembler-severe-cycle-v1",
+      "category": "animation",
+      "path": "assets/animations/candidates/assembler-severe-cycle-v1.png",
+      "columns": 4,
+      "rows": 4,
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/states/assembler-condition-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS animation atlas. Reference image is identity reference ONLY, preserve its exact machine or creature identity, material palette and anatomy. Produce ONE square sprite sheet with exactly 4 columns and 4 rows, 16 complete subjects. ROWS are four physically turned ground-plane orientations: original, 90, rear 180, 270 degrees. COLUMNS are chronological animation frames of the SAME orientation. Use severely damaged third-row identity: missing side panels, cracked ceramic and exposed internals, working core arm. Four phases: reach input, grip, press on stage, lift returning. Exact damage remains across frames. Fixed orthographic oblique top-down camera and upper-left lighting. LOCK static chassis/base, scale, anchor, connectors and background across every motion frame; move only named mechanisms. Center each subject in its equal cell with 20 percent padding and completely empty gutters; nothing crosses cell boundaries. Physically redraw other directions, never rotate or mirror a flat image. True transparent RGBA background, no painted checkerboard, no matte, no cast ground shadow. No text, numerals, labels, borders, logos, watermark, smoke, flash or beam effects."
+    },
+    {
+      "id": "generator-cycle-v1",
+      "category": "animation",
+      "path": "assets/animations/candidates/generator-cycle-v1.png",
+      "columns": 4,
+      "rows": 4,
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/world/power-unit-turnaround-v2.png",
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS animation atlas. Reference image is identity reference ONLY, preserve its exact machine or creature identity, material palette and anatomy. Produce ONE square sprite sheet with exactly 4 columns and 4 rows, 16 complete subjects. ROWS are four physically turned ground-plane orientations: original, 90, rear 180, 270 degrees. COLUMNS are chronological animation frames of the SAME orientation. Four phases of exposed rotor and front cooling fan rotation. Ceramic cylindrical housing and copper bus terminals stay completely fixed. Unlit lamp recesses; illumination added in runtime. Fixed orthographic oblique top-down camera and upper-left lighting. LOCK static chassis/base, scale, anchor, connectors and background across every motion frame; move only named mechanisms. Center each subject in its equal cell with 20 percent padding and completely empty gutters; nothing crosses cell boundaries. Physically redraw other directions, never rotate or mirror a flat image. True transparent RGBA background, no painted checkerboard, no matte, no cast ground shadow. No text, numerals, labels, borders, logos, watermark, smoke, flash or beam effects."
+    },
+    {
+      "id": "sentry-fire-v1",
+      "category": "animation",
+      "path": "assets/animations/candidates/sentry-fire-v1.png",
+      "columns": 4,
+      "rows": 4,
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/world/perimeter-sentry-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS animation atlas. Reference image is identity reference ONLY, preserve its exact machine or creature identity, material palette and anatomy. Produce ONE square sprite sheet with exactly 4 columns and 4 rows, 16 complete subjects. ROWS are four physically turned ground-plane orientations: original, 90, rear 180, 270 degrees. COLUMNS are chronological animation frames of the SAME orientation. Four recoil phases: twin barrels extended, both recoiled a short distance, halfway returned, fully extended. Pedestal and head aim stay fixed. No firing flashes or bullets. Fixed orthographic oblique top-down camera and upper-left lighting. LOCK static chassis/base, scale, anchor, connectors and background across every motion frame; move only named mechanisms. Center each subject in its equal cell with 20 percent padding and completely empty gutters; nothing crosses cell boundaries. Physically redraw other directions, never rotate or mirror a flat image. True transparent RGBA background, no painted checkerboard, no matte, no cast ground shadow. No text, numerals, labels, borders, logos, watermark, smoke, flash or beam effects."
+    },
+    {
+      "id": "transport-items-v1",
+      "category": "items",
+      "path": "assets/animations/candidates/transport-items-v1.png",
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Use case: stylized-concept. PHIELDWORKS inventory sprite atlas, square exact 2x2 equal cells. Top left rusty ferrous ore nugget; top right bolted steel-and-ceramic industrial assembly with copper winding; bottom left pale blue crystal shard in metal cradle; bottom right bent metal, cracked ceramic and short copper coil as compact scrap bundle. Fixed oblique camera, upper-left light, bold distinct silhouettes at 12–32 px. Center each item with 20% empty margins. True transparent RGBA, no painted checkerboard, no matte, no cast shadow, text, labels, borders or glow."
+    },
+    {
+      "id": "guardian-idle-v1",
+      "category": "animation",
+      "path": "assets/animations/candidates/guardian-idle-v1.png",
+      "columns": 2,
+      "rows": 2,
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/sprites/armored-frontier-organism-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS animation atlas. Reference image is identity reference ONLY, preserve its exact machine or creature identity, material palette and anatomy. Produce ONE square sprite sheet with exactly 2 columns and 2 rows, 4 complete subjects. All cells use the SAME original camera and orientation; read frames left-to-right then top-to-bottom chronologically. Four chronological breathing frames: rest, slight torso rise, expanded armored thorax, settling. Anchored angular dark rock plates and amber organic joints, fixed planted legs. No walking or root translation. Fixed orthographic oblique top-down camera and upper-left lighting. LOCK static chassis/base, scale, anchor, connectors and background across every motion frame; move only named mechanisms. Center each subject in its equal cell with 20 percent padding and completely empty gutters; nothing crosses cell boundaries. Physically redraw other directions, never rotate or mirror a flat image. True transparent RGBA background, no painted checkerboard, no matte, no cast ground shadow. No text, numerals, labels, borders, logos, watermark, smoke, flash or beam effects."
+    },
+    {
+      "id": "guardian-collapse-v1",
+      "category": "animation",
+      "path": "assets/animations/candidates/guardian-collapse-v1.png",
+      "columns": 2,
+      "rows": 2,
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/sprites/armored-frontier-organism-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS animation atlas. Reference image is identity reference ONLY, preserve its exact machine or creature identity, material palette and anatomy. Produce ONE square sprite sheet with exactly 2 columns and 2 rows, 4 complete subjects. All cells use the SAME original camera and orientation; read frames left-to-right then top-to-bottom chronologically. Four chronological death frames: brace and crack, legs buckle, mineral armor collapses inward, static low rubble remains. Non-gory stone creature. Single one-shot sequence; keep foundation center fixed. Fixed orthographic oblique top-down camera and upper-left lighting. LOCK static chassis/base, scale, anchor, connectors and background across every motion frame; move only named mechanisms. Center each subject in its equal cell with 20 percent padding and completely empty gutters; nothing crosses cell boundaries. Physically redraw other directions, never rotate or mirror a flat image. True transparent RGBA background, no painted checkerboard, no matte, no cast ground shadow. No text, numerals, labels, borders, logos, watermark, smoke, flash or beam effects."
+    },
+    {
+      "id": "crawler-attack-v1",
+      "category": "animation",
+      "path": "assets/animations/candidates/crawler-attack-v1.png",
+      "columns": 4,
+      "rows": 4,
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/world/investigator-crawler-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS animation atlas. Reference image is identity reference ONLY, preserve its exact machine or creature identity, material palette and anatomy. Produce ONE square sprite sheet with exactly 4 columns and 4 rows, 16 complete subjects. ROWS are four physically turned ground-plane orientations: original, 90, rear 180, 270 degrees. COLUMNS are chronological animation frames of the SAME orientation. Four chronological attack phases: brace on rear legs, lift front limbs, short forward strike with forelimbs, recoil to brace. Same six-legged mineral-plated crawler anatomy, body center stays within cell. No projectiles. Fixed orthographic oblique top-down camera and upper-left lighting. LOCK static chassis/base, scale, anchor, connectors and background across every motion frame; move only named mechanisms. Center each subject in its equal cell with 20 percent padding and completely empty gutters; nothing crosses cell boundaries. Physically redraw other directions, never rotate or mirror a flat image. True transparent RGBA background, no painted checkerboard, no matte, no cast ground shadow. No text, numerals, labels, borders, logos, watermark, smoke, flash or beam effects."
+    },
+    {
+      "id": "crawler-death-v1",
+      "category": "animation",
+      "path": "assets/animations/candidates/crawler-death-v1.png",
+      "columns": 4,
+      "rows": 4,
+      "reference": "/Users/sophia/GitHub/phieldworks/assets/world/investigator-crawler-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS animation atlas. Reference image is identity reference ONLY, preserve its exact machine or creature identity, material palette and anatomy. Produce ONE square sprite sheet with exactly 4 columns and 4 rows, 16 complete subjects. ROWS are four physically turned ground-plane orientations: original, 90, rear 180, 270 degrees. COLUMNS are chronological animation frames of the SAME orientation. Four chronological non-gory death phases: body crouches, legs buckle, shell settles low, static collapsed remains. One-shot sequence per direction; retain identical anatomy and scale. Fixed orthographic oblique top-down camera and upper-left lighting. LOCK static chassis/base, scale, anchor, connectors and background across every motion frame; move only named mechanisms. Center each subject in its equal cell with 20 percent padding and completely empty gutters; nothing crosses cell boundaries. Physically redraw other directions, never rotate or mirror a flat image. True transparent RGBA background, no painted checkerboard, no matte, no cast ground shadow. No text, numerals, labels, borders, logos, watermark, smoke, flash or beam effects."
+    }
+  ]
+}

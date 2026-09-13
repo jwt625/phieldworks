@@ -1,0 +1,23 @@
+import {technologies,technologyById} from './ui/technology-data';
+import {directUnlocks} from './ui/production-data';
+import pass from '../assets/technology/generation-pass-03.json';
+const urls=import.meta.glob(['../assets/technology/nodes/*.png','../assets/animations/candidates/*.png'],{eager:true,query:'?url',import:'default'}) as Record<string,string>;
+const $=(id:string)=>document.getElementById(id)!;
+const url=(path:string)=>urls[`../${path.replace('-v1.png','-v2.png')}`]??urls[`../${path}`];
+const nodeUrl=(id:string)=>url(`assets/technology/nodes/${id}-v1.png`);
+const art=(id:string)=>nodeUrl(id)?`<img src="${nodeUrl(id)}" alt="${technologyById.get(id)!.name} concept" loading="lazy">`:'<span class="pending">Queued for generation</span>';
+$('node-art').innerHTML=technologies.map(t=>`<button class="node-card" data-art-node="${t.id}" aria-pressed="false">${art(t.id)}<small>${t.id} · ${t.kind}</small><strong>${t.name}</strong></button>`).join('');
+function select(id:string){const t=technologyById.get(id)!;document.querySelectorAll<HTMLElement>('[data-art-node]').forEach(e=>e.setAttribute('aria-pressed',String(e.dataset.artNode===id)));$('art-detail').innerHTML=`${art(id)}<h2>${t.name}</h2><p>${t.summary}</p><h3>All prerequisites</h3>${t.requires.map(id=>`<button data-select-art="${id}">${technologyById.get(id)!.name}</button>`).join('')||'<p>Expedition foundation</p>'}<h3>Concrete unlocks</h3><ul>${directUnlocks(id).map(p=>`<li>${p.name} <small>${p.type}</small></li>`).join('')}</ul><h3>Thumbnail check</h3><div class="sizes">${[48,96].map(size=>`<span><img src="${nodeUrl(id)??''}" alt="" width="${size}" height="${size}">${size} px</span>`).join('')}</div><p>${t.condition}</p>`;}
+document.body.addEventListener('click',e=>{const b=(e.target as HTMLElement).closest<HTMLElement>('[data-art-node],[data-select-art]');if(b)select(b.dataset.artNode??b.dataset.selectArt!);});
+$('art-search').oninput=e=>{const q=(e.target as HTMLInputElement).value.toLowerCase().trim();let visible=0;for(const t of technologies){const shown=`${t.name} ${t.summary} ${directUnlocks(t.id).map(p=>p.name).join(' ')}`.toLowerCase().includes(q);document.querySelector<HTMLElement>(`[data-art-node=${t.id}]`)!.hidden=!shown;if(shown)visible++;}$('art-count').textContent=`${visible} / ${technologies.length} technologies`;};
+$('backdrop').onchange=e=>document.body.classList.toggle('light',(e.target as HTMLSelectElement).value==='light');
+$('art-count').textContent=`${technologies.filter(t=>nodeUrl(t.id)).length} / ${technologies.length} illustrations saved`;
+const motions=pass.jobs.filter(j=>j.category!=='technology');
+$('motion-cards').innerHTML=motions.map(j=>`<article class="motion-card" data-motion="${j.id}"><h3>${j.id}</h3>${url(j.path)?`<canvas width="400" height="400" aria-label="${j.id} frame preview"></canvas><a href="${url(j.path)}">Original atlas</a>`:'<p class="pending">Queued for generation</p>'}<p>${j.columns} × ${j.rows} · ${j.category==='items'?'inventory sheet':j.id.includes('death')||j.id.includes('collapse')||j.id.includes('attack')||j.id.includes('fire')?'one-shot candidate':'loop candidate'}</p></article>`).join('');
+const images=new Map<string,HTMLImageElement>();
+await Promise.all(motions.filter(j=>url(j.path)).map(j=>new Promise<void>((resolve,reject)=>{const im=new Image();im.onload=()=>{images.set(j.id,im);resolve();};im.onerror=()=>reject(Error(j.path));im.src=url(j.path);}))); 
+let frame=0,playing=false,direction=0,previous=0;
+function draw(){for(const j of motions){const im=images.get(j.id),canvas=document.querySelector<HTMLCanvasElement>(`[data-motion="${j.id}"] canvas`);if(!im||!canvas)continue;const once=/death|collapse|attack|fire/.test(j.id),index=once?Math.min(3,frame):frame%4;const cell=j.rows===4?direction*4+index:index;const c=canvas.getContext('2d')!;c.clearRect(0,0,400,400);if(j.category==='items'){c.drawImage(im,0,0,400,400);continue;}c.drawImage(im,(cell%j.columns)*im.width/j.columns,Math.floor(cell/j.columns)*im.height/j.rows,im.width/j.columns,im.height/j.rows,0,0,400,400);canvas.dataset.frame=String(index);canvas.dataset.direction=String(j.rows===4?direction:0);}$('motion-frame').textContent=`Frame ${frame} · 6 fps`;}
+$('motion-direction').onchange=e=>{direction=Number((e.target as HTMLSelectElement).value);draw();};
+$('motion-play').onclick=()=>{frame=0;playing=true;previous=performance.now();draw();};$('motion-pause').onclick=()=>{playing=false;};$('motion-step').onclick=()=>{playing=false;frame++;draw();};
+function tick(now:number){if(playing&&!document.hidden&&now-previous>=1000/6){frame++;previous=now;draw();}requestAnimationFrame(tick);}select('research');draw();requestAnimationFrame(tick);
