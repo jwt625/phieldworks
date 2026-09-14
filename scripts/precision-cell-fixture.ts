@@ -9,7 +9,7 @@ const placeAt=(w:World,kind:Parameters<typeof place>[1],x:number,y:number,rotati
 const wire=(w:World,type:'field'|'material'|'power',a:string,ap:number,b:string,bp:number)=>{const error=connect(w,type,{node:a,port:ap},{node:b,port:bp});if(error)throw new Error(`${type} ${a}:${ap}->${b}:${bp}: ${error}`);};
 const run=(w:World,seconds:number)=>{for(let i=0;i<Math.round(seconds/DT);i++)step(w);};
 
-export interface PrecisionCellResult {world:World;cellTarget:string;cellDomain:string;phaseSweep:{phase:number;useful:number;guard:number}[];failedLots:number;accepted:number;qualified:boolean;}
+export interface PrecisionCellResult {world:World;cellTarget:string;cellDomain:string;standalone:string[];phaseSweep:{phase:number;useful:number;guard:number}[];failedLots:number;accepted:number;qualified:boolean;}
 
 export function runPrecisionCellFixture():PrecisionCellResult{
  const w=createWorld();
@@ -58,5 +58,5 @@ export function runPrecisionCellFixture():PrecisionCellResult{
  if(beginProcessQualification(w,cellTarget.id))throw new Error('begin process qualification');
  for(let cycle=0;cycle<3;cycle++){if(reserveProcess(w,cellTarget.id))throw new Error('reserve accepted cycle');run(w,8.2);}
  const qualification=w.qualifications.find(q=>q.domain===cellDomain.id)!;
- return {world:w,cellTarget:cellTarget.id,cellDomain:cellDomain.id,phaseSweep:sweep,failedLots,accepted:w.process.accepted,qualified:qualification.status==='qualified'};
+ return {world:w,cellTarget:cellTarget.id,cellDomain:cellDomain.id,standalone:[generator.id,reference.id,cellJunction.id,cellTuner.id,emitterA.id,emitterB.id,cell.id],phaseSweep:sweep,failedLots,accepted:w.process.accepted,qualified:qualification.status==='qualified'};
 }

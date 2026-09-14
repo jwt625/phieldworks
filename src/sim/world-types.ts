@@ -15,7 +15,9 @@ export const LOT_LIMIT = 1000;
 export interface Entity {id:string;kind:Kind;x:number;y:number;rotation:Rotation;phase:number;temperature:number;health:number;tripped:boolean;protection:boolean;ore:number;progress:number;powered:boolean}
 export interface Connection {id:string;a:Endpoint;b:Endpoint;type:Transport;path:Point[];diagonal:boolean;radius:number;packets:number[]}
 export interface Deposit {id:string;x:number;y:number;w:number;h:number;remaining:number;kind:'ore'|'crystal'}
-export interface Blueprint {entities:Entity[];links:Connection[];width:number;height:number}
+export interface BlueprintSlot {id:string;kind:'power'|'reference'|'controller';label:string;required:boolean;binding:string|null}
+/** Selected-module template. Internal ids are template-local keys; runtime state is stripped. */
+export interface Blueprint {version:2;entities:Entity[];links:Connection[];targets:Target[];references:ReferenceBinding[];domains:ControlDomain[];slots:BlueprintSlot[];width:number;height:number}
 
 export interface Creature extends Point {id:string;health:number;state:'patrol'|'investigate'|'attack'|'flee';heading:number;target:Point;exposure:number}
 export interface Ecology {creatures:Creature[];defenseReady:boolean;grace:number;threat:number;shots:{from:Point;to:Point;ttl:number}[]}

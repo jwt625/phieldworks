@@ -227,17 +227,5 @@ export function step(w:World,dt=DT){if(!Number.isFinite(dt)||dt<=0||dt>.25)throw
  revalidate(w,'Dependencies changed');
  const test=frontierQualification(w);if(test?.status==='testing'){test.elapsed+=dt;test.minimum=test.minimum<0?w.stats.targetPower:Math.min(test.minimum,w.stats.targetPower);if(test.elapsed>=20){test.status='qualified';test.reason='Passed 20 s drift profile; rating valid for this topology';event(w,`Module qualified at ${test.minimum.toFixed(1)} target power. Blueprint ready.`);}}
 }
-export function captureBlueprint(w:World):string {
- const qualification=frontierQualification(w);if(qualification?.status!=='qualified')return 'Commission the installation before recording a blueprint';
- const points=w.links.flatMap(l=>l.path),minX=Math.floor(Math.min(...w.entities.map(e=>e.x),...points.map(p=>p.x))),minY=Math.floor(Math.min(...w.entities.map(e=>e.y),...points.map(p=>p.y)));
- w.blueprint={entities:w.entities.map(e=>({...e,x:e.x-minX,y:e.y-minY,ore:0,progress:0})),links:w.links.map(l=>({...structuredClone(l),path:l.path.map(p=>({x:p.x-minX,y:p.y-minY})),packets:[]})),width:Math.ceil(Math.max(...w.entities.map(e=>e.x+footprint(e).w),...points.map(p=>p.x)))-minX,height:Math.ceil(Math.max(...w.entities.map(e=>e.y+footprint(e).h),...points.map(p=>p.y)))-minY};event(w,'Qualified outpost blueprint recorded');return '';
-}
-export function blueprintCost(w:World){return w.blueprint?.entities.reduce((s,e)=>s+DEFS[e.kind].cost,0)??0;}
-export function stampBlueprint(w:World,x:number,y:number):string {
- const bp=w.blueprint;if(!bp)return 'Record a blueprint first';const cost=blueprintCost(w);if(w.stock.assemblies<cost)return `Blueprint requires ${cost} assemblies`;
- const staged:Entity[]=[];for(const e of bp.entities){const err=placementError(w,e.kind,x+e.x,y+e.y,staged,e.rotation);if(err)return err;staged.push({...newEntity(e.kind,x+e.x,y+e.y,`e${w.nextId+staged.length}`,e.rotation),phase:e.phase,protection:e.protection});}
- const ids=new Map(bp.entities.map((e,i)=>[e.id,staged[i].id]));
- const draft={...w,entities:[...w.entities,...staged],links:[...w.links],events:[],qualifications:w.qualifications.map(q=>({...q})),nextId:w.nextId+staged.length};
- for(const l of bp.links){const error=connect(draft,l.type,{node:ids.get(l.a.node)!,port:l.a.port},{node:ids.get(l.b.node)!,port:l.b.port},{path:l.path.map(p=>({x:p.x+x,y:p.y+y})),radius:l.radius,diagonal:l.diagonal});if(error)return error;}
- w.nextId=draft.nextId;w.entities=draft.entities;w.links=draft.links;w.stock.assemblies-=cost;for(const e of staged)autoAssign(w,e);invalidate(w,'Blueprint placed — local commissioning required');event(w,'Blueprint placed; recheck power, deposits and phase at this site');return '';
-}
+export {captureBlueprint,blueprintCost,stampBlueprint} from './blueprints';
+export type {StampOptions} from './blueprints';

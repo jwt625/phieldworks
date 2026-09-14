@@ -4,7 +4,7 @@ import {findRoute} from './routing';
 import {newEcology} from './ecology';
 import {FIELD_PORT_LIMIT} from './network';
 import type {NetworkResult} from './network';
-import {HEIGHT,LINK_LIMIT,LOT_LIMIT,MACHINE_LIMIT,WIDTH,type Blueprint,type Connection,type ControlDomain,type Entity,type ProcessInventory,type ProcessJob,type Qualification,type QualificationStatus,type ReferenceBinding,type Stats,type Target,type World} from './world-types';
+import {HEIGHT,LINK_LIMIT,LOT_LIMIT,MACHINE_LIMIT,WIDTH,type Blueprint,type BlueprintSlot,type Connection,type ControlDomain,type Entity,type ProcessInventory,type ProcessJob,type Qualification,type QualificationStatus,type ReferenceBinding,type Stats,type Target,type World} from './world-types';
 
 export const emptyNet = ():NetworkResult=>({ports:{},absorbed:{},sourcePower:0,linkLoss:0,escaped:0,residual:0});
 export const emptyStats = ():Stats=>({network:emptyNet(),targetPower:0,targets:{},protectiveAbsorption:0,offTarget:0,radiated:0,heat:0,leaked:0,supply:0,demand:0,overload:0,wireOverload:0,controlCursor:0,bendRadiation:0,propagationLoss:0,error:'',emitterFields:{}});
@@ -62,7 +62,7 @@ function legacyPowerWires(entities:Entity[],links:Connection[],fail:()=>never){
 function pushEvent(w:World,text:string){w.events.unshift({time:w.time,text});w.events=w.events.slice(0,30);}
 
 function normalizeBlueprint(raw:unknown,legacy:boolean,fail:()=>never):Blueprint{
- const bp=raw as {entities?:unknown;links?:unknown};
+ const bp=raw as {entities?:unknown;links?:unknown;version?:unknown;targets?:unknown;references?:unknown;domains?:unknown;slots?:unknown};
  if(!bp||!Array.isArray(bp.entities)||!bp.entities.length||!Array.isArray(bp.links))fail();
  const source=legacy?(bp.entities as Entity[]).map(e=>({...e,x:e.x+1,y:e.y+1,rotation:0 as const})):bp.entities;
  const entities=validateEntities(source,fail);
@@ -71,7 +71,21 @@ function normalizeBlueprint(raw:unknown,legacy:boolean,fail:()=>never):Blueprint
  const points=links.flatMap(l=>l.path);
  const width=Math.ceil(Math.max(...entities.map(e=>e.x+footprint(e).w),...points.map(p=>p.x)));
  const height=Math.ceil(Math.max(...entities.map(e=>e.y+footprint(e).h),...points.map(p=>p.y)));
- return {entities,links,width,height};
+ const ids=new Set(entities.map(e=>e.id));
+ let targets:Target[]=[],references:ReferenceBinding[]=[],domains:ControlDomain[]=[],slots:BlueprintSlot[]=[];
+ if(bp.version===2){
+  if(bp.targets!==undefined&&!Array.isArray(bp.targets))fail();
+  const targetIds=new Set<string>();
+  for(const t of (bp.targets??[]) as Target[]){if(!t||typeof t.id!=='string'||!/^t\d+$/.test(t.id)||targetIds.has(t.id)||!['frontier','process'].includes(t.kind)||!finite(t.x)||!finite(t.y)||!nonnegative(t.health)||!Array.isArray(t.emitters)||(t.owner!==null&&(typeof t.owner!=='string'||!ids.has(t.owner)))||!(t.contract===null||typeof t.contract==='string')||t.emitters.some(id=>!ids.has(id)))fail();targetIds.add(t.id);targets.push({...t,emitters:[...t.emitters]});}
+  if(bp.references!==undefined&&!Array.isArray(bp.references))fail();
+  const referenceIds=new Set<string>();
+  for(const r of (bp.references??[]) as ReferenceBinding[]){if(!r||typeof r.id!=='string'||!/^r\d+$/.test(r.id)||referenceIds.has(r.id)||!ids.has(r.source)||typeof r.group!=='string')fail();referenceIds.add(r.id);references.push({...r});}
+  if(bp.domains!==undefined&&!Array.isArray(bp.domains))fail();
+  for(const d of (bp.domains??[]) as ControlDomain[]){if(!d||typeof d.id!=='string'||!/^d\d+$/.test(d.id)||typeof d.target!=='string'||!targetIds.has(d.target)||!(d.reference===null||typeof d.reference==='string')||!(d.sensor===null||(typeof d.sensor==='string'&&ids.has(d.sensor)))||!Array.isArray(d.tuners)||d.tuners.some(id=>!ids.has(id))||typeof d.enabled!=='boolean'||!['target-power','useful-minus-guard'].includes(d.objective)||!Number.isInteger(d.cursor)||d.cursor<0)fail();domains.push({...d,tuners:[...d.tuners]});}
+  if(bp.slots!==undefined&&!Array.isArray(bp.slots))fail();
+  for(const s of (bp.slots??[]) as BlueprintSlot[]){if(!s||typeof s.id!=='string'||!['power','reference','controller'].includes(s.kind)||typeof s.label!=='string'||typeof s.required!=='boolean'||!(s.binding===null||typeof s.binding==='string'))fail();slots.push({...s});}
+ }
+ return {version:2,entities,links,targets,references,domains,slots,width,height};
 }
 
 function loadRecords(s:Record<string,unknown>,w:World,fail:()=>never){

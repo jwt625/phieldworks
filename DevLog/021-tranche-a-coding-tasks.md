@@ -98,13 +98,17 @@ Honest deferral: full keyboard world placement/navigation is A-08. The browser s
 
 ## A-07 — module capture and second cell
 
-- [ ] Extract blueprint commands into `src/sim/blueprints.ts` with selection bounds and included-domain checks.
-- [ ] Create fresh keys for entities, sources/groups, targets and domains. Strip jobs, stock, telemetry and qualification.
-- [ ] Render selection and excluded crossing routes. Add external binding resolution to `src/ui/blueprint-inspector.ts`.
-- [ ] Stage all placement validations, route geometry, costs and ownership before applying one commit. Never mutate shared nested arrays through a shallow draft world.
-- [ ] Test unresolved and occupied external slots, disconnected deployment, blocked footprint/route, exhausted stock, ID rollback, source independence, old blueprints and second-cell commissioning.
+- [x] Extract blueprint commands into `src/sim/blueprints.ts` with selection bounds and included-domain checks.
+- [x] Create fresh keys for entities, sources/groups, targets and domains. Strip jobs, stock, telemetry and qualification.
+- [x] Render selection and excluded crossing routes. Add external binding resolution to `src/ui/blueprint-inspector.ts`.
+- [x] Stage all placement validations, route geometry, costs and ownership before applying one commit. Never mutate shared nested arrays through a shallow draft world.
+- [x] Test unresolved and occupied external slots, disconnected deployment, blocked footprint/route, exhausted stock, ID rollback, source independence, old blueprints and second-cell commissioning.
 
 Files: world, persistence, renderer, main; new blueprint modules, `tests/local-blueprints.test.ts` and browser counterpart. Gate: original cell keeps working and its inventory/certificate do not transfer to the copy.
+
+**A-07 implementation note — 2026-09-13.** `src/sim/blueprints.ts` now owns capture, cost and transactional placement. A blueprint is `version:2` with template-local entity/link ids plus `targets`, `references`, `domains` and external `slots` (`power`/`reference`/`controller`); runtime inventory, progress, heat, packets, ratings and qualifications are stripped, and a copied internal source always gets a fresh coherence group equal to its new source id. Capture accepts a selection (or the whole outpost) and detects an included domain whose reference source is excluded (`reference` slot), partially selected tuners (`controller` slot) and power islands without an included generator (`power` slot). Placement stages every footprint, route, cost and id against a copied draft; on any failure the world, `nextId`, bindings and stock are untouched. Unresolved required slots block placement unless `allowDisconnected`, which deploys a disabled/stale domain that can never be qualified. Frontier targets/domains are never copied as internal identities, so the original certificate is unaffected while the copy's new qualification is idle. `src/ui/blueprint-inspector.ts` plus a `Select module` tool render the selection box, highlight excluded crossing routes and let the user resolve slots or deploy disconnected. Persistence treats a pre-v2 (old) blueprint as template geometry and normalizes it to v2 with empty targets/slots.
+
+Honest deferral: resolving an external `power` slot does not auto-build wires — the copy deploys disconnected until the player wires it, consistent with "no cost-free external wires"; the inspector lists the slot rather than creating routes. Browser coverage selects/records/places a whole-outpost template and asserts the copy brings no certificate; the cell-specific second-commissioning path is covered in `tests/local-blueprints.test.ts`.
 
 ## A-08 — menu shell and keyboard placement
 
