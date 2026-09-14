@@ -1,6 +1,6 @@
 # Tranche A — file-level coding TODO
 
-2026-09-13. Gameplay work below remains **planned**. A-09/A-10 have begun limited geometry/candidate review; see [022](022-tranche-a-assets.md). Read [019](019-tranche-a-plan.md) and [020](020-tranche-a-contracts.md) first. [JSON task manifest](planning/tranche-a-tasks.json) carries the same task IDs and dependency graph. Deliver small reviewable commits; keep `world.ts` integrations sequential where tasks touch the same functions. No subagent execution is requested by this checklist.
+2026-09-13. Gameplay work below remains **planned**. A-09/A-10 have begun limited geometry/candidate review; see [022](022-tranche-a-assets.md). Read [019](019-tranche-a-plan.md) and [020](020-tranche-a-contracts.md) first. [JSON task manifest](../tranche-a-tasks.json) carries the same task IDs and dependency graph. Deliver small reviewable commits; keep `world.ts` integrations sequential where tasks touch the same functions. No subagent execution is requested by this checklist.
 
 ## A-01 — local records and persistence
 
@@ -130,7 +130,7 @@ Honest gaps: keyboard selection of an arbitrary route endpoint list (beyond the 
 - [ ] A-10: generate only the gated cell family, one approved direction before four views/states; record source prompts and measured alpha/crops/anchors.
 - [ ] A-11: promote explicitly reviewed sources and bind loading/exposure/completion/fault events. Extend state review and browser art tests. Preserve reduced-motion state feedback.
 
-Exact files, asset IDs, generation inputs and acceptance gates are in the [asset manifest](../assets/planning/tranche-a-assets.json). Existing failed crawler/assembler sheets remain separate work; do not silently mark them corrected by adding cell art.
+Exact files, asset IDs, generation inputs and acceptance gates are in the [asset manifest](../../../assets/planning/tranche-a-assets.json). Existing failed crawler/assembler sheets remain separate work; do not silently mark them corrected by adding cell art.
 
 ## A-12 — integrated completion
 

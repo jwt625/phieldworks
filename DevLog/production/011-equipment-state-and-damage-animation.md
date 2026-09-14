@@ -69,4 +69,4 @@ Power off → no lit LEDs and no work motion. Powered but no ore → lit ready i
 
 ## Checkpoint — 2026-09-13
 
-S3 now has initial sources for all six formerly absent sheets in `assets/animations/candidates/`, with all ten animation/item matte corrections now saved and inspected. They remain review-only: several initial sheets painted checkerboards, registration is unverified, and runtime still uses the existing fallbacks. The visual queue was reviewed with concrete failures recorded in [013](013-verification-review.md); specific direction, motion and crop failures are tracked in [014](014-asset-production-tracker.md).
+S3 now has initial sources for all six formerly absent sheets in `assets/animations/candidates/`, with all ten animation/item matte corrections now saved and inspected. They remain review-only: several initial sheets painted checkerboards, registration is unverified, and runtime still uses the existing fallbacks. The visual queue was reviewed with concrete failures recorded in [013](../verification/013-verification-review.md); specific direction, motion and crop failures are tracked in [014](014-asset-production-tracker.md).

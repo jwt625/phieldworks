@@ -1,6 +1,6 @@
 # Gameplay decisions and frontier experiment
 
-> Continuation: [016](016-coherence-industry-and-lightsail-design.md) preserves this first-loop history and advances the next reward toward field-assisted manufacturing, independent control domains and two lightsail engineering tracks. Its accepted direction supersedes conflicting future assumptions here; [017](017-industrial-gameplay-tranches.md) defines delivery gates.
+> Continuation: [016](016-coherence-industry-and-lightsail-design.md) preserves this first-loop history and advances the next reward toward field-assisted manufacturing, independent control domains and two lightsail engineering tracks. Its accepted direction supersedes conflicting future assumptions here; [017](../planning/017-industrial-gameplay-tranches.md) defines delivery gates.
 
 Date: 2026-09-11
 
@@ -142,4 +142,4 @@ Provisional visual direction: oblique top-down industrial machinery, readable si
 
 First assets: an intact field emitter and an intact stationary armored frontier organism. Keep field overlays and beams separate from object artwork so they can reflect simulation state. Generated images are initial static artwork; footprint, anchor, rotation coverage, damage states, and final engine integration require follow-up.
 
-See [asset notes](../assets/README.md) for files and generation provenance.
+See [asset notes](../../assets/README.md) for files and generation provenance.

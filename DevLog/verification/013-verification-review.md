@@ -1,6 +1,6 @@
 # Visual and complex verification review
 
-2026-09-13, baseline `0bd3935`. Review performed before continuing asset generation. Coding remedies are assigned in [012](012-next-coding-handoffs.md); a reviewed failure is not marked as fixed.
+2026-09-13, baseline `0bd3935`. Review performed before continuing asset generation. Coding remedies are assigned in [012](../planning/012-next-coding-handoffs.md); a reviewed failure is not marked as fixed.
 
 ## Reproduction
 
@@ -47,7 +47,7 @@ World steps with starter field network plus disconnected sentries: 40/80/120 mac
 
 ## Follow-up — 2026-09-13 (P0 remedy)
 
-The 400-vs-128 contradiction in the capacity section is resolved in code; evidence and remaining gaps are recorded in [012](012-next-coding-handoffs.md) P0 progress. Single supported cap is now `FIELD_PORT_LIMIT=256` across placement, save load and `solveNetwork`; the solver partitions disconnected components and reuses one LU factorization per block. Post-remedy benchmark (`DevLog/evidence/012-p0-solver-after.json`, Apple M4 Pro): 128 ports / 16 groups 1.14 ms p95 (was 167.71); 256 / 1 group 4.33 ms p95; 400 rejected. The stale field-manual sentence about an overloaded generator shutting all attached loads down was corrected to match isolation behavior. This does not satisfy the connected-world frame-pacing or human-pacing gates above, which remain open.
+The 400-vs-128 contradiction in the capacity section is resolved in code; evidence and remaining gaps are recorded in [012](../planning/012-next-coding-handoffs.md) P0 progress. Single supported cap is now `FIELD_PORT_LIMIT=256` across placement, save load and `solveNetwork`; the solver partitions disconnected components and reuses one LU factorization per block. Post-remedy benchmark (`DevLog/evidence/012-p0-solver-after.json`, Apple M4 Pro): 128 ports / 16 groups 1.14 ms p95 (was 167.71); 256 / 1 group 4.33 ms p95; 400 rejected. The stale field-manual sentence about an overloaded generator shutting all attached loads down was corrected to match isolation behavior. This does not satisfy the connected-world frame-pacing or human-pacing gates above, which remain open.
 
 
 Connected-world checks have now been executed after P0. See [015](015-connected-world-validation.md) for the failed performance gate, browser pacing, and the next bounded coding remedy. Original visual findings remain open until their corresponding presentation fixes are implemented.

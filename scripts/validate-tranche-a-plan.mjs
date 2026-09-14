@@ -85,7 +85,7 @@ for(const r of refs.references){
  if(r.path.endsWith('.pdf'))assert.equal(data.subarray(0,5).toString(),'%PDF-');
  assert.ok(r.url.startsWith('https://'));cachedBytes+=data.length;
 }
-const docs=['DevLog/019-tranche-a-plan.md','DevLog/020-tranche-a-contracts.md','DevLog/021-tranche-a-coding-tasks.md','DevLog/022-tranche-a-assets.md','DevLog/references/tranche-a/README.md'];
+const docs=['DevLog/planning/tranche-a/019-tranche-a-plan.md','DevLog/planning/tranche-a/020-tranche-a-contracts.md','DevLog/planning/tranche-a/021-tranche-a-coding-tasks.md','DevLog/planning/tranche-a/022-tranche-a-assets.md','DevLog/references/tranche-a/README.md'];
 let links=0;
 for(const doc of docs){
  assert.ok(!read(doc).split('\n').some(line=>/[ \t]+$/.test(line)),`${doc}: trailing whitespace`);

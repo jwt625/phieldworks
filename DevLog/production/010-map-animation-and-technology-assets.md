@@ -82,6 +82,6 @@ The three new browser scenarios pass: technology dependencies/status/search, pre
 - `npm run test:browser`: all 11 scenarios pass (46.1 s), including the entire outpost tutorial/defense/commissioning recovery and the three new asset/presentation scenarios.
 - `git diff --check -- .`: clean. Existing simulation behavior and save schema were not changed in this pass.
 - Browser screenshots reviewed: `technology-tree-review.png`, `map-animation-review.png`, `animated-terrain-outpost.png`, plus the established outpost scenarios.
-- Outputs and exact prompts: [asset handoff](../assets/expansion/README.md). PNGs remain in `assets/map`, `assets/animations`, and `assets/technology`; source paths and dimensions are recorded in `assets/expansion-provenance.json`.
+- Outputs and exact prompts: [asset handoff](../../assets/expansion/README.md). PNGs remain in `assets/map`, `assets/animations`, and `assets/technology`; source paths and dimensions are recorded in `assets/expansion-provenance.json`.
 
 Next priorities: production alpha cutouts / smoother registered loops, belt straight/corner/end and inserter motion assets, individual damaged machine states, then in-game research data/contracts after the proposed dependency graph is reviewed. No need to generate the whole long-term building backlog before testing these silhouettes and gameplay pacing.

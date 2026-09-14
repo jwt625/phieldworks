@@ -1,6 +1,6 @@
 # PHIELDWORKS asset library
 
-Start with the [asset gallery](index.html), [UI component kit](ui/index.html), and [asset proposal](../DevLog/002-asset-plan.md). The [manifest](manifest.json) records stable IDs, dimensions, alpha information, proposed footprints, and integration dependencies. Footprints and anchors remain provisional.
+Start with the [asset gallery](index.html), [UI component kit](ui/index.html), and [asset proposal](../DevLog/production/002-asset-plan.md). The [manifest](manifest.json) records stable IDs, dimensions, alpha information, proposed footprints, and integration dependencies. Footprints and anchors remain provisional.
 
 The first-outpost batch adds extractor, assembler, power unit, reference/control station, four-port junction, phase tuner, cooled dump, and two deposits. The UI kit includes 23 original SVG symbols and interactive HTML/CSS component examples. These support first-build implementation; they are not a playable game.
 
@@ -10,7 +10,7 @@ Rebuild catalog metadata and the gallery with `python3 assets/tools/build_catalo
 
 ## First two assets
 
-Two provisional static assets for the [frontier experiment](../DevLog/001-gameplay-and-frontier-experiment.md), generated with the built-in image_gen tool. Original outputs are preserved unchanged with real alpha transparency, verified by reading the PNGs.
+Two provisional static assets for the [frontier experiment](../DevLog/design/001-gameplay-and-frontier-experiment.md), generated with the built-in image_gen tool. Original outputs are preserved unchanged with real alpha transparency, verified by reading the PNGs.
 
 | Asset | Dimensions | State |
 | --- | --- | --- |

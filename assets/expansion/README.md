@@ -8,7 +8,7 @@ Generated with the built-in image generation tool on 2026-09-12. Eleven source P
 | Animation | `assets/animations/` | Extractor, assembler and crawler; four orientations × four phases each (48 frames) |
 | Technology | `assets/technology/` | Eighteen equipment illustrations in two 3×3 sheets; eight industrial science packages in one 4×2 sheet |
 
-[Exact prompts](../expansion-prompts.json) · [source provenance, dimensions and layouts](../expansion-provenance.json) · [milestone and review notes](../../DevLog/010-map-animation-and-technology-assets.md).
+[Exact prompts](../expansion-prompts.json) · [source provenance, dimensions and layouts](../expansion-provenance.json) · [milestone and review notes](../../DevLog/production/010-map-animation-and-technology-assets.md).
 
 With `npm run dev` running, open:
 

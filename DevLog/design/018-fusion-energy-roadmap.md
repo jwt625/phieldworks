@@ -1,6 +1,6 @@
 # Fusion energy — the third industrial motivation
 
-Date: 2026-09-13. Status: user-requested design expansion; equipment, technology additions and balance below are proposals, not implemented features. Augments [016](016-coherence-industry-and-lightsail-design.md) and [017](017-industrial-gameplay-tranches.md). The user explicitly establishes three core motivations: manufacturing, energy and propulsion, with a NIF-inspired fusion roadmap. The existing runtime catalog remains unchanged pending tranche C's deliberate revision.
+Date: 2026-09-13. Status: user-requested design expansion; equipment, technology additions and balance below are proposals, not implemented features. Augments [016](016-coherence-industry-and-lightsail-design.md) and [017](../planning/017-industrial-gameplay-tranches.md). The user explicitly establishes three core motivations: manufacturing, energy and propulsion, with a NIF-inspired fusion roadmap. The existing runtime catalog remains unchanged pending tranche C's deliberate revision.
 
 ## Design thesis
 

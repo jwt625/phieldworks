@@ -1,6 +1,6 @@
 # Project PHIELDWORKS
 
-> Latest design iteration: [016 — coherence, industry and lightsail](016-coherence-industry-and-lightsail-design.md) takes precedence for the material/field bridge, two-track progression, local control, wave logistics and HUD direction. [017](017-industrial-gameplay-tranches.md) defines the next implementation tranches. Setting and pacing defaults are explicitly provisional there.
+> Latest design iteration: [016 — coherence, industry and lightsail](016-coherence-industry-and-lightsail-design.md) takes precedence for the material/field bridge, two-track progression, local control, wave logistics and HUD direction. [017](../planning/017-industrial-gameplay-tranches.md) defines the next implementation tranches. Setting and pacing defaults are explicitly provisional there.
 
 > Design status: this document establishes the broad vision. See [001 — Gameplay decisions and frontier experiment](001-gameplay-and-frontier-experiment.md) for the agreed audience, rewards, commissioning loop, initial scope, and clarifications that take precedence where the documents differ.
 

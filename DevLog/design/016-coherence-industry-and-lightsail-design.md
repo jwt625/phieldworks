@@ -1,8 +1,8 @@
 # Coherence, industry and the lightsail — design iteration C
 
-Date: 2026-09-13. Status: discussion direction approved for documentation and planning; new mechanics below are not implemented. The user approved the outline and requested this record. Implementation tranches are in [017](017-industrial-gameplay-tranches.md).
+Date: 2026-09-13. Status: discussion direction approved for documentation and planning; new mechanics below are not implemented. The user approved the outline and requested this record. Implementation tranches are in [017](../planning/017-industrial-gameplay-tranches.md).
 
-This iteration takes precedence over conflicting future-design assumptions in [000](000-design-doc.md), [001](001-gameplay-and-frontier-experiment.md), [007](007-technology-tree-design.md), and the future-work ordering in [012](012-next-coding-handoffs.md). Historical implementation evidence remains valid at its recorded checkpoint. The current 27-technology/99-product catalog remains the existing inspection UI's data source until explicitly revised; this document does not silently change recipes or unlocks.
+This iteration takes precedence over conflicting future-design assumptions in [000](000-design-doc.md), [001](001-gameplay-and-frontier-experiment.md), [007](007-technology-tree-design.md), and the future-work ordering in [012](../planning/012-next-coding-handoffs.md). Historical implementation evidence remains valid at its recorded checkpoint. The current 27-technology/99-product catalog remains the existing inspection UI's data source until explicitly revised; this document does not silently change recipes or unlocks.
 
 ## Fusion extension and shared-platform decision
 

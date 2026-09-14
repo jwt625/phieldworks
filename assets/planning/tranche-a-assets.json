@@ -3,7 +3,7 @@
   "status": "candidate-production",
   "baseline_commit": "cd002b4",
   "runtime_loader": false,
-  "authority": "DevLog/022-tranche-a-assets.md",
+  "authority": "DevLog/planning/tranche-a/022-tranche-a-assets.md",
   "candidate_directory": "assets/animations/candidates/tranche-a/",
   "review_record": "assets/planning/tranche-a-review.json",
   "equipment": {

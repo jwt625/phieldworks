@@ -2,7 +2,7 @@
   "schema_version": 1,
   "status": "asset-candidates-started",
   "baseline_commit": "cd002b4",
-  "authority": "DevLog/019-tranche-a-plan.md",
+  "authority": "DevLog/planning/tranche-a/019-tranche-a-plan.md",
   "notes": [
     "Gameplay implementation remains unstarted. A-09/A-10 began limited candidate work under explicit user instruction; dependencies for production completion remain unmet.",
     "Paths under creates describe future outputs and need not exist yet.",
@@ -245,8 +245,8 @@
         "scripts/benchmark-connected.ts",
         "scripts/connected-review-fixture.ts",
         "README.md",
-        "DevLog/004-implementation-journal.md",
-        "DevLog/017-industrial-gameplay-tranches.md"
+        "DevLog/implementation/004-implementation-journal.md",
+        "DevLog/planning/017-industrial-gameplay-tranches.md"
       ],
       "creates": [
         "DevLog/evidence/tranche-a/",

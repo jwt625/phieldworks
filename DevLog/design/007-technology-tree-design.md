@@ -2,7 +2,7 @@
 
 > Fusion extension: [018](018-fusion-energy-roadmap.md) adds proposed energy research to the shared manufacturing/beam/sail foundation. Fusion is required for final launch, with manufactured fuel cartridges initially. Audit new capabilities against existing equipment and prefer shared chassis/tooling/parts; the current generated catalog has not yet been changed.
 
-> Revision C direction is recorded in [016](016-coherence-industry-and-lightsail-design.md), with delivery in [017](017-industrial-gameplay-tranches.md). The 27/99 catalog below remains the existing preview data, awaiting a deliberate catalog revision in tranche C. Local control and a playable precision cell now precede the research rollout; the final fixed-power launch proposal will be replaced by a coupled beam/sail mission contract. Existing recipes and artwork are not automatically revised or implemented by that design approval.
+> Revision C direction is recorded in [016](016-coherence-industry-and-lightsail-design.md), with delivery in [017](../planning/017-industrial-gameplay-tranches.md). The 27/99 catalog below remains the existing preview data, awaiting a deliberate catalog revision in tranche C. Local control and a playable precision cell now precede the research rollout; the final fixed-power launch proposal will be replaced by a coupled beam/sail mission contract. Existing recipes and artwork are not automatically revised or implemented by that design approval.
 
 Date: 2026-09-12. Status: detailed design and inspection UI; proposed research and recipes are not implemented. Asset generation still awaits approval.
 
@@ -12,7 +12,7 @@ The first draft mapped technology themes and left most equipment dependencies in
 
 Open **Technology → Items & equipment → Dev: full tree**. Search for an item such as **Photonic module**, **Reference-locked source**, or **Inspected flight sail**. The selected-recipe view draws inputs, producer and unlocking technology on the left, the selected item in the middle, and downstream consumers on the right. Select **Complete ingredient ancestry** to trace back through intermediates, or **All visible connections** to inspect the entire graph. Scroll and zoom to inspect the full graph; Fit graph is an overview. Every research card also links to each specific unlocked recipe, machine and capability.
 
-The comprehensive specification is [009 — Item and equipment dependencies](009-production-dependencies.md). Its branch diagrams include every incoming recipe, producer, service, science and prerequisite edge. [The full Mermaid source](009-full-production-graph.mmd) contains the combined graph. These artifacts are generated from the same catalog used by the panel with `npm run docs:progression`.
+The comprehensive specification is [009 — Item and equipment dependencies](catalog/009-production-dependencies.md). Its branch diagrams include every incoming recipe, producer, service, science and prerequisite edge. [The full Mermaid source](catalog/009-full-production-graph.mmd) contains the combined graph. These artifacts are generated from the same catalog used by the panel with `npm run docs:progression`.
 
 ## Current game versus proposed progression
 
@@ -77,7 +77,7 @@ A membrane line makes film panels, a metrology gantry certifies them, and a sail
 
 ## Review and validation
 
-Review specific recipes and equipment dependencies in 009, the three dossier families, the access/recovery provisions, and the acceptance contracts. Generation of new sprites remains pending approval; [008](008-animation-production-plan.md) defines frame budgets for the existing machines and creatures. The catalog's equipment entries will drive future asset batches one implemented tier at a time.
+Review specific recipes and equipment dependencies in 009, the three dossier families, the access/recovery provisions, and the acceptance contracts. Generation of new sprites remains pending approval; [008](../production/008-animation-production-plan.md) defines frame budgets for the existing machines and creatures. The catalog's equipment entries will drive future asset batches one implemented tier at a time.
 
 Validation checks cover graph references, concrete unlock coverage, prerequisite closure for every ingredient/producer/service, science recipe availability, bootstrapping from the actual starter installation, and fidelity to current machine costs. Browser checks cover recipe search, item-to-item traversal, producer links, research navigation, full-graph visibility, viewport controls and absence of world mutation.
 
@@ -123,4 +123,4 @@ The full catalog contains 5 resources, 31 manufactured items, 43 equipment/tooli
 
 ## Checkpoint — 2026-09-13
 
-Design approval was followed by generation. All 27 canonical nodes now have illustrations; research spending and new machines remain planned. See [014](014-asset-production-tracker.md) for reviewed source selections and current production status.
+Design approval was followed by generation. All 27 canonical nodes now have illustrations; research spending and new machines remain planned. See [014](../production/014-asset-production-tracker.md) for reviewed source selections and current production status.

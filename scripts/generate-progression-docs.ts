@@ -18,9 +18,9 @@ for(const t of technologies){
  for(const p of unlocked)doc+=`| ${p.name} | ${p.type} / ${p.implemented?'current':'proposed'} | ${recipeText(p)} | ${p.producer?productById.get(p.producer)!.name:'—'} | ${p.operation}${p.needs.length?' Requires: '+p.needs.map(id=>productById.get(id)!.name).join(', ')+'.':''} |\n`;
  doc+='\n';
 }
-writeFileSync('DevLog/009-production-dependencies.md',doc);
-writeFileSync('DevLog/009-full-production-graph.mmd',`---\nconfig:\n  maxEdges: 1000\n---\n${diagram(edges)}`);
+writeFileSync('DevLog/design/catalog/009-production-dependencies.md',doc);
+writeFileSync('DevLog/design/catalog/009-full-production-graph.mmd',`---\nconfig:\n  maxEdges: 1000\n---\n${diagram(edges)}`);
 const section=`## Research schedule and concrete unlock counts\n\nThe full catalog contains ${products.filter(p=>p.type==='resource').length} resources, ${products.filter(p=>p.type==='item').length} manufactured items, ${products.filter(p=>p.type==='equipment').length} equipment/tooling entries and ${products.filter(p=>p.type==='capability').length} operating capabilities.\n\n| Research | All prerequisites | Cost / acquisition | Specific unlocked entries |\n| --- | --- | --- | --- |\n${technologies.map(t=>`| ${t.name} | ${t.requires.map(id=>technologies.find(v=>v.id===id)!.name).join(', ')||'—'} | ${researchCost(t)} | ${directUnlocks(t.id).map(p=>p.name).join('; ')} |`).join('\n')}\n`;
-const path='DevLog/007-technology-tree-design.md';
+const path='DevLog/design/007-technology-tree-design.md';
 writeFileSync(path,readFileSync(path,'utf8').replace(/<!-- progression:start -->[\s\S]*?<!-- progression:end -->/,`<!-- progression:start -->\n${section}\n<!-- progression:end -->`));
 console.log(`Generated ${technologies.length+products.length} nodes and ${edges.length} connections across ${technologies.length} branch diagrams.`);

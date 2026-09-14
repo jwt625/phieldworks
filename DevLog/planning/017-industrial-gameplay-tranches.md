@@ -1,14 +1,14 @@
 # Industrial gameplay — implementation tranches
 
-Date: 2026-09-13. Planning only. The user approved documenting the discussion in [016](016-coherence-industry-and-lightsail-design.md). This is the current implementation sequence; it supersedes the old P1–P5 ordering in [012](012-next-coding-handoffs.md), retaining applicable accounting and verification requirements. No tranche is marked implemented by this document.
+Date: 2026-09-13. Planning only. The user approved documenting the discussion in [016](../design/016-coherence-industry-and-lightsail-design.md). This is the current implementation sequence; it supersedes the old P1–P5 ordering in [012](012-next-coding-handoffs.md), retaining applicable accounting and verification requirements. No tranche is marked implemented by this document.
 
 ## Fusion extension and shared-platform scope
 
-[018](018-fusion-energy-roadmap.md) adds the user-requested energy pillar. Fusion is required for final launch; fuel starts as manufactured cartridges. Share equipment families, parts, services and research across manufacturing, fusion and propulsion; specialized endpoints and explicit operating ratings preserve their different physics. Keep A first. Add D-F1 experimental fusion and D-F2 sustained net power as staged extensions, not prerequisites for a small sail demonstrator. Final launch requires D-F2 plus qualified sail/beam/mission systems.
+[018](../design/018-fusion-energy-roadmap.md) adds the user-requested energy pillar. Fusion is required for final launch; fuel starts as manufactured cartridges. Share equipment families, parts, services and research across manufacturing, fusion and propulsion; specialized endpoints and explicit operating ratings preserve their different physics. Keep A first. Add D-F1 experimental fusion and D-F2 sustained net power as staged extensions, not prerequisites for a small sail demonstrator. Final launch requires D-F2 plus qualified sail/beam/mission systems.
 
 ## Baseline and scope
 
-The first outpost loop remains implemented. The latest recorded P0.1 work in [015](015-connected-world-validation.md) includes route-metric memoization, simpler current-topology power accounting, one-tuner-per-step control and revision-gated evaluation. Do not reimplement those tasks from the older queue.
+The first outpost loop remains implemented. The latest recorded P0.1 work in [015](../verification/015-connected-world-validation.md) includes route-metric memoization, simpler current-topology power accounting, one-tuner-per-step control and revision-gated evaluation. Do not reimplement those tasks from the older queue.
 
 Recorded P0.1 results include 24.29 ms p95 controlled step at 120 machines/one source and 54.78 ms at 120/16, with real-time browser pacing in the sampled fixtures. The ≤16 ms p95 world-step gate is still unmet in larger controlled cases. Before/after records include different hardware; use same-machine reruns for optimization acceptance. The latest logged regression checkpoint is 58 headless tests, 19 browser scenarios and a passing build; those are prior evidence, not a test run performed for this planning edit.
 
@@ -30,7 +30,7 @@ HUD and art contracts begin in A and accompany each tranche. Exact block reducti
 
 ## A — Local industrial loop
 
-Detailed execution package: [019](019-tranche-a-plan.md), [020 contracts](020-tranche-a-contracts.md), [021 file-level TODO](021-tranche-a-coding-tasks.md), and [022 assets](022-tranche-a-assets.md). These specify provisional implementation defaults; A remains unimplemented.
+Detailed execution package: [019](tranche-a/019-tranche-a-plan.md), [020 contracts](tranche-a/020-tranche-a-contracts.md), [021 file-level TODO](tranche-a/021-tranche-a-coding-tasks.md), and [022 assets](tranche-a/022-tranche-a-assets.md). These specify provisional implementation defaults; A remains unimplemented.
 
 Goal: manufacture a useful precision part by delivering an appropriate field to a workpiece, then repeat that success in an independently managed cell.
 
@@ -133,7 +133,7 @@ Acceptance: compare at least two sail/drive configurations with a meaningful tra
 
 Integration acceptance: one manufactured source/pump or cooling upgrade must demonstrate benefits in at least two application domains; recipe dependencies must connect all three motivations without cycles. Sharing actual equipment requires explicit routing/scheduling and valid per-target qualifications. Test that dispatching capacity cannot double-book an actuator or count fusion export that a diverted driver no longer sustains. Test fuel and charge ownership, failed shots, save/load, conventional restart and storage-neutral repeated operation.
 
-The detailed technology/equipment/asset proposals and remaining architecture choices are in [018](018-fusion-energy-roadmap.md). These extensions add scope; they do not make A–E or fusion implemented.
+The detailed technology/equipment/asset proposals and remaining architecture choices are in [018](../design/018-fusion-energy-roadmap.md). These extensions add scope; they do not make A–E or fusion implemented.
 
 ## Mapping the previous queue
 

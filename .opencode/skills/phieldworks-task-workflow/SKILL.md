@@ -12,9 +12,14 @@ a shared workspace, so hand-offs and evidence matter as much as the code.
 
 ## 0. Scope discipline
 
-- Work only the tasks assigned by the handoff queue (`DevLog/012-next-coding-handoffs.md`
-  and later) or directly by the user. Do **not** start the research economy,
-  paid-logistics balance, new equipment, or asset generation unless assigned.
+- Work only the tasks assigned by the current queue or directly by the user. Start
+  from [`DevLog/briefing.md`](../../../DevLog/briefing.md) and
+  [`DevLog/planning/README.md`](../../../DevLog/planning/README.md): `017` is the
+  current tranche sequence, tranche A tasks are in
+  [`DevLog/planning/tranche-a/021-tranche-a-coding-tasks.md`](../../../DevLog/planning/tranche-a/021-tranche-a-coding-tasks.md),
+  and the older `012` is retained for its accounting/performance contracts. Do
+  **not** start the research economy, paid-logistics balance, new equipment, or
+  asset generation unless assigned.
 - If a task requires a design/balance decision or missing art, **do not invent it**.
   Record an explicit TBD question in the devlog with candidate options, and leave
   the code untouched or clearly unimplemented.
@@ -77,7 +82,7 @@ Rules for measurements:
 ## 5. Update the docs (required, not optional)
 
 - Update the handoff queue and the relevant feature devlog, plus the
-  implementation journal (`DevLog/004-implementation-journal.md`) with a dated
+  implementation journal (`DevLog/implementation/004-implementation-journal.md`) with a dated
   entry: what changed, evidence, checkboxes, and an explicit **"still open"** list.
 - Keep history honest: add dated follow-ups rather than rewriting prior findings.
   Do not mark a reviewed failure as fixed without code and evidence.

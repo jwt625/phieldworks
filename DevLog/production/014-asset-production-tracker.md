@@ -1,13 +1,13 @@
 # Asset production and review status
 
-> 2026-09-13 planning continuation: [022](022-tranche-a-assets.md) specifies the first precision-cell asset family and its gated [job manifest](../assets/planning/tranche-a-assets.json). The cell pass now includes seven master-direction candidates/corrections with provenance and a review gallery. Selected v7 has verified real RGBA transparency and passes small-scale terrain/light-background compositing; other directions and registration remain pending. Earlier review outcomes below remain unchanged.
+> 2026-09-13 planning continuation: [022](../planning/tranche-a/022-tranche-a-assets.md) specifies the first precision-cell asset family and its gated [job manifest](../../assets/planning/tranche-a-assets.json). The cell pass now includes seven master-direction candidates/corrections with provenance and a review gallery. Selected v7 has verified real RGBA transparency and passes small-scale terrain/light-background compositing; other directions and registration remain pending. Earlier review outcomes below remain unchanged.
 
 2026-09-13. Resumed after the documentation pause. Remote changes through `0c7cc54` were pulled cleanly; validation and coding handoffs were pushed first as `b23d112` and `11d2987`, as requested. The historical paused checkpoint is preserved in Git.
 
 ## Completed work
 
-- [x] Reconcile objectives and coding status; [012](012-next-coding-handoffs.md) contains owner, dependency, TODO and verification contracts. No coding subagents were launched.
-- [x] Run the open complex/visual checks in [013](013-verification-review.md) and [015](015-connected-world-validation.md). Cap consistency is fixed; connected-world performance acceptance fails. P0.1 is the next simulation priority.
+- [x] Reconcile objectives and coding status; [012](../planning/012-next-coding-handoffs.md) contains owner, dependency, TODO and verification contracts. No coding subagents were launched.
+- [x] Run the open complex/visual checks in [013](../verification/013-verification-review.md) and [015](../verification/015-connected-world-validation.md). Cap consistency is fixed; connected-world performance acceptance fails. P0.1 is the next simulation priority.
 - [x] Generate and inspect illustrations for **all 27 canonical technologies**. These are concepts, not 99 finished product sprites or implemented research.
 - [x] Generate nine animation candidate sheets and one four-item atlas, then finish all **16 planned corrections**: six technology illustrations and ten animation/item sheets.
 - [x] Recover the previously completed generator and transport-item corrections from tool output provenance. Generate the remaining sentry, guardian idle/collapse and crawler attack/death corrections with the built-in image tool. Inspect all ten revised animation/item sources.

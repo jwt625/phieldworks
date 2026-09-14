@@ -1,8 +1,8 @@
 # First playable outpost — implementation milestones
 
-> This file records the first playable's historical milestones. The next delivery sequence is [017 — industrial gameplay tranches](017-industrial-gameplay-tranches.md), based on [016 — design iteration C](016-coherence-industry-and-lightsail-design.md). All A–E work remains planned; current performance evidence is in [015](015-connected-world-validation.md).
+> This file records the first playable's historical milestones. The next delivery sequence is [017 — industrial gameplay tranches](../planning/017-industrial-gameplay-tranches.md), based on [016 — design iteration C](../design/016-coherence-industry-and-lightsail-design.md). All A–E work remains planned; current performance evidence is in [015](../verification/015-connected-world-validation.md).
 
-Started: 2026-09-11. First playable complete; ports/routing continuation tracked in [005](005-ports-routing-and-presentation.md).
+Started: 2026-09-11. First playable complete; ports/routing continuation tracked in [005](features/005-ports-routing-and-presentation.md).
 
 Scope: desktop-browser prototype using TypeScript, a canvas world, and DOM UI. Implement a small complete resource-frontier loop with a renderer-independent simulation. The original artwork supported the first loop; the world-interaction milestone adds terrain and dedicated orientation sheets. This is the first short scenario, not the full 30–45 minute balanced slice.
 
@@ -60,16 +60,16 @@ See [implementation journal](004-implementation-journal.md) for progress, decisi
 
 ## M6 — World interaction and onboarding (2026-09-12)
 
-Follow [006](006-world-interaction-and-onboarding.md) for the accepted feedback, implementation notes, art limitations and human playtest checklist. Resource selection, moving investigative wildlife, basic defense, textures/dressing, separately redrawn orientations, direct-camera/minimap interactions, categorized construction, contextual tutorials and actionable diagnostics are implemented. Final expanded validation is recorded there.
+Follow [006](features/006-world-interaction-and-onboarding.md) for the accepted feedback, implementation notes, art limitations and human playtest checklist. Resource selection, moving investigative wildlife, basic defense, textures/dressing, separately redrawn orientations, direct-camera/minimap interactions, categorized construction, contextual tutorials and actionable diagnostics are implemented. Final expanded validation is recorded there.
 
 
 ## M7 — Map, animation and technology asset continuation
 
-[010](010-map-animation-and-technology-assets.md) tracks the next art batch after commit `5c65d26`: four map textures, stateful debris/depletion, production and crawler animation, and a proposed technology-art graph. The new art is mapped independently of the simulation; no research economy or unlock gates are implied.
+[010](../production/010-map-animation-and-technology-assets.md) tracks the next art batch after commit `5c65d26`: four map textures, stateful debris/depletion, production and crawler animation, and a proposed technology-art graph. The new art is mapped independently of the simulation; no research economy or unlock gates are implied.
 
 ## Status — 2026-09-13
 
-Verification at HEAD: `npm test` passes 52 headless checks, `npm run test:browser` passes 16 scenarios, `npm run build` passes. M1–M7 and the equipment-state work (011) are reconciled in their own documents. Implemented this pass: installed-route selection and in-place editing, connected-component power allocation with overload isolation and wire-capacity ledger, raised machine/port/link caps, diagnostics telemetry trend/report, and browser regression for the state laboratory (which no longer requests an absent asset). Still open and documented as **TBD for planning** in [005](005-ports-routing-and-presentation.md): paid transport-segment cost formula, splitters/underground crossings/bridges/power poles (art + research-gated), multi-source buses, individual segment deletion, diagnostics gating, bend calibration, and expanded-map/limits benchmarking. A vision-review queue for screenshots and the state laboratory is recorded in [011](011-equipment-state-and-damage-animation.md).
+Verification at HEAD: `npm test` passes 52 headless checks, `npm run test:browser` passes 16 scenarios, `npm run build` passes. M1–M7 and the equipment-state work (011) are reconciled in their own documents. Implemented this pass: installed-route selection and in-place editing, connected-component power allocation with overload isolation and wire-capacity ledger, raised machine/port/link caps, diagnostics telemetry trend/report, and browser regression for the state laboratory (which no longer requests an absent asset). Still open and documented as **TBD for planning** in [005](features/005-ports-routing-and-presentation.md): paid transport-segment cost formula, splitters/underground crossings/bridges/power poles (art + research-gated), multi-source buses, individual segment deletion, diagnostics gating, bend calibration, and expanded-map/limits benchmarking. A vision-review queue for screenshots and the state laboratory is recorded in [011](../production/011-equipment-state-and-damage-animation.md).
 
 ## Visual verification queue (for a vision-capable reviewer)
 
@@ -84,6 +84,6 @@ Automated tests assert state values, not appearance. These artifacts need visual
 
 ## Checkpoint — 2026-09-13
 
-The queued visual and capacity checks were carried out; see [013](013-verification-review.md). Passing baseline tests did not catch the 400/128-port mismatch or condition-atlas bleed. Coding remedies and acceptance gates are in [012](012-next-coding-handoffs.md).
+The queued visual and capacity checks were carried out; see [013](../verification/013-verification-review.md). Passing baseline tests did not catch the 400/128-port mismatch or condition-atlas bleed. Coding remedies and acceptance gates are in [012](../planning/012-next-coding-handoffs.md).
 
-Follow-up after `6f4e40f`: the cap mismatch is fixed. Exact boundaries, connected-world timing, browser pacing and overload visuals were rechecked in [015](015-connected-world-validation.md). Connected control performance fails the target; prioritize P0.1. All 27 node concepts and 16 source corrections are reviewed in [014](014-asset-production-tracker.md); runtime animation registration remains open.
+Follow-up after `6f4e40f`: the cap mismatch is fixed. Exact boundaries, connected-world timing, browser pacing and overload visuals were rechecked in [015](../verification/015-connected-world-validation.md). Connected control performance fails the target; prioritize P0.1. All 27 node concepts and 16 source corrections are reviewed in [014](../production/014-asset-production-tracker.md); runtime animation registration remains open.
