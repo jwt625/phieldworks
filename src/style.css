@@ -5,6 +5,15 @@
 .process-inspector .result-list{margin-top:10px;font:10px monospace;color:#a7b8ad}
 .process-inspector .result-list>div{padding:4px 0;border-bottom:1px solid #2f423b}
 .process-inspector .blocker{color:#d9bf8a}
+.blueprint-inspector .assign-block{display:flex;gap:6px;align-items:center;margin:8px 0;font-size:10px}
+.blueprint-inspector .assign-block label{min-width:120px;color:#9fb4a2}
+.blueprint-inspector select{flex:1;background:#1b2b2a;color:#dce6dc;border:1px solid #3b5150;border-radius:4px;padding:5px}
+#build-search{width:100%;margin:0 0 8px;background:#1b2b2a;color:#dce6dc;border:1px solid #3b5150;border-radius:4px;padding:6px 8px;font-size:11px}
+#operations-body section{border-bottom:1px solid #3a4b42;padding:10px 0}
+#operations-body h3{font-size:12px;margin:0 0 8px}
+.op-row{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:6px 0;font-size:11px;border-bottom:1px solid #2f423b}
+.op-row small{display:block;color:#8fa598;font-size:9px}
+.op-row button{font-size:9px;padding:4px 7px}
 @media(max-width:1150px){header{gap:20px;padding:0 16px}.heading{display:none}.resource-bar>div{padding:0 15px}.resource-bar strong{font-size:21px}.resource-bar strong small{font-size:8px}main{grid-template-columns:minmax(0,1fr) 290px}.map-toolbar{padding:0 7px}.tools button{padding:6px;font-size:9px}aside section{padding:17px 16px}.build-card>span:not(.build-key){font-size:8px}.build-card img{width:50px;height:52px}.map-legend span:last-child{display:none}}
 @media(max-width:850px){body{min-width:620px}.resource-bar>div{padding:0 10px}.resource-bar strong{font-size:18px}.resource-bar .eyebrow{font-size:7px}.resource-bar strong small{display:none}.brand{min-width:220px;font-size:18px}header nav button{font-size:10px;padding:6px}header nav button kbd{display:none}main{grid-template-columns:minmax(0,1fr) 250px}.build-dock{padding:8px}.dock-heading>span:last-child{display:none}#build-palette{grid-template-columns:repeat(4,minmax(0,1fr))}.build-card img{height:35px;width:40px}.build-card small{font-size:7px}.tools button{font-size:8px;padding:5px}.symbol{display:none}.map-toolbar{flex-wrap:wrap;height:65px;align-content:center;gap:5px}.map-legend{display:none}footer{font-size:7px;letter-spacing:0}.section-label{font-size:7px}}
 

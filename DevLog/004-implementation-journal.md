@@ -206,3 +206,11 @@ Moved blueprint capture, cost and placement into `src/sim/blueprints.ts`. `Bluep
 Honest deferral: resolving a power slot does not auto-build wires; the copy deploys disconnected until the player wires it (no cost-free external wires). The browser spec covers select/record/place of a whole-outpost template and asserts no certificate transfer; the cell-specific second-commissioning path is covered headlessly.
 
 Evidence / validation: `npx tsc --noEmit` clean; `npm test` **115 headless** (107 + 8 in `tests/local-blueprints.test.ts`); `npm run build` passes; `npm run test:browser` **22/22** (21 + `tests/browser/local-blueprints.spec.ts`) with screenshot `test-results/blueprint-selection.png`; `git diff --check` clean.
+
+## 2026-09-13 — Tranche A-08 menu shell and keyboard placement
+
+Added `src/ui/pause-state.ts` with independent `user`/`hidden`/`modal` reasons; the frame gate, runtime status and pause button read it, so closing a modal clears only the modal reason and a user pause survives. Esc now cancels build/route/selection first and otherwise opens a session dialog; native modal Esc is handled by `<dialog>`. Added an operations dialog (`src/ui/operations.ts`) listing control domains, qualifications and recorded modules with Locate buttons plus the read-only research preview (opening the technology map spends nothing). Added a palette search field, focus return to dialog openers, and a keyboard placement cursor: choosing a build focuses the canvas, arrows move the grid cursor, R rotates, Enter places and Esc cancels, while non-build arrows still pan. Hidden-tab pause, copy diagnostics, technology wheel/pan and minimap recenter are unchanged.
+
+Honest gaps: keyboard selection of an arbitrary route's endpoint list is not implemented (equipment inspectors remain the binding surface); the operations Locate for a module switches tools rather than centering a template.
+
+Evidence / validation: `npx tsc --noEmit` clean; `npm test` **115 headless**; `npm run build` passes; `npm run test:browser` **26/26** (22 + 4 in `tests/browser/menus.spec.ts`) with screenshots `test-results/operations-menu.png` and `test-results/keyboard-placement.png`; `git diff --check` clean.

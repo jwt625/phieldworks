@@ -112,13 +112,17 @@ Honest deferral: resolving an external `power` slot does not auto-build wires �
 
 ## A-08 — menu shell and keyboard placement
 
-- [ ] Add build search/category list, operations navigation (domains, qualification, blueprints, existing research preview), and Esc session controls.
-- [ ] Extract explicit pause-reason ownership into `src/ui/pause-state.ts`. Modal close must not unpause a user-paused game.
-- [ ] Implement focus entry/return, topmost-Esc behavior and entity/domain navigation. Add keyboard placement cursor and accessible route endpoint selection while preserving mouse operation.
-- [ ] Move contextual route controls out of the persistent HUD. Retain copy diagnostics, hidden-tab pause, tech-map wheel/pan and minimap double-click recenter.
-- [ ] Test menu nesting, missing opener fallback, tab containment, shortcuts while editing inputs, live inspector and no catch-up on resume.
+- [x] Add build search/category list, operations navigation (domains, qualification, blueprints, existing research preview), and Esc session controls.
+- [x] Extract explicit pause-reason ownership into `src/ui/pause-state.ts`. Modal close must not unpause a user-paused game.
+- [x] Implement focus entry/return, topmost-Esc behavior and entity/domain navigation. Add keyboard placement cursor and accessible route endpoint selection while preserving mouse operation.
+- [x] Move contextual route controls out of the persistent HUD. Retain copy diagnostics, hidden-tab pause, tech-map wheel/pan and minimap double-click recenter.
+- [x] Test menu nesting, missing opener fallback, tab containment, shortcuts while editing inputs, live inspector and no catch-up on resume.
 
 Files: main, style, index, tutorial, technology; new operations/build/session/pause modules and `tests/browser/menus.spec.ts`. No global research spending is enabled by exposing the preview here.
+
+**A-08 implementation note — 2026-09-13.** `PauseState` owns three independent reasons (`user`, `hidden`, `modal`); the frame gate, runtime status and pause button read it, so closing a dialog clears only the modal reason and a user pause survives. A session dialog opens on Esc when no build/route/dialog is active; Esc first cancels build/route/selection, and native modal Esc is handled by the dialog. The operations dialog lists control domains, qualifications and recorded modules with Locate buttons plus the read-only research preview (opening the technology map spends nothing). A `Select module`/`Build` search filters the palette. Keyboard placement now focuses the canvas when a build is chosen, moves a grid cursor with the arrow keys, rotates with R, places with Enter and cancels with Esc, while non-build arrow keys still pan. Dialogs record their opener and restore focus on close (native `<dialog>` provides tab containment, verified in the browser test). Hidden-tab pause, copy diagnostics, technology wheel/pan and minimap double-click recenter are unchanged.
+
+Honest gaps: keyboard selection of an arbitrary route endpoint list (beyond the existing equipment inspectors) is not implemented; the browser test covers the domain/qualification navigation and the keyboard placement cursor, not a full keyboard route build. The operations "Locate" for a module switches to the module tool rather than centering a specific template.
 
 ## A-09 through A-11 — visual work
 
