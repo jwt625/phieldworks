@@ -51,7 +51,7 @@
   },
   "generation_policy": {
     "generate_now": true,
-    "reason": "User authorized starting asset tasks on 2026-09-13. Initial direction and correction candidates produced before A-05; production alpha, playable-cell registration and variant expansion gates remain unmet.",
+    "reason": "User authorized asset work and specifically requested correcting transparency. The v7 master now has verified real alpha. Directional variants and registration remain unfinished.",
     "estimated_selected_outputs": 28,
     "maximum_initial_batch": 1,
     "output_count_is_not_tool_call_count": true,
@@ -74,7 +74,7 @@
         1000
       ]
     ],
-    "initial_candidate_calls_completed": 3
+    "initial_candidate_calls_completed": 7
   },
   "jobs": [
     {
@@ -102,14 +102,18 @@
       "crop": null,
       "ground_anchor_px": null,
       "port_landmarks_px": null,
-      "status": "needs-correction",
+      "status": "in-progress",
       "candidate_ids": [
         "fabrication-cell-r0-intact-v1",
         "fabrication-cell-r0-intact-v2",
-        "fabrication-cell-r0-intact-v3-matte"
+        "fabrication-cell-r0-intact-v3-matte",
+        "fabrication-cell-r0-intact-v4-alpha",
+        "fabrication-cell-r0-intact-v5-padding",
+        "fabrication-cell-r0-intact-v6-extraction",
+        "fabrication-cell-r0-intact-v7-alpha"
       ],
-      "review_selection": "fabrication-cell-r0-intact-v3-matte",
-      "review_selection_scope": "Silhouette only; not a registered or production-selected source."
+      "review_selection": "fabrication-cell-r0-intact-v7-alpha",
+      "review_selection_scope": "Alpha and compositing reviewed for master direction; other views and final registration pending."
     },
     {
       "id": "TA-CELL-CONDITION",

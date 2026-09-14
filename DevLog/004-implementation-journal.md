@@ -165,6 +165,15 @@ Added `scripts/audit-tranche-a-assets.mjs`, measured hashes/alpha, and captured 
 
 Validation for this asset pass: `npm run build`, `node scripts/validate-tranche-a-plan.mjs`, syntax checks and `git diff --check` pass. The candidate audit reports three source hashes verified, zero transparent pixels, and zero browser page errors. Simulation suites were not rerun because no gameplay implementation changed.
 
+
+## 2026-09-13 — Corrected precision-cell transparency
+
+The user challenged the premature transparency blocker. Audited existing PNG formats and prior prompts: the original sprite batch and some later sheets contain real alpha, including a documented successful checkerboard-removal edit. Reused the focused extraction approach with the built-in image tool. V4 produced RGBA but tight framing; v5/v6 regressed to checkerboards; v7 extraction from the original matte source retained framing and genuine transparency.
+
+Selected `fabrication-cell-r0-intact-v7-alpha.png` has 1254×1254 RGBA pixels, 52.8551% fully transparent pixels, silhouette bounds [68,110,1135,1080] and no occupied pixels in the outer three-pixel border. The gallery uses ordinary source-over compositing. Visually checked light and game-terrain size panels: no matte rectangle, dark metal remains solid at game scale. Thin source-resolution fringe remains a polish note, and final port/workpiece registration is pending. All seven original outputs and exact prompt/source sidecars are preserved. No runtime art promotion or gameplay edit performed.
+
+Updated review selection, manifest, documentation and alpha assertions. Transparency is resolved for the master; it is no longer a reason to block directional/item candidate work. The existing A-01 commit was observed and left intact.
+
 ## 2026-09-13 — Tranche A-03 local control and qualification
 
 Moved automatic control into `src/sim/control.ts`: one world-level budget trial-tunes exactly one eligible tuner per fixed step, round-robin over enabled referenced domains and then that domain's persisted `cursor`; process domains use `useful − 4·guard` while the frontier keeps useful target power. `automaticControl(w,evaluate)` receives the solver as a parameter, so control does not import the world façade, and it returns the exact evaluation count (2, or 3 when the `+` trial wins; the `−` trial already leaves current stats). Added `src/sim/qualification.ts` with the field/electrical dependency closure, a canonical configuration signature that excludes phase/temperature/progress, live operating issues with stable codes, and signature-based `revalidate`. `invalidate` is now dependency-aware, so an unrelated repair on an independent supply leaves other certificates intact; manual `setPhase` explicitly fails the owning domain because phase is outside the signature. `assignTuner`/`assignEmitter`/`setController` validate ownership and reference readiness. Test disturbance is now scoped to tuners owned by a frontier-testing domain; process testing uses ordinary drift. `diagnostics.ts` reports missing/unavailable references and failed/stale certificates with their code.

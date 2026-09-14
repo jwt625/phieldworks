@@ -49,7 +49,7 @@ assert.equal(art.equipment.ports.length,1);
 assert.deepEqual(art.equipment.wave_ports,[]);assert.deepEqual(art.equipment.material_ports,[]);
 let selected=0;
 for(const j of art.jobs){
- assert.ok(['planned','needs-correction'].includes(j.status));
+ assert.ok(['planned','in-progress','needs-correction'].includes(j.status));
  for(const ref of j.reference_inputs)assert.ok(exists(ref),`${j.id}: missing art reference ${ref}`);
  for(const k of ['source_path','sha256','measured_size','crop','ground_anchor_px','port_landmarks_px'])assert.equal(j[k],null,`${j.id}: fabricated measurement ${k}`);
  if(j.type==='generation'){assert.ok(j.prompt?.length>80);assert.equal(j.outputs,j.variants.length);selected+=j.outputs;}
@@ -70,6 +70,10 @@ if(art.generation_policy.generate_now){
   candidateCount++;
  }
  for(const j of art.jobs)for(const id of j.candidate_ids??[])assert.ok(ids.has(id));
+ if(review.visual_review?.status==='master-alpha-and-compositing-reviewed'){
+  const m=review.candidates.find(c=>c.id===review.selected_candidate).measurements;
+  assert.equal(m.pngColorType,6);assert.ok(m.transparentFraction>0);assert.equal(m.cornerRGBA[3],0);assert.equal(m.edgeOpaquePixels,0);
+ }
 }
 let cachedBytes=0;
 const refIds=new Set();

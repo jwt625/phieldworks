@@ -2,13 +2,17 @@
 
 2026-09-13. Production contract; initial candidate work has now started under the user’s follow-up instruction. [Machine-readable manifest](../assets/planning/tranche-a-assets.json) records stable job IDs, prompts, reference paths, dependencies and unmeasured fields as null. [Coding tasks](021-tranche-a-coding-tasks.md) A-09–A-11 own execution. This manifest is outside the runtime loader and does not select assets for gameplay.
 
-## Initial candidate pass
+## Initial candidate pass and transparency correction
 
-Three original built-in image-tool outputs and exact prompt/provenance sidecars are saved under `assets/animations/candidates/tranche-a/`. The first source and its transparency correction contain painted checkerboards; a third dark-matte source is selected for silhouette review only. All three are RGB, 1254×1254, with 0% transparent pixels. No source meets the production-alpha gate.
+Seven original built-in tool outputs and prompt/provenance sidecars are saved under `assets/animations/candidates/tranche-a/`. The initial sources were opaque; a later short background-extraction request produced real RGBA. The selected [v7 master](../assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png) retains the original framing, has 52.8551% fully transparent pixels and no occupied pixels in the outer three-pixel border. Its [exact prompt](../assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png.source.json) records the successful request. Source pixels are unchanged.
 
-[Review gallery](../assets/planning/tranche-a-review.html), [measured review record](../assets/planning/tranche-a-review.json), and [1440px review screenshot](../assets/planning/tranche-a-review-1440.png) capture the current state. Serve the gallery through Vite because it imports existing terrain/sprites. A-09/A-10 are partially started; A-05 and final registration remain pending. The user’s request authorizes this early candidate exploration, not a claim that missing gameplay gates passed.
+[Review gallery](../assets/planning/tranche-a-review.html), [measured record](../assets/planning/tranche-a-review.json), and [1440px screenshot](../assets/planning/tranche-a-review-1440.png) show it composited with ordinary alpha over light/dark/checker/game-terrain backgrounds. Alpha and small-scale compositing pass for the selected master. A thin residual fringe at full source resolution remains a polish note. A-09/A-10 are partially started; final ground/port/workpiece registration and the other 27 raster outputs remain unfinished.
 
-Run `node scripts/audit-tranche-a-assets.mjs` with Vite on 5176 (`PHIELDWORKS_REVIEW_URL` overrides) to remeasure original pixels and capture review screenshots. It does not modify source images. Other directions, conditions and event poses remain planned until the master’s alpha and registration are resolved.
+Earlier failures are retained for provenance, including v4 (real alpha but framing too tight) and v5/v6 (checkerboard regressions). Do not infer that the generator cannot produce transparency from an unsuccessful attempt. Prefer a focused extraction request and inspect actual alpha; the successful v7 request also explicitly preserves original size, placement and margin.
+
+Serve the gallery through Vite. Run `node scripts/audit-tranche-a-assets.mjs` on port 5176 (`PHIELDWORKS_REVIEW_URL` overrides) to remeasure pixels and capture screenshots. It never edits source images. The now-working alpha master can support directional and item candidates; gameplay integration remains gated by the cell implementation.
+
+> **Reconciliation — 2026-09-13 (implementation pass).** The cell gameplay implementation (A-05/A-07/A-08) now exists, so remaining integration is gated only by A-09–A-11 review/promotion, not by missing gameplay. The runtime intentionally draws a labeled `FAB CELL / PLACEHOLDER`; no candidate is promoted or registered. Final ground/port/workpiece registration and the 27 remaining raster outputs are still outstanding.
 
 ## What to produce
 

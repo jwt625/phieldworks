@@ -67,7 +67,7 @@ Placement, save loading and solving now share a 256-field-port cap, with 120 mac
 
 ## Current development checkpoint
 
-[Tranche A execution package](DevLog/019-tranche-a-plan.md) now specifies the first precision cell at file level: local simulation/save contracts, coding TODOs, asset job manifest, and cached technical references. It is planning only; numerical defaults await the no-cheat gameplay fixture. Validate the package offline with `node scripts/validate-tranche-a-plan.mjs`. The [first cell asset review](assets/planning/tranche-a-review.html) now contains three candidates, measured alpha results and size/terrain comparisons. Serve it through Vite; production registration remains pending.
+[Tranche A execution package](DevLog/019-tranche-a-plan.md) now specifies the first precision cell at file level: local simulation/save contracts, coding TODOs, asset job manifest, and cached technical references. It is planning only; numerical defaults await the no-cheat gameplay fixture. Validate the package offline with `node scripts/validate-tranche-a-plan.mjs`. The [first cell asset review](assets/planning/tranche-a-review.html) now contains seven candidates/corrections; the selected v7 master has verified real alpha and passes size/terrain comparisons. Serve it through Vite; production registration remains pending.
 
 [Fusion energy planning](DevLog/018-fusion-energy-roadmap.md) adds energy alongside manufacturing and propulsion, sharing equipment families and research across all three. Sustained fusion power is planned as a final-launch requirement, with manufactured fuel cartridges for the initial fuel economy. Experimental ignition and net electricity are separate milestones; these systems are not implemented.
 

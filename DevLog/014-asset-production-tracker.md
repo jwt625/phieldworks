@@ -1,6 +1,6 @@
 # Asset production and review status
 
-> 2026-09-13 planning continuation: [022](022-tranche-a-assets.md) specifies the first precision-cell asset family and its gated [job manifest](../assets/planning/tranche-a-assets.json). A follow-up asset pass has now saved three first-direction cell candidates with provenance and a review gallery. All are opaque; the matte version is a silhouette reference only. Earlier review outcomes below remain unchanged.
+> 2026-09-13 planning continuation: [022](022-tranche-a-assets.md) specifies the first precision-cell asset family and its gated [job manifest](../assets/planning/tranche-a-assets.json). The cell pass now includes seven master-direction candidates/corrections with provenance and a review gallery. Selected v7 has verified real RGBA transparency and passes small-scale terrain/light-background compositing; other directions and registration remain pending. Earlier review outcomes below remain unchanged.
 
 2026-09-13. Resumed after the documentation pause. Remote changes through `0c7cc54` were pulled cleanly; validation and coding handoffs were pushed first as `b23d112` and `11d2987`, as requested. The historical paused checkpoint is preserved in Git.
 

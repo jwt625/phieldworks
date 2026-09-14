@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-13",
+  "scope": "master alpha correction; no runtime integration",
+  "selected_candidate": "fabrication-cell-r0-intact-v7-alpha",
+  "measurements": {
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 6,
+    "bytes": 1588254,
+    "sha256": "42ca677654925eafd0d51734fe97f48cf5f12a2befcc01b0e1477b5a6f199167",
+    "transparentFraction": 0.5285510608477115,
+    "partialAlphaFraction": 0.4706311414319473,
+    "cornerRGBA": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alphaBounds": [
+      68,
+      110,
+      1135,
+      1080
+    ],
+    "edgeOpaquePixels": 0,
+    "opaqueDarkPixelCount": 215466
+  },
+  "page_errors": [],
+  "alpha_gate": "pass",
+  "compositing_review": "pass at 48/96/192 px on light and game terrain",
+  "remaining": "thin source-resolution fringe polish and final game registration",
+  "tool": "image_gen.imagegen; built-in",
+  "provenance": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png.source.json"
+}

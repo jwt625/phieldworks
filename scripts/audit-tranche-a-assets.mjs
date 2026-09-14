@@ -18,13 +18,16 @@ try{
   const pixels=await page.evaluate(async path=>{
    const im=new Image();im.src='/'+path;await im.decode();const canvas=document.createElement('canvas');canvas.width=im.width;canvas.height=im.height;
    const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(im,0,0);const p=ctx.getImageData(0,0,im.width,im.height).data;
-   let transparent=0,partial=0;for(let i=3;i<p.length;i+=4){if(p[i]===0)transparent++;else if(p[i]<255)partial++;}
-   return {transparentFraction:transparent/(im.width*im.height),partialAlphaFraction:partial/(im.width*im.height),cornerRGBA:Array.from(p.slice(0,4))};
+   let transparent=0,partial=0,opaqueDarkPixelCount=0,minX=im.width,minY=im.height,maxX=-1,maxY=-1,edgeOpaquePixels=0;
+   for(let i=3;i<p.length;i+=4){const a=p[i];if(a===0)transparent++;else if(a<255)partial++;if(a>=250&&Math.max(p[i-3],p[i-2],p[i-1])<70)opaqueDarkPixelCount++;
+    if(a>30){const n=(i-3)/4,x=n%im.width,y=Math.floor(n/im.width);minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);if(x<3||y<3||x>=im.width-3||y>=im.height-3)edgeOpaquePixels++;}}
+   const alphaBounds=maxX<0?null:[minX,minY,maxX-minX+1,maxY-minY+1];
+   return {transparentFraction:transparent/(im.width*im.height),partialAlphaFraction:partial/(im.width*im.height),cornerRGBA:Array.from(p.slice(0,4)),alphaBounds,edgeOpaquePixels,opaqueDarkPixelCount};
   },c.path);
   c.measurements={width:b.readUInt32BE(16),height:b.readUInt32BE(20),pngColorType:b[25],bytes:b.length,sha256:createHash('sha256').update(b).digest('hex'),...pixels};
   c.production_ready=false;
  }
- review.audit={command:'node scripts/audit-tranche-a-assets.mjs',timestamp:new Date().toISOString(),source_pixels:'unmodified',page_errors:failures,all_sources_have_alpha:review.candidates.every(c=>c.measurements.transparentFraction>0)};
+ review.audit={command:'node scripts/audit-tranche-a-assets.mjs',timestamp:new Date().toISOString(),source_pixels:'unmodified',page_errors:failures,all_sources_have_alpha:review.candidates.every(c=>c.measurements.transparentFraction>0),selected_source_has_alpha:review.candidates.find(c=>c.id===review.selected_candidate)?.measurements.transparentFraction>0};
  writeFileSync(reviewPath,JSON.stringify(review,null,2)+'\n');
  await page.reload();await page.waitForFunction(()=>window.reviewReady);
  for(const [width,height] of [[1440,1000],[1280,800]]){

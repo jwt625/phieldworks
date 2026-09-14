@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/wentaojiang/.codex/generated_images/01a09c28-937d-7391-b5a4-16999dd541d7/exec-8287e163-81f5-4224-b9c9-d2711da7dee3.png",
+  "prompt": "Keep this machine as a transparent PNG cutout. Add generous empty transparent padding on every side so the complete machine occupies only the central 80 percent of the square canvas. Preserve the entire machine's shape, details, colors, lighting and camera. Clean the thin colored fringe around the exterior silhouette. Keep every dark interior and metal surface solid; only empty space outside the machine is transparent. No background or floor.",
+  "reference_inputs": [
+    "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v4-alpha.png"
+  ],
+  "job": "TA-CELL-STATIC",
+  "variant": "rotation-0",
+  "pixels": "Original tool output; no postprocessing"
+}

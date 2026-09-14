@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/wentaojiang/.codex/generated_images/01a09c28-937d-7391-b5a4-16999dd541d7/exec-bb4b0a08-833b-4979-8334-a72662ee6cb4.png",
+  "prompt": "Use case: precise-object-edit. Edit target: attached fabrication cell sprite. Keep this exact machine, its camera, silhouette, position, framing, central workpiece, rear electrical connector, copper accents and all solid dark materials unchanged. Change ONLY the background: replace the entire grey/white checkerboard with a perfectly flat uniform dark teal RGB #15292d background. No checkerboard, gradient, floor, cast shadow, scenery, labels or new objects. This is deliberately an OPAQUE MATTE REVIEW CANDIDATE, not a transparent production sprite. Keep crisp clean object boundaries and the full foundation. Square single-machine composition. Do not add fine details.",
+  "reference_inputs": [
+    "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v1.png"
+  ],
+  "job": "TA-CELL-STATIC",
+  "variant": "rotation-0",
+  "pixels": "Original generated pixels preserved; opaque matte requested for review only"
+}

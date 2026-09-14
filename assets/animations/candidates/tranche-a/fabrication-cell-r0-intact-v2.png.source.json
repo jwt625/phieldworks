@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/wentaojiang/.codex/generated_images/01a09c28-937d-7391-b5a4-16999dd541d7/exec-6e706df6-dfec-4b2e-8867-dfecc395c9f0.png",
+  "prompt": "Use case: background-extraction. Edit target: the attached fabrication-cell sprite. Change ONLY the background: remove every painted grey-and-white checkerboard pixel around the machine and replace that region with ACTUAL zero-alpha transparent pixels in the PNG. This is a cutout asset, NOT an illustration of transparency. Preserve all original machine pixels, dark steel, ivory panels, copper, the central workpiece, the rear electrical socket, the exact camera, foundation, position, scale and dimensions. Do not redraw the object, add a floor, or render any new checkerboard. The background must genuinely have alpha zero; a white or grey backdrop is not transparent. Return the isolated unchanged machine.",
+  "reference_inputs": [
+    "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v1.png"
+  ],
+  "job": "TA-CELL-STATIC",
+  "variant": "rotation-0",
+  "pixels": "Original generated pixels preserved; no image postprocessing"
+}

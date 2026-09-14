@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/wentaojiang/.codex/generated_images/01a09c28-937d-7391-b5a4-16999dd541d7/exec-4ac4b700-8b0b-494c-8c22-460e66b58087.png",
+  "prompt": "Remove the background from this image. Return the same fabrication-cell machine as a transparent PNG cutout with genuine alpha transparency. Preserve the complete machine, its exact geometry, colors, textures, lighting and silhouette. No background, no ground, no shadow outside the object.",
+  "reference_inputs": [
+    "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v3-matte.png"
+  ],
+  "job": "TA-CELL-STATIC",
+  "variant": "rotation-0",
+  "pixels": "Original tool output; no postprocessing"
+}

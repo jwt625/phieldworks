@@ -1,0 +1,15 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/wentaojiang/.codex/generated_images/01a09c28-937d-7391-b5a4-16999dd541d7/exec-d2fd7635-747e-41e0-8652-dd4a7de6f6f0.png",
+  "prompt": "Use case: stylized-concept. Asset type: single game equipment sprite, precision fabrication cell, rotation 0. Create a new machine derived from these style references, not a sheet of the reference machines. Image 1 and image 2 are PHIELDWORKS camera/material references only. Image 3 is a world-coordinate interface guide only: do not copy its words, lines, grid, colors, or circles into the output. Primary request: one compact precision optical fabrication cell, sealed ivory ceramic and dark steel housing, small copper service details, a stable square foundation, a recessed CENTRAL workpiece fixture visible through an open top access recess, precision alignment mechanics, and an integrated protective shutter. Match the oblique elevated orthographic camera and upper-left lighting of the TOP LEFT machine in the references. Lower and more enclosed than the robot assembler. The cell occupies 3 by 3 game tiles. Rotation 0 has a single electrical socket centered at the rear/north edge: keep it visible as a small raised connector at top center of the silhouette. No conveyor openings and no guide/pipe sockets. Two optical access windows allow external emitters to illuminate the central tooling, but draw NO beams. Distinct large forms and restrained detail readable at 48/96 pixels; no ornamental cables or tiny greebles. Frame ONE whole machine centered with even transparent margin, square composition; no multiple views. GENUINELY TRANSPARENT background with actual alpha, not a dark matte, checkerboard or painted white background. Preserve dark solid machine materials. No text, logo, people, lamps glowing, status badges, beam effects, shadows extending far beyond base or other objects. This is the master intact direction before directional variants; precise stable foundation and central workpiece matter.",
+  "reference_inputs": [
+    "assets/world/reference-control-station-turnaround-v2.png",
+    "assets/world/compact-assembler-turnaround-v2.png",
+    "assets/planning/tranche-a-footprint-guide.png"
+  ],
+  "job": "TA-CELL-STATIC",
+  "variant": "rotation-0",
+  "pixels": "Original generated pixels preserved; no image postprocessing"
+}

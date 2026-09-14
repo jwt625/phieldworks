@@ -30,7 +30,15 @@
           254,
           254,
           255
-        ]
+        ],
+        "alphaBounds": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edgeOpaquePixels": 15012,
+        "opaqueDarkPixelCount": 228876
       },
       "crop": null,
       "ground_anchor_px": null,
@@ -63,7 +71,15 @@
           253,
           253,
           255
-        ]
+        ],
+        "alphaBounds": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edgeOpaquePixels": 15012,
+        "opaqueDarkPixelCount": 229938
       },
       "crop": null,
       "ground_anchor_px": null,
@@ -96,7 +112,15 @@
           46,
           50,
           255
-        ]
+        ],
+        "alphaBounds": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edgeOpaquePixels": 15012,
+        "opaqueDarkPixelCount": 1075480
       },
       "crop": null,
       "ground_anchor_px": null,
@@ -119,21 +143,193 @@
         "assets/planning/tranche-a-sizes-terrain.png"
       ],
       "production_ready": false
+    },
+    {
+      "id": "fabrication-cell-r0-intact-v4-alpha",
+      "job": "TA-CELL-STATIC",
+      "variant": "rotation-0",
+      "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v4-alpha.png",
+      "provenance_path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v4-alpha.png.source.json",
+      "status": "needs-framing",
+      "measurements": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 6,
+        "bytes": 2075247,
+        "sha256": "1cedd7b7296ab9c2b21af2fd93299774eac5206b4dbc2396b6046efd950792f1",
+        "transparentFraction": 0.40430558417211654,
+        "partialAlphaFraction": 0.5951309875384416,
+        "cornerRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alphaBounds": [
+          10,
+          51,
+          1238,
+          1201
+        ],
+        "edgeOpaquePixels": 55,
+        "opaqueDarkPixelCount": 239612
+      },
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "workpiece_landmark_px": null,
+      "notes": [
+        "Real RGBA cutout; tight framing and source-scale fringe. Superseded by v7 for master review."
+      ],
+      "evidence_paths": [],
+      "production_ready": false
+    },
+    {
+      "id": "fabrication-cell-r0-intact-v5-padding",
+      "job": "TA-CELL-STATIC",
+      "variant": "rotation-0",
+      "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v5-padding.png",
+      "provenance_path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v5-padding.png.source.json",
+      "status": "rejected-background",
+      "measurements": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "bytes": 2362237,
+        "sha256": "0510163b6646d5d2d28c62cb1fbc795c9b44692267e570d3554145fc46e5b4ed",
+        "transparentFraction": 0,
+        "partialAlphaFraction": 0,
+        "cornerRGBA": [
+          253,
+          253,
+          253,
+          255
+        ],
+        "alphaBounds": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edgeOpaquePixels": 15012,
+        "opaqueDarkPixelCount": 189515
+      },
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "workpiece_landmark_px": null,
+      "notes": [
+        "Padding edit regressed to opaque painted checkerboard."
+      ],
+      "evidence_paths": [],
+      "production_ready": false
+    },
+    {
+      "id": "fabrication-cell-r0-intact-v6-extraction",
+      "job": "TA-CELL-STATIC",
+      "variant": "rotation-0",
+      "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v6-extraction.png",
+      "provenance_path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v6-extraction.png.source.json",
+      "status": "rejected-background",
+      "measurements": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "bytes": 2459173,
+        "sha256": "de5dd9eff2ec594b737d3b97f7e46d3a1ecc556781334aeef7802f4557cc12ed",
+        "transparentFraction": 0,
+        "partialAlphaFraction": 0,
+        "cornerRGBA": [
+          252,
+          251,
+          252,
+          255
+        ],
+        "alphaBounds": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edgeOpaquePixels": 15012,
+        "opaqueDarkPixelCount": 254229
+      },
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "workpiece_landmark_px": null,
+      "notes": [
+        "Minimal extraction request returned an opaque checkerboard and changed framing."
+      ],
+      "evidence_paths": [],
+      "production_ready": false
+    },
+    {
+      "id": "fabrication-cell-r0-intact-v7-alpha",
+      "job": "TA-CELL-STATIC",
+      "variant": "rotation-0",
+      "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png",
+      "provenance_path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png.source.json",
+      "status": "needs-registration",
+      "measurements": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 6,
+        "bytes": 1588254,
+        "sha256": "42ca677654925eafd0d51734fe97f48cf5f12a2befcc01b0e1477b5a6f199167",
+        "transparentFraction": 0.5285510608477115,
+        "partialAlphaFraction": 0.4706311414319473,
+        "cornerRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alphaBounds": [
+          68,
+          110,
+          1135,
+          1080
+        ],
+        "edgeOpaquePixels": 0,
+        "opaqueDarkPixelCount": 215466
+      },
+      "crop": null,
+      "ground_anchor_px": null,
+      "port_landmarks_px": null,
+      "workpiece_landmark_px": null,
+      "notes": [
+        "Real RGBA cutout: 52.8551% fully transparent pixels.",
+        "Original framing retained; alpha silhouette bounds [68,110,1135,1080], with no opaque pixels in the outer three-pixel border.",
+        "Light and terrain review passes at 48/96/192 px using ordinary source-over compositing; matte rectangle is gone.",
+        "Dark machine surfaces remain effectively opaque; a thin residual fringe is visible at full source resolution and remains a polish note.",
+        "Cell crop/ground anchor and power/workpiece registration still await the playable cell."
+      ],
+      "evidence_paths": [
+        "assets/planning/tranche-a-review-1440.png",
+        "assets/planning/tranche-a-review-1280.png",
+        "assets/planning/tranche-a-sizes-light.png",
+        "assets/planning/tranche-a-sizes-dark.png",
+        "assets/planning/tranche-a-sizes-checker.png",
+        "assets/planning/tranche-a-sizes-terrain.png"
+      ],
+      "production_ready": false
     }
   ],
-  "selected_candidate": "fabrication-cell-r0-intact-v3-matte",
-  "selection_scope": "Silhouette/material review only; no production or runtime selection.",
+  "selected_candidate": "fabrication-cell-r0-intact-v7-alpha",
+  "selection_scope": "Transparent master candidate; final runtime registration still pending.",
   "audit": {
     "command": "node scripts/audit-tranche-a-assets.mjs",
-    "timestamp": "2026-09-13T21:23:59.224Z",
+    "timestamp": "2026-09-13T22:01:42.033Z",
     "source_pixels": "unmodified",
     "page_errors": [],
-    "all_sources_have_alpha": false
+    "all_sources_have_alpha": false,
+    "selected_source_has_alpha": true
   },
   "visual_review": {
     "date": "2026-09-13",
     "reviewer": "assistant",
-    "status": "silhouette-reviewed-production-blocked",
+    "status": "master-alpha-and-compositing-reviewed",
     "viewports": [
       [
         1440,
@@ -152,9 +348,15 @@
     ],
     "human_user_review": false,
     "next_actions": [
-      "Obtain actual alpha for the master direction without destroying dark materials.",
-      "Validate crop/ground/workpiece/socket against the playable A-05 cell before production registration.",
-      "Only then extend the master to distinct directions, conditions and event poses."
-    ]
+      "Continue intact directional candidates and item artwork using the alpha master.",
+      "Measure ground/workpiece/socket registration against the playable cell.",
+      "Check residual source-scale fringe during final registration; no matte workaround is needed."
+    ],
+    "alpha_gate": "pass for selected v7 master; historical failures preserved"
+  },
+  "extraction_workflow": {
+    "method": "Built-in background extraction, with explicit original-size/position retention",
+    "prompt_source": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png.source.json",
+    "lesson": "Short extraction requests can yield real RGBA; verify output pixels before reporting a tool limitation. Avoid treating a failed generation as a pipeline-wide blocker."
   }
 }

@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/wentaojiang/.codex/generated_images/01a09c28-937d-7391-b5a4-16999dd541d7/exec-89c75d5f-4542-440c-abd1-19b32eba1a82.png",
+  "prompt": "Remove the background from this image.",
+  "reference_inputs": [
+    "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v5-padding.png"
+  ],
+  "job": "TA-CELL-STATIC",
+  "variant": "rotation-0",
+  "pixels": "Original tool output; no postprocessing"
+}
