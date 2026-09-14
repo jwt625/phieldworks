@@ -1,5 +1,7 @@
 # PHIELDWORKS asset library
 
+Latest continuation: [pass 05 precision workpiece states](production/pass-05/index.html), with [measured review and limitations](production/pass-05/README.md). The [99-product requirements inventory](planning/catalog-asset-coverage.json) tracks required artwork categories separately from production approval.
+
 Start with the [asset gallery](index.html), [UI component kit](ui/index.html), and [asset proposal](../DevLog/production/002-asset-plan.md). The [manifest](manifest.json) records stable IDs, dimensions, alpha information, proposed footprints, and integration dependencies. Footprints and anchors remain provisional.
 
 The first-outpost batch adds extractor, assembler, power unit, reference/control station, four-port junction, phase tuner, cooled dump, and two deposits. The UI kit includes 23 original SVG symbols and interactive HTML/CSS component examples. These support first-build implementation; they are not a playable game.

@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/sophia/.codex/generated_images/01a09e5b-ed2a-7cb2-bed4-01bfe9698c07/exec-811c1f53-7b44-4d9b-b209-e10939a20dd2.png",
+  "path": "assets/production/pass-06/resonator-inventory-v1.png",
+  "product_id": "resonator",
+  "asset_type": "item",
+  "variant": "inventory",
+  "prompt": "Use case: stylized-concept. PHIELDWORKS industrial factory game. Create ONE isolated inventory icon. Subject: One squat resonator core: ivory ceramic cradle supporting a short faceted optical crystal between two copper end plates, all inside a compact open dark steel frame. No glowing orb. Weathered charcoal steel, warm ivory ceramic and restrained copper. Crisp painterly 3D game art with broad readable forms, minimal microdetail. Fixed elevated oblique orthographic camera, upper-left light. Strong silhouette readable at 32 and 48 pixels. Center the complete object at about 70 percent of canvas with generous empty padding on every side. Actual RGBA transparent background; no checkerboard, matte, floor plane, cast shadow outside object, text, numbers, logos, watermark, badges, glow or unrelated objects.",
+  "reference_inputs": [],
+  "source_pixels": "unmodified",
+  "visual_review": "pending"
+}

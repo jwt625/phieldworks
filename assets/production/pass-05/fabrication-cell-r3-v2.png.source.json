@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/sophia/.codex/generated_images/01a09e5b-ed2a-7cb2-bed4-01bfe9698c07/exec-2e15e7cb-9ed0-4dd4-9413-fd606221b041.png",
+  "prompt": "Remove the painted checkerboard background from this fabrication-cell image. Return an actual RGBA transparent PNG cutout. Preserve all machine pixels, geometry, size, position and camera. Everything outside the machine must have alpha zero, not a painted background. Do not crop or zoom. No floor or exterior shadow.",
+  "path": "assets/production/pass-05/fabrication-cell-r3-v2.png",
+  "reference_inputs": [
+    "assets/production/pass-05/fabrication-cell-r3-v1.png"
+  ],
+  "source_pixels": "unmodified",
+  "status": "needs-correction",
+  "review_notes": "Opaque painted checkerboard; rejected for runtime. Enclosure/port geometry needs directional correction."
+}

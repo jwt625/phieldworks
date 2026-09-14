@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/sophia/.codex/generated_images/01a09e5b-ed2a-7cb2-bed4-01bfe9698c07/exec-979991ce-52f0-4243-8310-37fb59670931.png",
+  "prompt": "Edit this PHIELDWORKS optical blank into unusable PROCESS SCRAP. Same oblique camera and industrial steel, ivory ceramic and copper materials. Break the disk and carrier into three large angular pieces arranged as a compact pile within the original icon area, with a conspicuous missing wedge and jagged outer silhouette. Clearly destroyed, distinct from an intact partly processed disk at 32 pixels. No dust cloud or tiny scattered fragments. Centered with generous padding. Genuine transparent PNG alpha background, no painted checkerboard or matte, text, badges, glow, floor or extra objects.",
+  "path": "assets/production/pass-05/precision-process-scrap-v1.png",
+  "reference_inputs": [
+    "assets/production/pass-05/precision-blank-v1.png"
+  ],
+  "source_pixels": "unmodified",
+  "status": "needs-registration",
+  "review_notes": "Real alpha; small-size and fixture registration remain pending. Generated edges need light-background inspection."
+}

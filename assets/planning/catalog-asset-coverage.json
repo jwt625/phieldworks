@@ -1,0 +1,1987 @@
+{
+  "schema_version": 1,
+  "authority": "src/ui/production-data.ts",
+  "policy": {
+    "physical_states": "Versioned raster candidates with explicit review; four views for rotatable world equipment.",
+    "status": "Renderer-controlled power, starvation, blockage, trip, heat and result signals. Avoid a redundant raster for every combination.",
+    "animation": "Registered chassis plus mechanism poses; drive from actual events and active simulation time; freeze on pause and use static reduced-motion presentation.",
+    "items": "Process variants only when gameplay defines them; do not invent damage or motion for inert inventory items.",
+    "capabilities": "Code-native symbols, not invented machine sprites."
+  },
+  "entries": [
+    {
+      "id": "construction",
+      "name": "Expedition construction kit",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "placement-feedback"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "ore",
+      "name": "Mixed ferrous ore",
+      "type": "resource",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "deposit",
+        "depleted-deposit"
+      ],
+      "sources": [
+        {
+          "path": "assets/animations/candidates/transport-items-v2.png",
+          "role": "inventory-atlas",
+          "status": "reviewed-item-concept; individual crops and alpha correction pending"
+        },
+        {
+          "path": "assets/sprites/starter-ore-v1.png",
+          "role": "deposit",
+          "status": "prototype-static"
+        },
+        {
+          "path": "assets/map/depletion-debris-v1.png",
+          "role": "depleted-deposit-atlas",
+          "status": "runtime-prototype"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "assembly",
+      "name": "Construction assembly",
+      "type": "item",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [
+        {
+          "path": "assets/animations/candidates/transport-items-v2.png",
+          "role": "inventory-atlas",
+          "status": "reviewed-item-concept; individual crops and alpha correction pending"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "extractor",
+      "name": "Extractor",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": {
+        "asset": "starter-extractor",
+        "sheet": "starter-extractor-turnaround-v2",
+        "animation": {
+          "asset": "extractor-cycle-v1",
+          "columns": 4,
+          "rows": 4,
+          "period": 0.65
+        }
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/world/starter-extractor-turnaround-v2.png",
+          "role": "direction-sheet",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/animations/extractor-cycle-v1.png",
+          "role": "operation-animation",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/states/extractor-condition-v1.png",
+          "role": "condition-sheet",
+          "status": "runtime-prototype; condition crop/alpha review remains"
+        },
+        {
+          "path": "assets/animations/candidates/extractor-severe-cycle-v2.png",
+          "role": "animation-candidate",
+          "status": "needs-motion-correction"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "assembler",
+      "name": "Assembler",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": {
+        "asset": "compact-assembler",
+        "sheet": "compact-assembler-turnaround-v2",
+        "animation": {
+          "asset": "assembler-cycle-v1",
+          "columns": 4,
+          "rows": 4,
+          "period": 1.4
+        }
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/world/compact-assembler-turnaround-v2.png",
+          "role": "direction-sheet",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/animations/assembler-cycle-v1.png",
+          "role": "operation-animation",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/states/assembler-condition-v1.png",
+          "role": "condition-sheet",
+          "status": "runtime-prototype; condition crop/alpha review remains"
+        },
+        {
+          "path": "assets/animations/candidates/assembler-light-cycle-v2.png",
+          "role": "animation-candidate",
+          "status": "needs-motion-correction"
+        },
+        {
+          "path": "assets/animations/candidates/assembler-severe-cycle-v2.png",
+          "role": "animation-candidate",
+          "status": "needs-motion-correction"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "generator",
+      "name": "Power unit",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": {
+        "asset": "power-unit",
+        "sheet": "power-unit-turnaround-v2"
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/world/power-unit-turnaround-v2.png",
+          "role": "direction-sheet",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/states/generator-condition-v1.png",
+          "role": "condition-sheet",
+          "status": "runtime-prototype; condition crop/alpha review remains"
+        },
+        {
+          "path": "assets/animations/candidates/generator-cycle-v2.png",
+          "role": "animation-candidate",
+          "status": "needs-registration"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "belt-route",
+      "name": "Material belt route",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "wire-route",
+      "name": "Electrical wire route",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "repair",
+      "name": "Repair and recovery",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "reference",
+      "name": "Reference station",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": {
+        "asset": "reference-control-station",
+        "sheet": "reference-control-station-turnaround-v2"
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/world/reference-control-station-turnaround-v2.png",
+          "role": "direction-sheet",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/states/reference-condition-v1.png",
+          "role": "condition-sheet",
+          "status": "runtime-prototype; condition crop/alpha review remains"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "junction",
+      "name": "Four-port junction",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": {
+        "asset": "four-port-junction",
+        "sheet": "four-port-junction-turnaround-v2"
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/world/four-port-junction-turnaround-v2.png",
+          "role": "direction-sheet",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/states/junction-condition-v1.png",
+          "role": "condition-sheet",
+          "status": "runtime-prototype; condition crop/alpha review remains"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "tuner",
+      "name": "Phase tuner",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": {
+        "asset": "phase-tuner",
+        "sheet": "phase-tuner-turnaround-v2"
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/world/phase-tuner-turnaround-v2.png",
+          "role": "direction-sheet",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/states/tuner-condition-v1.png",
+          "role": "condition-sheet",
+          "status": "runtime-prototype; condition crop/alpha review remains"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "emitter",
+      "name": "Field emitter",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": {
+        "asset": "field-emitter",
+        "sheet": "field-emitter-turnaround-v2"
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/world/field-emitter-turnaround-v2.png",
+          "role": "direction-sheet",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/states/emitter-condition-v1.png",
+          "role": "condition-sheet",
+          "status": "runtime-prototype; condition crop/alpha review remains"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "dump",
+      "name": "Cooled dump",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": {
+        "asset": "cooled-dump",
+        "sheet": "cooled-dump-turnaround-v2"
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/world/cooled-dump-turnaround-v2.png",
+          "role": "direction-sheet",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/states/dump-condition-v1.png",
+          "role": "condition-sheet",
+          "status": "runtime-prototype; condition crop/alpha review remains"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "field-route",
+      "name": "Field link",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "diagnostics",
+      "name": "Baseline diagnostics",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "phase-control",
+      "name": "Automatic phase control",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "focused-field",
+      "name": "Focused target delivery",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "sentry",
+      "name": "Perimeter sentry",
+      "type": "equipment",
+      "implemented": true,
+      "runtime_appearance": {
+        "asset": "power-unit",
+        "sheet": "perimeter-sentry-v1"
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/world/perimeter-sentry-v1.png",
+          "role": "direction-sheet",
+          "status": "runtime-prototype; registration/alpha limitations remain"
+        },
+        {
+          "path": "assets/states/sentry-condition-v1.png",
+          "role": "condition-sheet",
+          "status": "runtime-prototype; condition crop/alpha review remains"
+        },
+        {
+          "path": "assets/animations/candidates/sentry-fire-v2.png",
+          "role": "animation-candidate",
+          "status": "needs-registration"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "defense-ready",
+      "name": "Defense readiness",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "raw-crystal",
+      "name": "Frontier crystal",
+      "type": "resource",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "deposit",
+        "depleted-deposit"
+      ],
+      "sources": [
+        {
+          "path": "assets/animations/candidates/transport-items-v2.png",
+          "role": "inventory-atlas",
+          "status": "reviewed-item-concept; individual crops and alpha correction pending"
+        },
+        {
+          "path": "assets/sprites/frontier-crystal-ore-v2.png",
+          "role": "deposit",
+          "status": "prototype-static"
+        },
+        {
+          "path": "assets/map/depletion-debris-v1.png",
+          "role": "depleted-deposit-atlas",
+          "status": "runtime-prototype"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "eastern-access",
+      "name": "Eastern frontier access",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "crystal-supply",
+      "name": "Harvested crystal milestone",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "blueprint",
+      "name": "Qualified outpost blueprint",
+      "type": "capability",
+      "implemented": true,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "workbench",
+      "name": "Research workbench",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/research/research-workbench-turnaround-v1.png",
+          "role": "direction-sheet",
+          "status": "candidate; registration and runtime integration pending"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "laboratory",
+      "name": "Research laboratory",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/research/research-laboratory-turnaround-v1.png",
+          "role": "direction-sheet",
+          "status": "candidate; registration and runtime integration pending"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "industrial-dossier",
+      "name": "Industrial dossier",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [
+        {
+          "path": "assets/technology/industrial-science-packs-v1.png",
+          "role": "science-package-atlas",
+          "status": "legacy concept; canonical package mapping and crop review pending"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "research-queue",
+      "name": "Research queue",
+      "type": "capability",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "splitter",
+      "name": "Belt splitter",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "underground",
+      "name": "Underground belt pair",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "belt-segment",
+      "name": "Constructible belt segment",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "segment-editing",
+      "name": "Transport segment editing",
+      "type": "capability",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "monitor",
+      "name": "Monitor station",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "probe",
+      "name": "Branch probe",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "power-pole",
+      "name": "Power pole",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "substation",
+      "name": "Substation",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "shared-bus",
+      "name": "Shared electrical bus",
+      "type": "capability",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "copper-ore",
+      "name": "Copper-rich ore",
+      "type": "resource",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "deposit",
+        "depleted-deposit"
+      ],
+      "sources": [
+        {
+          "path": "assets/production/pass-06/copper-ore-inventory-v1.png",
+          "role": "inventory",
+          "status": "needs-visual-review"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "silica",
+      "name": "Silica gravel",
+      "type": "resource",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "deposit",
+        "depleted-deposit"
+      ],
+      "sources": [
+        {
+          "path": "assets/production/pass-06/silica-inventory-v1.png",
+          "role": "inventory",
+          "status": "needs-visual-review"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "carbon",
+      "name": "Carbon nodules",
+      "type": "resource",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "deposit",
+        "depleted-deposit"
+      ],
+      "sources": [
+        {
+          "path": "assets/production/pass-06/carbon-inventory-v1.png",
+          "role": "inventory",
+          "status": "needs-visual-review"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "processor",
+      "name": "Material processor",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/research/material-processor-turnaround-v1.png",
+          "role": "direction-sheet",
+          "status": "candidate; registration and runtime integration pending"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "steel",
+      "name": "Structural steel",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [
+        {
+          "path": "assets/production/pass-06/steel-inventory-v1.png",
+          "role": "inventory",
+          "status": "needs-visual-review"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "conductor",
+      "name": "Copper conductor",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [
+        {
+          "path": "assets/production/pass-06/conductor-inventory-v1.png",
+          "role": "inventory",
+          "status": "needs-visual-review"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "ceramic",
+      "name": "Ceramic substrate",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [
+        {
+          "path": "assets/production/pass-06/ceramic-inventory-v1.png",
+          "role": "inventory",
+          "status": "needs-visual-review"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "polished-crystal",
+      "name": "Polished crystal",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "control-board",
+      "name": "Control board",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "service-connector",
+      "name": "Service connector",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "module-blueprint",
+      "name": "Selected-area blueprint",
+      "type": "capability",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "construction-request",
+      "name": "Construction request",
+      "type": "capability",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "coolant",
+      "name": "Coolant charge",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "coolant-pipe",
+      "name": "Coolant pipe",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "pump",
+      "name": "Coolant pump",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "heat-exchanger",
+      "name": "Heat exchanger",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "branch-isolator",
+      "name": "Branch isolation switch",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "wall",
+      "name": "Perimeter wall",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "magazine",
+      "name": "Sentry magazine",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "repair-kit",
+      "name": "Repair kit",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "supplied-sentry",
+      "name": "Supplied perimeter sentry",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "repair-depot",
+      "name": "Repair depot",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "precision-dossier",
+      "name": "Precision dossier",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [
+        {
+          "path": "assets/technology/industrial-science-packs-v1.png",
+          "role": "science-package-atlas",
+          "status": "legacy concept; canonical package mapping and crop review pending"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "precision-lens",
+      "name": "Precision lens",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "actuator",
+      "name": "Precision actuator",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "resonator",
+      "name": "Resonator core",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "sensor",
+      "name": "Sensor head",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "freight-depot",
+      "name": "Freight depot",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "cargo-carrier",
+      "name": "Cargo carrier",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "restricted-conduit",
+      "name": "Restricted-mode conduit",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "locked-source",
+      "name": "Reference-locked source",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "gain-core",
+      "name": "Gain core",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "amplifier",
+      "name": "Field amplifier",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "return-guard",
+      "name": "Return-power guard",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "capacitor",
+      "name": "Pulse capacitor",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "pulse-driver",
+      "name": "Pulse driver",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "pulse-diagnostics",
+      "name": "Pulse timing diagnostics",
+      "type": "capability",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "fabrication-cell",
+      "name": "Field-assisted fabrication cell",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": {
+        "asset": "fabrication-cell-placeholder",
+        "scale": 1.05
+      },
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [
+        {
+          "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v1.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v2.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v3-matte.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v4-alpha.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v5-padding.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v6-extraction.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/production/pass-04/fabrication-cell-r1-v1.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/production/pass-04/fabrication-cell-r1-v2.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/production/pass-04/fabrication-cell-r2-v1.png",
+          "role": "direction-candidate",
+          "status": "see tranche-a review / provenance; not registered"
+        },
+        {
+          "path": "assets/production/pass-05/fabrication-cell-r3-v1.png",
+          "role": "process-state-candidate",
+          "status": "needs-correction"
+        },
+        {
+          "path": "assets/production/pass-05/fabrication-cell-r3-v2.png",
+          "role": "process-state-candidate",
+          "status": "needs-correction"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "accepted-part",
+      "name": "Accepted precision part",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [
+        {
+          "path": "assets/production/pass-05/precision-accepted-part-v1.png",
+          "role": "process-state-candidate",
+          "status": "needs-correction"
+        },
+        {
+          "path": "assets/production/pass-05/precision-accepted-part-v2.png",
+          "role": "process-state-candidate",
+          "status": "needs-registration"
+        },
+        {
+          "path": "assets/production/pass-05/precision-blank-v1.png",
+          "role": "process-state-candidate",
+          "status": "needs-registration"
+        },
+        {
+          "path": "assets/production/pass-05/precision-process-scrap-v1.png",
+          "role": "process-state-candidate",
+          "status": "needs-registration"
+        },
+        {
+          "path": "assets/production/pass-05/precision-recoverable-reject-v1.png",
+          "role": "process-state-candidate",
+          "status": "needs-registration"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "wafer",
+      "name": "Semiconductor wafer",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "resist",
+      "name": "Patterning resist",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "patterned-die",
+      "name": "Patterned die",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "optical-coupler",
+      "name": "Optical coupler",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "photonic-module",
+      "name": "Photonic module",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "systems-dossier",
+      "name": "Systems dossier",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [
+        {
+          "path": "assets/technology/industrial-science-packs-v1.png",
+          "role": "science-package-atlas",
+          "status": "legacy concept; canonical package mapping and crop review pending"
+        }
+      ],
+      "coverage": "sources-mapped; acceptance-incomplete",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "communication-module",
+      "name": "Communication module",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "relay",
+      "name": "Communication relay",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "regional-controller",
+      "name": "Regional scheduler",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "calibration-beacon",
+      "name": "Calibration beacon",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "sector-controller",
+      "name": "Aperture sector controller",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "observatory",
+      "name": "Frontier observatory",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "tracking-receiver",
+      "name": "Tracking receiver",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "site-survey",
+      "name": "Surveyed aperture site",
+      "type": "capability",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "membrane-line",
+      "name": "Membrane deposition line",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "metrology-gantry",
+      "name": "Metrology gantry",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "sail-panel",
+      "name": "Accepted sail panel",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "aperture-sector",
+      "name": "Aperture sector assembly",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "qualified-sector",
+      "name": "Qualified aperture sector",
+      "type": "capability",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "sail-dock",
+      "name": "Lightsail assembly dock",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "flight-sail",
+      "name": "Inspected flight sail",
+      "type": "item",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "process-state-variants-where-applicable"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "launch-cradle",
+      "name": "Lightsail launch cradle",
+      "type": "equipment",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "inventory-icon",
+        "four-intact-views",
+        "four-light-damage-views",
+        "four-severe-damage-views",
+        "four-wreck-views",
+        "registered-operation-motion",
+        "event-driven-status-overlays"
+      ],
+      "sources": [],
+      "coverage": "no-dedicated-source-mapped",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    },
+    {
+      "id": "launch-acceptance",
+      "name": "Integrated launch acceptance",
+      "type": "capability",
+      "implemented": false,
+      "runtime_appearance": null,
+      "requirements": [
+        "code-native-symbol",
+        "accessible-status"
+      ],
+      "sources": [],
+      "coverage": "code-native-review-pending",
+      "notes": "Technology illustrations do not count as product art. A source mapping does not satisfy every state, direction or animation requirement. Design-catalog implemented flags are not runtime authority."
+    }
+  ]
+}

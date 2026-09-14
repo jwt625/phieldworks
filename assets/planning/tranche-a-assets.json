@@ -203,7 +203,16 @@
       "crop": null,
       "ground_anchor_px": null,
       "port_landmarks_px": null,
-      "status": "planned"
+      "status": "in-progress",
+      "candidate_paths": [
+        "assets/production/pass-05/precision-blank-v1.png",
+        "assets/production/pass-05/precision-accepted-part-v1.png",
+        "assets/production/pass-05/precision-accepted-part-v2.png",
+        "assets/production/pass-05/precision-recoverable-reject-v1.png",
+        "assets/production/pass-05/precision-process-scrap-v1.png"
+      ],
+      "review_record": "assets/production/pass-05/review.json",
+      "review_selection_scope": "Concept candidates only: four real-alpha sources; fixture scale and registration pending. Static-view dependency is still open."
     },
     {
       "id": "TA-PROCESS-OVERLAYS",

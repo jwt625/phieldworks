@@ -1,0 +1,766 @@
+{
+  "schema_version": 1,
+  "source_pixels": "unmodified",
+  "runtime_loader": false,
+  "summary": {
+    "sources": 29,
+    "real_alpha": 29,
+    "production_ready": 0
+  },
+  "candidates": [
+    {
+      "id": "actuator-inventory-v1",
+      "product_id": "actuator",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/actuator-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/actuator-inventory-v1.png.source.json",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "67a0fc0be5a69bdc05325f88a7f954bada9cb37271d7c65b60c59f99630e3756",
+      "transparent_fraction": 0.8046563466389974,
+      "partial_alpha_fraction": 0.1953436533610026,
+      "alpha_bounds_xyxy": [
+        217,
+        21,
+        1448,
+        998
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-edge-correction",
+      "visual_review": "Needs edge correction: broad soft halo outside physical silhouette despite nonzero transparent fraction."
+    },
+    {
+      "id": "belt-segment-inventory-v1",
+      "product_id": "belt-segment",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/belt-segment-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/belt-segment-inventory-v1.png.source.json",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "8d41d7a458f66d7d7bb5c025dad648459bb90f4d8fc62b318b49bd6c4c8d4b74",
+      "transparent_fraction": 0.7309436798095703,
+      "partial_alpha_fraction": 0.2690563201904297,
+      "alpha_bounds_xyxy": [
+        259,
+        32,
+        1448,
+        1024
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-edge-correction",
+      "visual_review": "Needs edge correction: broad soft halo outside physical silhouette despite nonzero transparent fraction."
+    },
+    {
+      "id": "capacitor-inventory-v1",
+      "product_id": "capacitor",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/capacitor-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/capacitor-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "ba3abcda46da6e675c705bdec6e33daa04f15d189fc4e8b0b8c07b25a31cb9cd",
+      "transparent_fraction": 0.6320946813895694,
+      "partial_alpha_fraction": 0.36754729363643995,
+      "alpha_bounds_xyxy": [
+        41,
+        21,
+        1192,
+        1254
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "carbon-inventory-v1",
+      "product_id": "carbon",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/carbon-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/carbon-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "61f2e64a8401f122af2ab793d01ca9ae42d202ecdb2ed6337c923140aaeacc26",
+      "transparent_fraction": 0.7038955406495069,
+      "partial_alpha_fraction": 0.2958494539960166,
+      "alpha_bounds_xyxy": [
+        39,
+        182,
+        1192,
+        1198
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-subject-correction",
+      "visual_review": "Needs correction: invented copper/ceramic bands make natural carbon resemble manufactured ore."
+    },
+    {
+      "id": "ceramic-inventory-v1",
+      "product_id": "ceramic",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/ceramic-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/ceramic-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "899b68fe26485893d0afa552cefcd10e7c5e0fb81ce78111c8787baa029a1125",
+      "transparent_fraction": 0.5893994083367037,
+      "partial_alpha_fraction": 0.4103544892389012,
+      "alpha_bounds_xyxy": [
+        49,
+        173,
+        1186,
+        1198
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "communication-module-inventory-v1",
+      "product_id": "communication-module",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/communication-module-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/communication-module-inventory-v1.png.source.json",
+      "dimensions": [
+        1484,
+        1060
+      ],
+      "mode": "RGBA",
+      "sha256": "d65c085120d31db8fafae91788c0de51063a5674ae923c629f696594cab261b3",
+      "transparent_fraction": 0.7632622183796979,
+      "partial_alpha_fraction": 0.2365254538981844,
+      "alpha_bounds_xyxy": [
+        251,
+        21,
+        1454,
+        1060
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "conductor-inventory-v1",
+      "product_id": "conductor",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/conductor-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/conductor-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "55a0e0d69a3c3733aaf35f3ef8095f1de85c6cccd19c438ca1cf76e71cbdc712",
+      "transparent_fraction": 0.6690418412276886,
+      "partial_alpha_fraction": 0.33074385252677874,
+      "alpha_bounds_xyxy": [
+        49,
+        53,
+        1192,
+        1198
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "control-board-inventory-v1",
+      "product_id": "control-board",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/control-board-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/control-board-inventory-v1.png.source.json",
+      "dimensions": [
+        1484,
+        1060
+      ],
+      "mode": "RGBA",
+      "sha256": "14f012d2cf50879db68c30b085d3783e6c8126918271aac09fe7139d0c51c0ca",
+      "transparent_fraction": 0.7305345064334028,
+      "partial_alpha_fraction": 0.2690096882469613,
+      "alpha_bounds_xyxy": [
+        0,
+        20,
+        1460,
+        1020
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "coolant-inventory-v1",
+      "product_id": "coolant",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/coolant-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/coolant-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "e26ee3e8a1415b1387960b3228c87096f1cd16320564feaa6fc009d27a673ce0",
+      "transparent_fraction": 0.6574489544144543,
+      "partial_alpha_fraction": 0.3422979480018009,
+      "alpha_bounds_xyxy": [
+        41,
+        21,
+        1199,
+        1254
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "coolant-pipe-inventory-v1",
+      "product_id": "coolant-pipe",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/coolant-pipe-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/coolant-pipe-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "2f1a9ad252add117a2e72c89ac11b8d62c42b6d6f3baeb9cef984ccb6120caa0",
+      "transparent_fraction": 0.7274418829442753,
+      "partial_alpha_fraction": 0.27236733998255025,
+      "alpha_bounds_xyxy": [
+        57,
+        21,
+        1190,
+        1182
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "copper-ore-inventory-v1",
+      "product_id": "copper-ore",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/copper-ore-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/copper-ore-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "994fd449fa2e984864fd38a4163074a6c62d8bfe0118cb039393c7eb98aa43b1",
+      "transparent_fraction": 0.7903321810398114,
+      "partial_alpha_fraction": 0.20944651755530627,
+      "alpha_bounds_xyxy": [
+        97,
+        47,
+        1192,
+        1198
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "flight-sail-inventory-v1",
+      "product_id": "flight-sail",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/flight-sail-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/flight-sail-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "a278b3f25a81c859522bb2a1d319694be437f8b333f49a3b3ff75d9f6da3505c",
+      "transparent_fraction": 0.6440309669345177,
+      "partial_alpha_fraction": 0.355637716881736,
+      "alpha_bounds_xyxy": [
+        67,
+        53,
+        1195,
+        1198
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "gain-core-inventory-v1",
+      "product_id": "gain-core",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/gain-core-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/gain-core-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "fc3bb0190410e5acffe535a75bfaef5cb6dc29bfffddd4d2b418019145b07be0",
+      "transparent_fraction": 0.6867656672491727,
+      "partial_alpha_fraction": 0.3129011087963493,
+      "alpha_bounds_xyxy": [
+        55,
+        21,
+        1194,
+        1228
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "magazine-inventory-v1",
+      "product_id": "magazine",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/magazine-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/magazine-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "7ebdf8a793a75fd9fa6e828828d1b623f08488a59132e4eabc5cee1e8a5b2c5f",
+      "transparent_fraction": 0.5919532774229325,
+      "partial_alpha_fraction": 0.4078546736567386,
+      "alpha_bounds_xyxy": [
+        0,
+        21,
+        1224,
+        1254
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "optical-coupler-inventory-v1",
+      "product_id": "optical-coupler",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/optical-coupler-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/optical-coupler-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "e66ee6b350bdbde8ad9d863c6d4b4e532e0cbf86c454ea30985890443923f383",
+      "transparent_fraction": 0.8125087439491872,
+      "partial_alpha_fraction": 0.18732082853211032,
+      "alpha_bounds_xyxy": [
+        97,
+        21,
+        1198,
+        1182
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "patterned-die-inventory-v1",
+      "product_id": "patterned-die",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/patterned-die-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/patterned-die-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "cf3471e61fd79bd7d2281ae3efde45ec9a5d04ea26de2fc8fa426aa0ebba898c",
+      "transparent_fraction": 0.6971165953160413,
+      "partial_alpha_fraction": 0.3027524044270456,
+      "alpha_bounds_xyxy": [
+        0,
+        57,
+        1216,
+        1199
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "photonic-module-inventory-v1",
+      "product_id": "photonic-module",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/photonic-module-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/photonic-module-inventory-v1.png.source.json",
+      "dimensions": [
+        1491,
+        1055
+      ],
+      "mode": "RGBA",
+      "sha256": "d77481af208883d3a1c721918fe9b48139840b4b8198cbf756386fc119ba1e42",
+      "transparent_fraction": 0.7393294999062304,
+      "partial_alpha_fraction": 0.26039713796205355,
+      "alpha_bounds_xyxy": [
+        41,
+        23,
+        1441,
+        1037
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "polished-crystal-inventory-v1",
+      "product_id": "polished-crystal",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/polished-crystal-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/polished-crystal-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "1d3f7fc26d6428716ceda589a58dad541aab9911c4aeb2a0cf86a45709b4f620",
+      "transparent_fraction": 0.7365839202907951,
+      "partial_alpha_fraction": 0.2632609143563563,
+      "alpha_bounds_xyxy": [
+        57,
+        103,
+        1192,
+        1198
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "precision-lens-inventory-v1",
+      "product_id": "precision-lens",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/precision-lens-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/precision-lens-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "6f8da29a4d3c273d39b97f0b693262af612c8007b400244ed05466d42f677bbf",
+      "transparent_fraction": 0.6658406019398213,
+      "partial_alpha_fraction": 0.3338700528325308,
+      "alpha_bounds_xyxy": [
+        49,
+        21,
+        1192,
+        1228
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "repair-kit-inventory-v1",
+      "product_id": "repair-kit",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/repair-kit-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/repair-kit-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "c3009c461d365a98d867205d664efd5ace82c13f7705dbcd4bdf7c4a496ec997",
+      "transparent_fraction": 0.5834795957561004,
+      "partial_alpha_fraction": 0.41617509774145384,
+      "alpha_bounds_xyxy": [
+        49,
+        93,
+        1112,
+        1182
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "resist-inventory-v1",
+      "product_id": "resist",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/resist-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/resist-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "1b0ad42d017e3007b19adf9565bca51801426e22d276410db7db37a3a66d1537",
+      "transparent_fraction": 0.7736906969468037,
+      "partial_alpha_fraction": 0.2261986523507551,
+      "alpha_bounds_xyxy": [
+        97,
+        103,
+        1200,
+        1230
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "resonator-inventory-v1",
+      "product_id": "resonator",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/resonator-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/resonator-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "af1be61444ddf9eb4854212b0cecd6f564b376f240558dd287a4f5b2cef2d87a",
+      "transparent_fraction": 0.70602779240402,
+      "partial_alpha_fraction": 0.2937222896301214,
+      "alpha_bounds_xyxy": [
+        59,
+        49,
+        1059,
+        1198
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "restricted-conduit-inventory-v1",
+      "product_id": "restricted-conduit",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/restricted-conduit-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/restricted-conduit-inventory-v1.png.source.json",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "b44f12e66f0c8b8df566d71a65279192e57955f55bb2131e5fe861bcbc8709f7",
+      "transparent_fraction": 0.7756996154785156,
+      "partial_alpha_fraction": 0.22430038452148438,
+      "alpha_bounds_xyxy": [
+        59,
+        32,
+        1344,
+        998
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-edge-correction",
+      "visual_review": "Needs edge correction: broad soft halo outside physical silhouette despite nonzero transparent fraction."
+    },
+    {
+      "id": "sail-panel-inventory-v1",
+      "product_id": "sail-panel",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/sail-panel-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/sail-panel-inventory-v1.png.source.json",
+      "dimensions": [
+        1374,
+        1145
+      ],
+      "mode": "RGBA",
+      "sha256": "e65f501d7d6d7f5311a570a808ffdde15d0c87047496cfe569351ad1e7248f41",
+      "transparent_fraction": 0.6690808082734248,
+      "partial_alpha_fraction": 0.33061472257711844,
+      "alpha_bounds_xyxy": [
+        82,
+        20,
+        1281,
+        1113
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "sensor-inventory-v1",
+      "product_id": "sensor",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/sensor-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/sensor-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "40382db686aa039fe6bd206d17ba5227907e9572fa04aff2680b4cb3c17f719e",
+      "transparent_fraction": 0.7021410274998792,
+      "partial_alpha_fraction": 0.29763194778304325,
+      "alpha_bounds_xyxy": [
+        49,
+        29,
+        1199,
+        1230
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "service-connector-inventory-v1",
+      "product_id": "service-connector",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/service-connector-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/service-connector-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "7584ffd0b383aec74f1d263d09db99a7917dca41d817a6499195a90b60f61705",
+      "transparent_fraction": 0.6356609408107772,
+      "partial_alpha_fraction": 0.3641654520526341,
+      "alpha_bounds_xyxy": [
+        39,
+        48,
+        1168,
+        1198
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "silica-inventory-v1",
+      "product_id": "silica",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/silica-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/silica-inventory-v1.png.source.json",
+      "dimensions": [
+        1374,
+        1145
+      ],
+      "mode": "RGBA",
+      "sha256": "1d5099391406b4f7b6fbfbad0ca117cffffd0db10db3b21c8298be354f87f332",
+      "transparent_fraction": 0.7340147340185478,
+      "partial_alpha_fraction": 0.26577614207712796,
+      "alpha_bounds_xyxy": [
+        45,
+        19,
+        1352,
+        1119
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "steel-inventory-v1",
+      "product_id": "steel",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/steel-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/steel-inventory-v1.png.source.json",
+      "dimensions": [
+        1484,
+        1060
+      ],
+      "mode": "RGBA",
+      "sha256": "27933bd29536f1d95a1978cc124c769d680320c7efed749b88ad0cbdefe8a2a8",
+      "transparent_fraction": 0.7378254844123481,
+      "partial_alpha_fraction": 0.2619838020647917,
+      "alpha_bounds_xyxy": [
+        98,
+        21,
+        1454,
+        1060
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    },
+    {
+      "id": "wafer-inventory-v1",
+      "product_id": "wafer",
+      "variant": "inventory",
+      "path": "assets/production/pass-06/wafer-inventory-v1.png",
+      "provenance_path": "assets/production/pass-06/wafer-inventory-v1.png.source.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "7fb1a3f2f60e88921c7e7e0f1bb2b68bee51d62ffb003c7ffd7848b5cd96f9b0",
+      "transparent_fraction": 0.6767339728180826,
+      "partial_alpha_fraction": 0.32297223048922874,
+      "alpha_bounds_xyxy": [
+        57,
+        53,
+        1192,
+        1228
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "production_ready": false,
+      "status": "needs-visual-review",
+      "visual_review": "pending"
+    }
+  ]
+}

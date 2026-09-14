@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/sophia/.codex/generated_images/01a09e5b-ed2a-7cb2-bed4-01bfe9698c07/exec-13744209-fb2b-47ee-afbd-809272e9ad0d.png",
+  "prompt": "Edit this PHIELDWORKS optical blank into its ACCEPTED PRECISION PART state. Keep the same circular ceramic carrier, three copper tabs, camera, lighting, size and position. Change only the disk surface: add a bold complete concentric etched optical grating with a clearly finished central hexagonal optical feature, readable at 32 pixels. Unbroken smooth finished component, no cracks. Genuine transparent PNG alpha background. No text, checkmark, badge, glow or extra objects.",
+  "path": "assets/production/pass-05/precision-accepted-part-v1.png",
+  "reference_inputs": [
+    "assets/production/pass-05/precision-blank-v1.png"
+  ],
+  "source_pixels": "unmodified",
+  "status": "needs-correction",
+  "review_notes": "Opaque painted checkerboard; rejected for runtime."
+}

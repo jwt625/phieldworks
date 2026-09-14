@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "source_pixels": "unmodified",
+  "runtime_loader": false,
+  "candidates": [
+    {
+      "id": "fabrication-cell-r3-v1",
+      "path": "assets/production/pass-05/fabrication-cell-r3-v1.png",
+      "provenance_path": "assets/production/pass-05/fabrication-cell-r3-v1.png.source.json",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "sha256": "6058fe6d3227b4e1ee8c5e1d2be7f3438afc4a70db9cd664a82e4fa4e31ad754",
+      "transparent_fraction": 0.0,
+      "partial_alpha_fraction": 0.0,
+      "alpha_bounds_xyxy": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "status": "needs-correction",
+      "production_ready": false,
+      "note": "Opaque painted checkerboard; rejected for runtime. Enclosure/port geometry needs directional correction."
+    },
+    {
+      "id": "fabrication-cell-r3-v2",
+      "path": "assets/production/pass-05/fabrication-cell-r3-v2.png",
+      "provenance_path": "assets/production/pass-05/fabrication-cell-r3-v2.png.source.json",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "sha256": "15f887f901f4e8cbbf1ff7c8ab33b601e232401fca96c1b15bed315f46ad530c",
+      "transparent_fraction": 0.0,
+      "partial_alpha_fraction": 0.0,
+      "alpha_bounds_xyxy": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "status": "needs-correction",
+      "production_ready": false,
+      "note": "Opaque painted checkerboard; rejected for runtime. Enclosure/port geometry needs directional correction."
+    },
+    {
+      "id": "precision-accepted-part-v1",
+      "path": "assets/production/pass-05/precision-accepted-part-v1.png",
+      "provenance_path": "assets/production/pass-05/precision-accepted-part-v1.png.source.json",
+      "width": 1374,
+      "height": 1145,
+      "mode": "RGB",
+      "sha256": "299e0f1514ae3a2dff9205c18ade1692db4041c82bbfce8f108f3e556405a209",
+      "transparent_fraction": 0.0,
+      "partial_alpha_fraction": 0.0,
+      "alpha_bounds_xyxy": [
+        0,
+        0,
+        1374,
+        1145
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "status": "needs-correction",
+      "production_ready": false,
+      "note": "Opaque painted checkerboard; rejected for runtime."
+    },
+    {
+      "id": "precision-accepted-part-v2",
+      "path": "assets/production/pass-05/precision-accepted-part-v2.png",
+      "provenance_path": "assets/production/pass-05/precision-accepted-part-v2.png.source.json",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "76760e351b8094e87569aedd2455c15997ff91485248bc131e0364dec84d8493",
+      "transparent_fraction": 0.5151044568067988,
+      "partial_alpha_fraction": 0.4846761495590506,
+      "alpha_bounds_xyxy": [
+        49,
+        21,
+        1182,
+        1254
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "status": "needs-registration",
+      "production_ready": false,
+      "note": "Real alpha; small-size and fixture registration remain pending. Generated edges need light-background inspection. Carrier tabs and projection differ from blank; inventory concept only."
+    },
+    {
+      "id": "precision-blank-v1",
+      "path": "assets/production/pass-05/precision-blank-v1.png",
+      "provenance_path": "assets/production/pass-05/precision-blank-v1.png.source.json",
+      "width": 1374,
+      "height": 1145,
+      "mode": "RGBA",
+      "sha256": "63e8e031c5ff68804e0d1c186b671c1c106c2db20400d345b0a64c9b386f35ca",
+      "transparent_fraction": 0.7003979074896868,
+      "partial_alpha_fraction": 0.2994667022622248,
+      "alpha_bounds_xyxy": [
+        0,
+        9,
+        1247,
+        1121
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "status": "needs-registration",
+      "production_ready": false,
+      "note": "Real alpha; small-size and fixture registration remain pending. Generated edges need light-background inspection."
+    },
+    {
+      "id": "precision-process-scrap-v1",
+      "path": "assets/production/pass-05/precision-process-scrap-v1.png",
+      "provenance_path": "assets/production/pass-05/precision-process-scrap-v1.png.source.json",
+      "width": 1374,
+      "height": 1145,
+      "mode": "RGBA",
+      "sha256": "23ae31b586c9dea267da983c0af26b4a28b042dc1327775a2bf67946c549fc83",
+      "transparent_fraction": 0.6643980854674777,
+      "partial_alpha_fraction": 0.3351785816441334,
+      "alpha_bounds_xyxy": [
+        49,
+        20,
+        1336,
+        1129
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "status": "needs-registration",
+      "production_ready": false,
+      "note": "Real alpha; small-size and fixture registration remain pending. Generated edges need light-background inspection."
+    },
+    {
+      "id": "precision-recoverable-reject-v1",
+      "path": "assets/production/pass-05/precision-recoverable-reject-v1.png",
+      "provenance_path": "assets/production/pass-05/precision-recoverable-reject-v1.png.source.json",
+      "width": 1374,
+      "height": 1145,
+      "mode": "RGBA",
+      "sha256": "087b98a6c416c3909e0dc2f326d4f6405c5b5874bdbc4c7b2c5c9dabcd3a919e",
+      "transparent_fraction": 0.5552182452661086,
+      "partial_alpha_fraction": 0.4446088620227176,
+      "alpha_bounds_xyxy": [
+        0,
+        53,
+        1257,
+        1123
+      ],
+      "crop": null,
+      "ground_anchor_px": null,
+      "status": "needs-registration",
+      "production_ready": false,
+      "note": "Real alpha; small-size and fixture registration remain pending. Generated edges need light-background inspection."
+    }
+  ]
+}

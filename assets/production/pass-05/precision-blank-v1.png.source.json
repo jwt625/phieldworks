@@ -1,0 +1,12 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/sophia/.codex/generated_images/01a09e5b-ed2a-7cb2-bed4-01bfe9698c07/exec-27b19ac6-b447-4478-8b4b-06e8b7070ca2.png",
+  "prompt": "Create ONE inventory game sprite: an unprocessed precision optical substrate blank for PHIELDWORKS. A simple smooth charcoal circular disk seated in a thin ivory ceramic carrier ring with exactly three small copper retaining tabs. Oblique top-down orthographic camera, upper-left light, weathered steel/ceramic/copper industrial style, broad readable silhouette at 32 pixels. No engraved circuitry yet. Centered whole small object with generous empty margins. Actual transparent alpha PNG background, no checkerboard, no floor, no text, badges, glow, machine or other objects.",
+  "path": "assets/production/pass-05/precision-blank-v1.png",
+  "reference_inputs": [],
+  "source_pixels": "unmodified",
+  "status": "needs-registration",
+  "review_notes": "Real alpha; small-size and fixture registration remain pending. Generated edges need light-background inspection."
+}

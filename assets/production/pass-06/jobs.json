@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "tool": "image_gen.imagegen",
+  "jobs": [
+    {
+      "id": "copper-ore",
+      "asset_type": "resource",
+      "variant": "inventory",
+      "subject": "Three compact angular copper-rich rocks fused into one small ore cluster; dark stone with broad dull copper mineral veins. Do not show refined copper bars."
+    },
+    {
+      "id": "silica",
+      "asset_type": "resource",
+      "variant": "inventory",
+      "subject": "A compact handful-sized cluster of three pale frosted quartz gravel chunks with angular translucent edges and warm gray stone inclusions. No gemstone jewelry."
+    },
+    {
+      "id": "carbon",
+      "asset_type": "resource",
+      "variant": "inventory",
+      "subject": "A compact cluster of three rounded black carbon nodules, rough matte charcoal surfaces with a few broad facets. Distinct from angular metal ore; no burning or glow."
+    },
+    {
+      "id": "steel",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "A short stack of exactly three structural steel channels, thick dark brushed steel U-section bars with visible open ends, bound by one copper strap."
+    },
+    {
+      "id": "conductor",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One squat reel of thick copper conductor wire with a single short loose end, charcoal steel spool cheeks and an ivory ceramic center hub."
+    },
+    {
+      "id": "ceramic",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "A small offset stack of three thick ivory ceramic substrate plates, broad square silhouette, a few mounting holes, charcoal edges and unprinted surfaces."
+    },
+    {
+      "id": "polished-crystal",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One precision polished pale blue-gray optical crystal prism, chunky hexagonal cut, broad clear facets, held at its base by a small charcoal transport clip. No glow."
+    },
+    {
+      "id": "control-board",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "A rectangular ivory ceramic circuit carrier with three broad copper traces and two chunky dark electronic packages. Distinct exposed board silhouette, simple industrial electronics, no tiny writing."
+    },
+    {
+      "id": "service-connector",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "A compact square industrial service connector block: steel flange, one round copper electrical socket, two small ceramic-lined service sockets, short keyed locking latch. Not a machine."
+    },
+    {
+      "id": "coolant",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One squat sealed industrial coolant charge cartridge: ivory ceramic cylinder in a charcoal protective cage, copper screw cap, one narrow subdued teal liquid sight window. No lettering."
+    },
+    {
+      "id": "coolant-pipe",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One short thick copper coolant pipe elbow with bolted charcoal flanges on both ends and an ivory ceramic insulating collar. Clear L-shaped silhouette."
+    },
+    {
+      "id": "repair-kit",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One compact open charcoal metal repair-kit case containing a spare copper coil, ivory ceramic patch plates and a chunky mechanical wrench held in fitted recesses. No medical cross."
+    },
+    {
+      "id": "magazine",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One squat industrial sentry ammunition cassette: charcoal rectangular steel housing, three exposed dull brass cylindrical cartridge tips at one end, broad ivory ceramic locking grip. No weapon."
+    },
+    {
+      "id": "precision-lens",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One thick circular pale blue-gray precision optical lens held in a dark three-lug mounting ring, ivory ceramic rim and small copper fasteners. Broad glass center, no glow."
+    },
+    {
+      "id": "actuator",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One compact precision linear actuator: short exposed steel lead screw on a charcoal rectangular rail, ivory ceramic slider carriage at the center and copper motor winding housing at one end."
+    },
+    {
+      "id": "resonator",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One squat resonator core: ivory ceramic cradle supporting a short faceted optical crystal between two copper end plates, all inside a compact open dark steel frame. No glowing orb."
+    },
+    {
+      "id": "sensor",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One compact sensor head: square ivory ceramic enclosure with a single recessed dark blue optical aperture in a charcoal front bezel, copper plug at the back and small mounting foot."
+    },
+    {
+      "id": "gain-core",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One active optical gain core: short thick pale crystal rod held inside an open copper cooling jacket with three prominent fins and ivory ceramic end supports. No glow or energy beam."
+    },
+    {
+      "id": "capacitor",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One pulse capacitor module: two stout charcoal cylindrical canisters on a shared ivory ceramic base, broad copper bus bridge and recessed terminals. No electrical arcs."
+    },
+    {
+      "id": "wafer",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One plain thin charcoal semiconductor wafer disk with a single orientation notch, subtle blue-gray reflection and no patterned circuitry. Bare unmounted wafer; no carrier ring."
+    },
+    {
+      "id": "resist",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One sealed small patterning-resist bottle: squat dark amber body, thick ivory ceramic cap, charcoal protective base and one plain copper collar. No printed label."
+    },
+    {
+      "id": "patterned-die",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One square dark semiconductor die with a broad readable cross-shaped copper photonic pattern and simple stepped edge contacts, sitting on a thin ivory ceramic backing."
+    },
+    {
+      "id": "optical-coupler",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One small right-angle optical coupler: ivory ceramic L-shaped block carrying a pale glass aperture on one end and a short dark chip interface on the other, with a single copper retaining clip."
+    },
+    {
+      "id": "photonic-module",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One packaged photonic module: rectangular charcoal metal housing with ivory ceramic lid, two small recessed pale optical ports on one short edge and four broad copper electrical contacts on the other."
+    },
+    {
+      "id": "communication-module",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One compact paired transmitter-receiver communication module in a shared charcoal chassis with twin ivory ceramic covers, two recessed optical apertures and a copper interconnect bridge. No radio waves or antenna effects."
+    },
+    {
+      "id": "restricted-conduit",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One short straight restricted-mode optical conduit: ivory ceramic tube with faceted dark optical core visible at one cut end, broad charcoal coupling collars and a small copper clamp. Not an electrical cable."
+    },
+    {
+      "id": "belt-segment",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One short constructible conveyor belt segment: four broad charcoal rubber slats between low steel rails, two exposed copper-toned rollers underneath. Single isolated modular piece."
+    },
+    {
+      "id": "sail-panel",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One accepted lightsail membrane panel folded loosely over a thin rectangular support frame: pale silver translucent film with a restrained fine grid, one broad reflective fold and small charcoal corner tabs. No spacecraft."
+    },
+    {
+      "id": "flight-sail",
+      "asset_type": "item",
+      "variant": "inventory",
+      "subject": "One compact inspected flight sail stowed as a neatly folded silver membrane bundle in a slim ivory ceramic transport cassette with copper restraint straps. The inventory object is stowed, not a deployed spacecraft."
+    },
+    {
+      "id": "splitter",
+      "asset_type": "equipment",
+      "variant": "r0-intact",
+      "subject": "A low compact belt splitter, single central rubber-belt inlet splitting into two short parallel outlet lanes, chunky charcoal steel body, ivory ceramic side housings and copper roller ends. Show all three belt mouths; no carried items."
+    },
+    {
+      "id": "pump",
+      "asset_type": "equipment",
+      "variant": "r0-intact",
+      "subject": "A compact coolant pump on a square bolted steel skid: squat ivory ceramic motor housing, offset copper centrifugal volute and two clearly distinct short flanged coolant connections. No reservoir or pipes leaving the footprint."
+    },
+    {
+      "id": "heat-exchanger",
+      "asset_type": "equipment",
+      "variant": "r0-intact",
+      "subject": "A squat closed-loop heat exchanger on a rectangular steel base: broad bank of copper radiator fins, one large horizontal dark fan on top, ivory ceramic side guards and two short capped coolant flanges. No steam."
+    },
+    {
+      "id": "monitor",
+      "asset_type": "equipment",
+      "variant": "r0-intact",
+      "subject": "A compact industrial monitor station: low square bolted base, a single backward-tilted dark unlit instrument screen in an ivory ceramic housing, recessed copper sampling interface and a short vertical back panel. No text on screen."
+    },
+    {
+      "id": "probe",
+      "asset_type": "equipment",
+      "variant": "r0-intact",
+      "subject": "A small passive branch probe on a low steel mounting foot: chunky ivory ceramic sensing block enclosing a dark optical aperture, copper retaining clamp and one small recessed sample socket. No beams or display."
+    },
+    {
+      "id": "power-pole",
+      "asset_type": "equipment",
+      "variant": "r0-intact",
+      "subject": "A short sturdy industrial power distribution pole on a broad square bolted foundation, charcoal metal mast, ivory ceramic insulators on a compact crossarm and copper terminal clamps. No attached wires extending outside its silhouette."
+    }
+  ]
+}

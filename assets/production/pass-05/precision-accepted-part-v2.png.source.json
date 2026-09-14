@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/sophia/.codex/generated_images/01a09e5b-ed2a-7cb2-bed4-01bfe9698c07/exec-6fdf678f-11a3-4321-a44e-fabf4c856a0b.png",
+  "path": "assets/production/pass-05/precision-accepted-part-v2.png",
+  "prompt": "Create ONE finished precision optical component inventory sprite for PHIELDWORKS: a charcoal circular optical disk with six broad concentric machined rings and a finished hexagonal center, mounted in a thin ivory ceramic ring with three copper tabs. Elevated oblique orthographic camera, upper-left lighting, worn industrial material language. Large simple forms readable at 32 pixels. Center whole object with 18 percent empty margin. Transparent background with genuine alpha. No checkerboard pattern anywhere, no floor, no text, icons, glow or badges.",
+  "reference_inputs": [],
+  "source_pixels": "unmodified",
+  "status": "needs-registration",
+  "notes": "New generation avoids checkerboard but changes carrier tabs and projection. Inventory concept only, not a registered fixture pose.",
+  "review_notes": "Real alpha; small-size and fixture registration remain pending. Generated edges need light-background inspection. Carrier tabs and projection differ from blank; inventory concept only."
+}

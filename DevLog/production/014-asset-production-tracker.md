@@ -1,5 +1,7 @@
 # Asset production and review status
 
+> Pass 05 continuation from `58b7db4`: [seven preserved sources](../../assets/production/pass-05/README.md) add four precision-workpiece state candidates with verified real alpha. Two right-side cell attempts and the first accepted-part attempt fail alpha review. No source is registered or integrated; carrier/projection consistency remains open. [Catalog requirements](../../assets/planning/catalog-asset-coverage.json) now enumerate all 99 products, with existing-source mapping explicitly pending. Exact prompts, hashes, dimensions and alpha measurements accompany the [review gallery](../../assets/production/pass-05/index.html).
+
 > 2026-09-13 planning continuation: [022](../planning/tranche-a/022-tranche-a-assets.md) specifies the first precision-cell asset family and its gated [job manifest](../../assets/planning/tranche-a-assets.json). The cell pass now includes seven master-direction candidates/corrections with provenance and a review gallery. Selected v7 has verified real RGBA transparency and passes small-scale terrain/light-background compositing; other directions and registration remain pending. Earlier review outcomes below remain unchanged.
 
 2026-09-13. Resumed after the documentation pause. Remote changes through `0c7cc54` were pulled cleanly; validation and coding handoffs were pushed first as `b23d112` and `11d2987`, as requested. The historical paused checkpoint is preserved in Git.

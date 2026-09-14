@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/sophia/.codex/generated_images/01a09e5b-ed2a-7cb2-bed4-01bfe9698c07/exec-3a01fb57-c0b5-4b9d-807b-0324f584e566.png",
+  "prompt": "Edit this optical substrate blank into a RECOVERABLE REJECT game inventory sprite. Preserve the circular ceramic carrier, three copper tabs, size, position, perspective and lighting. The disk is intact and reusable, not cracked: precisely one half has broad concentric etched optical grooves, the other half remains visibly smooth and unfinished, with a sharp dividing boundary. The incomplete processing must read at 32 pixels through large contrasting surface shapes. Actual transparent PNG background. No checkerboard, text, warning icon, badges, glow or additional objects.",
+  "path": "assets/production/pass-05/precision-recoverable-reject-v1.png",
+  "reference_inputs": [
+    "assets/production/pass-05/precision-blank-v1.png"
+  ],
+  "source_pixels": "unmodified",
+  "status": "needs-registration",
+  "review_notes": "Real alpha; small-size and fixture registration remain pending. Generated edges need light-background inspection."
+}
