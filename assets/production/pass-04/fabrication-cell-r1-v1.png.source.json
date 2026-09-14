@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/wentaojiang/.codex/generated_images/01a09c28-937d-7391-b5a4-16999dd541d7/exec-49553635-eafa-4de9-8b2f-1db66bad519b.png",
+  "prompt": "Create one transparent PNG sprite of this exact fabrication-cell machine viewed after a 90-degree clockwise turn on the ground. The camera and upper-left lighting stay fixed. This is the left-facing view: the open workpiece access faces image left, and the rear electrical socket is on image right. Preserve the same square base, ivory ceramic side walls, copper clamps, central tool spindle, circular workpiece bed and two glazed optical windows. Show the newly exposed side surfaces; do not mirror the original image. Entire machine centered with 10 percent empty transparent margin on all sides. Genuine transparent alpha background. No floor, text, beams, glow or other objects.",
+  "reference_inputs": [
+    "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png"
+  ],
+  "path": "assets/production/pass-04/fabrication-cell-r1-v1.png",
+  "notes": "Quarter-turn request produced an insufficiently distinct front view; candidate only.",
+  "source_pixels": "unmodified"
+}

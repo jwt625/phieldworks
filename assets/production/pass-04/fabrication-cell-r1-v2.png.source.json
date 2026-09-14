@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/wentaojiang/.codex/generated_images/01a09c28-937d-7391-b5a4-16999dd541d7/exec-334c91f4-df97-4871-9b46-7402dfd7c9aa.png",
+  "prompt": "Make a LEFT SIDE VIEW game sprite of the same fabrication cell, using the front and rear references to preserve its construction. Rotate the machine one quarter-turn; fixed elevated orthographic camera. The tall solid exterior ceramic SIDE WALL is nearest the viewer and obscures most of the round workpiece. The copper rear electrical connector is at the RIGHT end of the machine; the lower open workpiece access is at the LEFT end. Do not show the original full frontal open chamber. Keep same steel base copper clamps. One whole machine centered, ample transparent padding, genuine transparent PNG. No text floor other objects.",
+  "reference_inputs": [
+    "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png",
+    "assets/production/pass-04/fabrication-cell-r2-v1.png"
+  ],
+  "path": "assets/production/pass-04/fabrication-cell-r1-v2.png",
+  "notes": "Generated candidate; review pending",
+  "source_pixels": "unmodified"
+}

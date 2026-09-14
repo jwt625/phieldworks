@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "date": "2026-09-13",
+  "source": "/Users/wentaojiang/.codex/generated_images/01a09c28-937d-7391-b5a4-16999dd541d7/exec-2bbaa25d-a4e6-428e-8e62-998a23afe112.png",
+  "prompt": "Create the REAR VIEW of this same fabrication cell as a transparent PNG game sprite. Turn the physical machine 180 degrees around its vertical axis while keeping the camera and lighting fixed. We are now looking at the BACK: a broad closed dark steel rear service panel with vents and its copper electrical socket faces the viewer. The front opening and two glass optical access windows face AWAY and must NOT appear as the front facade. The central workpiece may be partly visible only from above. Keep identical ivory ceramic side pillars, copper clamps, square bolted foundation, scale and oblique top-down camera. Entire machine fits inside the square image with generous transparent padding. No text, no backdrop or floor, true transparent alpha.",
+  "reference_inputs": [
+    "assets/animations/candidates/tranche-a/fabrication-cell-r0-intact-v7-alpha.png"
+  ],
+  "path": "assets/production/pass-04/fabrication-cell-r2-v1.png",
+  "notes": "Generated candidate; review pending",
+  "source_pixels": "unmodified"
+}
