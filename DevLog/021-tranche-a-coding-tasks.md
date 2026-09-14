@@ -84,13 +84,17 @@ Honest limitation: with balanced two-emitter coherence, `useful + guard` is cons
 
 ## A-06 — contextual workflow
 
-- [ ] Build `src/ui/process-inspector.ts` and `domain-inspector.ts`; expose labeled assignment selectors, manual phase values, Run once/continuous, Auto tune, test/cancel and last two results.
-- [ ] Add useful/guard/dose preview and an accessible textual equivalent. Explain ingredients reserved versus consumed and distinguish current readiness from certificate validity.
-- [ ] Route diagnostics to the selected owner; use stable reason codes from simulation.
-- [ ] Update tutorial to use local frontier records and add a skippable first-cell lesson. Keep existing tutorial anchor IDs through the transition or update them and browser tests together.
-- [ ] Browser test the actual interaction path, not direct world manipulation masquerading as user completion.
+- [x] Build `src/ui/process-inspector.ts` and `domain-inspector.ts`; expose labeled assignment selectors, manual phase values, Run once/continuous, Auto tune, test/cancel and last two results.
+- [x] Add useful/guard/dose preview and an accessible textual equivalent. Explain ingredients reserved versus consumed and distinguish current readiness from certificate validity.
+- [x] Route diagnostics to the selected owner; use stable reason codes from simulation.
+- [x] Update tutorial to use local frontier records and add a skippable first-cell lesson. Keep existing tutorial anchor IDs through the transition or update them and browser tests together.
+- [x] Browser test the actual interaction path, not direct world manipulation masquerading as user completion.
 
 Files: main, style, renderer, tutorial, diagnostics; new inspectors and `tests/browser/precision-cell.spec.ts`. Gate: a keyboard user can select/bind/tune/run/inspect a placed cell; full keyboard placement lands in A-08.
+
+**A-06 implementation note — 2026-09-13.** `domain-inspector.ts` renders the certificate/operating block (status, test counters, stable reason code) and `process-inspector.ts` composes it with the cell workflow: batch stage, reserved-vs-consumed material, a textual useful/guard dose forecast against the 80–640 band and 10% guard limit, labeled emitter/tuner selects, a manual phase slider, Run once, Run continuously, Auto tune, Start 3-cycle test / Cancel, and the last two results. A placed `fabrication-cell` is now in the build palette and selecting it routes to the process inspector; `main.ts` owns a `continuousTargets` set that re-reserves an idle cell each simulated frame. The renderer marks process targets as `WORKPIECE` boxes with assigned-emitter beams. `diagnostics.ts` now attaches domain faults and certificate codes to the owning cell so `Locate & inspect` selects it. The tutorial gained a skippable final `precision cell` lesson while keeping every existing anchor ID.
+
+Honest deferral: full keyboard world placement/navigation is A-08. The browser spec places with the mouse and then uses native keyboard activation for selection, assignment, tuning and Run; the full qualified run is proven by the headless fixture, and the browser "Run once" path intentionally demonstrates the missing-crystal blocker rather than a completed cell.
 
 ## A-07 — module capture and second cell
 

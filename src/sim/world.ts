@@ -72,6 +72,10 @@ export function beginProcessQualification(w:World,targetId:string):string{
  const domain=w.domains.find(d=>d.target===targetId);if(!domain)return 'No control domain for this target';
  return startQualification(w,domain.id,'3 consecutive accepted standard cycles');
 }
+export function cancelQualification(w:World,domainId:string):string{
+ const qualification=w.qualifications.find(q=>q.domain===domainId);if(!qualification)return 'No qualification record';
+ qualification.status='idle';qualification.reason='Cancelled; not qualified';qualification.elapsed=0;qualification.minimum=-1;qualification.counters=0;qualification.signature='';return '';
+}
 /** Domain commands validate ownership/reference before mutating so a domain cannot be enabled without a live source. */
 export function setDomainEnabled(w:World,domainId:string,on:boolean):string{
  const domain=w.domains.find(d=>d.id===domainId);if(!domain)return 'No such control domain';
