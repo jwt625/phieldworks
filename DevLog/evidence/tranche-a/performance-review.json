@@ -1,0 +1,234 @@
+{
+  "date": "2026-09-14T01:55:34.476Z",
+  "platform": "darwin",
+  "arch": "arm64",
+  "cpu": "Apple M4 Pro",
+  "node": "v23.7.0",
+  "results": [
+    {
+      "kind": "solve",
+      "ports": 40,
+      "groups": 1,
+      "links": 20,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 2.4868995751603507e-14,
+      "medianMs": 0.19958299999998985,
+      "p95Ms": 0.32783399999999574
+    },
+    {
+      "kind": "solve",
+      "ports": 40,
+      "groups": 4,
+      "links": 20,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 3.552713678800501e-14,
+      "medianMs": 0.1132080000000002,
+      "p95Ms": 0.30083299999999724
+    },
+    {
+      "kind": "solve",
+      "ports": 40,
+      "groups": 16,
+      "links": 20,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 2.842170943040401e-14,
+      "medianMs": 0.247792000000004,
+      "p95Ms": 0.3922500000000042
+    },
+    {
+      "kind": "solve",
+      "ports": 80,
+      "groups": 1,
+      "links": 40,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 4.263256414560601e-14,
+      "medianMs": 0.4164999999999992,
+      "p95Ms": 0.6347920000000045
+    },
+    {
+      "kind": "solve",
+      "ports": 80,
+      "groups": 4,
+      "links": 40,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 4.263256414560601e-14,
+      "medianMs": 0.3686249999999802,
+      "p95Ms": 0.6240000000000094
+    },
+    {
+      "kind": "solve",
+      "ports": 80,
+      "groups": 16,
+      "links": 40,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 8.526512829121202e-14,
+      "medianMs": 0.5068330000000003,
+      "p95Ms": 0.7832080000000019
+    },
+    {
+      "kind": "solve",
+      "ports": 128,
+      "groups": 1,
+      "links": 64,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 5.950795411990839e-14,
+      "medianMs": 0.9414159999999754,
+      "p95Ms": 1.2533329999999978
+    },
+    {
+      "kind": "solve",
+      "ports": 128,
+      "groups": 4,
+      "links": 64,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 8.526512829121202e-14,
+      "medianMs": 0.6567499999999882,
+      "p95Ms": 0.9579999999999984
+    },
+    {
+      "kind": "solve",
+      "ports": 128,
+      "groups": 16,
+      "links": 64,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 1.1368683772161603e-13,
+      "medianMs": 0.8525830000000099,
+      "p95Ms": 1.1661249999999939
+    },
+    {
+      "kind": "solve",
+      "ports": 130,
+      "groups": 1,
+      "links": 65,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 6.217248937900877e-14,
+      "medianMs": 0.8304160000000138,
+      "p95Ms": 1.2430420000000026
+    },
+    {
+      "kind": "solve",
+      "ports": 130,
+      "groups": 4,
+      "links": 65,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 7.815970093361102e-14,
+      "medianMs": 0.6792080000000169,
+      "p95Ms": 0.8586659999999711
+    },
+    {
+      "kind": "solve",
+      "ports": 130,
+      "groups": 16,
+      "links": 65,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 1.4210854715202004e-13,
+      "medianMs": 0.8677080000000501,
+      "p95Ms": 1.248457999999971
+    },
+    {
+      "kind": "solve",
+      "ports": 256,
+      "groups": 1,
+      "links": 128,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 9.237055564881302e-14,
+      "medianMs": 4.096749999999986,
+      "p95Ms": 4.396416999999985
+    },
+    {
+      "kind": "solve",
+      "ports": 256,
+      "groups": 4,
+      "links": 128,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 1.2789769243681803e-13,
+      "medianMs": 2.941041999999925,
+      "p95Ms": 3.1708750000000236
+    },
+    {
+      "kind": "solve",
+      "ports": 256,
+      "groups": 16,
+      "links": 128,
+      "samples": 30,
+      "warmup": 5,
+      "residual": 1.7053025658242404e-13,
+      "medianMs": 3.1657920000000104,
+      "p95Ms": 3.3732089999999744
+    },
+    {
+      "kind": "solve",
+      "ports": 400,
+      "groups": 1,
+      "links": 200,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 256 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 400,
+      "groups": 4,
+      "links": 200,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 256 wave ports"
+    },
+    {
+      "kind": "solve",
+      "ports": 400,
+      "groups": 16,
+      "links": 200,
+      "samples": 30,
+      "warmup": 5,
+      "error": "Error: Prototype limit: 256 wave ports"
+    },
+    {
+      "kind": "world-step",
+      "machines": 40,
+      "topology": "starter network + disconnected sentries",
+      "samples": 100,
+      "warmup": 25,
+      "medianMs": 0.04908299999999599,
+      "p95Ms": 0.08291699999995217
+    },
+    {
+      "kind": "world-step",
+      "machines": 80,
+      "topology": "starter network + disconnected sentries",
+      "samples": 100,
+      "warmup": 25,
+      "medianMs": 0.04154100000005201,
+      "p95Ms": 0.07474999999999454
+    },
+    {
+      "kind": "world-step",
+      "machines": 120,
+      "topology": "starter network + disconnected sentries",
+      "samples": 100,
+      "warmup": 25,
+      "medianMs": 0.04808400000001711,
+      "p95Ms": 0.05533300000001873
+    },
+    {
+      "kind": "cap-reproduction",
+      "machines": 33,
+      "ports": 132,
+      "error": ""
+    }
+  ]
+}

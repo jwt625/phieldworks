@@ -28,6 +28,10 @@ Open **Technology** in the header to inspect the proposed progression. The resea
 
 The expedition starts with a working extractor, assembler, power unit, reference source, junction, emitter, and dump. Resources are finite. The starter assembler produces replacement construction parts automatically.
 
+## Tranche A status (2026-09-13)
+
+The local precision-cell slice is implemented and playable: build a `Fabrication cell`, assign exactly two powered emitters plus a tuner, run an 8-second batch, read the useful/guard forecast, qualify three accepted cycles and capture/deploy an independently controlled copy. Records are local (targets/domains/qualifications/process jobs) with a `version:4` save and v1–v3 migration; controls use one bounded tuner trial per world step; blueprints are selection-based and transactional. The cell still uses a clearly labeled `FAB CELL / PLACEHOLDER` because reviewed art is not integrated (A-09–A-11 remain gated). Automated checkpoint: 115 headless tests, 27 browser scenarios and the production build pass; `scripts/benchmark-two-cells.ts` reports two qualified cells stepping in real time on this machine. A human playtest and explicit visual review of the cell states are still open.
+
 1. Open **Tutorial** for the guided route. Inspect the reserve ore patch and assembler. Build a **perimeter sentry at (22, 10)** and wire generator BUS OUT → sentry POWER IN. Its 8-tile range covers the eastern field branches. The first powered sentry starts a 30-second grace period; afterward sustained stray field can agitate crawlers. Add defenses as your outpost grows.
 2. Build a **phase tuner at (17, 12)** and a **second emitter at (20, 12)**. Choose **Wire**, then connect the generator **BUS OUT** to the emitter **POWER IN**. The map hint displays cursor coordinates.
 3. Select **Field link**. Connect junction **D** (lower-right port) to tuner **IN**, then tuner **OUT** to the new emitter **IN**.

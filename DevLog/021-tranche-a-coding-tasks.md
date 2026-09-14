@@ -134,12 +134,16 @@ Exact files, asset IDs, generation inputs and acceptance gates are in the [asset
 
 ## A-12 — integrated completion
 
-- [ ] Run `npm test`, `npm run build`, then relevant Playwright scenarios; use the configured browser setup in `playwright.config.ts` rather than assuming a downloaded browser exists.
-- [ ] Add `tests/browser/precision-expedition.spec.ts` for the fresh expedition and two independently managed cells. Separate UI-driven completion from simulation-only fixtures.
-- [ ] Rerun connected benchmarks on the same machine and include a two-cell convergence case. Record median/p95/max step, evaluation count, wall/simulation time and convergence, not only FPS.
+- [x] Run `npm test`, `npm run build`, then relevant Playwright scenarios; use the configured browser setup in `playwright.config.ts` rather than assuming a downloaded browser exists.
+- [x] Add `tests/browser/precision-expedition.spec.ts` for the fresh expedition and two independently managed cells. Separate UI-driven completion from simulation-only fixtures.
+- [x] Rerun connected benchmarks on the same machine and include a two-cell convergence case. Record median/p95/max step, evaluation count, wall/simulation time and convergence, not only FPS.
 - [ ] Review at 1280×800 and 1440×1000, 48/96 px asset previews, real terrain and four rotations. Store screenshots and explicit visual findings.
 - [ ] Observe a human trying to explain and fix a failed part. Record assistance, elapsed time, confusing labels and outcome. If unavailable, leave the human gate open and report that limitation; automated play is not a substitute.
-- [ ] Update README, 017, journal and evidence paths with actual implementation/test checkpoint. Do not claim C research, fusion or sail content is runtime-ready.
+- [x] Update README, 017, journal and evidence paths with actual implementation/test checkpoint. Do not claim C research, fusion or sail content is runtime-ready.
+
+**A-12 implementation note — 2026-09-13.** Automated completion is done: `npm test` **115**, `npm run build`, and `npm run test:browser` **27/27** pass; `tests/browser/precision-expedition.spec.ts` drives a fresh expedition through building and independently managing two cells (one auto-tuned, one disabled) and the operations menu; `scripts/benchmark-two-cells.ts` measured two qualified cells over 600 steps (warmup 100) at p50 0.27 ms / p95 0.49 ms / max 1.12 ms with 60 simulated seconds in 0.19 s wall and zero residual, evidence in `DevLog/evidence/tranche-a/two-cell-benchmark.json` alongside `connected-benchmark.json` and `performance-review.json`. The browser test separates UI-driven management from the headless A-05 no-injection qualification fixture.
+
+**Still open (delegated, not claimed):** explicit visual review of the cell placeholder at 1280×800/1440×1000 and 48/96 px with real terrain and four rotations, and an unprompted human "explain and fix a failed part" observation. Cell production art (A-09–A-11) remains gated and unapproved, so no art is marked integrated.
 
 ## B-AUDIT — independent investigation
 

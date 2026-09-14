@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-14T01:55:22.904Z",
+  "cpu": "Apple M4 Pro",
+  "node": "v23.7.0",
+  "mode": "two independently controlled qualified cells (original + blueprint copy)",
+  "copyCost": 75,
+  "warmup": 100,
+  "samples": 500,
+  "p50Ms": 0.26958300000001145,
+  "p95Ms": 0.49291600000003655,
+  "maxMs": 1.1172090000000026,
+  "wallMs": 192.24783300000007,
+  "simSeconds": 59.99999999999659,
+  "accepted": 3,
+  "residual": 0,
+  "targets": [
+    {
+      "id": "t8",
+      "kind": "frontier",
+      "reading": {
+        "useful": 45.291131606632675,
+        "guard": 0,
+        "captured": 45.291131606632675,
+        "emitters": 2
+      }
+    },
+    {
+      "id": "t35",
+      "kind": "process",
+      "reading": {
+        "useful": 41.98436961434403,
+        "guard": 0.17536042771863924,
+        "captured": 42.15973004206267,
+        "emitters": 2
+      }
+    },
+    {
+      "id": "t67",
+      "kind": "process",
+      "reading": {
+        "useful": 41.98437223313838,
+        "guard": 0.17535780892427724,
+        "captured": 42.159730042062655,
+        "emitters": 2
+      }
+    }
+  ]
+}

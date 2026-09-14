@@ -214,3 +214,11 @@ Added `src/ui/pause-state.ts` with independent `user`/`hidden`/`modal` reasons; 
 Honest gaps: keyboard selection of an arbitrary route's endpoint list is not implemented (equipment inspectors remain the binding surface); the operations Locate for a module switches tools rather than centering a template.
 
 Evidence / validation: `npx tsc --noEmit` clean; `npm test` **115 headless**; `npm run build` passes; `npm run test:browser` **26/26** (22 + 4 in `tests/browser/menus.spec.ts`) with screenshots `test-results/operations-menu.png` and `test-results/keyboard-placement.png`; `git diff --check` clean.
+
+## 2026-09-13 — Tranche A-12 automated completion
+
+Ran the integrated gate and added the automated completion evidence. `npm test` **115**, `npm run build` and `npm run test:browser` **27/27** pass. Added `tests/browser/precision-expedition.spec.ts`, which plays a fresh expedition and manages two independent precision cells (one auto-tuned, one disabled) through the real UI and operations menu, separate from the headless A-05 no-injection qualification fixture. Added `scripts/benchmark-two-cells.ts`: the qualified standalone set is captured and stamped as a blueprint copy with real commands, both domains are enabled, and 600 steps (100 warmup) were measured at p50 0.27 ms / p95 0.49 ms / max 1.12 ms, 60 simulated seconds in 0.19 s wall, residual 0, with both cells converging to identical readings. Evidence files: `DevLog/evidence/tranche-a/two-cell-benchmark.json`, `connected-benchmark.json` and `performance-review.json`. Updated README and 017 with the actual A checkpoint.
+
+Still open and delegated, not claimed: explicit visual review of the cell placeholder at 1280×800/1440×1000 and 48/96 px with real terrain and four rotations, and an unprompted human "explain and fix a failed part" observation. Cell production art (A-09–A-11) remains gated and unapproved. Also fixed the A-07 test expectation (`tests/world.test.ts`) that the A-07 commit missed: placing a disconnected copy leaves the original frontier certificate qualified instead of failing it, matching the A-03 signature-based contract.
+
+Evidence / validation: `npx tsc --noEmit` clean; `npm test` 115; `npm run build`; `npm run test:browser` 27/27; `git diff --check` clean.
