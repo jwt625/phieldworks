@@ -2,6 +2,8 @@
 
 2026-09-13. Proposed implementation contract for [019](019-tranche-a-plan.md). Numerical values below are game-design starting points, not measured material constants. Reference rationale is in [research notes](references/tranche-a/README.md). No code snippets here represent implemented APIs.
 
+> **Implementation status — 2026-09-13 (later pass).** The record/migration, conserved two-zone delivery, local control/qualification, process lifecycle, first-cell, contextual UI, selection-blueprint and menu contracts are implemented (A-01–A-08) and the automated A-12 gates pass. The process workpiece-heat/clamping constants and the 80–640 dose window were measured by the no-injection fixture and retained. Cell art integration (A-11) is not done, so no generated art is claimed as runtime.
+
 ## 1. Module boundaries and records
 
 Create `src/sim/world-types.ts` as the shared type layer; it may import types from geometry/network but not runtime world functions. `world.ts` remains the public command/step façade and can re-export old entry points during migration. Split responsibilities only where the work needs an independently testable contract.

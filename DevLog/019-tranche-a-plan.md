@@ -2,6 +2,8 @@
 
 2026-09-13. Baseline reviewed: `cd002b4`, including P0.1 at `2e71cec`. Status: implementation-ready planning defaults, not implemented mechanics or user-approved balance. The user authorized research, reference caching, file-level specifications and asset/task manifests. No runtime implementation or image generation is performed by this pass.
 
+> **Implementation status — 2026-09-13 (later pass).** A-01 through A-08 are implemented and committed, and the automated half of A-12 passes (115 headless tests, 27 browser scenarios, production build, two-cell benchmark evidence under `DevLog/evidence/tranche-a/`). A-09–A-11 (cell art generation/promotion) and the human/visual A-12 gates remain open; the cell renders an explicit placeholder. The provisional balance numbers below were exercised by the no-injection fixture without being changed. See the [feature TODO](021-tranche-a-coding-tasks.md) and [journal](004-implementation-journal.md) for per-task notes.
+
 ## Outcome and reading order
 
 Deliver a player-run experiment: assemble a precision cell, inspect useful and unwanted exposure, deliberately make a failed part, tune and automate repeatable accepted production, qualify the cell and deploy an independently controlled copy. Preserve the existing frontier expedition.
