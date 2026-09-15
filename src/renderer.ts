@@ -1,5 +1,6 @@
 import {equipmentState,type EquipmentState} from './equipment-state';
 import {equipmentEffects} from './equipment-effects';
+import {equipmentAnimation} from './equipment-animation';
 import frameMap from '../assets/animations/frame-map.json';
 import {createTerrain} from './terrain';
 import {APPEARANCE} from './presentation';
@@ -10,6 +11,8 @@ import type {Endpoint} from './sim/network';
 import {sprites} from './assets';
 export interface View {objectSelection?:string|null;rotation:Rotation;diagonal:boolean;radius:number;waypoints:Point[];selected:string|null;build:Kind|null;tool:'select'|'field'|'material'|'power'|'blueprint'|'module';pending:Endpoint|null;editing?:string|null;overlay:boolean;grid:boolean;mouse:{x:number;y:number}|null;panX:number;panY:number;zoom:number;selection?:string[];selecting?:{x0:number;y0:number;x1:number;y1:number}|null;cursor?:Point|null}
 export class Renderer {
+ private motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+ private firingSince=new Map<string,number>();
  private ground:HTMLCanvasElement|null=null;private lastWorld:World|null=null;private gait=new Map<string,{x:number;y:number;phase:number}>();
  ctx:CanvasRenderingContext2D; width=0;height=0;scale=30;
  constructor(public canvas:HTMLCanvasElement,public view:View){this.ctx=canvas.getContext('2d')!;this.resize();}
@@ -22,7 +25,7 @@ export class Renderer {
  hitRoute(w:World,x:number,y:number):string|null {let best:string|null=null,dist=9/this.scale;for(const l of [...w.links].reverse())for(let i=1;i<l.path.length;i++){const d=segmentDistance({x,y},l.path[i-1],l.path[i]);if(d<dist){dist=d;best=l.id;}}return best;}
  draw(w:World){const ctx=this.ctx,s=this.scale;ctx.clearRect(0,0,this.width,this.height);ctx.fillStyle='#17282b';ctx.fillRect(0,0,this.width,this.height);
   // Terrain and dressing are presentation-only: never create hidden collision.
-  this.ground??=createTerrain();ctx.drawImage(this.ground,this.view.panX,this.view.panY,WIDTH*s,HEIGHT*s);if(this.lastWorld!==w){this.gait.clear();this.lastWorld=w;}
+  this.ground??=createTerrain();ctx.drawImage(this.ground,this.view.panX,this.view.panY,WIDTH*s,HEIGHT*s);if(this.lastWorld!==w){this.gait.clear();this.firingSince.clear();this.lastWorld=w;}
   for(let i=0;i<110;i++){const noise=(v:number)=>{const n=Math.sin(v*127.1+311.7)*43758.5453;return n-Math.floor(n);};const x=1+noise(i+1)*62,y=1+noise(i+811)*34;if(w.entities.some(e=>x>e.x-1&&x<e.x+footprint(e).w+1&&y>e.y-1&&y<e.y+footprint(e).h+1)||w.deposits.some(d=>x>d.x-1&&x<d.x+d.w+1&&y>d.y-1&&y<d.y+d.h+1)||w.links.some(l=>l.path.some(p=>Math.hypot(p.x-x,p.y-y)<1.5)))continue;this.atlas('terrain-props-v2',i%4,x-.6,y-.6,1.2,.8);}
   if(this.view.grid){ctx.strokeStyle='#8ba79914';ctx.lineWidth=1;ctx.beginPath();for(let x=0;x<=WIDTH;x++){const a=this.screen(x,0),b=this.screen(x,HEIGHT);ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);}for(let y=0;y<=HEIGHT;y++){const a=this.screen(0,y),b=this.screen(WIDTH,y);ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);}ctx.stroke();}
   for(const dep of w.deposits){if(this.view.objectSelection===dep.id||(!this.view.build&&this.view.mouse&&this.view.mouse.x>=dep.x&&this.view.mouse.x<=dep.x+dep.w&&this.view.mouse.y>=dep.y&&this.view.mouse.y<=dep.y+dep.h)){const p=this.screen(dep.x,dep.y);ctx.strokeStyle='#edd7a0';ctx.lineWidth=2;ctx.strokeRect(p.x,p.y,dep.w*s,dep.h*s);}if(dep.remaining===0&&sprites['depletion-debris-v1'])this.atlas('depletion-debris-v1',dep.kind==='ore'?0:1,dep.x,dep.y,Math.max(dep.w,dep.h));else this.sprite(dep.kind==='ore'?'starter-ore':'frontier-crystal-ore',dep.x,dep.y,dep.w,dep.h,dep.remaining>0?1:.25);const p=this.screen(dep.x+dep.w/2,dep.y+dep.h+.4);this.label(p.x,p.y,dep.kind==='ore'?'FERROUS DEPOSIT':'PRECISION CRYSTAL',dep.kind==='ore'?'#b5a283':'#95cfde',9);}
@@ -57,6 +60,22 @@ export class Renderer {
  }
  /** Select a separately drawn ground-plane orientation. Never spin or mirror equipment art. */
  machine(e:{kind:Kind;x:number;y:number;rotation:Rotation;progress?:number},alpha=1,state?:EquipmentState,time=0){const a=APPEARANCE[e.kind],f=footprint(e),size=Math.max(f.w,f.h)*(a.scale??1.12);const conditionAsset=`${e.kind}-condition-v1`,damagedCycle=state&&state.condition>0&&state.condition<3?`${e.kind}-${state.condition===1?'light':'severe'}-cycle-v1`:undefined;
+ // Ecology emits a short-lived shot each simulation step during sustained fire.
+ // Start recoil on a real firing burst, advance only with world time, reset at rest.
+ const shotKey=`${e.x},${e.y}`;
+ if(e.kind==='sentry'){
+  if(state?.work==='firing'){
+   const start=this.firingSince.get(shotKey)??time-(state.shotAge??0);
+   this.firingSince.set(shotKey,start);state={...state,shotAge:Math.max(0,time-start)};
+  }else this.firingSince.delete(shotKey);
+ }
+ const animation=equipmentAnimation(e,state,time,this.motionPreference.matches);
+ if(animation&&sprites[animation.clip.asset]){
+  const {clip,frame}=animation,entry=clip.frames[frame],im=sprites[clip.asset],c=this.ctx;
+  const p=this.screen(e.x+f.w/2,e.y+f.h/2+size*.43),k=size*this.scale/clip.logicalSize;
+  const [sx,sy,w,h]=entry.source;c.save();c.globalCompositeOperation='source-over';c.globalAlpha=alpha;
+  c.drawImage(im,sx,sy,w,h,p.x-entry.anchor[0]*k,p.y-entry.anchor[1]*k,w*k,h*k);c.restore();return;
+ }
  if(!sprites[a.asset]&&!a.sheet&&!a.views&&!a.animation){this.placeholder(e,alpha);return;}
  const off=state&&(state.condition===3||state.work==='tripped'||(!state.powered&&!state.passive)||(state.passive&&!state.field));
  const dynamicAsset=damagedCycle&&sprites[damagedCycle]?damagedCycle:a.animation?.asset;
