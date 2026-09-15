@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "tool": "built-in image_gen",
+  "jobs": [
+    {
+      "id": "extractor-severe-r0-cycle-v3",
+      "status": "generated-needs-review",
+      "reference_inputs": [
+        "assets/animations/candidates/extractor-severe-cycle-v2.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS damaged extractor animation pilot. Reference image is the existing extractor sheet; use ONLY its top-left machine for identity and camera, not the sheet layout. Create ONE horizontal strip of FOUR equally spaced animation frames on true transparent RGBA background. All four show exactly the SAME direction, fixed orthographic oblique camera and identical chassis, foundation, ports, lighting, size and position within each cell. Weathered steel, pale ceramic, copper. Severe damage must read in silhouette: missing front-right housing panel exposing internal supports, bent outer guard, chipped ceramic; preserve these exact damages across all four frames. Machine is still functional. Only central drill translates vertically: raised, halfway down, fully down, halfway up. No turning the machine, no chassis movement, no changing panel layout. Dark unlit status lamps; no fire, smoke, sparks, text, borders, ground plane, checkerboard or opaque matte. Four cells in one row, generous transparent margin around each complete silhouette, no clipping. Aim for a stable game sprite mechanism sequence, not four redesigned machines.",
+      "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-1581d311-6738-416d-9599-801edf698550.png",
+      "frames": 4,
+      "visual_review": "Consistent facing and visible broken right housing. Colored edge speckles remain. Drill motion subtle, loop and alignment need review.",
+      "visual_disposition": "needs-edge-and-motion-review",
+      "columns": 4,
+      "rows": 1
+    },
+    {
+      "id": "assembler-light-r0-cycle-v3",
+      "status": "generated-needs-review",
+      "reference_inputs": [
+        "assets/animations/candidates/assembler-light-cycle-v2.png"
+      ],
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS single-direction mechanism animation pilot. Input image is a machine identity/material/camera reference ONLY; use its top-left machine and discard the old atlas layout. Output exactly 6 frames as a regular grid of 3 columns and 2 rows, read left to right then top to bottom. EVERY frame shows the same one direction and exactly the same fixed chassis, foundation, connectors, damage, camera, scale and lighting. Only the specified moving mechanism changes. True transparent RGBA backdrop, clean neutral antialiased edges, no colored speckles or matte. Leave substantial transparent padding inside every cell. Weathered steel, pale ceramic, copper, upper-left lighting, orthographic oblique game art. Dark inactive lamps. No smoke, sparks, text, frame numbers, grid lines, shadows on ground, beams, or checkerboard. Preserve original identity. Mechanism instructions: Light damage: chipped corner ceramic and dented hopper skin but complete housing. Six poses: open receiving cradle, gripper reaches workpiece, gripper closes, press descends, press rises, gripper releases. Keep the large hopper facing exactly the same way in every cell. Only gripper and press translate. Damage must persist unchanged.",
+      "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-873316cc-5a84-408a-a9ed-c171b1a75912.png",
+      "visual_review": "Pixel inspection confirms real transparent background; RGB backdrop shown by inline preview was misleading. Six poses preserve facing. Fixture/workpiece changes and base registration still need review.",
+      "visual_disposition": "needs-registration-and-mechanism-review"
+    },
+    {
+      "id": "assembler-severe-r0-cycle-v3",
+      "status": "generated-needs-review",
+      "reference_inputs": [
+        "assets/animations/candidates/assembler-severe-cycle-v2.png"
+      ],
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS single-direction mechanism animation pilot. Input image is a machine identity/material/camera reference ONLY; use its top-left machine and discard the old atlas layout. Output exactly 6 frames as a regular grid of 3 columns and 2 rows, read left to right then top to bottom. EVERY frame shows the same one direction and exactly the same fixed chassis, foundation, connectors, damage, camera, scale and lighting. Only the specified moving mechanism changes. True transparent RGBA backdrop, clean neutral antialiased edges, no colored speckles or matte. Leave substantial transparent padding inside every cell. Weathered steel, pale ceramic, copper, upper-left lighting, orthographic oblique game art. Dark inactive lamps. No smoke, sparks, text, frame numbers, grid lines, shadows on ground, beams, or checkerboard. Preserve original identity. Mechanism instructions: Severe damage: missing side access panel, exposed support rib and bent outer guard. Six poses: open receiving cradle, gripper reaches workpiece, gripper closes, press descends, press rises, gripper releases. Housing, hopper and foundation stay identical in all frames. Damage must persist unchanged; machine remains functional.",
+      "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-4529dd95-02e5-455e-b1bf-b864bae4951e.png",
+      "visual_review": "Real alpha confirmed. Six poses preserve facing and exposed chassis. Hopper arrangement differs from light pilot; cross-condition identity and frame anchors need correction.",
+      "visual_disposition": "needs-cross-condition-correction"
+    },
+    {
+      "id": "generator-r0-cycle-v3",
+      "status": "generated-needs-review",
+      "reference_inputs": [
+        "assets/animations/candidates/generator-cycle-v2.png"
+      ],
+      "frames": 4,
+      "columns": 2,
+      "rows": 2,
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS single-direction mechanism animation pilot. Input image is a machine identity/material/camera reference ONLY; use its top-left machine and discard the old atlas layout. Output exactly 4 frames as a regular grid of 2 columns and 2 rows, read left to right then top to bottom. EVERY frame shows the same one direction and exactly the same fixed chassis, foundation, connectors, damage, camera, scale and lighting. Only the specified moving mechanism changes. True transparent RGBA backdrop, clean neutral antialiased edges, no colored speckles or matte. Leave substantial transparent padding inside every cell. Weathered steel, pale ceramic, copper, upper-left lighting, orthographic oblique game art. Dark inactive lamps. No smoke, sparks, text, frame numbers, grid lines, shadows on ground, beams, or checkerboard. Preserve original identity. Mechanism instructions: Intact generator under load, four evenly spaced rotor/fan angular positions for one seamless loop. Give fan an asymmetric physical hub/key to make rotation readable. Keep enclosure and service ports absolutely stationary. No changing lights or pulsing entire machine.",
+      "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-1458cbb9-ca51-4ae0-8841-29df9b1f94e3.png",
+      "visual_review": "Visible keyed rotor rotation with consistent facing. Cyan display remains baked in despite dark-lamp request; edge speckles and anchor alignment need correction/review.",
+      "visual_disposition": "needs-display-correction-and-registration"
+    },
+    {
+      "id": "sentry-r0-fire-v3",
+      "status": "generated-needs-review",
+      "reference_inputs": [
+        "assets/animations/candidates/sentry-fire-v2.png"
+      ],
+      "frames": 3,
+      "columns": 3,
+      "rows": 1,
+      "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS single-direction mechanism animation pilot. Input image is a machine identity/material/camera reference ONLY; use its top-left machine and discard the old atlas layout. Output exactly 3 frames as a regular grid of 3 columns and 1 rows, read left to right then top to bottom. EVERY frame shows the same one direction and exactly the same fixed chassis, foundation, connectors, damage, camera, scale and lighting. Only the specified moving mechanism changes. True transparent RGBA backdrop, clean neutral antialiased edges, no colored speckles or matte. Leave substantial transparent padding inside every cell. Weathered steel, pale ceramic, copper, upper-left lighting, orthographic oblique game art. Dark inactive lamps. No smoke, sparks, text, frame numbers, grid lines, shadows on ground, beams, or checkerboard. Preserve original identity. Mechanism instructions: Intact sentry fixed aim, three recoil poses: barrel extended at rest, barrel slides backwards into housing on shot, barrel returns to initial rest. Identical base, turret angle and barrel direction throughout. No muzzle flash baked in, no rotation, no invented scan during firing.",
+      "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-b630409e-2f28-4af2-bd3c-a6605d814d59.png",
+      "visual_review": "Clear extend/recoil/return poses, dark display and consistent aim. Colored edge speckles remain. Base and barrel alignment and actual-shot binding unverified.",
+      "visual_disposition": "needs-edge-review-and-registration"
+    },
+    {
+      "id": "assembler-light-r0-cycle-v4-alpha",
+      "reference_inputs": [
+        "assets/production/pass-07/assembler-light-r0-cycle-v3.png"
+      ],
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "status": "generated-needs-review",
+      "prompt": "Use case: background-extraction. Edit target: the supplied six-frame machine sheet. Remove ONLY the opaque background and ground shadows. Return genuine transparent RGBA pixels around and between all six machines, including holes. Preserve exact original canvas dimensions, layout, all machine pixels, colors, scale, positions and six mechanism poses. Clean neutral antialiased cutout boundaries. No matte, glow, colored fringe, checkerboard, or new scene. Do not redesign or move any part of any machine.",
+      "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-7cf5e6f4-45f7-4a49-ad1d-b037ba9e8ba8.png",
+      "visual_review": "Pixel inspection confirms real transparent background; RGB backdrop shown by inline preview was misleading. Six poses preserve facing. Fixture/workpiece changes and base registration still need review.",
+      "visual_disposition": "needs-registration-and-mechanism-review"
+    },
+    {
+      "id": "assembler-severe-r0-cycle-v4",
+      "reference_inputs": [
+        "assets/production/pass-07/assembler-light-r0-cycle-v3.png"
+      ],
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "status": "generated-needs-review",
+      "prompt": "Use case: precise-object-edit. Edit target: supplied six-frame light-damage assembler animation. Change ONLY physical damage severity on the fixed lower enclosure in all six frames. Remove the SAME front-right ceramic panel in each frame to expose dark inner support ribs, bend the SAME lower protective edge, deepen existing chips. Preserve the hopper at the back LEFT, arm pivot at back RIGHT, exact foundation outline, every bolt, all six original arm poses, camera, scale, canvas dimensions and positions. Do not add a second hopper or move any machinery. Keep the six-frame 3-column 2-row grid exactly. Preserve true transparent RGBA background and neutral clean silhouette edges. No smoke, lights, text, fire, backdrop or checkerboard. This is a cross-condition registration edit, not a redesign.",
+      "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-1bd68176-64b3-405f-998b-77dcf8b66f9d.png",
+      "visual_review": "Correction restores left hopper/right arm layout shared with light pilot. Missing right enclosure panel persists across six poses. Base/port landmarks and fixture changes still require registration and motion review.",
+      "visual_disposition": "needs-registration-and-mechanism-review"
+    }
+  ],
+  "remaining_priority": [
+    "assembler-light direction pilot",
+    "assembler-severe direction pilot",
+    "generator operating pilot",
+    "sentry recoil pilot",
+    "reference/tuner/emitter/dump mechanisms",
+    "fabrication-cell family"
+  ]
+}

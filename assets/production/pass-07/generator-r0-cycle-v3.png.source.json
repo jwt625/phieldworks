@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-1458cbb9-ca51-4ae0-8841-29df9b1f94e3.png",
+  "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS single-direction mechanism animation pilot. Input image is a machine identity/material/camera reference ONLY; use its top-left machine and discard the old atlas layout. Output exactly 4 frames as a regular grid of 2 columns and 2 rows, read left to right then top to bottom. EVERY frame shows the same one direction and exactly the same fixed chassis, foundation, connectors, damage, camera, scale and lighting. Only the specified moving mechanism changes. True transparent RGBA backdrop, clean neutral antialiased edges, no colored speckles or matte. Leave substantial transparent padding inside every cell. Weathered steel, pale ceramic, copper, upper-left lighting, orthographic oblique game art. Dark inactive lamps. No smoke, sparks, text, frame numbers, grid lines, shadows on ground, beams, or checkerboard. Preserve original identity. Mechanism instructions: Intact generator under load, four evenly spaced rotor/fan angular positions for one seamless loop. Give fan an asymmetric physical hub/key to make rotation readable. Keep enclosure and service ports absolutely stationary. No changing lights or pulsing entire machine.",
+  "reference_inputs": [
+    "assets/animations/candidates/generator-cycle-v2.png"
+  ],
+  "path": "assets/production/pass-07/generator-r0-cycle-v3.png",
+  "source_pixels": "unmodified",
+  "sha256": "68ac99589028adb146055e5b001a6a26a690e983ab2f78de3301096d09d402dc"
+}

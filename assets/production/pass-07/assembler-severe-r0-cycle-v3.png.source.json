@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-4529dd95-02e5-455e-b1bf-b864bae4951e.png",
+  "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS single-direction mechanism animation pilot. Input image is a machine identity/material/camera reference ONLY; use its top-left machine and discard the old atlas layout. Output exactly 6 frames as a regular grid of 3 columns and 2 rows, read left to right then top to bottom. EVERY frame shows the same one direction and exactly the same fixed chassis, foundation, connectors, damage, camera, scale and lighting. Only the specified moving mechanism changes. True transparent RGBA backdrop, clean neutral antialiased edges, no colored speckles or matte. Leave substantial transparent padding inside every cell. Weathered steel, pale ceramic, copper, upper-left lighting, orthographic oblique game art. Dark inactive lamps. No smoke, sparks, text, frame numbers, grid lines, shadows on ground, beams, or checkerboard. Preserve original identity. Mechanism instructions: Severe damage: missing side access panel, exposed support rib and bent outer guard. Six poses: open receiving cradle, gripper reaches workpiece, gripper closes, press descends, press rises, gripper releases. Housing, hopper and foundation stay identical in all frames. Damage must persist unchanged; machine remains functional.",
+  "reference_inputs": [
+    "assets/animations/candidates/assembler-severe-cycle-v2.png"
+  ],
+  "path": "assets/production/pass-07/assembler-severe-r0-cycle-v3.png",
+  "source_pixels": "unmodified",
+  "sha256": "166a855069306b19c21d40687e304c12efd89403053e82151ddc9871c971d89e"
+}

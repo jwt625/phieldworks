@@ -1,0 +1,332 @@
+{
+  "status": "prototype-runtime-selection",
+  "registration": "Alpha >=128 bounds with 3px crop padding; translation aligned to bottom foundation landmark (generator base bounds center). No pixel edits; residual chassis drift remains prototype polish.",
+  "clips": [
+    {
+      "asset": "extractor-severe-r0-cycle-v3",
+      "kind": "extractor",
+      "condition": 2,
+      "rotation": 0,
+      "logicalSize": 591.111,
+      "frames": [
+        {
+          "source": [
+            11,
+            131,
+            532,
+            530
+          ],
+          "anchor": [
+            283.5,
+            527
+          ]
+        },
+        {
+          "source": [
+            553,
+            131,
+            531,
+            530
+          ],
+          "anchor": [
+            280.5,
+            527
+          ]
+        },
+        {
+          "source": [
+            1088,
+            131,
+            527,
+            529
+          ],
+          "anchor": [
+            278.5,
+            526
+          ]
+        },
+        {
+          "source": [
+            1633,
+            131,
+            529,
+            529
+          ],
+          "anchor": [
+            280.5,
+            526
+          ]
+        }
+      ],
+      "sha256": "ec0547f6c8a69805321126dce3f67d37166446603c4754d864b00456b7d9746b"
+    },
+    {
+      "asset": "assembler-light-r0-cycle-v3",
+      "kind": "assembler",
+      "condition": 1,
+      "rotation": 0,
+      "logicalSize": 517.778,
+      "frames": [
+        {
+          "source": [
+            40,
+            41,
+            421,
+            466
+          ],
+          "anchor": [
+            207.0,
+            463
+          ]
+        },
+        {
+          "source": [
+            550,
+            96,
+            420,
+            411
+          ],
+          "anchor": [
+            204.0,
+            408
+          ]
+        },
+        {
+          "source": [
+            1054,
+            99,
+            431,
+            408
+          ],
+          "anchor": [
+            211.0,
+            405
+          ]
+        },
+        {
+          "source": [
+            45,
+            570,
+            423,
+            423
+          ],
+          "anchor": [
+            206.5,
+            420
+          ]
+        },
+        {
+          "source": [
+            548,
+            570,
+            420,
+            422
+          ],
+          "anchor": [
+            207.0,
+            419
+          ]
+        },
+        {
+          "source": [
+            1053,
+            528,
+            419,
+            465
+          ],
+          "anchor": [
+            205.5,
+            462
+          ]
+        }
+      ],
+      "sha256": "da058024a21ac1cd6e56523a9a0bf18cd98aa8558159c2f0fd8101e39c261bc5"
+    },
+    {
+      "asset": "generator-r0-cycle-v3",
+      "kind": "generator",
+      "condition": 0,
+      "rotation": 0,
+      "logicalSize": 573.333,
+      "frames": [
+        {
+          "source": [
+            68,
+            116,
+            516,
+            474
+          ],
+          "anchor": [
+            258.0,
+            471
+          ]
+        },
+        {
+          "source": [
+            659,
+            116,
+            515,
+            475
+          ],
+          "anchor": [
+            257.5,
+            472
+          ]
+        },
+        {
+          "source": [
+            69,
+            683,
+            515,
+            475
+          ],
+          "anchor": [
+            257.5,
+            472
+          ]
+        },
+        {
+          "source": [
+            659,
+            684,
+            515,
+            474
+          ],
+          "anchor": [
+            257.5,
+            471
+          ]
+        }
+      ],
+      "sha256": "68ac99589028adb146055e5b001a6a26a690e983ab2f78de3301096d09d402dc"
+    },
+    {
+      "asset": "sentry-r0-fire-v3",
+      "kind": "sentry",
+      "condition": 0,
+      "rotation": 0,
+      "logicalSize": 713.333,
+      "frames": [
+        {
+          "source": [
+            101,
+            49,
+            585,
+            641
+          ],
+          "anchor": [
+            252.0,
+            638
+          ]
+        },
+        {
+          "source": [
+            824,
+            49,
+            522,
+            642
+          ],
+          "anchor": [
+            253.0,
+            639
+          ]
+        },
+        {
+          "source": [
+            1547,
+            49,
+            585,
+            641
+          ],
+          "anchor": [
+            253.5,
+            638
+          ]
+        }
+      ],
+      "sha256": "0941f6b9aaf8d22119a34f95fee8abfdf9486b51b73672c1a0f02b4d833eacc6"
+    },
+    {
+      "asset": "assembler-severe-r0-cycle-v4",
+      "kind": "assembler",
+      "condition": 2,
+      "rotation": 0,
+      "logicalSize": 518.889,
+      "frames": [
+        {
+          "source": [
+            41,
+            41,
+            422,
+            467
+          ],
+          "anchor": [
+            206.5,
+            464
+          ]
+        },
+        {
+          "source": [
+            549,
+            97,
+            422,
+            411
+          ],
+          "anchor": [
+            205.5,
+            408
+          ]
+        },
+        {
+          "source": [
+            1053,
+            99,
+            433,
+            410
+          ],
+          "anchor": [
+            212.5,
+            407
+          ]
+        },
+        {
+          "source": [
+            45,
+            570,
+            425,
+            424
+          ],
+          "anchor": [
+            207.0,
+            421
+          ]
+        },
+        {
+          "source": [
+            549,
+            570,
+            421,
+            423
+          ],
+          "anchor": [
+            206.5,
+            420
+          ]
+        },
+        {
+          "source": [
+            1052,
+            529,
+            422,
+            464
+          ],
+          "anchor": [
+            207.5,
+            461
+          ]
+        }
+      ],
+      "sha256": "e0c01ce92ec74393e08218e8ef45b089a6acceebfe8ccb01c3018388308cacb8"
+    }
+  ]
+}

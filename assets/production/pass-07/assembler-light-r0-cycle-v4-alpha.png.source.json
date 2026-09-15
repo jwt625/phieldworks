@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-7cf5e6f4-45f7-4a49-ad1d-b037ba9e8ba8.png",
+  "prompt": "Use case: background-extraction. Edit target: the supplied six-frame machine sheet. Remove ONLY the opaque background and ground shadows. Return genuine transparent RGBA pixels around and between all six machines, including holes. Preserve exact original canvas dimensions, layout, all machine pixels, colors, scale, positions and six mechanism poses. Clean neutral antialiased cutout boundaries. No matte, glow, colored fringe, checkerboard, or new scene. Do not redesign or move any part of any machine.",
+  "reference_inputs": [
+    "assets/production/pass-07/assembler-light-r0-cycle-v3.png"
+  ],
+  "path": "assets/production/pass-07/assembler-light-r0-cycle-v4-alpha.png",
+  "source_pixels": "unmodified",
+  "sha256": "cd5ee06bed397ccb7327a5092f48a8b66888cc213f7bcc5e4218e7e0e2c45212"
+}

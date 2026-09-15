@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-1581d311-6738-416d-9599-801edf698550.png",
+  "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS damaged extractor animation pilot. Reference image is the existing extractor sheet; use ONLY its top-left machine for identity and camera, not the sheet layout. Create ONE horizontal strip of FOUR equally spaced animation frames on true transparent RGBA background. All four show exactly the SAME direction, fixed orthographic oblique camera and identical chassis, foundation, ports, lighting, size and position within each cell. Weathered steel, pale ceramic, copper. Severe damage must read in silhouette: missing front-right housing panel exposing internal supports, bent outer guard, chipped ceramic; preserve these exact damages across all four frames. Machine is still functional. Only central drill translates vertically: raised, halfway down, fully down, halfway up. No turning the machine, no chassis movement, no changing panel layout. Dark unlit status lamps; no fire, smoke, sparks, text, borders, ground plane, checkerboard or opaque matte. Four cells in one row, generous transparent margin around each complete silhouette, no clipping. Aim for a stable game sprite mechanism sequence, not four redesigned machines.",
+  "reference_inputs": [
+    "assets/animations/candidates/extractor-severe-cycle-v2.png"
+  ],
+  "path": "assets/production/pass-07/extractor-severe-r0-cycle-v3.png",
+  "source_pixels": "unmodified",
+  "sha256": "ec0547f6c8a69805321126dce3f67d37166446603c4754d864b00456b7d9746b"
+}

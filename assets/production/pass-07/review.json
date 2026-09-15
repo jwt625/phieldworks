@@ -1,0 +1,998 @@
+{
+  "summary": {
+    "saved": 7,
+    "real_alpha": 7,
+    "runtime_promotions": 5
+  },
+  "candidates": [
+    {
+      "id": "extractor-severe-r0-cycle-v3",
+      "path": "assets/production/pass-07/extractor-severe-r0-cycle-v3.png",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "sha256": "ec0547f6c8a69805321126dce3f67d37166446603c4754d864b00456b7d9746b",
+      "transparent_fraction": 0.5600002034939918,
+      "partial_alpha_fraction": 0.43943828027227494,
+      "columns": 4,
+      "rows": 1,
+      "frames": 4,
+      "proposed_cells": [
+        {
+          "proposed_rect_xyxy": [
+            0,
+            0,
+            543,
+            724
+          ],
+          "alpha_bounds_local": [
+            0,
+            31,
+            543,
+            724
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            543,
+            0,
+            1086,
+            724
+          ],
+          "alpha_bounds_local": [
+            0,
+            21,
+            543,
+            724
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1086,
+            0,
+            1629,
+            724
+          ],
+          "alpha_bounds_local": [
+            0,
+            19,
+            543,
+            724
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1629,
+            0,
+            2172,
+            724
+          ],
+          "alpha_bounds_local": [
+            1,
+            41,
+            543,
+            724
+          ]
+        }
+      ],
+      "ground_anchor": null,
+      "port_landmarks": null,
+      "registered": false,
+      "production_ready": false,
+      "runtime_promoted": true,
+      "status": "runtime-prototype",
+      "visual_review": "Consistent facing and visible broken right housing. Colored edge speckles remain. Drill motion subtle, loop and alignment need review.",
+      "registration": {
+        "asset": "extractor-severe-r0-cycle-v3",
+        "kind": "extractor",
+        "condition": 2,
+        "rotation": 0,
+        "logicalSize": 591.111,
+        "frames": [
+          {
+            "source": [
+              11,
+              131,
+              532,
+              530
+            ],
+            "anchor": [
+              283.5,
+              527
+            ]
+          },
+          {
+            "source": [
+              553,
+              131,
+              531,
+              530
+            ],
+            "anchor": [
+              280.5,
+              527
+            ]
+          },
+          {
+            "source": [
+              1088,
+              131,
+              527,
+              529
+            ],
+            "anchor": [
+              278.5,
+              526
+            ]
+          },
+          {
+            "source": [
+              1633,
+              131,
+              529,
+              529
+            ],
+            "anchor": [
+              280.5,
+              526
+            ]
+          }
+        ],
+        "sha256": "ec0547f6c8a69805321126dce3f67d37166446603c4754d864b00456b7d9746b"
+      },
+      "registration_scope": "Translation/crop only; final port/chassis tolerance remains unverified"
+    },
+    {
+      "id": "assembler-light-r0-cycle-v3",
+      "path": "assets/production/pass-07/assembler-light-r0-cycle-v3.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "da058024a21ac1cd6e56523a9a0bf18cd98aa8558159c2f0fd8101e39c261bc5",
+      "transparent_fraction": 0.5693124135335287,
+      "partial_alpha_fraction": 0.4306875864664714,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "proposed_cells": [
+        {
+          "proposed_rect_xyxy": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alpha_bounds_local": [
+            37,
+            31,
+            476,
+            512
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "alpha_bounds_local": [
+            25,
+            43,
+            510,
+            512
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "alpha_bounds_local": [
+            3,
+            37,
+            498,
+            510
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "alpha_bounds_local": [
+            45,
+            21,
+            469,
+            482
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "alpha_bounds_local": [
+            3,
+            0,
+            480,
+            484
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "alpha_bounds_local": [
+            27,
+            15,
+            488,
+            481
+          ]
+        }
+      ],
+      "ground_anchor": null,
+      "port_landmarks": null,
+      "registered": false,
+      "production_ready": false,
+      "runtime_promoted": true,
+      "status": "runtime-prototype",
+      "visual_review": "Pixel inspection confirms real transparent background; RGB backdrop shown by inline preview was misleading. Six poses preserve facing. Fixture/workpiece changes and base registration still need review.",
+      "registration": {
+        "asset": "assembler-light-r0-cycle-v3",
+        "kind": "assembler",
+        "condition": 1,
+        "rotation": 0,
+        "logicalSize": 517.778,
+        "frames": [
+          {
+            "source": [
+              40,
+              41,
+              421,
+              466
+            ],
+            "anchor": [
+              207.0,
+              463
+            ]
+          },
+          {
+            "source": [
+              550,
+              96,
+              420,
+              411
+            ],
+            "anchor": [
+              204.0,
+              408
+            ]
+          },
+          {
+            "source": [
+              1054,
+              99,
+              431,
+              408
+            ],
+            "anchor": [
+              211.0,
+              405
+            ]
+          },
+          {
+            "source": [
+              45,
+              570,
+              423,
+              423
+            ],
+            "anchor": [
+              206.5,
+              420
+            ]
+          },
+          {
+            "source": [
+              548,
+              570,
+              420,
+              422
+            ],
+            "anchor": [
+              207.0,
+              419
+            ]
+          },
+          {
+            "source": [
+              1053,
+              528,
+              419,
+              465
+            ],
+            "anchor": [
+              205.5,
+              462
+            ]
+          }
+        ],
+        "sha256": "da058024a21ac1cd6e56523a9a0bf18cd98aa8558159c2f0fd8101e39c261bc5"
+      },
+      "registration_scope": "Translation/crop only; final port/chassis tolerance remains unverified"
+    },
+    {
+      "id": "assembler-severe-r0-cycle-v3",
+      "path": "assets/production/pass-07/assembler-severe-r0-cycle-v3.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "166a855069306b19c21d40687e304c12efd89403053e82151ddc9871c971d89e",
+      "transparent_fraction": 0.5792446136474609,
+      "partial_alpha_fraction": 0.42075538635253906,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "proposed_cells": [
+        {
+          "proposed_rect_xyxy": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alpha_bounds_local": [
+            67,
+            19,
+            500,
+            506
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "alpha_bounds_local": [
+            5,
+            55,
+            486,
+            500
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "alpha_bounds_local": [
+            53,
+            36,
+            498,
+            501
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "alpha_bounds_local": [
+            21,
+            15,
+            496,
+            472
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "alpha_bounds_local": [
+            3,
+            9,
+            512,
+            494
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "alpha_bounds_local": [
+            0,
+            14,
+            474,
+            478
+          ]
+        }
+      ],
+      "ground_anchor": null,
+      "port_landmarks": null,
+      "registered": false,
+      "production_ready": false,
+      "runtime_promoted": false,
+      "status": "needs-cross-condition-correction",
+      "visual_review": "Real alpha confirmed. Six poses preserve facing and exposed chassis. Hopper arrangement differs from light pilot; cross-condition identity and frame anchors need correction."
+    },
+    {
+      "id": "generator-r0-cycle-v3",
+      "path": "assets/production/pass-07/generator-r0-cycle-v3.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "68ac99589028adb146055e5b001a6a26a690e983ab2f78de3301096d09d402dc",
+      "transparent_fraction": 0.6022367975906128,
+      "partial_alpha_fraction": 0.3968385695280684,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "proposed_cells": [
+        {
+          "proposed_rect_xyxy": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "alpha_bounds_local": [
+            0,
+            15,
+            619,
+            627
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            627,
+            0,
+            1254,
+            627
+          ],
+          "alpha_bounds_local": [
+            17,
+            19,
+            595,
+            619
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            0,
+            627,
+            627,
+            1254
+          ],
+          "alpha_bounds_local": [
+            39,
+            1,
+            605,
+            561
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            627,
+            627,
+            1254,
+            1254
+          ],
+          "alpha_bounds_local": [
+            1,
+            1,
+            583,
+            601
+          ]
+        }
+      ],
+      "ground_anchor": null,
+      "port_landmarks": null,
+      "registered": false,
+      "production_ready": false,
+      "runtime_promoted": true,
+      "status": "runtime-prototype",
+      "visual_review": "Visible keyed rotor rotation with consistent facing. Cyan display remains baked in despite dark-lamp request; edge speckles and anchor alignment need correction/review.",
+      "registration": {
+        "asset": "generator-r0-cycle-v3",
+        "kind": "generator",
+        "condition": 0,
+        "rotation": 0,
+        "logicalSize": 573.333,
+        "frames": [
+          {
+            "source": [
+              68,
+              116,
+              516,
+              474
+            ],
+            "anchor": [
+              258.0,
+              471
+            ]
+          },
+          {
+            "source": [
+              659,
+              116,
+              515,
+              475
+            ],
+            "anchor": [
+              257.5,
+              472
+            ]
+          },
+          {
+            "source": [
+              69,
+              683,
+              515,
+              475
+            ],
+            "anchor": [
+              257.5,
+              472
+            ]
+          },
+          {
+            "source": [
+              659,
+              684,
+              515,
+              474
+            ],
+            "anchor": [
+              257.5,
+              471
+            ]
+          }
+        ],
+        "sha256": "68ac99589028adb146055e5b001a6a26a690e983ab2f78de3301096d09d402dc"
+      },
+      "registration_scope": "Translation/crop only; final port/chassis tolerance remains unverified"
+    },
+    {
+      "id": "sentry-r0-fire-v3",
+      "path": "assets/production/pass-07/sentry-r0-fire-v3.png",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "sha256": "0941f6b9aaf8d22119a34f95fee8abfdf9486b51b73672c1a0f02b4d833eacc6",
+      "transparent_fraction": 0.5968402470417061,
+      "partial_alpha_fraction": 0.4026014163181832,
+      "columns": 3,
+      "rows": 1,
+      "frames": 3,
+      "proposed_cells": [
+        {
+          "proposed_rect_xyxy": [
+            0,
+            0,
+            724,
+            724
+          ],
+          "alpha_bounds_local": [
+            0,
+            24,
+            722,
+            708
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            724,
+            0,
+            1448,
+            724
+          ],
+          "alpha_bounds_local": [
+            5,
+            9,
+            710,
+            703
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1448,
+            0,
+            2172,
+            724
+          ],
+          "alpha_bounds_local": [
+            3,
+            25,
+            692,
+            692
+          ]
+        }
+      ],
+      "ground_anchor": null,
+      "port_landmarks": null,
+      "registered": false,
+      "production_ready": false,
+      "runtime_promoted": true,
+      "status": "runtime-prototype",
+      "visual_review": "Clear extend/recoil/return poses, dark display and consistent aim. Colored edge speckles remain. Base and barrel alignment and actual-shot binding unverified.",
+      "registration": {
+        "asset": "sentry-r0-fire-v3",
+        "kind": "sentry",
+        "condition": 0,
+        "rotation": 0,
+        "logicalSize": 713.333,
+        "frames": [
+          {
+            "source": [
+              101,
+              49,
+              585,
+              641
+            ],
+            "anchor": [
+              252.0,
+              638
+            ]
+          },
+          {
+            "source": [
+              824,
+              49,
+              522,
+              642
+            ],
+            "anchor": [
+              253.0,
+              639
+            ]
+          },
+          {
+            "source": [
+              1547,
+              49,
+              585,
+              641
+            ],
+            "anchor": [
+              253.5,
+              638
+            ]
+          }
+        ],
+        "sha256": "0941f6b9aaf8d22119a34f95fee8abfdf9486b51b73672c1a0f02b4d833eacc6"
+      },
+      "registration_scope": "Translation/crop only; final port/chassis tolerance remains unverified"
+    },
+    {
+      "id": "assembler-light-r0-cycle-v4-alpha",
+      "path": "assets/production/pass-07/assembler-light-r0-cycle-v4-alpha.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "cd5ee06bed397ccb7327a5092f48a8b66888cc213f7bcc5e4218e7e0e2c45212",
+      "transparent_fraction": 0.5713443756103516,
+      "partial_alpha_fraction": 0.42865562438964844,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "proposed_cells": [
+        {
+          "proposed_rect_xyxy": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alpha_bounds_local": [
+            36,
+            31,
+            463,
+            510
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "alpha_bounds_local": [
+            35,
+            45,
+            512,
+            512
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "alpha_bounds_local": [
+            1,
+            13,
+            494,
+            510
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "alpha_bounds_local": [
+            45,
+            17,
+            510,
+            482
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "alpha_bounds_local": [
+            3,
+            15,
+            478,
+            482
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "alpha_bounds_local": [
+            12,
+            16,
+            460,
+            482
+          ]
+        }
+      ],
+      "ground_anchor": null,
+      "port_landmarks": null,
+      "registered": false,
+      "production_ready": false,
+      "runtime_promoted": false,
+      "status": "needs-registration-and-mechanism-review",
+      "visual_review": "Pixel inspection confirms real transparent background; RGB backdrop shown by inline preview was misleading. Six poses preserve facing. Fixture/workpiece changes and base registration still need review."
+    },
+    {
+      "id": "assembler-severe-r0-cycle-v4",
+      "path": "assets/production/pass-07/assembler-severe-r0-cycle-v4.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "e0c01ce92ec74393e08218e8ef45b089a6acceebfe8ccb01c3018388308cacb8",
+      "transparent_fraction": 0.5673828125,
+      "partial_alpha_fraction": 0.4326171875,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "proposed_cells": [
+        {
+          "proposed_rect_xyxy": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alpha_bounds_local": [
+            0,
+            0,
+            498,
+            510
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "alpha_bounds_local": [
+            1,
+            35,
+            512,
+            512
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "alpha_bounds_local": [
+            1,
+            33,
+            464,
+            510
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "alpha_bounds_local": [
+            45,
+            17,
+            512,
+            482
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "alpha_bounds_local": [
+            0,
+            7,
+            512,
+            481
+          ]
+        },
+        {
+          "proposed_rect_xyxy": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "alpha_bounds_local": [
+            1,
+            16,
+            508,
+            512
+          ]
+        }
+      ],
+      "ground_anchor": null,
+      "port_landmarks": null,
+      "registered": false,
+      "production_ready": false,
+      "runtime_promoted": true,
+      "status": "runtime-prototype",
+      "visual_review": "Correction restores left hopper/right arm layout shared with light pilot. Missing right enclosure panel persists across six poses. Base/port landmarks and fixture changes still require registration and motion review.",
+      "registration": {
+        "asset": "assembler-severe-r0-cycle-v4",
+        "kind": "assembler",
+        "condition": 2,
+        "rotation": 0,
+        "logicalSize": 518.889,
+        "frames": [
+          {
+            "source": [
+              41,
+              41,
+              422,
+              467
+            ],
+            "anchor": [
+              206.5,
+              464
+            ]
+          },
+          {
+            "source": [
+              549,
+              97,
+              422,
+              411
+            ],
+            "anchor": [
+              205.5,
+              408
+            ]
+          },
+          {
+            "source": [
+              1053,
+              99,
+              433,
+              410
+            ],
+            "anchor": [
+              212.5,
+              407
+            ]
+          },
+          {
+            "source": [
+              45,
+              570,
+              425,
+              424
+            ],
+            "anchor": [
+              207.0,
+              421
+            ]
+          },
+          {
+            "source": [
+              549,
+              570,
+              421,
+              423
+            ],
+            "anchor": [
+              206.5,
+              420
+            ]
+          },
+          {
+            "source": [
+              1052,
+              529,
+              422,
+              464
+            ],
+            "anchor": [
+              207.5,
+              461
+            ]
+          }
+        ],
+        "sha256": "e0c01ce92ec74393e08218e8ef45b089a6acceebfe8ccb01c3018388308cacb8"
+      },
+      "registration_scope": "Translation/crop only; final port/chassis tolerance remains unverified"
+    }
+  ]
+}

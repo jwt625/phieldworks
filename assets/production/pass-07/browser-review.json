@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-09-15T03:03:30.343Z",
+  "page_errors": [],
+  "sources": 7,
+  "preview_canvases": 21,
+  "checks": [
+    "all source images decode",
+    "pause holds canvas pixels",
+    "step changes canvas pixels",
+    "light/dark/terrain-color screenshots"
+  ],
+  "screenshots": "test-results/pass-07/",
+  "production_ready": false
+}

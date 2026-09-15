@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-1bd68176-64b3-405f-998b-77dcf8b66f9d.png",
+  "prompt": "Use case: precise-object-edit. Edit target: supplied six-frame light-damage assembler animation. Change ONLY physical damage severity on the fixed lower enclosure in all six frames. Remove the SAME front-right ceramic panel in each frame to expose dark inner support ribs, bend the SAME lower protective edge, deepen existing chips. Preserve the hopper at the back LEFT, arm pivot at back RIGHT, exact foundation outline, every bolt, all six original arm poses, camera, scale, canvas dimensions and positions. Do not add a second hopper or move any machinery. Keep the six-frame 3-column 2-row grid exactly. Preserve true transparent RGBA background and neutral clean silhouette edges. No smoke, lights, text, fire, backdrop or checkerboard. This is a cross-condition registration edit, not a redesign.",
+  "reference_inputs": [
+    "assets/production/pass-07/assembler-light-r0-cycle-v3.png"
+  ],
+  "path": "assets/production/pass-07/assembler-severe-r0-cycle-v4.png",
+  "source_pixels": "unmodified",
+  "sha256": "e0c01ce92ec74393e08218e8ef45b089a6acceebfe8ccb01c3018388308cacb8"
+}

@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-873316cc-5a84-408a-a9ed-c171b1a75912.png",
+  "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS single-direction mechanism animation pilot. Input image is a machine identity/material/camera reference ONLY; use its top-left machine and discard the old atlas layout. Output exactly 6 frames as a regular grid of 3 columns and 2 rows, read left to right then top to bottom. EVERY frame shows the same one direction and exactly the same fixed chassis, foundation, connectors, damage, camera, scale and lighting. Only the specified moving mechanism changes. True transparent RGBA backdrop, clean neutral antialiased edges, no colored speckles or matte. Leave substantial transparent padding inside every cell. Weathered steel, pale ceramic, copper, upper-left lighting, orthographic oblique game art. Dark inactive lamps. No smoke, sparks, text, frame numbers, grid lines, shadows on ground, beams, or checkerboard. Preserve original identity. Mechanism instructions: Light damage: chipped corner ceramic and dented hopper skin but complete housing. Six poses: open receiving cradle, gripper reaches workpiece, gripper closes, press descends, press rises, gripper releases. Keep the large hopper facing exactly the same way in every cell. Only gripper and press translate. Damage must persist unchanged.",
+  "reference_inputs": [
+    "assets/animations/candidates/assembler-light-cycle-v2.png"
+  ],
+  "path": "assets/production/pass-07/assembler-light-r0-cycle-v3.png",
+  "source_pixels": "unmodified",
+  "sha256": "da058024a21ac1cd6e56523a9a0bf18cd98aa8558159c2f0fd8101e39c261bc5"
+}

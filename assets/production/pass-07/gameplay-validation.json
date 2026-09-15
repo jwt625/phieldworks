@@ -1,0 +1,31 @@
+{
+  "scope": "Five explicit rotation-0 prototype clips in actual gameplay",
+  "unit_tests": {
+    "passed": 117,
+    "failed": 0
+  },
+  "browser_tests": {
+    "passed": 5,
+    "failed": 0,
+    "coverage": [
+      "real outpost clip draws and source-over alpha",
+      "recipe progress animation",
+      "pause holds frames",
+      "light/severe/wreck selections",
+      "existing direction fallback",
+      "reduced motion",
+      "actual combat recoil",
+      "power loss restores dark condition art"
+    ]
+  },
+  "build": "passed",
+  "diff_check": "passed",
+  "screenshot": "test-results/pass-07-gameplay.png",
+  "production_ready": false,
+  "remaining": [
+    "rotations 1/2/3",
+    "final port registration tolerance",
+    "edge polish",
+    "generator powered display art correction"
+  ]
+}

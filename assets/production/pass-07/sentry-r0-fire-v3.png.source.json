@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0a2f5-6fa4-7e62-9f5f-704cfcafaf59/exec-b630409e-2f28-4af2-bd3c-a6605d814d59.png",
+  "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS single-direction mechanism animation pilot. Input image is a machine identity/material/camera reference ONLY; use its top-left machine and discard the old atlas layout. Output exactly 3 frames as a regular grid of 3 columns and 1 rows, read left to right then top to bottom. EVERY frame shows the same one direction and exactly the same fixed chassis, foundation, connectors, damage, camera, scale and lighting. Only the specified moving mechanism changes. True transparent RGBA backdrop, clean neutral antialiased edges, no colored speckles or matte. Leave substantial transparent padding inside every cell. Weathered steel, pale ceramic, copper, upper-left lighting, orthographic oblique game art. Dark inactive lamps. No smoke, sparks, text, frame numbers, grid lines, shadows on ground, beams, or checkerboard. Preserve original identity. Mechanism instructions: Intact sentry fixed aim, three recoil poses: barrel extended at rest, barrel slides backwards into housing on shot, barrel returns to initial rest. Identical base, turret angle and barrel direction throughout. No muzzle flash baked in, no rotation, no invented scan during firing.",
+  "reference_inputs": [
+    "assets/animations/candidates/sentry-fire-v2.png"
+  ],
+  "path": "assets/production/pass-07/sentry-r0-fire-v3.png",
+  "source_pixels": "unmodified",
+  "sha256": "0941f6b9aaf8d22119a34f95fee8abfdf9486b51b73672c1a0f02b4d833eacc6"
+}
