@@ -231,3 +231,11 @@ Ran the integrated gate and added the automated completion evidence. `npm test` 
 Still open and delegated, not claimed: explicit visual review of the cell placeholder at 1280×800/1440×1000 and 48/96 px with real terrain and four rotations, and an unprompted human "explain and fix a failed part" observation. Cell production art (A-09–A-11) remains gated and unapproved. Also fixed the A-07 test expectation (`tests/world.test.ts`) that the A-07 commit missed: placing a disconnected copy leaves the original frontier certificate qualified instead of failing it, matching the A-03 signature-based contract.
 
 Evidence / validation: `npx tsc --noEmit` clean; `npm test` 115; `npm run build`; `npm run test:browser` 27/27; `git diff --check` clean.
+
+## 2026-09-14 — Equipment animation pass 07 integration
+
+Promoted five single-direction equipment clips into gameplay for rotation 0: severe damaged extractor and assembler (plus the light assembler), generator and sentry. New `src/equipment-animation.ts` selects a clip by kind/integrity/rotation; `src/assets.ts` explicitly loads the five pass-07 sources; `src/renderer.ts` draws them with real-alpha source-over using registered source crops and an actual-firing burst timer; `equipment-state.ts` exposes `shotAge`. Damaged chassis holds when stopped or unpowered, generator moves only under a connected load, sentry recoil follows real ecology shots, reduced-motion mode holds frame zero, and loading a world clears burst history. The older matte/lighten path is not used for these clips.
+
+Evidence / validation: `npm test` **117** (115 + 2 in `tests/equipment-animation.test.ts`); `npm run build`; `npm run test:browser` **30/30** (27 + 3 in `tests/browser/equipment-animation.spec.ts`); `git diff --check` clean. Screenshot `test-results/pass-07-gameplay.png`; browser record and validation under `assets/production/pass-07/`; integration notes in [024](../production/024-equipment-animation-continuation.md).
+
+Still open: only rotation 0 is promoted — other directions keep their existing views. Final edge cleanup, the generator's baked cyan display, base/port anchor registration, the reference/tuner/emitter/dump mechanisms and the fabrication-cell family remain. Prototype promotion is not visual approval.
