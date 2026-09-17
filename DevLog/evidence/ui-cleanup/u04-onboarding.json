@@ -1,0 +1,123 @@
+{
+  "date": "2026-09-16",
+  "revision": "working tree after U-04",
+  "fixture": "Fresh DPR1 Chromium; tutorial storage cleared for the invitation; exposedPct = canvas minus rasterised HUD union (2px) over viewport. Budgets: invitation >=82% (>=1366) / >=78% (1024) and <=260x64; guided lesson >=72% (>=1366) / >=68% (1024) and <=280x160.",
+  "results": {
+    "invitation": [
+      {
+        "viewport": {
+          "w": 1366,
+          "h": 768
+        },
+        "exposedPct": 85.9,
+        "canvasPct": 88.5,
+        "tutorial": {
+          "x": 553,
+          "y": 52,
+          "w": 260,
+          "h": 43
+        }
+      },
+      {
+        "viewport": {
+          "w": 1440,
+          "h": 1000
+        },
+        "exposedPct": 89.3,
+        "canvasPct": 91.2,
+        "tutorial": {
+          "x": 590,
+          "y": 52,
+          "w": 260,
+          "h": 43
+        }
+      },
+      {
+        "viewport": {
+          "w": 1920,
+          "h": 1080
+        },
+        "exposedPct": 90.5,
+        "canvasPct": 91.9,
+        "tutorial": {
+          "x": 830,
+          "y": 52,
+          "w": 260,
+          "h": 43
+        }
+      },
+      {
+        "viewport": {
+          "w": 1024,
+          "h": 768
+        },
+        "exposedPct": 85,
+        "canvasPct": 88.5,
+        "tutorial": {
+          "x": 382,
+          "y": 52,
+          "w": 260,
+          "h": 43
+        }
+      }
+    ],
+    "lesson": [
+      {
+        "viewport": {
+          "w": 1366,
+          "h": 768
+        },
+        "exposedPct": 83.6,
+        "canvasPct": 88.5,
+        "tutorial": {
+          "x": 1074,
+          "y": 86,
+          "w": 280,
+          "h": 127
+        }
+      },
+      {
+        "viewport": {
+          "w": 1440,
+          "h": 1000
+        },
+        "exposedPct": 87.6,
+        "canvasPct": 91.2,
+        "tutorial": {
+          "x": 1148,
+          "y": 86,
+          "w": 280,
+          "h": 127
+        }
+      },
+      {
+        "viewport": {
+          "w": 1920,
+          "h": 1080
+        },
+        "exposedPct": 89.4,
+        "canvasPct": 91.9,
+        "tutorial": {
+          "x": 1628,
+          "y": 86,
+          "w": 280,
+          "h": 127
+        }
+      },
+      {
+        "viewport": {
+          "w": 1024,
+          "h": 768
+        },
+        "exposedPct": 82,
+        "canvasPct": 88.5,
+        "tutorial": {
+          "x": 732,
+          "y": 86,
+          "w": 280,
+          "h": 127
+        }
+      }
+    ]
+  }
+}

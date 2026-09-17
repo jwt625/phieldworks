@@ -7,9 +7,7 @@ const cellAt=(state:any,x:number,y:number)=>state.entities.find((e:any)=>e.kind=
 test('a fresh expedition builds and manages two independent precision cells',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await ready(page);
  await page.getByRole('button',{name:'Pause simulation',exact:true}).click();
- await page.getByRole('tab',{name:'All',exact:true}).click();
  await page.getByRole('button',{name:'Build Phase tuner',exact:true}).click();await point(page,10.1,24.1);
- await page.getByRole('tab',{name:'All',exact:true}).click();
  await page.getByRole('button',{name:'Build Fabrication cell',exact:true}).click();await point(page,10.1,20.1);
  // Bind the existing emitter and the built tuner, then enable local control on the first cell.
  await page.locator('#cell-emitter').selectOption('e6');await page.locator('[data-action=assign-emitter]').click();
@@ -22,12 +20,11 @@ test('a fresh expedition builds and manages two independent precision cells',asy
  await page.locator('#pause').click();await page.locator('#speed').click();await page.locator('#speed').click();
  await expect.poll(async()=>(await snapshot(page)).stock.assemblies,{timeout:30000}).toBeGreaterThan(18);
  await page.locator('#pause').click();
- await page.getByRole('tab',{name:'All',exact:true}).click();
  await page.getByRole('button',{name:'Build Fabrication cell',exact:true}).click();await point(page,16.1,20.1);
  state=await snapshot(page);const second=cellAt(state,16,20),secondTarget=state.targets.find((t:any)=>t.owner===second.id),secondDomain=state.domains.find((d:any)=>d.target===secondTarget.id);
  expect(second).toBeTruthy();expect(secondDomain.id).not.toBe(firstDomain.id);expect(secondDomain.enabled).toBe(false);
  await expect(page.locator('#process-body')).toContainText('Certificate');
- await page.keyboard.press('Escape');await page.keyboard.press('Escape');await page.locator('#session-operations').click();
+ await page.keyboard.press('Escape');await page.locator('#menu').click();await page.locator('#session-operations').click();
  await expect(page.locator('#operations-body')).toContainText('Control domains');
  await expect(page.locator('#operations-body')).toContainText('auto tune on');
  await expect(page.locator('#operations-body')).toContainText('auto tune off');

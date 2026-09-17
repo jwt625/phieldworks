@@ -7,13 +7,11 @@ async function point(page:Page,x:number,y:number){const p=await screen(page,x,y)
 test('selecting a module records a template and deploys a copy without transferring certificates',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await ready(page);
  // Open the frontier with a second emitter branch so an eastern copy can be placed.
- await page.getByRole('tab',{name:'All',exact:true}).click();
  await page.getByRole('button',{name:'Build Phase tuner',exact:true}).click();await point(page,17.1,12.1);
- await page.getByRole('tab',{name:'All',exact:true}).click();
  await page.getByRole('button',{name:'Build Field emitter',exact:true}).click();await point(page,20.1,12.1);
  await page.locator('#tool-power').click();await point(page,10.5,3);await point(page,21.5,12);
  await page.locator('#tool-field').click();await point(page,16,10.4);await point(page,17,12.5);await point(page,19,12.5);await point(page,20,13.5);
- await page.locator('#tool-select').click();await page.locator('#controller').check();
+ await page.locator('#tool-select').click();await page.locator('#objective-toggle').click();await page.locator('#controller').check();await page.locator('#objective-toggle').click();
  await page.locator('#speed').click();await page.locator('#speed').click();
  await expect.poll(async()=>(await snapshot(page)).frontier,{timeout:45000}).toBe(true);
  await page.getByRole('button',{name:'Pause simulation',exact:true}).click();

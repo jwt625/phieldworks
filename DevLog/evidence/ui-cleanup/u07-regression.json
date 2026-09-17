@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-16",
+  "revision": "working tree after U-01..U-07",
+  "hardware": "Apple Silicon macOS, local headless Google Chrome via Playwright, DPR 1 unless stated",
+  "commands": [
+    {"cmd": "npm test", "result": "120 headless pass, 0 fail"},
+    {"cmd": "npm run build", "result": "tsc --noEmit clean; vite build ok"},
+    {"cmd": "npm run test:browser", "result": "38 pass, 0 fail (31 prior + 7 compact-hud)"},
+    {"cmd": "git diff --check", "result": "clean"}
+  ],
+  "scenarios_covered": ["menus", "interactions", "outpost", "precision-cell", "precision-expedition", "local-blueprints", "technology", "equipment-animation", "canonical-art", "assets"],
+  "area_budgets": {
+    "fixture": "Exposed = raw canvas clipped to viewport minus rasterised union (2px cells) of visible HUD rects intersecting the canvas, over viewport area.",
+    "normal_pct": {"1366x768": 86.1, "1440x1000": 89.4, "1920x1080": 90.6, "1024x768": 85.5, "threshold_1366_plus": 85, "threshold_1024": 82},
+    "active_build_pct": {"1366x768": 85.3, "1440x1000": 88.9, "1920x1080": 90.2, "1024x768": 84.5},
+    "inspecting_pct": {"1366x768": 68.2, "1440x1000": 71.9, "1920x1080": 77.3, "1024x768": 63.5, "threshold_1366_plus": 65, "threshold_1024": 58},
+    "first_run_invitation_pct": {"1366x768": 85.9, "1440x1000": 89.3, "1920x1080": 90.5, "1024x768": 85, "invitation_px": "260x43", "threshold_1366_plus": 82, "threshold_1024": 78},
+    "guided_lesson_pct": {"1366x768": 83.6, "1440x1000": 87.6, "1920x1080": 89.4, "1024x768": 82, "lesson_px": "280x127", "threshold_1366_plus": 72, "threshold_1024": 68},
+    "expanded_minimap_cost_pp": {"1366x768": 1.7, "max": 3},
+    "secondary_screen_gain_pct": {"technology_1366x768": 26.5, "production_1366x768": 23.2, "gate": 15}
+  },
+  "smoke": {
+    "resize_no_body_scroll": "1024x768, 1366x768, 1440x1000, 1920x1080, 1093x614 (125% zoom equivalent) all pass",
+    "dpr2": {"css": "1366x680", "backing": "2732x1360", "pointer_hit": "world"},
+    "console_page_errors": "compact-hud no-error test exercises catalog, objective, minimap and drawer with zero page/console errors"
+  },
+  "screenshots": [
+    "DevLog/verification/ui-cleanup/u01-after-1366x768.png",
+    "DevLog/verification/ui-cleanup/u01-after-1440x1000.png",
+    "DevLog/verification/ui-cleanup/u01-after-1024x768.png",
+    "DevLog/verification/ui-cleanup/u02-build-1366x768.png",
+    "DevLog/verification/ui-cleanup/u02-build-1440x1000.png",
+    "DevLog/verification/ui-cleanup/u02-build-1024x768.png",
+    "DevLog/verification/ui-cleanup/after-tour.png",
+    "DevLog/verification/ui-cleanup/after-tuner.png",
+    "DevLog/verification/ui-cleanup/after-cell.png",
+    "DevLog/verification/ui-cleanup/after-route.png",
+    "DevLog/verification/ui-cleanup/after-blueprint.png",
+    "DevLog/verification/ui-cleanup/after-objectives.png",
+    "DevLog/verification/ui-cleanup/after-diagnostics.png",
+    "DevLog/verification/ui-cleanup/after-technology.png",
+    "DevLog/verification/ui-cleanup/after-production.png"
+  ],
+  "still_open": [
+    "U-08 independent visual/interaction acceptance has not been performed; automated results are not visual approval.",
+    "Graph node geometry was kept; only modal chrome and legends were compacted, so no edge/hit-area realignment was required.",
+    "Routine world labels (deposits/workpiece) now reveal on hover/selection/overlay; independent readability review remains."
+  ]
+}

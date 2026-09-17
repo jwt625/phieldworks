@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-16",
+  "revision": "working tree after U-06",
+  "fixture": "Chromium DPR1 at 1366x768; technology panel opened from the status bar; default research selection (frontier); production tab selected with default recipe scope. Viewport = #tech-viewport / #production-viewport client rectangle.",
+  "research": {
+    "beforeArea": 456704,
+    "afterArea": 577536,
+    "relativeGainPct": 26.5
+  },
+  "production": {
+    "beforeArea": 402432,
+    "afterArea": 495616,
+    "relativeGainPct": 23.2
+  },
+  "chromeHeights": {
+    "before": {
+      "heading": 95,
+      "toolbar": 53,
+      "legend": 37,
+      "footer": 43,
+      "footnote": 36,
+      "body": 526
+    },
+    "after": {
+      "heading": 60,
+      "toolbar": 33,
+      "legend": 0,
+      "footer": 29,
+      "footnote": 24,
+      "body": 593
+    }
+  },
+  "gate": "technology and production graph viewport each gained >=15% relative area"
+}

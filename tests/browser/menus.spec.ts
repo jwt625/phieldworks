@@ -33,7 +33,7 @@ test('operations lists domains and the research preview spends nothing',async({p
 
 test('keyboard placement cursor builds equipment without a pointer',async({page})=>{
  await ready(page);await page.getByRole('button',{name:'Pause simulation',exact:true}).click();
- await page.locator('#home').click();await page.getByRole('tab',{name:'All',exact:true}).click();
+ await page.locator('#home').click();
  await page.getByRole('button',{name:'Build Fabrication cell',exact:true}).click();
  for(let i=0;i<45;i++)await page.keyboard.press('ArrowLeft');
  for(let i=0;i<45;i++)await page.keyboard.press('ArrowUp');
@@ -45,7 +45,7 @@ test('keyboard placement cursor builds equipment without a pointer',async({page}
 
 test('build search filters the palette and shortcuts are ignored while typing',async({page})=>{
  await ready(page);
- await page.locator('#build-search').fill('tuner');
+ await page.locator('#catalog-toggle').click();await page.locator('#build-search').fill('tuner');
  await expect(page.locator('[data-build=tuner]')).toBeVisible();
  await expect(page.locator('[data-build=emitter]')).toBeHidden();
  const before=await camera(page);

@@ -1,0 +1,840 @@
+{
+  "date": "2026-09-16",
+  "revision": "working tree after U-02",
+  "fixture": "Fresh world, tutorial dismissed, user-paused; Chromium DPR1 (DPR2 smoke). exposedPct = raw canvas area clipped to viewport minus rasterised union (2px cells) of visible HUD rects intersecting canvas, over viewport area. Includes canvas-painted sector ribbon.",
+  "results": {
+    "normal": [
+      {
+        "viewport": {
+          "w": 1366,
+          "h": 768
+        },
+        "rawCanvas": {
+          "w": 1366,
+          "h": 680
+        },
+        "rawPct": 88.5,
+        "exposedPct": 86.1,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1239,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 1326,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": ".map-legend",
+            "x": 1160,
+            "y": 698,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 683,
+            "w": 305,
+            "h": 24
+          }
+        ],
+        "errors": []
+      },
+      {
+        "viewport": {
+          "w": 1440,
+          "h": 1000
+        },
+        "rawCanvas": {
+          "w": 1440,
+          "h": 912
+        },
+        "rawPct": 91.2,
+        "exposedPct": 89.4,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1313,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 1400,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": ".map-legend",
+            "x": 1234,
+            "y": 930,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 915,
+            "w": 305,
+            "h": 24
+          }
+        ],
+        "errors": []
+      },
+      {
+        "viewport": {
+          "w": 1920,
+          "h": 1080
+        },
+        "rawCanvas": {
+          "w": 1920,
+          "h": 992
+        },
+        "rawPct": 91.9,
+        "exposedPct": 90.6,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1793,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 1880,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": ".map-legend",
+            "x": 1714,
+            "y": 1010,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 995,
+            "w": 305,
+            "h": 24
+          }
+        ],
+        "errors": []
+      },
+      {
+        "viewport": {
+          "w": 1024,
+          "h": 768
+        },
+        "rawCanvas": {
+          "w": 1024,
+          "h": 680
+        },
+        "rawPct": 88.5,
+        "exposedPct": 85.5,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 897,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 984,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 683,
+            "w": 305,
+            "h": 24
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "inspecting": [
+      {
+        "viewport": {
+          "w": 1366,
+          "h": 768
+        },
+        "rawCanvas": {
+          "w": 1366,
+          "h": 680
+        },
+        "rawPct": 88.5,
+        "exposedPct": 68.2,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 980,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 1067,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": ".map-legend",
+            "x": 1160,
+            "y": 698,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "#inspector-drawer",
+            "x": 1086,
+            "y": 40,
+            "w": 280,
+            "h": 728
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 683,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "w": 1440,
+          "h": 1000
+        },
+        "rawCanvas": {
+          "w": 1440,
+          "h": 912
+        },
+        "rawPct": 91.2,
+        "exposedPct": 71.9,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1054,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 1141,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": ".map-legend",
+            "x": 1234,
+            "y": 930,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "#inspector-drawer",
+            "x": 1160,
+            "y": 40,
+            "w": 280,
+            "h": 960
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 915,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "w": 1920,
+          "h": 1080
+        },
+        "rawCanvas": {
+          "w": 1920,
+          "h": 992
+        },
+        "rawPct": 91.9,
+        "exposedPct": 77.3,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1534,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 1621,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": ".map-legend",
+            "x": 1714,
+            "y": 1010,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "#inspector-drawer",
+            "x": 1640,
+            "y": 40,
+            "w": 280,
+            "h": 1040
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 995,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "w": 1024,
+          "h": 768
+        },
+        "rawCanvas": {
+          "w": 1024,
+          "h": 680
+        },
+        "rawPct": 88.5,
+        "exposedPct": 63.5,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 660,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 747,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": "#inspector-drawer",
+            "x": 768,
+            "y": 40,
+            "w": 256,
+            "h": 728
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 683,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      }
+    ],
+    "build": [
+      {
+        "viewport": {
+          "w": 1366,
+          "h": 768
+        },
+        "rawCanvas": {
+          "w": 1366,
+          "h": 680
+        },
+        "rawPct": 88.5,
+        "exposedPct": 85.3,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1239,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 1326,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": "#map-hint",
+            "x": 10,
+            "y": 649,
+            "w": 308,
+            "h": 27
+          },
+          {
+            "s": ".map-legend",
+            "x": 1160,
+            "y": 698,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 683,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "w": 1440,
+          "h": 1000
+        },
+        "rawCanvas": {
+          "w": 1440,
+          "h": 912
+        },
+        "rawPct": 91.2,
+        "exposedPct": 88.9,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1313,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 1400,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": "#map-hint",
+            "x": 10,
+            "y": 881,
+            "w": 308,
+            "h": 27
+          },
+          {
+            "s": ".map-legend",
+            "x": 1234,
+            "y": 930,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 915,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "w": 1920,
+          "h": 1080
+        },
+        "rawCanvas": {
+          "w": 1920,
+          "h": 992
+        },
+        "rawPct": 91.9,
+        "exposedPct": 90.2,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1793,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 1880,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": "#map-hint",
+            "x": 10,
+            "y": 961,
+            "w": 308,
+            "h": 27
+          },
+          {
+            "s": ".map-legend",
+            "x": 1714,
+            "y": 1010,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 995,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "w": 1024,
+          "h": 768
+        },
+        "rawCanvas": {
+          "w": 1024,
+          "h": 680
+        },
+        "rawPct": 88.5,
+        "exposedPct": 84.5,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 897,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-toggle",
+            "x": 984,
+            "y": 84,
+            "w": 32,
+            "h": 32
+          },
+          {
+            "s": "#map-hint",
+            "x": 10,
+            "y": 649,
+            "w": 308,
+            "h": 27
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 683,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      }
+    ],
+    "expandedMinimap": [
+      {
+        "viewport": {
+          "w": 1366,
+          "h": 768
+        },
+        "rawCanvas": {
+          "w": 1366,
+          "h": 680
+        },
+        "rawPct": 88.5,
+        "exposedPct": 84.4,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1239,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-wrap",
+            "x": 1208,
+            "y": 84,
+            "w": 150,
+            "h": 122
+          },
+          {
+            "s": ".map-legend",
+            "x": 1160,
+            "y": 698,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 683,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "w": 1440,
+          "h": 1000
+        },
+        "rawCanvas": {
+          "w": 1440,
+          "h": 912
+        },
+        "rawPct": 91.2,
+        "exposedPct": 88.2,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1313,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-wrap",
+            "x": 1282,
+            "y": 84,
+            "w": 150,
+            "h": 122
+          },
+          {
+            "s": ".map-legend",
+            "x": 1234,
+            "y": 930,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 915,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "w": 1920,
+          "h": 1080
+        },
+        "rawCanvas": {
+          "w": 1920,
+          "h": 992
+        },
+        "rawPct": 91.9,
+        "exposedPct": 89.8,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 1793,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-wrap",
+            "x": 1762,
+            "y": 84,
+            "w": 150,
+            "h": 122
+          },
+          {
+            "s": ".map-legend",
+            "x": 1714,
+            "y": 1010,
+            "w": 194,
+            "h": 10
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 995,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "w": 1024,
+          "h": 768
+        },
+        "rawCanvas": {
+          "w": 1024,
+          "h": 680
+        },
+        "rawPct": 88.5,
+        "exposedPct": 83.3,
+        "hudRects": [
+          {
+            "s": ".map-toolbar",
+            "x": 8,
+            "y": 48,
+            "w": 319,
+            "h": 38
+          },
+          {
+            "s": ".objective-chip",
+            "x": 897,
+            "y": 48,
+            "w": 119,
+            "h": 28
+          },
+          {
+            "s": "#minimap-wrap",
+            "x": 866,
+            "y": 84,
+            "w": 150,
+            "h": 122
+          },
+          {
+            "s": "canvas-ribbon",
+            "x": 16,
+            "y": 683,
+            "w": 305,
+            "h": 24
+          }
+        ]
+      }
+    ]
+  },
+  "dpr2": {
+    "backing": {
+      "cssW": 1366,
+      "cssH": 680,
+      "pxW": 2732,
+      "pxH": 1360,
+      "dpr": 2
+    }
+  }
+}

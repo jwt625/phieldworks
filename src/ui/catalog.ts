@@ -1,5 +1,5 @@
 import {DEFS,type Kind} from '../sim/definitions';
-export const categories=['All','Extraction','Production','Power','Field','Defense','Logistics'] as const;
+export const categories=['All','Extraction','Production','Power','Field','Defense'] as const;
 export const catalog:Record<Kind,{category:string;needs:string;output:string}>={
  extractor:{category:'Extraction',needs:'Over a resource deposit • 8 electrical power • ORE OUT belt',output:'1 ore / 0.65 s; crystal enters shared stock after frontier clearance'},
  assembler:{category:'Production',needs:'2 ore via ORE IN • 6 electrical power',output:'1 assembly / 1.4 s into shared construction stock'},

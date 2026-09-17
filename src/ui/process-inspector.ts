@@ -6,11 +6,10 @@ import {renderDomainInspector} from './domain-inspector';
 const esc=(s:string)=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const fmt=(n:number)=>n.toFixed(1);
 
-/** Contextual cell inspector: assignment, manual tuning, run/test controls, forecast and last results. */
+/** Contextual cell inspector: primary run controls first, forecast as labeled values, advanced detail collapsed. */
 export function renderProcessInspector(w:World,target:Target,continuous:boolean):string{
- const job=activeJob(w,target.owner),reading=w.stats.targets[target.id],forecast=preview(w,target.id),block=blocker(w,target.id);
+ const job=activeJob(w,target.owner),forecast=preview(w,target.id),block=blocker(w,target.id);
  const domain=w.domains.find(d=>d.target===target.id),qualification=domain?w.qualifications.find(q=>q.domain===domain.id):undefined;
- const cell=target.owner?w.entities.find(e=>e.id===target.owner):undefined;
  const emitters=w.entities.filter(e=>e.kind==='emitter');
  const tuners=w.entities.filter(e=>e.kind==='tuner');
  const ownerOf=(emitterId:string)=>w.targets.find(t=>t.emitters.includes(emitterId))?.id??'';
@@ -28,9 +27,7 @@ export function renderProcessInspector(w:World,target:Target,continuous:boolean)
  return `<div class="process-inspector" data-target="${esc(target.id)}">
   <div class="stat-row"><span>Batch stage</span><strong>${stage}</strong></div>
   <div class="stat-row"><span>Assigned emitters</span><strong>${target.emitters.length}/2</strong></div>
-  <div class="stat-row"><span>Reserved material</span><strong>${job?(job.consumed?'consumed: 2 assemblies + 1 crystal':'reserved: 2 assemblies + 1 crystal'):`stock ${w.stock.assemblies} assemblies · ${w.stock.crystal} crystal`}</strong></div>
   ${block?`<p class="blocker" data-blocker-code="${esc(block.code)}">${esc(block.reason)} <small>code: ${esc(block.code)}</small></p>`:''}
-  <p>Forecast (unchanged conditions): useful dose ${dose}, guard dose ${guard}, guard fraction ${fraction}; predicted result <b>${forecast?forecast.outcome.toUpperCase():'—'}</b>. Active window ${recipe?.activeSeconds??8} s; workpiece absorbs only while exposing.</p>
   <div class="assign-block"><label for="cell-emitter">Emitter assignment</label><select id="cell-emitter" data-select="emitter">${emitterOptions||'<option value="">no emitters</option>'}</select><button data-action="assign-emitter">Move to this cell</button></div>
   <div class="assign-block"><label for="cell-tuner">Tuner assignment</label><select id="cell-tuner" data-select="tuner">${tunerOptions||'<option value="">no tuners</option>'}</select><button data-action="assign-tuner">Assign tuner</button></div>
   <label class="phase-label" for="cell-phase">Manual phase <output id="cell-phase-value">${assignedTuner?fmt(assignedTuner.phase):'—'}</output></label>
@@ -39,7 +36,17 @@ export function renderProcessInspector(w:World,target:Target,continuous:boolean)
   <label class="switch"><input type="checkbox" data-action="continuous" ${continuous?'checked':''}>Run continuously</label>
   <label class="switch"><input type="checkbox" data-action="auto-tune" ${domain?.enabled?'checked':''}>Auto tune</label>
   <div class="button-row"><button class="primary" data-action="start-test" ${!domain||qualification?.status==='testing'?'disabled':''}>Start 3-cycle test</button><button data-action="cancel-test" ${qualification?.status==='testing'?'':'disabled'}>Cancel test</button></div>
-  ${domain?renderDomainInspector(w,domain):'<p>No control domain.</p>'}
-  <div class="result-list"><span class="eyebrow">LAST TWO RESULTS</span>${results.length?results.map(j=>`<div>${esc(j.outcome??'—')} · useful ${fmt(j.useful)} · guard ${fmt(j.guard)}</div>`).join(''):'<div>No completed batches yet</div>'}</div>
+  <div class="forecast"><span class="eyebrow">FORECAST · UNCHANGED CONDITIONS</span>
+   <div class="stat-row"><span>Useful dose</span><strong>${dose}</strong></div>
+   <div class="stat-row"><span>Guard dose</span><strong>${guard}</strong></div>
+   <div class="stat-row"><span>Guard fraction</span><strong>${fraction}</strong></div>
+   <div class="stat-row"><span>Predicted result</span><strong>${forecast?forecast.outcome.toUpperCase():'—'}</strong></div>
+   <div class="stat-row"><span>Reserved material</span><strong>${job?(job.consumed?'consumed: 2 assemblies + 1 crystal':'reserved: 2 assemblies + 1 crystal'):`stock ${w.stock.assemblies} assemblies · ${w.stock.crystal} crystal`}</strong></div>
+   <p class="forecast-note">Active window ${recipe?.activeSeconds??8} s; workpiece absorbs only while exposing.</p>
+  </div>
+  <details class="inspector-group" data-group="process"><summary>Control domain &amp; results</summary>
+   ${domain?renderDomainInspector(w,domain):'<p>No control domain.</p>'}
+   <div class="result-list"><span class="eyebrow">LAST TWO RESULTS</span>${results.length?results.map(j=>`<div>${esc(j.outcome??'—')} · useful ${fmt(j.useful)} · guard ${fmt(j.guard)}</div>`).join(''):'<div>No completed batches yet</div>'}</div>
+  </details>
  </div>`;
 }

@@ -7,7 +7,7 @@ async function start(page:Page){
   (window as any).clipDraws=[];
   CanvasRenderingContext2D.prototype.drawImage=function(this:CanvasRenderingContext2D,...args:any[]){
    const im=args[0];
-   if(im instanceof HTMLImageElement&&(/pass-07|condition-v1/.test(im.src))){
+   if(im instanceof HTMLImageElement&&(/pass-07|pass-08|condition-v1|cycle-v1|fire-v1|power-unit-turnaround-v2|perimeter-sentry-v1/.test(im.src))){
     const draws=(window as any).clipDraws;draws.push({src:im.src,frame:args.slice(1,5),composite:this.globalCompositeOperation});if(draws.length>3000)draws.shift();
    }
    return (native as any).apply(this,args);
@@ -25,7 +25,7 @@ async function fixture(page:Page,health:number,rotation=0,firing=false){
   if(firing){w.ecology.defenseReady=true;w.ecology.grace=0;Object.assign(w.ecology.creatures[0],{x:16,y:5,exposure:50,health:30});}
   localStorage.setItem('fieldworks.save.v1',sim.serialize(w));
  },{health,rotation,firing});
- await page.locator('#load').click();
+ await page.locator('#menu').click();await page.locator('#session-load').click();
  await expect.poll(()=>page.evaluate(()=>(window as any).phieldworks.snapshot().entities.some((e:any)=>e.id==='e99'))).toBe(true);
  await expect.poll(()=>page.evaluate(()=>(window as any).phieldworks.snapshot().entities.find((e:any)=>e.kind==='assembler').rotation)).toBe(rotation);
  await page.evaluate(()=>{(window as any).clipDraws=[];});
@@ -57,7 +57,56 @@ test('sentry recoil follows combat and power loss restores dark static condition
  await page.locator('#pause').click();await page.waitForTimeout(100);await page.evaluate(()=>{(window as any).clipDraws=[];});await page.waitForTimeout(180);
  expect((await frames(page,'sentry-r0')).length).toBe(1);
  await page.evaluate(()=>{const w=(window as any).phieldworks.snapshot();w.entities.find((e:any)=>e.kind==='generator').health=0;localStorage.setItem('fieldworks.save.v1',JSON.stringify(w));});
- await page.locator('#load').click();await page.waitForTimeout(100);await page.evaluate(()=>{(window as any).clipDraws=[];});await page.waitForTimeout(180);
+ await page.locator('#menu').click();await page.locator('#session-load').click();await page.waitForTimeout(100);await page.evaluate(()=>{(window as any).clipDraws=[];});await page.waitForTimeout(180);
  expect((await frames(page,'sentry-r0')).length).toBe(0);expect((await frames(page,'generator-r0')).length).toBe(0);
  expect((await frames(page,'sentry-condition-v1')).length).toBe(1);expect((await frames(page,'generator-condition-v1')).length).toBe(1);
+});
+
+
+test('reduced motion freezes legacy directions without dropping condition or power state',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});await start(page);
+ const result=await page.evaluate(async()=>{
+  const assetsUrl='/src/assets.ts';await (await import(/* @vite-ignore */ assetsUrl)).loadSprites();
+  const rendererUrl='/src/renderer.ts',worldUrl='/src/sim/world.ts',stateUrl='/src/equipment-state.ts';
+  const [{Renderer},sim,{equipmentState}]=await Promise.all([import(/* @vite-ignore */ rendererUrl),import(/* @vite-ignore */ worldUrl),import(/* @vite-ignore */ stateUrl)]);
+  const canvas=document.createElement('canvas');document.body.append(canvas);
+  const renderer=new Renderer(canvas,{zoom:1,panX:0,panY:0});
+  const w=sim.createWorld(),out:Record<string,any[]>={};
+  for(const kind of ['extractor','assembler','generator','sentry']){
+   const e=sim.newEntity(kind,0,0,'motion-test');e.rotation=1;e.powered=true;e.health=100;
+   const state={...equipmentState(w,e),powered:true,moving:true,work:kind==='sentry'?'firing':'running',shotAge:.08};
+   (window as any).clipDraws=[];
+   for(const t of [.1,.3,.5]){e.progress=t;renderer.machine(e,1,state,t);}
+   out[kind]=[...(window as any).clipDraws];
+   if(kind==='assembler'){
+    (window as any).clipDraws=[];renderer.machine(e,1,{...state,condition:2},.5);out.damaged=[...(window as any).clipDraws];
+    (window as any).clipDraws=[];renderer.machine(e,1,{...state,powered:false,work:'no-power'},.5);out.off=[...(window as any).clipDraws];
+   }
+  }
+  canvas.remove();return out;
+ });
+ for(const kind of ['extractor','assembler','generator','sentry']){
+  expect(result[kind],`${kind}: ${JSON.stringify(result)}`).toHaveLength(3);
+  expect(new Set(result[kind].map(d=>JSON.stringify(d.frame))).size).toBe(1);
+ }
+ expect(result.damaged[0].src).toContain('assembler-condition-v1');
+ expect(result.off[0].src).toContain('assembler-condition-v1');
+});
+
+test('reference and dump pass08 clips render with real state, stay source-over and freeze on pause',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await start(page);
+ await expect.poll(async()=>(await frames(page,'reference-r0-cycle-v2')).length).toBeGreaterThan(1);
+ await expect.poll(async()=>(await frames(page,'dump-r0-cycle-v2')).length).toBeGreaterThan(1);
+ expect(await page.evaluate(()=>(window as any).clipDraws.filter((d:any)=>d.src.includes('pass-08')).every((d:any)=>d.composite==='source-over'))).toBe(true);
+ await page.locator('#pause').click();await page.waitForTimeout(100);await page.evaluate(()=>{(window as any).clipDraws=[];});await page.waitForTimeout(250);
+ expect((await frames(page,'reference-r0-cycle-v2')).length).toBe(1);
+ expect((await frames(page,'dump-r0-cycle-v2')).length).toBe(1);
+ expect(errors).toEqual([]);
+});
+
+test('reduced motion holds pass08 reference and dump clips at frame zero',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});await start(page);
+ await page.waitForTimeout(250);
+ expect((await frames(page,'reference-r0-cycle-v2')).length).toBe(1);
+ expect((await frames(page,'dump-r0-cycle-v2')).length).toBe(1);
 });

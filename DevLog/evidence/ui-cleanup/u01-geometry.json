@@ -1,0 +1,593 @@
+{
+  "date": "2026-09-16",
+  "revision": "working tree after U-01",
+  "fixture": "Fresh world, tutorial dismissed, user-paused via #pause; Chromium DPR 1 (plus DPR 2 smoke); CSS pixel rectangles; raw canvas clipped to viewport, overlays not subtracted.",
+  "results": [
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dpr": 1,
+      "idle": {
+        "statusBar": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 40
+        },
+        "main": {
+          "x": 0,
+          "y": 40,
+          "width": 1366,
+          "height": 728
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 40,
+          "width": 1366,
+          "height": 46
+        },
+        "canvas": {
+          "x": 0,
+          "y": 86,
+          "width": 1366,
+          "height": 337
+        },
+        "dock": {
+          "x": 0,
+          "y": 423,
+          "width": 1366,
+          "height": 345
+        },
+        "objectiveChip": {
+          "x": 1234,
+          "y": 49,
+          "width": 119,
+          "height": 28
+        },
+        "minimap": {
+          "x": 1160,
+          "y": 98,
+          "width": 194,
+          "height": 139
+        },
+        "drawer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "hint": {
+          "x": 12,
+          "y": 98,
+          "width": 460,
+          "height": 27
+        },
+        "canvasFraction": 0.4388,
+        "bodyScroll": {
+          "width": 1366,
+          "height": 768
+        }
+      },
+      "selected": {
+        "statusBar": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 40
+        },
+        "main": {
+          "x": 0,
+          "y": 40,
+          "width": 1366,
+          "height": 728
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 40,
+          "width": 1366,
+          "height": 46
+        },
+        "canvas": {
+          "x": 0,
+          "y": 86,
+          "width": 1366,
+          "height": 337
+        },
+        "dock": {
+          "x": 0,
+          "y": 423,
+          "width": 1366,
+          "height": 345
+        },
+        "objectiveChip": {
+          "x": 954,
+          "y": 49,
+          "width": 119,
+          "height": 28
+        },
+        "minimap": {
+          "x": 1160,
+          "y": 98,
+          "width": 194,
+          "height": 139
+        },
+        "drawer": {
+          "x": 1086,
+          "y": 40,
+          "width": 280,
+          "height": 728
+        },
+        "hint": {
+          "x": 12,
+          "y": 98,
+          "width": 508,
+          "height": 27
+        },
+        "canvasFraction": 0.4388,
+        "bodyScroll": {
+          "width": 1366,
+          "height": 768
+        }
+      },
+      "cameraBefore": {
+        "panX": 25,
+        "panY": 24,
+        "zoom": 1
+      },
+      "cameraAfter": {
+        "panX": 25,
+        "panY": 24,
+        "zoom": 1
+      },
+      "cameraPreserved": true,
+      "hintText": "Inspect equipment · ? for field manual / 4, 18 · R rotates disconnected equipment",
+      "errors": [
+        "console: Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dpr": 1,
+      "idle": {
+        "statusBar": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 40
+        },
+        "main": {
+          "x": 0,
+          "y": 40,
+          "width": 1440,
+          "height": 960
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 40,
+          "width": 1440,
+          "height": 46
+        },
+        "canvas": {
+          "x": 0,
+          "y": 86,
+          "width": 1440,
+          "height": 569
+        },
+        "dock": {
+          "x": 0,
+          "y": 655,
+          "width": 1440,
+          "height": 345
+        },
+        "objectiveChip": {
+          "x": 1308,
+          "y": 49,
+          "width": 119,
+          "height": 28
+        },
+        "minimap": {
+          "x": 1234,
+          "y": 98,
+          "width": 194,
+          "height": 139
+        },
+        "drawer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "hint": {
+          "x": 12,
+          "y": 98,
+          "width": 460,
+          "height": 27
+        },
+        "canvasFraction": 0.569,
+        "bodyScroll": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      "selected": {
+        "statusBar": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 40
+        },
+        "main": {
+          "x": 0,
+          "y": 40,
+          "width": 1440,
+          "height": 960
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 40,
+          "width": 1440,
+          "height": 46
+        },
+        "canvas": {
+          "x": 0,
+          "y": 86,
+          "width": 1440,
+          "height": 569
+        },
+        "dock": {
+          "x": 0,
+          "y": 655,
+          "width": 1440,
+          "height": 345
+        },
+        "objectiveChip": {
+          "x": 1028,
+          "y": 49,
+          "width": 119,
+          "height": 28
+        },
+        "minimap": {
+          "x": 1234,
+          "y": 98,
+          "width": 194,
+          "height": 139
+        },
+        "drawer": {
+          "x": 1160,
+          "y": 40,
+          "width": 280,
+          "height": 960
+        },
+        "hint": {
+          "x": 12,
+          "y": 98,
+          "width": 508,
+          "height": 27
+        },
+        "canvasFraction": 0.569,
+        "bodyScroll": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      "cameraBefore": {
+        "panX": 25,
+        "panY": 24,
+        "zoom": 1
+      },
+      "cameraAfter": {
+        "panX": 25,
+        "panY": 24,
+        "zoom": 1
+      },
+      "cameraPreserved": true,
+      "hintText": "Inspect equipment · ? for field manual / 3, 17 · R rotates disconnected equipment",
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dpr": 1,
+      "idle": {
+        "statusBar": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 40
+        },
+        "main": {
+          "x": 0,
+          "y": 40,
+          "width": 1920,
+          "height": 1040
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 40,
+          "width": 1920,
+          "height": 46
+        },
+        "canvas": {
+          "x": 0,
+          "y": 86,
+          "width": 1920,
+          "height": 649
+        },
+        "dock": {
+          "x": 0,
+          "y": 735,
+          "width": 1920,
+          "height": 345
+        },
+        "objectiveChip": {
+          "x": 1788,
+          "y": 49,
+          "width": 119,
+          "height": 28
+        },
+        "minimap": {
+          "x": 1714,
+          "y": 98,
+          "width": 194,
+          "height": 139
+        },
+        "drawer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "hint": {
+          "x": 12,
+          "y": 98,
+          "width": 460,
+          "height": 27
+        },
+        "canvasFraction": 0.6009,
+        "bodyScroll": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "selected": {
+        "statusBar": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 40
+        },
+        "main": {
+          "x": 0,
+          "y": 40,
+          "width": 1920,
+          "height": 1040
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 40,
+          "width": 1920,
+          "height": 46
+        },
+        "canvas": {
+          "x": 0,
+          "y": 86,
+          "width": 1920,
+          "height": 649
+        },
+        "dock": {
+          "x": 0,
+          "y": 735,
+          "width": 1920,
+          "height": 345
+        },
+        "objectiveChip": {
+          "x": 1508,
+          "y": 49,
+          "width": 119,
+          "height": 28
+        },
+        "minimap": {
+          "x": 1714,
+          "y": 98,
+          "width": 194,
+          "height": 139
+        },
+        "drawer": {
+          "x": 1640,
+          "y": 40,
+          "width": 280,
+          "height": 1040
+        },
+        "hint": {
+          "x": 12,
+          "y": 98,
+          "width": 508,
+          "height": 27
+        },
+        "canvasFraction": 0.6009,
+        "bodyScroll": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "cameraBefore": {
+        "panX": 25,
+        "panY": 24,
+        "zoom": 1
+      },
+      "cameraAfter": {
+        "panX": 25,
+        "panY": 24,
+        "zoom": 1
+      },
+      "cameraPreserved": true,
+      "hintText": "Inspect equipment · ? for field manual / 4, 17 · R rotates disconnected equipment",
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "dpr": 1,
+      "idle": {
+        "statusBar": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 40
+        },
+        "main": {
+          "x": 0,
+          "y": 40,
+          "width": 1024,
+          "height": 728
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 40,
+          "width": 1024,
+          "height": 46
+        },
+        "canvas": {
+          "x": 0,
+          "y": 86,
+          "width": 1024,
+          "height": 341
+        },
+        "dock": {
+          "x": 0,
+          "y": 427,
+          "width": 1024,
+          "height": 341
+        },
+        "objectiveChip": {
+          "x": 892,
+          "y": 49,
+          "width": 119,
+          "height": 28
+        },
+        "minimap": {
+          "x": 866,
+          "y": 98,
+          "width": 146,
+          "height": 112
+        },
+        "drawer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "hint": {
+          "x": 12,
+          "y": 98,
+          "width": 460,
+          "height": 27
+        },
+        "canvasFraction": 0.444,
+        "bodyScroll": {
+          "width": 1024,
+          "height": 768
+        }
+      },
+      "selected": {
+        "statusBar": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 40
+        },
+        "main": {
+          "x": 0,
+          "y": 40,
+          "width": 1024,
+          "height": 728
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 40,
+          "width": 1024,
+          "height": 46
+        },
+        "canvas": {
+          "x": 0,
+          "y": 86,
+          "width": 1024,
+          "height": 341
+        },
+        "dock": {
+          "x": 0,
+          "y": 427,
+          "width": 1024,
+          "height": 341
+        },
+        "objectiveChip": {
+          "x": 636,
+          "y": 49,
+          "width": 119,
+          "height": 28
+        },
+        "minimap": {
+          "x": 866,
+          "y": 98,
+          "width": 146,
+          "height": 112
+        },
+        "drawer": {
+          "x": 768,
+          "y": 40,
+          "width": 256,
+          "height": 728
+        },
+        "hint": {
+          "x": 12,
+          "y": 98,
+          "width": 508,
+          "height": 27
+        },
+        "canvasFraction": 0.444,
+        "bodyScroll": {
+          "width": 1024,
+          "height": 768
+        }
+      },
+      "cameraBefore": {
+        "panX": 25,
+        "panY": 24,
+        "zoom": 1
+      },
+      "cameraAfter": {
+        "panX": 25,
+        "panY": 24,
+        "zoom": 1
+      },
+      "cameraPreserved": true,
+      "hintText": "Inspect equipment · ? for field manual / 4, 18 · R rotates disconnected equipment",
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dpr": 2,
+      "backing": {
+        "cssW": 1366,
+        "cssH": 337,
+        "pxW": 2732,
+        "pxH": 674,
+        "dpr": 2
+      },
+      "hit": "world",
+      "errors": []
+    }
+  ]
+}

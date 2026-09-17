@@ -1,0 +1,298 @@
+{
+  "date": "2026-09-16",
+  "fixture": "Fresh world, tutorial dismissed, user-paused after asset readiness; Chromium at DPR 1; CSS pixel rectangles; raw canvas area does not subtract overlays.",
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "rects": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 79
+        },
+        ".resource-bar": {
+          "x": 0,
+          "y": 79,
+          "width": 1440,
+          "height": 79
+        },
+        "main": {
+          "x": 0,
+          "y": 158,
+          "width": 1440,
+          "height": 812
+        },
+        ".map-toolbar": {
+          "x": 0,
+          "y": 158,
+          "width": 1112,
+          "height": 46
+        },
+        "#world": {
+          "x": 0,
+          "y": 204,
+          "width": 1112,
+          "height": 421
+        },
+        ".build-dock": {
+          "x": 0,
+          "y": 625,
+          "width": 1112,
+          "height": 345
+        },
+        "aside": {
+          "x": 1112,
+          "y": 158,
+          "width": 328,
+          "height": 812
+        },
+        "footer": {
+          "x": 0,
+          "y": 970,
+          "width": 1440,
+          "height": 30
+        },
+        "#minimap-wrap": {
+          "x": 906,
+          "y": 216,
+          "width": 194,
+          "height": 139
+        },
+        "#map-hint": {
+          "x": 18,
+          "y": 219,
+          "width": 464.078125,
+          "height": 31
+        }
+      },
+      "scroll": {
+        "width": 1440,
+        "height": 1000
+      },
+      "canvasFraction": 0.32510555555555554
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "rects": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 79
+        },
+        ".resource-bar": {
+          "x": 0,
+          "y": 79,
+          "width": 1366,
+          "height": 79
+        },
+        "main": {
+          "x": 0,
+          "y": 158,
+          "width": 1366,
+          "height": 580
+        },
+        ".map-toolbar": {
+          "x": 0,
+          "y": 158,
+          "width": 1038,
+          "height": 46
+        },
+        "#world": {
+          "x": 0,
+          "y": 204,
+          "width": 1038,
+          "height": 250
+        },
+        ".build-dock": {
+          "x": 0,
+          "y": 454,
+          "width": 1038,
+          "height": 345
+        },
+        "aside": {
+          "x": 1038,
+          "y": 158,
+          "width": 328,
+          "height": 580
+        },
+        "footer": {
+          "x": 0,
+          "y": 738,
+          "width": 1366,
+          "height": 30
+        },
+        "#minimap-wrap": {
+          "x": 832,
+          "y": 216,
+          "width": 194,
+          "height": 139
+        },
+        "#map-hint": {
+          "x": 18,
+          "y": 219,
+          "width": 464.078125,
+          "height": 31
+        }
+      },
+      "scroll": {
+        "width": 1366,
+        "height": 768
+      },
+      "canvasFraction": 0.24735770497803808
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "rects": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 79
+        },
+        ".resource-bar": {
+          "x": 0,
+          "y": 79,
+          "width": 1920,
+          "height": 79
+        },
+        "main": {
+          "x": 0,
+          "y": 158,
+          "width": 1920,
+          "height": 892
+        },
+        ".map-toolbar": {
+          "x": 0,
+          "y": 158,
+          "width": 1592,
+          "height": 46
+        },
+        "#world": {
+          "x": 0,
+          "y": 204,
+          "width": 1592,
+          "height": 501
+        },
+        ".build-dock": {
+          "x": 0,
+          "y": 705,
+          "width": 1592,
+          "height": 345
+        },
+        "aside": {
+          "x": 1592,
+          "y": 158,
+          "width": 328,
+          "height": 892
+        },
+        "footer": {
+          "x": 0,
+          "y": 1050,
+          "width": 1920,
+          "height": 30
+        },
+        "#minimap-wrap": {
+          "x": 1386,
+          "y": 216,
+          "width": 194,
+          "height": 139
+        },
+        "#map-hint": {
+          "x": 18,
+          "y": 219,
+          "width": 464.078125,
+          "height": 31
+        }
+      },
+      "scroll": {
+        "width": 1920,
+        "height": 1080
+      },
+      "canvasFraction": 0.3846412037037037
+    },
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "rects": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 79
+        },
+        ".resource-bar": {
+          "x": 0,
+          "y": 79,
+          "width": 1024,
+          "height": 79
+        },
+        "main": {
+          "x": 0,
+          "y": 158,
+          "width": 1024,
+          "height": 580
+        },
+        ".map-toolbar": {
+          "x": 0,
+          "y": 158,
+          "width": 734,
+          "height": 46
+        },
+        "#world": {
+          "x": 0,
+          "y": 204,
+          "width": 734,
+          "height": 250
+        },
+        ".build-dock": {
+          "x": 0,
+          "y": 454,
+          "width": 734,
+          "height": 331
+        },
+        "aside": {
+          "x": 734,
+          "y": 158,
+          "width": 290,
+          "height": 580
+        },
+        "footer": {
+          "x": 0,
+          "y": 738,
+          "width": 1024,
+          "height": 30
+        },
+        "#minimap-wrap": {
+          "x": 576,
+          "y": 216,
+          "width": 146,
+          "height": 112
+        },
+        "#map-hint": {
+          "x": 18,
+          "y": 219,
+          "width": 464.078125,
+          "height": 31
+        }
+      },
+      "scroll": {
+        "width": 1024,
+        "height": 768
+      },
+      "canvasFraction": 0.23333231608072916
+    }
+  ]
+}

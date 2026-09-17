@@ -10,14 +10,15 @@ export class TechnologyPanel {
  private full=false;
  private mode:'research'|'production'='research';
  private production:ProductionGraph;
- private selected='frontier';
- private scale=.85;
+  private selected='frontier';
+  private scale=.85;
+  private legend=false;
  constructor(private getWorld:()=>World,private opener:HTMLButtonElement){
   this.dialog=document.createElement('dialog');this.dialog.id='technology-panel';
   this.dialog.setAttribute('aria-labelledby','technology-title');
   this.dialog.innerHTML=`<div class="tech-heading"><div><span class="eyebrow">EXPEDITION / RESEARCH ROADMAP</span><h2 id="technology-title">From outpost to planetary instrument.</h2></div><button id="close-technology" aria-label="Close technology tree">×</button></div>
-   <div class="tech-toolbar"><div class="tech-view-tools" role="group" aria-label="Progression view"><button id="view-research" aria-pressed="true">Research</button><button id="view-production" aria-pressed="false">Items & equipment</button></div><p>Inspect research unlocks, ingredient chains and production equipment.</p><button id="tech-dev-toggle" aria-pressed="false">Dev: full tree</button></div>
-   <div class="tech-body"><section class="tech-map-section" aria-label="Technology dependency map"><div class="tech-legend"><span>✓ Available / observed</span><span>◇ Upcoming objective</span><span>⋯ Proposed research</span><span>Arrows require every incoming branch</span></div><div id="tech-viewport" tabindex="0" aria-label="Scrollable technology map. Tab to technologies; use arrow keys to scroll."><div id="tech-canvas"></div></div><div class="tech-map-footer"><span id="tech-count"></span><div><button id="tech-zoom-out" aria-label="Zoom out technology tree">−</button><output id="tech-zoom"></output><button id="tech-zoom-in" aria-label="Zoom in technology tree">+</button><button id="tech-fit">Fit tree</button></div></div></section><section id="tech-detail" aria-label="Selected technology details"></section></div><div class="tech-footnote">I Industrial → II Precision → III Systems · Costs are proposed totals per dossier type. Existing expedition tools are available now. Viewing this plan spends no resources.</div>`;
+   <div class="tech-toolbar"><div class="tech-view-tools" role="group" aria-label="Progression view"><button id="view-research" aria-pressed="true">Research</button><button id="view-production" aria-pressed="false">Items & equipment</button></div><p>Inspect research unlocks, ingredient chains and production equipment.</p><button id="tech-legend-toggle" aria-pressed="false" title="Show map legend">Legend</button><button id="tech-dev-toggle" aria-pressed="false">Dev: full tree</button></div>
+   <div class="tech-body"><section class="tech-map-section" aria-label="Technology dependency map"><div class="tech-legend" id="tech-legend" hidden><span>✓ Available / observed</span><span>◇ Upcoming objective</span><span>⋯ Proposed research</span><span>Arrows require every incoming branch</span></div><div id="tech-viewport" tabindex="0" aria-label="Scrollable technology map. Tab to technologies; use arrow keys to scroll."><div id="tech-canvas"></div></div><div class="tech-map-footer"><span id="tech-count"></span><div><button id="tech-zoom-out" aria-label="Zoom out technology tree">−</button><output id="tech-zoom"></output><button id="tech-zoom-in" aria-label="Zoom in technology tree">+</button><button id="tech-fit">Fit tree</button></div></div></section><section id="tech-detail" aria-label="Selected technology details"></section></div><details class="tech-footnote"><summary>Costs &amp; status</summary>I Industrial → II Precision → III Systems · Costs are proposed totals per dossier type. Existing expedition tools are available now. Viewing this plan spends no resources.</details>`;
   document.body.append(this.dialog);
   this.production=new ProductionGraph(id=>{this.selected=id;this.mode='research';this.render();});
   this.dialog.querySelector('.tech-footnote')!.before(this.production.element);
@@ -28,6 +29,7 @@ export class TechnologyPanel {
   this.el('close-technology').onclick=()=>this.dialog.close();
   this.dialog.addEventListener('close',()=>{opener.setAttribute('aria-expanded','false');opener.focus();});
   this.dialog.addEventListener('click',e=>{const r=this.dialog.getBoundingClientRect();if(e.target===this.dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))this.dialog.close();});
+  this.el('tech-legend-toggle').onclick=()=>{this.legend=!this.legend;this.el('tech-legend-toggle').setAttribute('aria-pressed',String(this.legend));this.dialog.querySelectorAll<HTMLElement>('.tech-legend').forEach(el=>{el.hidden=!this.legend;});};
   this.el('tech-dev-toggle').onclick=()=>{this.full=!this.full;this.scale=.85;if(!visibleTechnologies(this.getWorld(),this.full).some(t=>t.id===this.selected))this.selected='frontier';this.render();this.el('tech-viewport').scrollTo(0,0);if(this.mode==='production')this.production.show(visibleTechnologies(this.getWorld(),this.full),true);};
   this.el('tech-zoom-out').onclick=()=>this.zoom(this.scale-.15);
   this.el('tech-zoom-in').onclick=()=>this.zoom(this.scale+.15);

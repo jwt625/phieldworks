@@ -6,9 +6,7 @@ const state=(page:Page)=>page.evaluate(()=>(window as any).fieldworks.snapshot()
 test('a placed precision cell is inspected, bound, tuned and run through the real UI',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await ready(page);
  await page.getByRole('button',{name:'Pause simulation',exact:true}).click();
- await page.getByRole('tab',{name:'All',exact:true}).click();
  await page.getByRole('button',{name:'Build Phase tuner',exact:true}).click();await point(page,10.1,24.1);
- await page.getByRole('tab',{name:'All',exact:true}).click();
  await page.getByRole('button',{name:'Build Fabrication cell',exact:true}).click();
  await point(page,10.1,20.1);
  await expect(page.locator('#process-body')).toBeVisible();
