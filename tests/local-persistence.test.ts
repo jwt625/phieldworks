@@ -16,7 +16,7 @@ test('the world façade no longer exposes writable global target/controller/comm
 test('v1/v2/v3 saves migrate physical state and build local frontier records',()=>{
  for(const version of [1,2,3]){
   const w=createWorld();tick(w,30);const source=legacy(w,version);const loaded=deserialize(JSON.stringify(source));
-  assert.equal(loaded.version,4,`v${version} version`);
+  assert.equal(loaded.version,5,`v${version} version`);
   assert.equal(loaded.entities.length,w.entities.length,`v${version} entities`);
   assert.deepEqual(loaded.stock,w.stock,`v${version} stock`);
   assert.equal(loaded.frontier,w.frontier,`v${version} frontier`);

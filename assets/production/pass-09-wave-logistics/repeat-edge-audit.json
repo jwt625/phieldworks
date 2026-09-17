@@ -1,0 +1,56 @@
+[
+  {
+    "file": "straight-h-repeat-v1.png",
+    "sha256": "bd54f5652fc18638299efee438193b95126f04277ac54c14fdd4cfa8825dc1ab",
+    "size": [
+      1254,
+      1254
+    ],
+    "edge_body_spans": [
+      [
+        498,
+        754
+      ],
+      [
+        499,
+        754
+      ]
+    ],
+    "normalized_widths": [
+      0.20494417862838915,
+      0.20414673046251994
+    ],
+    "alpha_support_equal": false,
+    "mean_premultiplied_rgb_error_255": 6.932748404160627,
+    "max_premultiplied_rgb_error_255": 59.5294117647059,
+    "mean_alpha_error_255": 0.5875486381322957,
+    "status": "raw-candidate-not-approved"
+  },
+  {
+    "file": "straight-v-repeat-v1.png",
+    "sha256": "57e947534c3f30dfe2a9f2d8c60428046ddb8c7099a29ad68f39536fb779f88f",
+    "size": [
+      1254,
+      1254
+    ],
+    "edge_body_spans": [
+      [
+        520,
+        734
+      ],
+      [
+        520,
+        734
+      ]
+    ],
+    "normalized_widths": [
+      0.17145135566188197,
+      0.17145135566188197
+    ],
+    "alpha_support_equal": true,
+    "mean_premultiplied_rgb_error_255": 7.886791305669555,
+    "max_premultiplied_rgb_error_255": 46.90196078431373,
+    "mean_alpha_error_255": 1.8976744186046512,
+    "status": "raw-candidate-not-approved"
+  }
+]

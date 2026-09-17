@@ -7,6 +7,7 @@ export const APPEARANCE:Record<Kind,Appearance>={
  generator:{asset:'power-unit',sheet:'power-unit-turnaround-v2'},
  reference:{asset:'reference-control-station',sheet:'reference-control-station-turnaround-v2'},
  junction:{asset:'four-port-junction',sheet:'four-port-junction-turnaround-v2'},
+ crossing:{asset:'four-port-junction',sheet:'four-port-junction-turnaround-v2'},
  tuner:{asset:'phase-tuner',sheet:'phase-tuner-turnaround-v2'},
  emitter:{asset:'field-emitter',sheet:'field-emitter-turnaround-v2'},
  sentry:{asset:'power-unit',sheet:'perimeter-sentry-v1'},

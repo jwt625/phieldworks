@@ -5,7 +5,7 @@ history, asset production, forward plans and verification. Documents are grouped
 by **role** into folders, and every folder has a `README.md` briefing so you can
 judge whether to open its contents.
 
-Numeric prefixes (`000`–`030`) are stable chronological **IDs**, not folder
+Numeric prefixes (`000`–`033`) are stable chronological **IDs**, not folder
 ordering. Cross-references and external links use them, so keep them stable.
 
 > **If you read only one file, read [`briefing.md`](briefing.md).** It is the

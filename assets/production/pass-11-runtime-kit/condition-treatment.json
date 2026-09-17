@@ -1,0 +1,22 @@
+{
+  "status": "planning-contract-not-runtime-registered",
+  "source": "accessories-source.png",
+  "sourceRect": null,
+  "reasonNoRect": "Generated scorch concepts require isolation and edge cleanup before registration.",
+  "bodyState": "Reuse intact source; overlays do not change geometry, ports or simulation.",
+  "owner": "renderer topology and state presentation",
+  "levels": [
+    {"condition": 0, "decal": null, "opacity": 0},
+    {"condition": 1, "decal": "light-scorch", "opacity": 0.25},
+    {"condition": 2, "decal": "heavy-scorch-crack", "opacity": 0.4},
+    {"condition": 3, "decal": "heavy-scorch-crack", "opacity": 0.7}
+  ],
+  "opacityStatus": "Proposed visual starting values; parent review required.",
+  "blend": "source-over",
+  "clipping": "Opaque casing interior only; preserve original body alpha. Never draw beyond body footprint.",
+  "terminalApronExclusionTiles": 0.08,
+  "placementCount": "One treatment per physical piece, never per straight repeat.",
+  "tinyPiecePolicy": "Omit decal if terminal apron exclusions leave no interior.",
+  "jointPolicy": "Never cover terminal aprons or topology-owned sleeves; never create gaps, caps or connectivity.",
+  "fractionalConditionPolicy": "Use existing state-presentation mapping; do not invent thresholds in asset loader."
+}

@@ -1,4 +1,4 @@
-import { type Complex, ZERO, c, add, sub, mul, polar, power, factorLU, solveFactorization } from './complex';
+import { type Complex, ZERO, c, add, sub, mul, div, polar, power, factorLU, solveFactorization } from './complex';
 export interface Component {id:string; s:Complex[][]; emission?:{group:string; fields:Complex[]}}
 export interface Endpoint {node:string; port:number}
 export interface WaveLink {a:Endpoint;b:Endpoint; amplitude:number; phase:number}
@@ -45,4 +45,16 @@ export function solveNetwork(components:Component[],links:WaveLink[]):NetworkRes
  }
  result.residual=result.sourcePower-result.linkLoss-result.escaped-Object.values(result.absorbed).reduce((a,b)=>a+b,0);
  return result;
+}
+/**
+ * Exact serial composition of two passive two-port elements. A straight run can be folded into one
+ * solver element without dropping reflections or phase, keeping the port budget bounded. Throws on a
+ * dark (zero-transmission) element rather than silently returning a wrong network.
+ */
+export function compose2Port(a:Complex[][],b:Complex[][]):Complex[][]{
+ const transfer=(s:Complex[][]):Complex[][]=>{const s11=s[0][0],s12=s[0][1],s21=s[1][0],s22=s[1][1];const i21=div(c(1),s21);return [[i21,mul(c(-1),mul(s22,i21))],[mul(s11,i21),sub(s12,mul(s11,mul(s22,i21)))]];};
+ const t1=transfer(a),t2=transfer(b);
+ const t=[[add(mul(t1[0][0],t2[0][0]),mul(t1[0][1],t2[1][0])),add(mul(t1[0][0],t2[0][1]),mul(t1[0][1],t2[1][1]))],[add(mul(t1[1][0],t2[0][0]),mul(t1[1][1],t2[1][0])),add(mul(t1[1][0],t2[0][1]),mul(t1[1][1],t2[1][1]))]];
+ const i11=div(c(1),t[0][0]);
+ return [[mul(t[1][0],i11),sub(t[1][1],mul(t[1][0],mul(t[0][1],i11)))],[i11,mul(c(-1),mul(t[0][1],i11))]];
 }

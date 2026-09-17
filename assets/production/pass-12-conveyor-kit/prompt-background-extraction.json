@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "belt-straights-source-v2.png",
+  "prompt": "Use case: background-extraction. Remove ONLY the background and ALL shadows/glow outside the four conveyor silhouettes from this image. Output genuine RGBA TRANSPARENCY everywhere outside the four belts. The current grey hazy background MUST disappear entirely, including the haze immediately next to metal edges. Preserve all four belt objects pixel-faithfully in position, size, detail and direction markings. Do not add or change any object. No new backdrop, no black background, no checkerboard painted into the image, no shadow, no smoke, no glow. Four clean isolated cutouts on actual transparent alpha."
+}

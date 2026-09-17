@@ -4,17 +4,22 @@ import {findRoute,segmentClear,type RouteOptions} from './routing';
 export {footprint,ports,routeMetrics} from './geometry';
 import {c,type Complex} from './complex';
 import {source,hybrid,through,matched,solveNetwork,FIELD_PORT_LIMIT,type NetworkResult,type Component,type Endpoint,type WaveLink} from './network';
+import {BASIC_CROSSING,partDef,partScattering} from './wave-parts';
+import {previewFieldRoute,commitFieldRoute,replacePiece,removePiece,piecePorts,pieceCost,sweptError,recycleRoute,hardwareKey} from './wave-construction';
 import {RADIATION_EFFICIENCY,coupledField,projectFrontier,projectTwoZone} from './targets';
 import {automaticControl,referenceReady} from './control';
 import {revalidate,startQualification} from './qualification';
 import {cancel as cancelProcessJob,finalizeLostJobs,finalizeLoss,reserve as reserveProcessJob,rework as reworkProcessJob,step as stepProcess} from './process';
+import {cancel as cancelManufactureJob,finalizeLostJobs as finalizeLostManufactureJobs,reserve as reserveManufactureJob,setAssemblerMode as setAssemblerModeImpl,step as stepManufacture,activeJob as activeManufactureJob,unlockedParts} from './manufacture';
 export {blocker as processBlocker,preview as processPreview} from './process';
 export {FIELD_PORT_LIMIT} from './network';
 import {DEFS,type Kind} from './definitions';
 export {DEFS,type Kind} from './definitions';
 import {WIDTH,HEIGHT,DT,MACHINE_LIMIT,LINK_LIMIT,WIRE_CAPACITY,type World,type Entity,type Connection,type Deposit,type Blueprint,type Stats,type Target,type ReferenceBinding,type ControlDomain,type Qualification} from './world-types';
 export {WIDTH,HEIGHT,DT,MACHINE_LIMIT,LINK_LIMIT,WIRE_CAPACITY} from './world-types';
-export type {World,Entity,Connection,Deposit,Blueprint,Stats,Target,ReferenceBinding,ControlDomain,Qualification,ProcessInventory,ProcessLot,ControlObjective,QualificationStatus,TargetKind,LotKind} from './world-types';
+export type {World,Entity,Connection,Deposit,Blueprint,Stats,Target,ReferenceBinding,ControlDomain,Qualification,ProcessInventory,ProcessLot,ControlObjective,QualificationStatus,TargetKind,LotKind,WavePiece,WaveInterface,ManufactureJob,ManufactureStage,ManufactureOutcome} from './world-types';
+export {previewFieldRoute,commitFieldRoute,replacePiece,removePiece,piecePorts,pieceCost,routePath,sweptError,hardwareKey} from './wave-construction';
+export {partDef,partById,partScattering,WAVE_PART_DEFS,BASIC_STRAIGHT,COMPACT_ELBOW,SWEPT_ELBOW,BASIC_JUNCTION,BASIC_CROSSING,PRECISION_ELBOW,MATCHED_JUNCTION,returnLossDb,insertionLossDb,isPassive} from './wave-parts';
 import {deserializeCore,emptyStats,newProcess} from './persistence';
 export {serialize} from './persistence';
 
@@ -32,7 +37,7 @@ export function frontierQualification(w:World):Qualification|undefined{const d=f
 export function invalidate(w:World,reason:string){w.revision++;if(revalidate(w,reason))event(w,`Qualification invalidated: ${reason}`);}
 function overlap(x:number,y:number,aw:number,ah:number,b:{x:number;y:number;w:number;h:number}){return x<b.x+b.w&&x+aw>b.x&&y<b.y+b.h&&y+ah>b.y;}
 export function placementError(w:World,kind:Kind,x:number,y:number,extra:Entity[]=[],rotation:Rotation=0):string {
- const d={...DEFS[kind],...footprint({kind,rotation})};if(![0,1,2,3].includes(rotation))return 'Invalid rotation';if(w.entities.length+extra.length>=MACHINE_LIMIT)return `Prototype limit: ${MACHINE_LIMIT} machines`;if([...w.entities,...extra].reduce((n,e)=>n+DEFS[e.kind].ports.length,0)+d.ports.length>FIELD_PORT_LIMIT)return `Prototype limit: ${FIELD_PORT_LIMIT} field ports`;if(!Number.isInteger(x)||!Number.isInteger(y)||x<0||y<0||x+d.w>WIDTH||y+d.h>HEIGHT)return 'Outside the build area';
+ const d={...DEFS[kind],...footprint({kind,rotation})};if(![0,1,2,3].includes(rotation))return 'Invalid rotation';if(w.entities.length+extra.length>=MACHINE_LIMIT)return `Prototype limit: ${MACHINE_LIMIT} machines`;if([...w.entities,...extra].reduce((n,e)=>n+DEFS[e.kind].ports.length,0)+w.pieces.length*2+d.ports.length>FIELD_PORT_LIMIT)return `Prototype limit: ${FIELD_PORT_LIMIT} field ports`;if(!Number.isInteger(x)||!Number.isInteger(y)||x<0||y<0||x+d.w>WIDTH||y+d.h>HEIGHT)return 'Outside the build area';
  if(!w.frontier&&x+d.w>25)return 'Clear the armored organism to open the eastern frontier';
  if([...w.entities,...extra].some(e=>overlap(x,y,d.w,d.h,{x:e.x,y:e.y,...footprint(e)})))return 'Footprint occupied';
  if(w.links.some(l=>l.path.some((p,i)=>inside(p,{kind,x,y,rotation})||(i>0&&!segmentClear(l.path[i-1],p,[{kind,x,y,rotation}])))))return 'Route occupies footprint';
@@ -62,9 +67,15 @@ function createProcessCell(w:World,cell:Entity){const p=center(cell),targetId=`t
  w.domains.push({id:domainId,name:'Fabrication cell',target:targetId,reference:frontierDomain(w)?.reference??null,sensor:cell.id,tuners:[],enabled:false,objective:'useful-minus-guard',cursor:0});
  w.qualifications.push({id:`q${w.nextId++}`,domain:domainId,target:targetId,status:'idle',signature:'',elapsed:0,minimum:-1,counters:0,dependencies:[],reason:'Not tested',code:''});
 }
-export function remove(w:World,id:string):void {const e=entity(w,id);if(!e)return;for(const job of w.jobs.filter(j=>j.cell===id&&j.stage!=='complete'))finalizeLoss(w,job.id,'cell dismantled');for(const target of w.targets.filter(t=>t.owner===id)){for(const d of w.domains.filter(d=>d.target===target.id))w.qualifications=w.qualifications.filter(q=>q.domain!==d.id);w.domains=w.domains.filter(d=>d.target!==target.id);}w.targets=w.targets.filter(t=>t.owner!==id);for(const l of w.process.lots)if(l.owner===id&&l.kind==='reject'){l.kind='scrap';l.disposition='spent';l.owner=null;}w.stock.assemblies+=e.health>0?DEFS[e.kind].cost:0;w.stock.scrap+=e.ore;e.ore=0;w.entities=w.entities.filter(x=>x.id!==id);for(const t of w.targets)t.emitters=t.emitters.filter(x=>x!==id);for(const d of w.domains)d.tuners=d.tuners.filter(x=>x!==id);for(const l of w.links.filter(l=>l.a.node===id||l.b.node===id))disconnect(w,l.id);invalidate(w,'Equipment removed');event(w,e.health>0?'Equipment recovered; buffered ore becomes scrap':'Wreck cleared');}
+export function remove(w:World,id:string):void {const e=entity(w,id);if(!e)return;for(const job of w.jobs.filter(j=>j.cell===id&&j.stage!=='complete'))finalizeLoss(w,job.id,'cell dismantled');finalizeLostManufactureJobs(w);for(const target of w.targets.filter(t=>t.owner===id)){for(const d of w.domains.filter(d=>d.target===target.id))w.qualifications=w.qualifications.filter(q=>q.domain!==d.id);w.domains=w.domains.filter(d=>d.target!==target.id);}w.targets=w.targets.filter(t=>t.owner!==id);for(const l of w.process.lots)if(l.owner===id&&l.kind==='reject'){l.kind='scrap';l.disposition='spent';l.owner=null;}w.stock.assemblies+=e.health>0?DEFS[e.kind].cost:0;w.stock.scrap+=e.ore;e.ore=0;w.entities=w.entities.filter(x=>x.id!==id);for(const t of w.targets)t.emitters=t.emitters.filter(x=>x!==id);for(const d of w.domains)d.tuners=d.tuners.filter(x=>x!==id);for(const l of w.links.filter(l=>l.a.node===id||l.b.node===id))disconnect(w,l.id);invalidate(w,'Equipment removed');event(w,e.health>0?'Equipment recovered; buffered ore becomes scrap':'Wreck cleared');}
 /** Process lifecycle commands. Ownership/capacity are validated before any stock or lot mutation. */
 export function reserveProcess(w:World,targetId:string):string{const error=reserveProcessJob(w,targetId);if(!error)invalidate(w,'Process batch reserved');return error;}
+/** R-05 hardware manufacture commands. Installation consumes manufactured hardware, never research points. */
+export function setAssemblerMode(w:World,id:string,mode:'ore'|'tooling'):string{return setAssemblerModeImpl(w,id,mode);}
+export function reserveManufacture(w:World,cellId:string,partId:string):string{return reserveManufactureJob(w,cellId,partId);}
+export function cancelManufacture(w:World,jobId:string):string{return cancelManufactureJob(w,jobId);}
+export function manufactureActive(w:World,cellId:string|null){return activeManufactureJob(w,cellId);}
+export {unlockedParts};
 export function cancelProcess(w:World,jobId:string):string{const error=cancelProcessJob(w,jobId);if(!error)invalidate(w,'Process batch cancelled');return error;}
 export function reworkProcess(w:World,targetId:string):string{const error=reworkProcessJob(w,targetId);if(!error)invalidate(w,'Rework started');return error;}
 /** Begin the local process test: three consecutive accepted cycles under enabled control. */
@@ -89,6 +100,14 @@ export function bindDomainReference(w:World,domainId:string,sourceId:string):str
  let binding=w.references.find(r=>r.source===sourceId);if(!binding){binding={id:`r${w.nextId++}`,source:sourceId,group:sourceId};w.references.push(binding);}
  domain.reference=binding.id;invalidate(w,'Reference binding changed');return '';
 }
+/** Install manufactured junction hardware on a placed four-port junction; consumes inventory only. */
+export function installVariant(w:World,id:string,partId:string):string{
+ const e=entity(w,id);if(!e)return 'Select equipment';
+ const def=partDef(partId,1);if(!def||def.category!=='junction'||e.kind!=='junction')return 'Incompatible hardware definition';
+ if(e.variant===def.id&&e.variant!==undefined)return 'That hardware is already installed';
+ const key=hardwareKey(def.id,def.version);if((w.hardware[key]??0)<1)return `No ${def.name} in inventory — manufacture one first`;
+ w.hardware[key]!--;e.variant=def.id;invalidate(w,'Hardware replaced');event(w,`${def.name} installed`);return '';
+}
 export function connect(w:World,type:Connection['type'],a:Endpoint,b:Endpoint,options:RouteOptions={}):string {
  const ea=entity(w,a.node),eb=entity(w,b.node);if(!ea||!eb||a.node===b.node)return 'Choose two different machines';
  if(!['field','material','power'].includes(type)||!Number.isInteger(a.port)||!Number.isInteger(b.port)||a.port<0||b.port<0)return 'Invalid port index';
@@ -99,7 +118,7 @@ export function connect(w:World,type:Connection['type'],a:Endpoint,b:Endpoint,op
  const path=findRoute(pa,pb,w.entities,WIDTH,HEIGHT,options);if(!path)return 'No valid grid route: check clearance and port direction';
  w.links.push({id:`l${w.nextId++}`,type,a:{...a},b:{...b},path,diagonal:options.diagonal??false,radius,packets:[]});invalidate(w,'Routing changed');return '';
 }
-export function disconnect(w:World,id:string){const l=w.links.find(l=>l.id===id);if(!l)return;w.stock.scrap+=l.packets.length;w.links=w.links.filter(l=>l.id!==id);invalidate(w,'Routing changed');}
+export function disconnect(w:World,id:string){const l=w.links.find(l=>l.id===id);if(!l)return;w.stock.scrap+=l.packets.length;recycleRoute(w,l);w.links=w.links.filter(l=>l.id!==id);invalidate(w,'Routing changed');}
 /** Rebuild an installed route in place. Validation is atomic: the route is untouched on failure. */
 export function editRoute(w:World,id:string,options:RouteOptions={}):string {
  const l=w.links.find(l=>l.id===id);if(!l)return 'Select a route to edit';
@@ -127,7 +146,7 @@ export function assignTuner(w:World,tunerId:string,domainId:string|null):string{
 }
 export function repair(w:World,id:string):string{const e=entity(w,id);if(!e)return 'Select equipment';if(w.stock.assemblies<3)return 'Repair needs 3 assemblies';w.stock.assemblies-=3;e.health=100;e.temperature=25;e.tripped=false;invalidate(w,'Equipment repaired');event(w,`${DEFS[e.kind].name} repaired and reset`);return '';}
 export function createWorld():World {
-  const w:World={version:4,ecology:newEcology(),time:0,nextId:1,entities:[],links:[],deposits:[{id:'starter',x:3,y:5,w:4,h:4,remaining:1400,kind:'ore'},{id:'reserve',x:3,y:17,w:4,h:3,remaining:900,kind:'ore'},{id:'remote-ore',x:38,y:5,w:4,h:4,remaining:1200,kind:'ore'},{id:'frontier',x:29,y:7,w:4,h:4,remaining:500,kind:'crystal'}],stock:{assemblies:28,crystal:0,scrap:0},produced:0,targets:[],references:[],domains:[],qualifications:[],process:newProcess(),jobs:[],eventSeq:0,frontier:false,revision:0,statsRevision:-1,blueprint:null,events:[],stats:emptyStats()};
+  const w:World={version:5,ecology:newEcology(),time:0,nextId:1,entities:[],links:[],pieces:[],deposits:[{id:'starter',x:3,y:5,w:4,h:4,remaining:1400,kind:'ore'},{id:'reserve',x:3,y:17,w:4,h:3,remaining:900,kind:'ore'},{id:'remote-ore',x:38,y:5,w:4,h:4,remaining:1200,kind:'ore'},{id:'frontier',x:29,y:7,w:4,h:4,remaining:500,kind:'crystal'}],stock:{assemblies:28,crystal:0,scrap:0,precision:0},unlocked:[],manufacture:[],hardware:{},produced:0,targets:[],references:[],domains:[],qualifications:[],process:newProcess(),jobs:[],eventSeq:0,frontier:false,revision:0,statsRevision:-1,blueprint:null,events:[],stats:emptyStats()};
   const seed=(kind:Kind,x:number,y:number)=>{const e=newEntity(kind,x,y,`e${w.nextId++}`);w.entities.push(e);return e.id;};
   const gen=seed('generator',9,3),ex=seed('extractor',3,5),as=seed('assembler',3,11),ref=seed('reference',10,9),j=seed('junction',14,9),em=seed('emitter',20,5),dump=seed('dump',14,15);
   const targetId=`t${w.nextId++}`;w.targets=[{id:targetId,kind:'frontier',owner:null,x:28,y:13,health:600,emitters:[em],contract:null}];
@@ -160,21 +179,36 @@ function powerGrid(w:World){
  for(const l of w.links)if(l.type==='power'){const e=entity(w,l.b.node);const flow=e&&e.powered?DEFS[e.kind].watts:0;if(flow>WIRE_CAPACITY)wireOverload++;}
  return {supply,demand,overload,wireOverload};
 }
-/** Geometry uses effective phase rad/tile, not real optical wavelength. */
-export function waveLinks(w:World):WaveLink[]{return w.links.filter(l=>l.type==='field').map(l=>{const m=routeMetrics(l.path,l.radius);return {a:l.a,b:l.b,amplitude:Math.exp(-.5*(m.propagationExponent+m.bendExponent)),phase:.31*m.length};});}
+/** Geometry uses effective phase rad/tile, not real optical wavelength. Physical routes link explicit interfaces. */
+export function waveLinks(w:World):WaveLink[]{
+ const links:WaveLink[]=[];
+ for(const l of w.links.filter(x=>x.type==='field')){
+  if(l.interfaces?.length){for(const iface of l.interfaces)links.push({a:iface.a,b:iface.b,amplitude:1,phase:0});}
+  else{const m=routeMetrics(l.path,l.radius);links.push({a:l.a,b:l.b,amplitude:Math.exp(-.5*(m.propagationExponent+m.bendExponent)),phase:.31*m.length});}
+ }
+ return links;
+}
 export function evaluate(w:World):Stats {
  const grid=powerGrid(w);const comps:Component[]=w.entities.filter(e=>DEFS[e.kind].ports.length).map(e=>{
   if(e.health<=0)return matched(e.id,DEFS[e.kind].ports.length);
   if(e.tripped&&e.kind!=='reference')return {id:e.id,s:DEFS[e.kind].ports.map((_,i)=>DEFS[e.kind].ports.map((_,j)=>c(i===j?1:0)))};
   if(e.tripped)return matched(e.id,DEFS[e.kind].ports.length);
   if(e.kind==='reference')return source(e.id,e.powered?100:0,e.id);
-  if(e.kind==='junction')return hybrid(e.id);
+  if(e.kind==='junction'){const def=e.variant?partDef(e.variant,1):undefined;return def?{id:e.id,s:partScattering(def)}:hybrid(e.id);}
+  if(e.kind==='crossing')return {id:e.id,s:partScattering(BASIC_CROSSING)};
   if(e.kind==='tuner')return through(e.id,e.phase*Math.PI/180+(e.temperature-25)*.045);
   if(e.kind==='emitter')return {id:e.id,s:[[c(.08)]]};return matched(e.id);
  });
+ for(const piece of w.pieces){const def=partDef(piece.part,piece.version);if(def)comps.push({id:piece.id,s:partScattering(def,piece.spans)});}
  const stats=emptyStats();Object.assign(stats,grid);
  try{stats.network=solveNetwork(comps,waveLinks(w));}catch(err){stats.error=err instanceof Error?err.message:'Wave solve failed';w.stats=stats;w.statsRevision=w.revision;return stats;}
- for(const l of w.links.filter(l=>l.type==='field')){const m=routeMetrics(l.path,l.radius),total=m.propagationExponent+m.bendExponent;const outgoing=(stats.network.ports[l.a.node]?.[l.a.port]?.outgoing??0)+(stats.network.ports[l.b.node]?.[l.b.port]?.outgoing??0);const loss=outgoing*(1-Math.exp(-total));stats.bendRadiation+=total?loss*m.bendExponent/total:0;stats.propagationLoss+=total?loss*m.propagationExponent/total:0;}
+ for(const l of w.links.filter(l=>l.type==='field')){
+  if(l.pieces?.length){
+   for(const id of l.pieces){const piece=w.pieces.find(p=>p.id===id);if(!piece)continue;const absorbed=Math.max(0,stats.network.absorbed[id]??0);if(piece.category==='elbow')stats.bendRadiation+=absorbed;else stats.propagationLoss+=absorbed;}
+   continue;
+  }
+  const m=routeMetrics(l.path,l.radius),total=m.propagationExponent+m.bendExponent;const outgoing=(stats.network.ports[l.a.node]?.[l.a.port]?.outgoing??0)+(stats.network.ports[l.b.node]?.[l.b.port]?.outgoing??0);const loss=outgoing*(1-Math.exp(-total));stats.bendRadiation+=total?loss*m.bendExponent/total:0;stats.propagationLoss+=total?loss*m.propagationExponent/total:0;
+ }
  const targetOf=new Map<string,Target>();for(const t of w.targets)for(const id of t.emitters)targetOf.set(id,t);
  const perTarget=new Map<string,{groups:Record<string,Complex[]>;count:number}>();
  let heat=0,radiated=0;
@@ -214,6 +248,7 @@ export function step(w:World,dt=DT){if(!Number.isFinite(dt)||dt<=0||dt>.25)throw
  }
  automaticControl(w,evaluate);
  const processAbsorption=stepProcess(w,dt);
+ stepManufacture(w,dt);
  for(const e of w.entities){if(e.health<=0)continue;
   if(e.kind==='fabrication-cell'){const absorbed=processAbsorption.get(e.id)??0;e.temperature+=dt*(.05*absorbed-.4*(e.temperature-25));e.temperature=Math.max(25,e.temperature);}
   else{const absorbed=Math.max(0,w.stats.network.absorbed[e.id]??0);const heating=e.kind==='emitter'&&e.powered?absorbed*.08:absorbed;const condition=tunerOwner.has(e.id)?testingDomains.get(tunerOwner.get(e.id)!):undefined;const testDrift=condition?.kind==='frontier'?4*Math.sin(condition.elapsed*.3):0;const drift=e.kind==='tuner'?3+2*Math.sin(w.time*.12)+testDrift:0;const cooling=e.kind==='dump'?(e.powered?.28:.04):.18;e.temperature+=dt*(heating*.32+drift-cooling*(e.temperature-25));e.temperature=Math.max(25,e.temperature);}
@@ -221,6 +256,7 @@ export function step(w:World,dt=DT){if(!Number.isFinite(dt)||dt<=0||dt>.25)throw
   if(e.temperature>105){e.health=Math.max(0,e.health-(e.temperature-105)*dt*.45);if(e.health===0){w.stock.scrap+=DEFS[e.kind].cost+e.ore;e.ore=0;invalidate(w,'Equipment destroyed');event(w,`${DEFS[e.kind].name} destroyed by heat`);}}
  }
  finalizeLostJobs(w);
+ finalizeLostManufactureJobs(w);
  evaluate(w);
  if(!w.frontier){const target=frontierTarget(w);if(target){target.health=Math.max(0,target.health-Math.max(0,w.stats.targetPower-32)*dt*3);if(target.health===0){w.frontier=true;event(w,'Frontier cleared. Crystal access and commissioning unlocked.');}}}
  const integrity=w.entities.reduce((sum,e)=>sum+e.health,0);for(const message of stepEcology(w,dt))event(w,message);if(w.entities.reduce((sum,e)=>sum+e.health,0)<integrity){invalidate(w,'Wildlife damaged equipment');finalizeLostJobs(w);evaluate(w);}

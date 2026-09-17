@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-17",
+  "status": "partial-source-delivery-not-seam-qualified",
+  "codeAuthored": false,
+  "runtimeInstalled": false,
+  "measurementCommands": ["sips -g pixelWidth -g pixelHeight -g hasAlpha <source.png>", "shasum -a 256 <source.png>", "jq -e <schema checks> <metadata.json>"],
+  "sourceImages": [
+    {"path": "belt-straights-source-v1.png", "dimensions": [1536, 1024], "alphaChannel": true, "sha256": "be857b827e77469f880c4d83ea4441902d0f3f753f7a91c162dca3c16bc6ec15", "visuallyInspected": true, "status": "rejected", "issues": ["End rollers/caps", "Background haze", "Unmeasured profile and periodicity"]},
+    {"path": "belt-straights-source-v2.png", "dimensions": [1536, 1024], "alphaChannel": true, "sha256": "d59c7b9f835193f81e50ddffd9be8c6063c213aaaaa86b1a93d35a9f6ebcb632", "visuallyInspected": true, "status": "intermediate-not-promoted", "improvements": ["End rollers removed"], "issues": ["Background haze remains", "Unmeasured profile and periodicity"]},
+    {"path": "belt-straights-source-v3.png", "dimensions": [1536, 1024], "alphaChannel": true, "sha256": "471755c1a8d919d87d042d797d5d2541ba4344814bd26b773f36c47da78a2ab9", "visuallyInspected": true, "status": "rejected-extraction", "issues": ["Visible haze remains despite extraction prompt", "Alpha channel is not evidence of clean transparency"]},
+    {"path": "belt-corners-source-v1.png", "dimensions": [1774, 887], "alphaChannel": true, "sha256": "3a32ab64e07d97d9ff6bb595ce254e8656887dbb4d0c163772af71ac8a319d1d", "visuallyInspected": true, "status": "visual-source-candidate", "directionReview": "Eight requested inlet/outlet marking directions visible", "issues": ["Padded source cells are not mating interfaces", "Width and exact port center not measured", "Sharp path vertex coverage unverified", "No extruded sampling gutters"]},
+    {"path": "belt-straights-source-v4.png", "dimensions": [1536, 1024], "alphaChannel": true, "sha256": "74d899082bb05084d78f0f7f932fd5ff71335fe0886b41052ee16d91646dcdf2", "visuallyInspected": true, "status": "rejected-for-direct-runtime-use", "improvements": ["Simpler larger direction chevrons"], "issues": ["Background haze persists", "End-side blocks reintroduced", "Unmeasured profiles and periodicity"]}
+  ],
+  "itemSource": {"metadata": "items.json", "path": "../../animations/candidates/transport-items-v1.png", "dimensions": [1254, 1254], "alphaChannel": true, "sha256": "0479d679a8abae70f960ce3bbfbb917b52933ef2e0fbb0e4b8ba88d29a9d38d4", "visuallyInspected": true, "sourceApproved": true, "runtimeScaleReview": "pending"},
+  "targetInterface": {"owner": "runtime-world-units", "casingWidthTiles": 0.5, "coreWidthTiles": 0.32, "periodTiles": 0.5, "pixelsPerTile": 200, "status": "planning-target-not-source-measurement"},
+  "seamMeasurements": {"declaredPackedInterfaces": 0, "matingComparisonsRun": 0, "alphaSupportEqual": null, "maxPremultipliedChannelError255": null, "exactPeriodicity": null, "minimumJoinedCenterlineAlpha": null, "reason": "No packed rects or exact native casing export delivered; no new measurement code authored."},
+  "requiredRenderMatrix": {"scales": [0.25, 0.5, 1, 1.25, 2], "dpr": [1, 2], "backgrounds": ["light", "dark", "terrain"], "fractionalCameraTranslation": true, "conditionsPerFixture": 30, "completedConditions": 0},
+  "browserScreenshots": [],
+  "outOfV1": ["Diagonal raster sprites", "Animated belt surface", "Damaged belt states", "Machine-specific apron artwork", "New material packet types"],
+  "openGates": ["Exact periodic H/V source profiles", "All directed mating combinations", "Legal adjacent corner composition", "Half-tile and arbitrary crop-phase rendering", "Item readability at working zoom", "Core coverage under sharp-corner packet positions", "Transparent gaps and deleted routes", "Endpoint registration", "Extruded gutters and decoded atlas comparison", "Parent assembled visual review"],
+  "beltRuntimePromotionAllowlist": [],
+  "itemSourcePromotionAllowlist": ["../assets/animations/candidates/transport-items-v1.png"]
+}

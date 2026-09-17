@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "status": "asset-source-approved-runtime-registration-pending",
+  "assetId": "transport-items-v1",
+  "pathFromRepoRoot": "assets/animations/candidates/transport-items-v1.png",
+  "explicitGlobForCoding": ["../assets/animations/candidates/transport-items-v1.png"],
+  "imageSize": [1254, 1254],
+  "sha256": "0479d679a8abae70f960ce3bbfbb917b52933ef2e0fbb0e4b8ba88d29a9d38d4",
+  "alphaChannel": true,
+  "columns": 2,
+  "rows": 2,
+  "sourcePixels": "Unmodified existing source; do not substitute transport-items-v2.",
+  "drawSizeTiles": [0.32, 0.32],
+  "drawOffsetFromPacketTiles": [-0.16, -0.16],
+  "packetAnchor": "Existing pointAt(connection.path, travel); unchanged.",
+  "rotation": "Fixed world lighting; never rotate item image with route tangent.",
+  "blend": "source-over",
+  "trimToVisibleBounds": false,
+  "gutter": 0,
+  "gutterNote": "Full original quadrant source rectangles; transparent cell padding is not measured extrusion. Item sprites do not edge-mate to belt sprites.",
+  "entries": {
+    "ore": {"frame": 0, "rect": [0, 0, 627, 627], "sourceAnchor": [313.5, 313.5], "identity": "Orange ferrous nugget", "sourceApproved": true, "currentMaterialPackets": true},
+    "assembly": {"frame": 1, "rect": [627, 0, 627, 627], "sourceAnchor": [313.5, 313.5], "identity": "Intact copper coil assembly", "sourceApproved": true, "currentMaterialPackets": false},
+    "crystal": {"frame": 2, "rect": [0, 627, 627, 627], "sourceAnchor": [313.5, 313.5], "identity": "Blue mounted crystal", "sourceApproved": true, "currentMaterialPackets": false},
+    "scrap": {"frame": 3, "rect": [627, 627, 627, 627], "sourceAnchor": [313.5, 313.5], "identity": "Broken copper and steel assembly", "sourceApproved": true, "currentMaterialPackets": false}
+  },
+  "runtimeInstalled": false,
+  "remainingAcceptance": ["Source-over render on belt core", "Position/size unchanged against current packet state", "Readability at requested zoom/DPR/background matrix", "No asset load errors"],
+  "rejectedSources": [{"path": "assets/animations/candidates/transport-items-v2.png", "reason": "Opaque dark background; no alpha channel", "sha256": "f809cf092aead184c3e5ea951a49873ecf9fd01f5215f13f39ec3e959a5e2d29"}]
+}

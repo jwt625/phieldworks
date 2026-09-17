@@ -1,5 +1,6 @@
 import {LOT_LIMIT,type ProcessJob,type ProcessLot,type ProcessOutcome,type Target,type World} from './world-types';
 import {recipeFor,STARTER_RECIPE,type ProcessRecipe} from './process-recipes';
+import {MATCHED_JUNCTION,PRECISION_ELBOW} from './wave-parts';
 
 const pushEvent=(w:World,text:string)=>{w.events.unshift({time:w.time,text});w.events=w.events.slice(0,30);};
 const processTarget=(w:World,id:string)=>w.targets.find(t=>t.id===id&&t.kind==='process');
@@ -53,7 +54,11 @@ function qualificationEvent(w:World,job:ProcessJob,outcome:ProcessOutcome){
  }else{qualification.status='failed';qualification.reason='Batch did not meet acceptance';qualification.code=outcome==='recoverable-reject'?'useful-underdose':'useful-overdose';}
 }
 function commit(w:World,job:ProcessJob,outcome:ProcessOutcome,recipe:ProcessRecipe){
- if(outcome==='accepted'){w.process.accepted++;finish(w,job,outcome,`Batch accepted · useful ${job.useful.toFixed(1)}`);}
+ if(outcome==='accepted'){
+  w.process.accepted++;w.stock.precision++;
+  if(w.unlocked.length===0){w.unlocked.push(PRECISION_ELBOW.id,MATCHED_JUNCTION.id);pushEvent(w,'Precision hardware recipes unlocked: precision elbow and matched junction');}
+  finish(w,job,outcome,`Batch accepted · useful ${job.useful.toFixed(1)}`);
+ }
  else if(outcome==='recoverable-reject'){pushLot(w,job,'reject');finish(w,job,outcome,`Batch underdosed · recoverable reject ${job.useful.toFixed(1)}/${recipe.usefulMin}`);}
  else {pushLot(w,job,'scrap');finish(w,job,outcome,`Batch scrapped · useful ${job.useful.toFixed(1)}`);}
  qualificationEvent(w,job,outcome);

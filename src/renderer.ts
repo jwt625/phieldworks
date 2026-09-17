@@ -6,10 +6,11 @@ import {createTerrain} from './terrain';
 import {APPEARANCE} from './presentation';
 import {footprint,ports,routeMetrics,pointAt,segmentDistance,type Rotation,type Point} from './sim/geometry';
 import {findRoute} from './sim/routing';
-import {type World,type Kind,type Entity,DEFS,WIDTH,HEIGHT,center,portPosition,placementError,entity,frontierTarget} from './sim/world';
+import {type World,type Kind,type Entity,type WavePiece,DEFS,WIDTH,HEIGHT,center,portPosition,placementError,entity,frontierTarget,piecePorts} from './sim/world';
+import {WAVE_KIT_ATLAS_ID,straightSprite,hasRegisteredSprite,type WaveSpriteRect} from './wave-kit';
 import type {Endpoint} from './sim/network';
 import {sprites} from './assets';
-export interface View {objectSelection?:string|null;rotation:Rotation;diagonal:boolean;radius:number;waypoints:Point[];selected:string|null;build:Kind|null;tool:'select'|'field'|'material'|'power'|'blueprint'|'module';pending:Endpoint|null;editing?:string|null;overlay:boolean;grid:boolean;mouse:{x:number;y:number}|null;panX:number;panY:number;zoom:number;selection?:string[];selecting?:{x0:number;y0:number;x1:number;y1:number}|null;cursor?:Point|null}
+export interface View {objectSelection?:string|null;rotation:Rotation;diagonal:boolean;radius:number;waypoints:Point[];selected:string|null;build:Kind|null;tool:'select'|'field'|'guide'|'material'|'power'|'blueprint'|'module';pending:Endpoint|null;editing?:string|null;overlay:boolean;grid:boolean;mouse:{x:number;y:number}|null;panX:number;panY:number;zoom:number;selection?:string[];selecting?:{x0:number;y0:number;x1:number;y1:number}|null;cursor?:Point|null;guidePreview?:{pieces:{category:string;x:number;y:number;rotation:number;spans:number;turn:number}[];path:Point[];error:string;cost:number}|null;guideCell?:Point|null}
 export class Renderer {
  private motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
  private firingSince=new Map<string,number>();
@@ -29,6 +30,28 @@ export class Renderer {
   hitObject(w:World,x:number,y:number):string|null {const target=frontierTarget(w);return w.ecology.creatures.find(c=>c.health>0&&Math.hypot(x-c.x,y-c.y)<.8)?.id??w.deposits.find(d=>x>=d.x&&x<=d.x+d.w&&y>=d.y&&y<=d.y+d.h)?.id??(target&&Math.hypot(x-target.x,y-target.y)<2?'guardian':null);}
  hitPort(w:World,x:number,y:number,type:'field'|'material'|'power'='field'):Endpoint|null {let best:Endpoint|null=null,dist=14/this.scale;for(const e of w.entities)ports(e,type).forEach((_,i)=>{const p=portPosition(e,i,type),d=Math.hypot(x-p.x,y-p.y);if(d<dist){dist=d;best={node:e.id,port:i};}});return best;}
  hitRoute(w:World,x:number,y:number):string|null {let best:string|null=null,dist=9/this.scale;for(const l of [...w.links].reverse())for(let i=1;i<l.path.length;i++){const d=segmentDistance({x,y},l.path[i-1],l.path[i]);if(d<dist){dist=d;best=l.id;}}return best;}
+ /** Nearest authoritative physical wave piece to a world point, for selection and replace UI. */
+ hitPiece(w:World,x:number,y:number):string|null {let best:string|null=null,dist=.55;for(const p of [...w.pieces].reverse()){const pts=piecePorts(p);let d=Math.hypot(x-pts[0].x,y-pts[0].y);for(let i=1;i<pts.length;i++)d=Math.min(d,segmentDistance({x,y},pts[i-1],pts[i]));if(d<dist){dist=d;best=p.id;}}return best;}
+ /**
+  * Coding-owned straight composition (P2/P7): periodic, world-phase-fixed source tiles cropped to the
+  * installed length, transverse-centred on the centerline, never rotated or stretched. Returns false if
+  * the atlas is unavailable so callers fall back to the truthful native body.
+  */
+ drawStraightSprite(piece:WavePiece,sprite:WaveSpriteRect):boolean{
+  const img=sprites[WAVE_KIT_ATLAS_ID];if(!img)return false;
+  const ctx=this.ctx,[rx,ry,rw,rh]=sprite.rect,pts=piecePorts(piece),half=rw*sprite.pixelsPerTile/2;
+  const horizontal=sprite.axis==='x';
+  const lo=horizontal?Math.min(pts[0].x,pts[1].x):Math.min(pts[0].y,pts[1].y);
+  const hi=horizontal?Math.max(pts[0].x,pts[1].x):Math.max(pts[0].y,pts[1].y);
+  const centre=horizontal?pts[0].y:pts[0].x;
+  for(let k=Math.floor(lo/sprite.period);k<=Math.floor((hi-1e-9)/sprite.period);k++){
+   const w0=Math.max(lo,k*sprite.period),w1=Math.min(hi,(k+1)*sprite.period);if(w1<=w0)continue;
+   const sc=(w0-k*sprite.period)*sprite.pixelsPerTile,sw=(w1-w0)*sprite.pixelsPerTile;
+   if(horizontal){const nw=this.screen(w0,centre-half),se=this.screen(w1,centre+half);ctx.drawImage(img,rx+sc,ry,sw,rh,nw.x,nw.y,se.x-nw.x,se.y-nw.y);}
+   else{const nw=this.screen(centre-half,w0),se=this.screen(centre+half,w1);ctx.drawImage(img,rx,ry+sc,rw,sw,nw.x,nw.y,se.x-nw.x,se.y-nw.y);}
+  }
+  return true;
+ }
  draw(w:World){const ctx=this.ctx,s=this.scale;ctx.clearRect(0,0,this.width,this.height);ctx.fillStyle='#17282b';ctx.fillRect(0,0,this.width,this.height);
   // Terrain and dressing are presentation-only: never create hidden collision.
   this.ground??=createTerrain();ctx.drawImage(this.ground,this.view.panX,this.view.panY,WIDTH*s,HEIGHT*s);if(this.lastWorld!==w){this.gait.clear();this.firingSince.clear();this.lastWorld=w;}
@@ -40,6 +63,14 @@ export class Renderer {
    const m=routeMetrics(l.path,l.radius);for(const bend of m.bends)if((l.type==='field'&&bend.bad)||(selected&&bend.bad)){const p=this.screen(bend.point.x,bend.point.y);ctx.fillStyle='#ef9874';ctx.fillRect(p.x-2,p.y-2,4,4);}else if(selected){const p=this.screen(bend.point.x,bend.point.y);ctx.fillStyle='#f0dfa6';ctx.fillRect(p.x-1.5,p.y-1.5,3,3);}
    const dots=l.type==='material'?l.packets:this.view.overlay&&l.type==='field'?[(w.time*5)%m.length]:[];for(const travel of dots){const v=pointAt(l.path,travel),p=this.screen(v.x,v.y);if(l.type==='material'&&sprites['transport-items-v1'])this.atlas('transport-items-v1',0,v.x-.16,v.y-.16,.32);else{ctx.fillStyle=l.type==='material'?'#ffe3a6':color;ctx.fillRect(p.x-2,p.y-2,4,4);}}
   }
+  // Authoritative wave pieces: straights and bends are distinguished by shape, tier by fill, not colour alone.
+  for(const piece of w.pieces){const pts=piecePorts(piece),selected=this.view.selected===piece.id;const basic=piece.tier!=='precision';ctx.lineCap='round';
+   if(piece.category==='straight'&&hasRegisteredSprite(piece)&&this.drawStraightSprite(piece,straightSprite(piece.rotation))){/* registered atlas draw */ }
+   else if(piece.category==='straight'){const a=this.screen(pts[0].x,pts[0].y),b=this.screen(pts[1].x,pts[1].y);ctx.strokeStyle='#0d171b';ctx.lineWidth=selected?8:7;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();ctx.strokeStyle=selected?'#fff2c0':basic?'#c2a06a':'#8fe0cf';ctx.lineWidth=selected?5:4;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+   else{const a=this.screen(piece.x,piece.y);const inV=[{x:1,y:0},{x:0,y:1},{x:-1,y:0},{x:0,y:-1}][(piece.rotation+2)%4],outV=[{x:1,y:0},{x:0,y:1},{x:-1,y:0},{x:0,y:-1}][(piece.rotation+(piece.turn===1?1:3))%4];const from=this.screen(piece.x+inV.x*.5,piece.y+inV.y*.5),to=this.screen(piece.x+outV.x*.5,piece.y+outV.y*.5);ctx.strokeStyle=basic?'#c98a5a':'#8fe0cf';ctx.lineWidth=selected?5:4;ctx.beginPath();ctx.moveTo(from.x,from.y);ctx.quadraticCurveTo(a.x,a.y,to.x,to.y);ctx.stroke();}
+   if(selected){const a=this.screen(piece.x,piece.y);ctx.strokeStyle='#a8dbc1';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(a.x,a.y,10,0,Math.PI*2);ctx.stroke();}
+  }
+  if(this.view.tool==='guide'&&this.view.guidePreview){const gp=this.view.guidePreview;ctx.save();ctx.globalAlpha=.55;ctx.strokeStyle=gp.error?'#ef9874':'#8fe0cf';ctx.lineWidth=4;ctx.lineCap='round';ctx.beginPath();gp.path.forEach((v,i)=>{const p=this.screen(v.x,v.y);if(i)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);});ctx.stroke();if(this.view.mouse&&!gp.error)this.label(this.screen(this.view.mouse.x,this.view.mouse.y).x,this.screen(this.view.mouse.x,this.view.mouse.y).y-16,`${gp.pieces.length} pcs · ${gp.cost} assemblies`,'#caf0da',10);if(this.view.mouse&&gp.error)this.label(this.screen(this.view.mouse.x,this.view.mouse.y).x,this.screen(this.view.mouse.x,this.view.mouse.y).y-16,gp.error,'#f0b48d',10);ctx.restore();}
   if(this.view.editing&&this.view.objectSelection===this.view.editing){ctx.setLineDash([4,3]);ctx.strokeStyle='#f6e7ad';ctx.lineWidth=1.5;ctx.beginPath();this.view.waypoints.forEach((v,i)=>{const p=this.screen(v.x,v.y);if(i)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);});ctx.stroke();ctx.setLineDash([]);for(const v of this.view.waypoints){const p=this.screen(v.x,v.y);ctx.fillStyle='#f6e7ad';ctx.fillRect(p.x-3,p.y-3,6,6);ctx.strokeStyle='#142124';ctx.strokeRect(p.x-3,p.y-3,6,6);}}
   const ft=frontierTarget(w);if(ft){if(this.view.overlay){const target=this.screen(ft.x,ft.y);for(const e of w.entities.filter(e=>e.kind==='emitter'&&e.powered&&ft.emitters.includes(e.id))){const p=center(e),q=this.screen(p.x,p.y);const power=w.stats.network.ports[e.id]?.[0]?.incoming??0;if(power<.1)continue;ctx.save();ctx.globalCompositeOperation='screen';const g=ctx.createLinearGradient(q.x,q.y,target.x,target.y);g.addColorStop(0,'#7bf2e52c');g.addColorStop(1,'#8bf0d350');ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(q.x,q.y-3);ctx.lineTo(target.x,target.y-12);ctx.lineTo(target.x,target.y+12);ctx.lineTo(q.x,q.y+3);ctx.fill();ctx.strokeStyle='#a2edd594';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.lineTo(target.x,target.y);ctx.stroke();ctx.restore();}}
    if(ft.health>0)this.sprite('armored-frontier-organism',ft.x-2,ft.y-2,4,4);else{this.atlas('depletion-debris-v1',3,ft.x-2,ft.y-2,4);const p=this.screen(ft.x,ft.y);ctx.strokeStyle='#9fd4ae';ctx.beginPath();ctx.arc(p.x,p.y,25,0,Math.PI*2);ctx.stroke();this.label(p.x,p.y,'CLEARED','#a7d6ae',10);}

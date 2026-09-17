@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "status": "source-art-and-target-contract-not-packed-runtime-atlas",
+  "runtimeImage": null,
+  "runtimePromotedKeys": [],
+  "tier": "basic",
+  "condition": "intact-only",
+  "worldUnitsOwnDimensions": true,
+  "targetPixelsPerTile": 200,
+  "profileWidth": 0.5,
+  "coreWidth": 0.32,
+  "plane": 0,
+  "targetGutterPixels": 2,
+  "lighting": "World upper-left; do not rotate or mirror lit source pixels.",
+  "animation": {"frames": 1, "surfaceMotion": "static", "packetMotion": "existing world state"},
+  "fallback": "Native whole-route rendering for diagonal, short-leg/overlapping corner slots, or any missing/unreviewed source entry.",
+  "rectMeaning": "null means no measured packed source rectangle exists. sourceCell is visual source-sheet indexing ONLY, not a drawable runtime rect.",
+  "targetMeaning": "Port centers, width, footprint, period and pixel scale are requested exact production geometry, NOT measurements of generated source art.",
+  "sources": {
+    "straight": {"file": "belt-straights-source-v2.png", "dimensions": [1536, 1024], "columns": 2, "rows": 2, "status": "interior-material-reference-only-background-haze-fails-cutout"},
+    "corner": {"file": "belt-corners-source-v1.png", "dimensions": [1774, 887], "columns": 4, "rows": 2, "status": "visual-source-only"}
+  },
+  "entries": {
+    "belt-basic@1/straight/E": {"axis": "H", "rotation": 0, "turn": 0, "tier": "basic", "source": "straight", "sourceCell": [0, 0], "rect": null, "gutter": null, "profileCenter": [[0, 0.25], [0.5, 0.25]], "portNormal": [[-1, 0], [1, 0]], "profileWidth": 0.5, "period": 0.5, "repeatAxis": "x", "footprint": [0.5, 0.5], "travel": "E", "ready": false},
+    "belt-basic@1/straight/W": {"axis": "H", "rotation": 2, "turn": 0, "tier": "basic", "source": "straight", "sourceCell": [1, 0], "rect": null, "gutter": null, "profileCenter": [[0.5, 0.25], [0, 0.25]], "portNormal": [[1, 0], [-1, 0]], "profileWidth": 0.5, "period": 0.5, "repeatAxis": "x", "footprint": [0.5, 0.5], "travel": "W", "ready": false},
+    "belt-basic@1/straight/S": {"axis": "V", "rotation": 1, "turn": 0, "tier": "basic", "source": "straight", "sourceCell": [0, 1], "rect": null, "gutter": null, "profileCenter": [[0.25, 0], [0.25, 0.5]], "portNormal": [[0, -1], [0, 1]], "profileWidth": 0.5, "period": 0.5, "repeatAxis": "y", "footprint": [0.5, 0.5], "travel": "S", "ready": false},
+    "belt-basic@1/straight/N": {"axis": "V", "rotation": 3, "turn": 0, "tier": "basic", "source": "straight", "sourceCell": [1, 1], "rect": null, "gutter": null, "profileCenter": [[0.25, 0.5], [0.25, 0]], "portNormal": [[0, 1], [0, -1]], "profileWidth": 0.5, "period": 0.5, "repeatAxis": "y", "footprint": [0.5, 0.5], "travel": "N", "ready": false},
+    "belt-basic@1/corner/W-S": {"axis": "corner", "rotation": 0, "turn": 1, "tier": "basic", "source": "corner", "sourceCell": [0, 0], "rect": null, "gutter": null, "profileCenter": [[0, 0.5], [0.5, 1]], "portNormal": [[-1, 0], [0, 1]], "profileWidth": 0.5, "period": null, "repeatAxis": null, "footprint": [1, 1], "travel": ["W", "S"], "ready": false},
+    "belt-basic@1/corner/W-N": {"axis": "corner", "rotation": 0, "turn": -1, "tier": "basic", "source": "corner", "sourceCell": [1, 0], "rect": null, "gutter": null, "profileCenter": [[0, 0.5], [0.5, 0]], "portNormal": [[-1, 0], [0, -1]], "profileWidth": 0.5, "period": null, "repeatAxis": null, "footprint": [1, 1], "travel": ["W", "N"], "ready": false},
+    "belt-basic@1/corner/N-E": {"axis": "corner", "rotation": 1, "turn": -1, "tier": "basic", "source": "corner", "sourceCell": [2, 0], "rect": null, "gutter": null, "profileCenter": [[0.5, 0], [1, 0.5]], "portNormal": [[0, -1], [1, 0]], "profileWidth": 0.5, "period": null, "repeatAxis": null, "footprint": [1, 1], "travel": ["N", "E"], "ready": false},
+    "belt-basic@1/corner/E-S": {"axis": "corner", "rotation": 2, "turn": -1, "tier": "basic", "source": "corner", "sourceCell": [3, 0], "rect": null, "gutter": null, "profileCenter": [[1, 0.5], [0.5, 1]], "portNormal": [[1, 0], [0, 1]], "profileWidth": 0.5, "period": null, "repeatAxis": null, "footprint": [1, 1], "travel": ["E", "S"], "ready": false},
+    "belt-basic@1/corner/S-W": {"axis": "corner", "rotation": 3, "turn": -1, "tier": "basic", "source": "corner", "sourceCell": [0, 1], "rect": null, "gutter": null, "profileCenter": [[0.5, 1], [0, 0.5]], "portNormal": [[0, 1], [-1, 0]], "profileWidth": 0.5, "period": null, "repeatAxis": null, "footprint": [1, 1], "travel": ["S", "W"], "ready": false},
+    "belt-basic@1/corner/N-W": {"axis": "corner", "rotation": 1, "turn": 1, "tier": "basic", "source": "corner", "sourceCell": [1, 1], "rect": null, "gutter": null, "profileCenter": [[0.5, 0], [0, 0.5]], "portNormal": [[0, -1], [-1, 0]], "profileWidth": 0.5, "period": null, "repeatAxis": null, "footprint": [1, 1], "travel": ["N", "W"], "ready": false},
+    "belt-basic@1/corner/E-N": {"axis": "corner", "rotation": 2, "turn": 1, "tier": "basic", "source": "corner", "sourceCell": [2, 1], "rect": null, "gutter": null, "profileCenter": [[1, 0.5], [0.5, 0]], "portNormal": [[1, 0], [0, -1]], "profileWidth": 0.5, "period": null, "repeatAxis": null, "footprint": [1, 1], "travel": ["E", "N"], "ready": false},
+    "belt-basic@1/corner/S-E": {"axis": "corner", "rotation": 3, "turn": 1, "tier": "basic", "source": "corner", "sourceCell": [3, 1], "rect": null, "gutter": null, "profileCenter": [[0.5, 1], [1, 0.5]], "portNormal": [[0, 1], [1, 0]], "profileWidth": 0.5, "period": null, "repeatAxis": null, "footprint": [1, 1], "travel": ["S", "E"], "ready": false}
+  },
+  "notes": ["Keys are asset identities, not new simulated parts.", "Target corner anchor is local (.5,.5), exactly at route vertex.", "No caps, collars or machine geometry are authorized by this manifest.", "Do not infer pixels-per-tile from generated PNG dimensions."]
+}

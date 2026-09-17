@@ -8,7 +8,7 @@ const build=()=>{const w:World=createWorld();
  const target={id:'t100',kind:'process' as const,owner:null as string|null,x:40,y:20,health:0,emitters:[] as string[],contract:'standard-cell'};w.targets.push(target);
  const a=newEntity('emitter',40,10,'e300');a.powered=true;w.entities.push(a);
  const b=newEntity('emitter',44,10,'e301');b.powered=true;w.entities.push(b);
- target.emitters.push(a.id,b.id);w.stock={assemblies:10,crystal:5,scrap:0};
+ target.emitters.push(a.id,b.id);w.stock={assemblies:10,crystal:5,scrap:0,precision:0};
  const set=(useful:number,guard=0)=>{w.stats.targets['t100']={useful,guard,captured:useful+guard,emitters:2};};
  return {w,target,set};};
 const run=(w:World,seconds:number,dt=.1)=>{for(let i=0;i<Math.round(seconds/dt);i++)processStep(w,dt);};
@@ -25,7 +25,7 @@ test('two cells competing for the last ingredient bundle: one reserves, the othe
  const cellB=newEntity('sentry',13,10,'e401');cellB.powered=true;w.entities.push(cellB);
  w.targets.find(t=>t.id==='t100')!.owner='e400';
  w.targets.push({id:'t101',kind:'process',owner:'e401',x:45,y:20,health:0,emitters:[],contract:'standard-cell'});
- w.stock={assemblies:3,crystal:2,scrap:0};
+ w.stock={assemblies:3,crystal:2,scrap:0,precision:0};
  assert.equal(reserveProcess(w,'t100'),'');assert.match(reserveProcess(w,'t101'),/Missing/);assert.equal(w.jobs.length,1);assert.equal(w.stock.assemblies,1);
 });
 

@@ -6,6 +6,7 @@ failure is not fixed without code plus evidence.
 
 | Doc | What it establishes |
 | --- | --- |
+| [033 — Connected route kit](033-connected-route-kit-review.md) | 18-sprite compact kit passes 576 exact-edge comparisons and 180 assembled checks; parent inspected PNG routes; runtime integration pending |
 | [030 — Wave logistics validation](030-wave-logistics-validation.md) | Parent multimodal review protocol for 029; all gates pending, no implementation review claimed |
 | [025 — Compact UI review](025-compact-ui-review.md) | Current browser layout measurements, screenshots, ranked cleanup findings and integration risks; implementation pending |
 | [013 — Verification review](013-verification-review.md) | Visual/complex review of outpost screens and the state lab, overload experiment, capacity/performance baseline; P0 remedy follow-ups |

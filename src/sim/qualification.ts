@@ -25,8 +25,11 @@ export function dependencyClosure(w:World,domain:ControlDomain):string[]{
 export function configurationSignature(w:World,domain:ControlDomain):string{
  const closure=new Set(dependencyClosure(w,domain)),target=w.targets.find(t=>t.id===domain.target),reference=domain.reference?w.references.find(r=>r.id===domain.reference):undefined;
  const entities=w.entities.filter(e=>closure.has(e.id)).sort((a,b)=>a.id.localeCompare(b.id)).map(e=>({id:e.id,kind:e.kind,x:e.x,y:e.y,rotation:e.rotation,alive:e.health>0,tripped:e.tripped,powered:e.powered}));
- const links=w.links.filter(l=>closure.has(l.id)).sort((a,b)=>a.id.localeCompare(b.id)).map(l=>({id:l.id,type:l.type,a:l.a,b:l.b,path:l.path.map(p=>[p.x,p.y]),diagonal:l.diagonal,radius:l.radius}));
- return JSON.stringify({domain:{id:domain.id,enabled:domain.enabled,objective:domain.objective,reference:reference?{source:reference.source,group:reference.group}:null,target:domain.target,sensor:domain.sensor,tuners:[...domain.tuners].sort()},target:target?{id:target.id,kind:target.kind,owner:target.owner,x:target.x,y:target.y,emitters:[...target.emitters].sort(),contract:target.contract}:null,entities,links});
+ const links=w.links.filter(l=>closure.has(l.id)).sort((a,b)=>a.id.localeCompare(b.id)).map(l=>({id:l.id,type:l.type,a:l.a,b:l.b,path:l.path.map(p=>[p.x,p.y]),diagonal:l.diagonal,radius:l.radius,legacy:!l.pieces}));
+ // Physical piece definitions/versions/topology are part of the fingerprint: replacing an elbow or
+ // junction invalidates dependent qualifications, while an unrelated route leaves them untouched.
+ const pieces=w.pieces.filter(p=>closure.has(p.route)).sort((a,b)=>a.id.localeCompare(b.id)).map(p=>({id:p.id,part:p.part,version:p.version,x:p.x,y:p.y,rotation:p.rotation,spans:p.spans,turn:p.turn,route:p.route,condition:p.condition}));
+ return JSON.stringify({domain:{id:domain.id,enabled:domain.enabled,objective:domain.objective,reference:reference?{source:reference.source,group:reference.group}:null,target:domain.target,sensor:domain.sensor,tuners:[...domain.tuners].sort()},target:target?{id:target.id,kind:target.kind,owner:target.owner,x:target.x,y:target.y,emitters:[...target.emitters].sort(),contract:target.contract}:null,entities,links,pieces});
 }
 
 /** Live operating acceptance. Frontier keeps its historical ≥32 useful-power floor; process contracts arrive with A-04/A-05. */

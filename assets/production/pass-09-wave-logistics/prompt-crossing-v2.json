@@ -1,0 +1,9 @@
+{
+  "file": "crossing-r0-v2.png",
+  "prompt": "Use case: precise-object-edit. Correct the provided PHIELDWORKS crossing sprite for SMALL-SIZE TOPOLOGY readability. Preserve the four cardinal terminal positions, object scale, graphite/ivory/copper material family, camera and transparent canvas. Make the east-west OVERPASS significantly more visibly elevated: a narrow, continuous ivory duct crosses on a tall open steel arch with a large unmistakable DARK AIR GAP beneath the center; north-south lower duct must remain visibly separate and pass through that opening. Remove central block-like cladding and excess support clutter that makes a shared central hub. Two continuous ducts, NO shared enclosure, NO joining. Maintain ramps back to original port heights. North terminal points away toward image top, not upward like an open chimney. Strong bold bridge silhouette legible when the entire sprite is 48 pixels wide. Intact idle no light, no arrows/text, no ground plane, no checkerboard, truly transparent background. Change only the crossing center bridge and north-terminal perspective; keep other terminals and framing fixed.",
+  "references": [
+    "crossing-r0-v1.png"
+  ],
+  "tool": "built-in image_gen",
+  "status": "candidate-not-runtime"
+}

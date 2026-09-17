@@ -5,6 +5,8 @@ runtime never imports image knowledge; these files define contracts and tracking
 
 | Doc | What it is |
 | --- | --- |
+| [032 — Modular route seams](032-modular-route-seams.md) | H/V periodic bodies, common connectors, caps and assembled-route validation; raw pilots fail production seam gates |
+| [031 — Wave logistics assets](031-wave-logistics-assets.md) | Physical routing asset tasks WA-01–08; pass09 pilots generated, registration/runtime approval pending |
 | [027 — All-equipment animation audit](027-equipment-animation-audit.md) | Latest: reference/cooling generation, ten-kind coverage audit, state-art defects and coding handoff |
 | [024 — Equipment animation continuation](024-equipment-animation-continuation.md) | Five damaged-operation/generator/sentry clips integrated for rotation 0; live ledger, motion gallery and validation |
 | [023 — Catalog asset continuation](023-asset-generation-continuation.md) | Pass 06 inventory-icon production ledger |

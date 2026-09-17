@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Connected route kit — assembly validation</title>
+<style>body{background:#172126;color:#eee;font:14px system-ui;margin:20px}h1{font-size:23px;margin:0 0 8px}p{color:#c5d1d4;max-width:1000px}label{margin-right:16px}button,select{padding:6px;background:#29383e;color:#eee;border:1px solid #82969e}main{display:grid;grid-template-columns:1fr;gap:16px}.panel{background:#101619;border:1px solid #596b71;padding:12px;overflow:auto}h2{font-size:14px;margin:0 0 8px}.stage{width:max-content}canvas{display:block}.row{display:flex;gap:20px;align-items:flex-start}.note{font-size:12px}body.light .panel{background:#e7e2d5}body.light h2{color:#273039}body.terrain .panel{background:#333 url('../..//world/terrain-basalt-v1.png') center/256px}body.terrain h2{background:#172126e8;padding:3px;width:max-content}header{margin-bottom:16px}#summary{color:#aed6b7}</style>
+<header><h1>Connected route kit · exact interfaces + generated material detail</h1>
+<p>Actual assembled pieces. 128-unit period, 32-unit guide width; no bitmap port stretching. Source art remains unchanged. This is an integration-ready rendering prototype, not live gameplay.</p>
+<label>Scale <select id="scale"><option value=".25">0.25 · game overview</option><option value=".5" selected>0.5</option><option value="1">1</option><option value="1.25">1.25</option><option value="2">2</option></select></label>
+<label>Background <select id="background"><option>dark</option><option>light</option><option>terrain</option></select></label>
+<label>Render <select id="render"><option value="native">Native geometry</option><option value="atlas">Exported PNG atlas</option></select></label>
+<label><input id="grid" type="checkbox"> Piece boundaries</label><p id="summary">Loading…</p></header><main></main>
+<script type="module">
+import * as kit from './kit.mjs';import {fixtures} from './fixtures.mjs';
+const texture=new Image();texture.src='../pass-09-wave-logistics/straight-h-repeat-v1.png';await texture.decode();
+window.kit=kit;window.fixtures=fixtures;window.texture=texture;
+let atlas=null;try{const metadata=await (await fetch('./atlas.json')).json(),image=new Image();image.src='./connected-kit-atlas.png';await image.decode();atlas={image,entries:metadata.entries};}catch{}
+window.atlas=atlas;
+function draw(){
+ const scale=Number(document.querySelector('#scale').value),dpr=devicePixelRatio;
+ document.body.className=document.querySelector('#background').value;
+ const main=document.querySelector('main');main.replaceChildren();
+ const selectedAtlas=document.querySelector('#render').value==='atlas'?atlas:null;
+ window.renderOptions={scale,offsetX:12,offsetY:12,texture,atlas:selectedAtlas,showGrid:document.querySelector('#grid').checked};
+ const horizontal=fixtures.filter(f=>f.id!=='repeat-v');
+ for(const f of horizontal){const panel=document.createElement('section');panel.className='panel';const h=document.createElement('h2');h.textContent=f.name;const c=document.createElement('canvas');const w=f.w*128*scale+24,height=f.h*128*scale+24;c.width=Math.ceil(w*dpr);c.height=Math.ceil(height*dpr);c.style.width=w+'px';c.style.height=height+'px';const ctx=c.getContext('2d');ctx.scale(dpr,dpr);kit.drawAssembly(ctx,f.tiles,window.renderOptions);panel.append(h,c);main.append(panel);}
+ const f=fixtures.find(f=>f.id==='repeat-v'),panel=document.createElement('section');panel.className='panel';const h=document.createElement('h2');h.textContent=f.name;const c=document.createElement('canvas');const w=128*scale+24,height=1280*scale+24;c.width=Math.ceil(w*dpr);c.height=Math.ceil(height*dpr);c.style.width=w+'px';c.style.height=height+'px';const ctx=c.getContext('2d');ctx.scale(dpr,dpr);kit.drawAssembly(ctx,f.tiles,window.renderOptions);panel.append(h,c);main.append(panel);
+ document.querySelector('#summary').textContent=`${fixtures.length} assembled fixtures · ${kit.kinds.length} piece geometries × 2 tiers · DPR ${dpr}`;
+}
+for(const id of ['scale','background','grid','render'])document.querySelector('#'+id).addEventListener('change',draw);draw();window.ready=true;
+</script></html>

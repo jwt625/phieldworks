@@ -2,6 +2,7 @@ import type {Complex} from './complex';
 import type {Kind} from './definitions';
 import type {Point, Rotation, Transport} from './geometry';
 import type {Endpoint, NetworkResult} from './network';
+import type {WavePartCategory, WavePartTier} from './wave-parts';
 
 /** Shared simulation constants. Kept runtime-free so persistence and ecology can import types without the world façade. */
 export const WIDTH = 64, HEIGHT = 36, DT = .1;
@@ -12,12 +13,67 @@ export const WIRE_CAPACITY = 240;
 /** Bounded retained process lots so untrusted saves cannot allocate unbounded arrays. */
 export const LOT_LIMIT = 1000;
 
-export interface Entity {id:string;kind:Kind;x:number;y:number;rotation:Rotation;phase:number;temperature:number;health:number;tripped:boolean;protection:boolean;ore:number;progress:number;powered:boolean}
-export interface Connection {id:string;a:Endpoint;b:Endpoint;type:Transport;path:Point[];diagonal:boolean;radius:number;packets:number[]}
+export interface Entity {id:string;kind:Kind;x:number;y:number;rotation:Rotation;phase:number;temperature:number;health:number;tripped:boolean;protection:boolean;ore:number;progress:number;powered:boolean;variant?:string;mode?:'ore'|'tooling'}
+/** One installed physical wave piece. The piece list is the authoritative topology for a new field route. */
+export interface WavePiece {
+ id:string;
+ /** Definition id and version; optical properties are read from the versioned data contract. */
+ part:string;
+ version:number;
+ category:WavePartCategory;
+ tier:WavePartTier;
+ /** Anchor on the half-tile lattice. */
+ x:number;
+ y:number;
+ rotation:Rotation;
+ /** Half-tile intervals occupied by a straight run; multiples of 0.5 so trimmed legs stay exact. */
+ spans:number;
+ /** Elbow chirality: 1 left, -1 right, 0 otherwise. */
+ turn:1|-1|0;
+ /** Elbow entry/exit run length in tiles (P9). Distinct terminals; consumed exactly once. */
+ reach?:number;
+ condition:number;
+ route:string;
+}
+export interface WaveInterface {a:Endpoint; b:Endpoint}
+export interface Connection {
+ id:string;
+ a:Endpoint;
+ b:Endpoint;
+ type:Transport;
+ path:Point[];
+ diagonal:boolean;
+ radius:number;
+ packets:number[];
+ /** Physical field route: ordered piece ids from a to b. Absent for legacy/material/power links. */
+ pieces?:string[];
+ /** Explicit piece-to-piece and endpoint bindings; physics never re-derives a divergent second graph. */
+ interfaces?:WaveInterface[];
+ /** Migrated legacy field route: free, immutable legacy physics; never constructible anew. */
+ legacy?:boolean;
+}
+export type ManufactureStage='reserved'|'running'|'suspended'|'complete';
+export type ManufactureOutcome='done'|'cancelled'|'scrapped';
+/** Manufacture hardware into inventory from reserved inputs; exactly-once ownership rules mirror process jobs. */
+export interface ManufactureJob {
+ id:string;
+ recipe:string;
+ version:number;
+ output:string;
+ cell:string|null;
+ stage:ManufactureStage;
+ outcome:ManufactureOutcome|null;
+ inputs:{assemblies:number; crystal:number; precision:number};
+ consumed:boolean;
+ elapsed:number;
+ count:number;
+ started:number;
+ event:number;
+}
 export interface Deposit {id:string;x:number;y:number;w:number;h:number;remaining:number;kind:'ore'|'crystal'}
 export interface BlueprintSlot {id:string;kind:'power'|'reference'|'controller';label:string;required:boolean;binding:string|null}
 /** Selected-module template. Internal ids are template-local keys; runtime state is stripped. */
-export interface Blueprint {version:2;entities:Entity[];links:Connection[];targets:Target[];references:ReferenceBinding[];domains:ControlDomain[];slots:BlueprintSlot[];width:number;height:number}
+export interface Blueprint {version:2;entities:Entity[];links:Connection[];pieces?:WavePiece[];targets:Target[];references:ReferenceBinding[];domains:ControlDomain[];slots:BlueprintSlot[];width:number;height:number}
 
 export interface Creature extends Point {id:string;health:number;state:'patrol'|'investigate'|'attack'|'flee';heading:number;target:Point;exposure:number}
 export interface Ecology {creatures:Creature[];defenseReady:boolean;grace:number;threat:number;shots:{from:Point;to:Point;ttl:number}[]}
@@ -114,14 +170,21 @@ export interface ProcessJob {
 }
 
 export interface World {
-  version:4;
+  version:5;
   ecology:Ecology;
   time:number;
   nextId:number;
   entities:Entity[];
   links:Connection[];
+  /** Authoritative physical wave pieces; routes are ordered containers over these. */
+  pieces:WavePiece[];
   deposits:Deposit[];
-  stock:{assemblies:number;crystal:number;scrap:number};
+  stock:{assemblies:number;crystal:number;scrap:number;precision:number};
+  /** Hardware recipes unlocked by the first accepted precision cycle. */
+  unlocked:string[];
+  manufacture:ManufactureJob[];
+  /** Manufactured hardware inventory, keyed by "partId@version". Installation consumes it. */
+  hardware:Record<string,number>;
   produced:number;
   targets:Target[];
   references:ReferenceBinding[];

@@ -1,0 +1,29 @@
+[
+  {
+    "file": "basic-elbow-r0-v1.png",
+    "prompt": "Use case: stylized-concept. Asset type: single isolated game sprite master for PHIELDWORKS physical wave-routing parts.\nInput image is a MATERIAL/RENDER STYLE reference only, not the target geometry.\nCreate ONE compact 90-degree enclosed optical waveguide elbow, intact and idle. Orthographic oblique top-down camera 60 degrees above horizontal; ground axes project as screen horizontal east-west and screen vertical north-south, NOT diamond isometric. L-shaped centerline connects a WEST-facing horizontal port on the left to a SOUTH-facing port toward the bottom. Exactly TWO terminal collars; no third branch. Both ends at equal ground height. Short straight collars join a tight rectangular-corner housing, clearly visibly L shaped. Squat low-profile hardware: graphite cast steel outer bracket, weathered ivory ceramic guide shell, restrained copper clamps, chunky bolt details. Show a simple rigid angular outer corner and the empty inside of the L silhouette. No central machine tower, no base slab filling the L. Match the reference's grounded industrial material language and upper-left lighting, but simplify for readability at 48-96 pixels. Port mouths dark, no emitted light or baked active indicators, no arrows. Entire isolated object centered with 15% transparent padding, genuinely transparent alpha background, no ground plane, no checkerboard, no text, no labels, no watermark. Single object only, no sheet. This is a candidate master; keep geometry mechanically legible.",
+    "references": [
+      "assets/sprites/phase-tuner-v1.png"
+    ],
+    "tool": "built-in image_gen",
+    "status": "candidate-not-runtime"
+  },
+  {
+    "file": "precision-elbow-r0-v1.png",
+    "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS precision elbow upgrade sprite.\nEdit the provided BASIC ELBOW into its manufactured precision upgrade. Preserve EXACT camera, canvas, overall L-shaped footprint, both port mouth centers, collar diameters, ground height, west and south terminal directions, and object scale. Exactly two ports. Same transparent padding and genuinely transparent background.\nChange only construction detail: replace rough segmented ivory ceramic with a smooth sealed continuous ivory elbow shell, cleaner machined graphite supports, a distinctive broad polished copper band following the outside corner, and two small flush mechanical alignment adjusters. Reduce bulky bolt clutter. The upgrade must be visibly identifiable by the continuous shell and copper outer band, not a color swap. Remain squat and industrial, not ornamental or futuristic. Same upper-left lighting. No emission, lit lamps, arrows, labels, text, ground plane or checkerboard. One intact idle object. Do not enlarge the elbow or move the ports.",
+    "references": [
+      "assets/production/pass-09-wave-logistics/basic-elbow-r0-v1.png"
+    ],
+    "tool": "built-in image_gen",
+    "status": "candidate-not-runtime"
+  },
+  {
+    "file": "crossing-r0-v1.png",
+    "prompt": "Use case: stylized-concept. Asset type: single PHIELDWORKS isolated two-layer optical waveguide crossing game sprite.\nReference image: material, camera and collar STYLE only. Generate a different part: EXACTLY two independent enclosed straight guides crossing at 90 degrees WITHOUT a shared chamber or junction. One continuous east-west ivory ceramic guide passes OVER one north-south guide on a low graphite steel bridge. Visible underpass opening and separate uninterrupted guide casings make non-connectivity obvious. Four terminal collars at west east north south, all at the same ground connection height; the overpass ramps gently up at its center then back down. No fifth port, no center hub, no branching, no shared luminous core. Copper clamps and bolted steel supports, worn ivory shell, same collar diameter on all ends. Upper-left lighting, orthographic oblique top-down 60 degrees above horizontal, ground axes screen horizontal/vertical NOT diamond isometric. Entire object centered in square canvas with 15% transparent padding, truly transparent alpha background, no ground plane, no checkerboard, no text, no arrows, no labels, no active lights. Bold low-profile industrial silhouette readable at 48-96 pixels. Single intact idle crossing, not a sheet.",
+    "references": [
+      "assets/production/pass-09-wave-logistics/basic-elbow-r0-v1.png"
+    ],
+    "tool": "built-in image_gen",
+    "status": "candidate-not-runtime"
+  }
+]

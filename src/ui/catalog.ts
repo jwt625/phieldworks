@@ -6,6 +6,7 @@ export const catalog:Record<Kind,{category:string;needs:string;output:string}>={
  generator:{category:'Power',needs:'Free ground • connect BUS OUT to each load',output:'240 electrical power; fuel abstracted'},
  reference:{category:'Field',needs:'125 electrical power • terminate or use field OUT',output:'100 coherent field units; automatic phase controller'},
  junction:{category:'Field',needs:'Field inputs A/B or C/D • terminate unused outputs',output:'Passive coherent split/combine; no electrical power'},
+ crossing:{category:'Field',needs:'Two independent wave layers • four field ports',output:'A↔C and B↔D pass through; the layers never join'},
  tuner:{category:'Field',needs:'Field IN and OUT • room for two ports',output:'±180° phase trim; no electrical power; thermal drift'},
  emitter:{category:'Field',needs:'Field IN • 4 electrical power',output:'Directed field toward frontier target; stray light attracts wildlife'},
  dump:{category:'Field',needs:'Field IN • 2 electrical power for cooling',output:'Absorbs unused field; monitor temperature'},

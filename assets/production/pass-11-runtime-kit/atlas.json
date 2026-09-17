@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "status": "straight-subset-candidate-not-runtime-promoted",
+  "image": "connected-kit-atlas.png",
+  "imageSize": [1188, 264],
+  "imageSha256": "5eecd3fb93cd301a39621493ddcbd16cb398db987f307629466fbe0ed2c020ff",
+  "provenance": "Unmodified pass-10 atlas; only explicit entries below are candidates. All other image regions are unregistered.",
+  "units": "tiles",
+  "worldUnitsPerSourcePixel": 0.0075,
+  "interface": {"width": 0.24, "plane": 0, "cap": false, "owner": "runtime GUIDE_INTERFACE", "portPlane": "dot(portNormal, point-portCenter)=0"},
+  "composition": {
+    "owner": "coding-agent renderer.ts",
+    "lengthPerSpan": 0.5,
+    "minimumSpans": 1,
+    "placement": "Compute both piecePorts endpoints. Draw in increasing world x for H or increasing world y for V. Align perpendicular source center 64px to the world centerline. Crop the last period at the second geometric endpoint. Do not rotate or mirror raster pixels.",
+    "phase": "World-fixed phase: source 0 aligns to integer multiples of 0.96 tiles along repeatAxis. Crop first and last repeats at actual piece endpoints.",
+    "sampling": "Use rect only as physical source; gutter is sampling extrusion. Clip output to installed segment length. Use the same world-to-screen transform for all pieces. Repair seams only for actual compatible runtime interfaces, once per joint.",
+    "damage": "Only intact condition 0 registered. Condition 1–3 overlays are pending. Do not silently label intact art as damage coverage.",
+    "band": "The source includes one integral reinforcement band per texture period. It is not the topology-owned joint sleeve; parent must assess this cadence in the runtime preview."
+  },
+  "entries": {
+    "straight-basic@1/rotation=0/turn=0": {
+      "partId": "straight-basic", "version": 1, "category": "straight", "rotation": 0, "turn": 0, "tier": "basic", "condition": 0,
+      "rect": [2, 2, 128, 128], "gutter": 2, "repeatAxis": "x", "period": 0.96,
+      "portCenter": [[0, 0], [0.96, 0]], "portNormal": [[-1, 0], [1, 0]], "portWidth": [0.24, 0.24],
+      "sourcePortCenter": [[0, 64], [128, 64]], "sourceAnchor": [0, 64],
+      "footprint": {"sourceRectWorldBounds": [0, -0.48, 0.96, 0.96], "bodyWidth": 0.24, "runtimeClearanceOwner": "pieceBox", "installedLength": "spans * 0.5"},
+      "portsDescribe": "One repeat period. Installed exit is (spans*0.5,0) relative to piece anchor."
+    },
+    "straight-basic@1/rotation=1/turn=0": {
+      "partId": "straight-basic", "version": 1, "category": "straight", "rotation": 1, "turn": 0, "tier": "basic", "condition": 0,
+      "rect": [134, 2, 128, 128], "gutter": 2, "repeatAxis": "y", "period": 0.96,
+      "portCenter": [[0, 0], [0, 0.96]], "portNormal": [[0, -1], [0, 1]], "portWidth": [0.24, 0.24],
+      "sourcePortCenter": [[64, 0], [64, 128]], "sourceAnchor": [64, 0],
+      "footprint": {"sourceRectWorldBounds": [-0.48, 0, 0.96, 0.96], "bodyWidth": 0.24, "runtimeClearanceOwner": "pieceBox", "installedLength": "spans * 0.5"},
+      "portsDescribe": "One repeat period. Installed exit is (0,spans*0.5) relative to piece anchor."
+    },
+    "straight-basic@1/rotation=2/turn=0": {
+      "partId": "straight-basic", "version": 1, "category": "straight", "rotation": 2, "turn": 0, "tier": "basic", "condition": 0,
+      "rect": [2, 2, 128, 128], "gutter": 2, "repeatAxis": "x", "period": 0.96,
+      "portCenter": [[0, 0], [-0.96, 0]], "portNormal": [[1, 0], [-1, 0]], "portWidth": [0.24, 0.24],
+      "sourcePortCenter": [[128, 64], [0, 64]], "sourceAnchor": [128, 64],
+      "footprint": {"sourceRectWorldBounds": [-0.96, -0.48, 0.96, 0.96], "bodyWidth": 0.24, "runtimeClearanceOwner": "pieceBox", "installedLength": "spans * 0.5"},
+      "portsDescribe": "One repeat period. Installed exit is (-spans*0.5,0) relative to piece anchor."
+    },
+    "straight-basic@1/rotation=3/turn=0": {
+      "partId": "straight-basic", "version": 1, "category": "straight", "rotation": 3, "turn": 0, "tier": "basic", "condition": 0,
+      "rect": [134, 2, 128, 128], "gutter": 2, "repeatAxis": "y", "period": 0.96,
+      "portCenter": [[0, 0], [0, -0.96]], "portNormal": [[0, 1], [0, -1]], "portWidth": [0.24, 0.24],
+      "sourcePortCenter": [[64, 128], [64, 0]], "sourceAnchor": [64, 128],
+      "footprint": {"sourceRectWorldBounds": [-0.48, -0.96, 0.96, 0.96], "bodyWidth": 0.24, "runtimeClearanceOwner": "pieceBox", "installedLength": "spans * 0.5"},
+      "portsDescribe": "One repeat period. Installed exit is (0,-spans*0.5) relative to piece anchor."
+    }
+  },
+  "runtimePromotedKeys": [],
+  "reviewCandidateKeys": ["straight-basic@1/rotation=0/turn=0", "straight-basic@1/rotation=1/turn=0", "straight-basic@1/rotation=2/turn=0", "straight-basic@1/rotation=3/turn=0"],
+  "excluded": {
+    "elbow-compact@1": "Coincident installed terminals; P9 finite-bend geometry contract required.",
+    "elbow-precision@1": "Same P9 blocker.",
+    "elbow-swept@1": "Same P9 blocker; new source sheet is an unregistered design candidate.",
+    "junction-basic@1": "Offset-port source sheet requires exact geometry authoring and seam tests.",
+    "junction-matched@1": "Offset-port source sheet requires exact geometry authoring and seam tests.",
+    "crossing-basic@1": "Offset independent-channel source sheet requires topology and exact geometry review.",
+    "straight-precision": "Out of v1 by P3.",
+    "crossing-precision": "Out of v1 by P3.",
+    "swept-precision": "Out of v1 by P3/P5.",
+    "condition-1-2-3": "Overlay treatment approved in plan; generated decoration is not seam-qualified.",
+    "terminal-accessories": "Source sheet only; source rects and machine seams not qualified."
+  }
+}

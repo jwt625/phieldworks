@@ -1,0 +1,118 @@
+[
+  {
+    "file": "basic-elbow-r0-v1.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "28916a8425ad89936dbef48e365c3573ad843761d33853e557ce94469096613c",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.7953750550073895,
+    "partial_alpha_fraction": 0.204382658109679,
+    "alpha_bbox": [
+      97,
+      21,
+      1192,
+      1198
+    ],
+    "body_bbox_alpha_over_128": [
+      232,
+      263,
+      998,
+      968
+    ],
+    "dominant_nonzero_alpha": 253,
+    "status": "candidate-not-runtime"
+  },
+  {
+    "file": "crossing-r0-v1.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "b5faab5600b4be0189cae32c1c715008b4f2acc55d2452cd13f5affd9ac645b9",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.7673645292003388,
+    "partial_alpha_fraction": 0.2324154412419333,
+    "alpha_bbox": [
+      97,
+      21,
+      1222,
+      1206
+    ],
+    "body_bbox_alpha_over_128": [
+      121,
+      135,
+      1133,
+      1065
+    ],
+    "dominant_nonzero_alpha": 253,
+    "status": "candidate-not-runtime"
+  },
+  {
+    "file": "crossing-r0-v2.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "9fdbc0b10b804fa7cb18f974d5b8b8eb19e5bbda2a3f7be1bc18b2e9fbcbc364",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.7692773873207014,
+    "partial_alpha_fraction": 0.23039829165490208,
+    "alpha_bbox": [
+      41,
+      21,
+      1216,
+      1222
+    ],
+    "body_bbox_alpha_over_128": [
+      91,
+      135,
+      1163,
+      1070
+    ],
+    "dominant_nonzero_alpha": 253,
+    "status": "candidate-not-runtime"
+  },
+  {
+    "file": "precision-elbow-r0-v1.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "e2e6fd56c438c31411531c22755818b5e9b6e405c986d1ddd6aa8247eb8cad08",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.8097920784271829,
+    "partial_alpha_fraction": 0.18994083367037282,
+    "alpha_bbox": [
+      57,
+      21,
+      1224,
+      1199
+    ],
+    "body_bbox_alpha_over_128": [
+      231,
+      288,
+      995,
+      969
+    ],
+    "dominant_nonzero_alpha": 253,
+    "status": "candidate-not-runtime"
+  }
+]

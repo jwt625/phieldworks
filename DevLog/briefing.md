@@ -68,6 +68,14 @@ manufacturing, fusion energy and a beam-driven lightsail.
 
 ## Where to go next
 
+- **Connected route kit validated:** [033](verification/033-connected-route-kit-review.md)
+  records 18 compact sprites with exact edge matches and native/PNG assembly checks.
+  Pass10 includes atlas, metadata and a working gallery. Actual runtime machine-port
+  mapping, full gameplay integration and larger swept parts remain pending.
+- **Wave routing art:** [031](production/031-wave-logistics-assets.md) plans WA-01–08;
+  pass09 contains basic/precision elbow and crossing pilots plus a crossing correction.
+  Source alpha and small-size gallery inspected; geometry registration and runtime
+  promotion remain pending.
 - **Early-game physical routing:** user selected automatically placed, individually
   upgradeable straights/elbows and explicit junctions. [029 coding handoff](planning/029-early-game-wave-logistics-handoff.md)
   specifies physical construction, manufactured upgrades and local cell belts across

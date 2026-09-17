@@ -1,7 +1,9 @@
 import {DEFS} from './definitions';
 import {footprint} from './geometry';
 import {connect,event,invalidate,newEntity,placementError} from './world';
-import type {BlueprintSlot,ControlDomain,Entity,ReferenceBinding,Target,World} from './world-types';
+import {hardwareKey,pieceCost} from './wave-construction';
+import {partDef} from './wave-parts';
+import type {BlueprintSlot,ControlDomain,Entity,ReferenceBinding,Target,WavePiece,World} from './world-types';
 
 export interface StampOptions {resolved?:Record<string,string|null>;allowDisconnected?:boolean}
 const includedDomains=(w:World,ids:Set<string>)=>w.domains.filter(d=>{const t=w.targets.find(x=>x.id===d.target);if(!t)return false;return t.owner?ids.has(t.owner):t.kind==='frontier'&&t.emitters.length>0&&t.emitters.every(id=>ids.has(id));});
@@ -33,7 +35,10 @@ export function captureBlueprint(w:World,ids?:string[]):string{
  }
  slotPower(w,included,slots);
  const width=Math.ceil(Math.max(...xs))-minX,height=Math.ceil(Math.max(...ys))-minY;
- w.blueprint={version:2,entities:entities.map(e=>({...e,x:e.x-minX,y:e.y-minY,ore:0,progress:0,powered:false,health:100,temperature:25,tripped:false})),links:links.map(l=>({...structuredClone(l),path:l.path.map(p=>({x:p.x-minX,y:p.y-minY})),packets:[]})),targets,references,domains:blueprintDomains,slots,width,height};
+ // Capture every internal physical piece so a copy restores the real hardware, not a free path.
+ const pieceIds=new Set(links.flatMap(l=>l.pieces??[]));
+ const pieces=w.pieces.filter(p=>pieceIds.has(p.id)).map(p=>({...p,x:p.x-minX,y:p.y-minY}));
+ w.blueprint={version:2,entities:entities.map(e=>({...e,x:e.x-minX,y:e.y-minY,ore:0,progress:0,powered:false,health:100,temperature:25,tripped:false})),links:links.map(l=>({...structuredClone(l),path:l.path.map(p=>({x:p.x-minX,y:p.y-minY})),packets:[]})),pieces,targets,references,domains:blueprintDomains,slots,width,height};
  event(w,'Selected blueprint recorded');return '';
 }
 /** A detached power island inside the selection needs an explicit external feed. */
@@ -45,7 +50,9 @@ function slotPower(w:World,included:Set<string>,slots:BlueprintSlot[]){
   if(!component.some(id=>w.entities.find(e=>e.id===id)?.kind==='generator'))slots.push({id:`slot-power-${entity.id}`,kind:'power',label:'Power feed for '+component.join(', '),required:true,binding:null});
  }
 }
-export function blueprintCost(w:World){return w.blueprint?.entities.reduce((s,e)=>s+DEFS[e.kind].cost,0)??0;}
+export function blueprintCost(w:World){return (w.blueprint?.entities.reduce((s,e)=>s+DEFS[e.kind].cost,0)??0)+(w.blueprint?.pieces??[]).reduce((s,p)=>{const def=partDef(p.part,p.version);return s+(def&&def.buildable?pieceCost(def,p.spans):0);},0);}
+/** Precision hardware a stamp consumes from inventory, keyed by "partId@version". */
+function blueprintHardware(w:World):Record<string,number>{const out:Record<string,number>={};for(const p of w.blueprint?.pieces??[]){const def=partDef(p.part,p.version);if(def&&!def.buildable)out[hardwareKey(def.id,def.version)]=(out[hardwareKey(def.id,def.version)]??0)+1;}return out;}
 
 /** Transactional placement: every validation, route, cost and id is staged before one commit. */
 export function stampBlueprint(w:World,x:number,y:number,options:StampOptions={}):string{
@@ -53,6 +60,7 @@ export function stampBlueprint(w:World,x:number,y:number,options:StampOptions={}
  const unresolved=blueprint.slots.filter(s=>s.required&&!(options.resolved?.[s.id]??s.binding));
  if(unresolved.length&&!options.allowDisconnected)return `Resolve external services (${unresolved.map(s=>s.kind).join(', ')}) or deploy disconnected`;
  const cost=blueprintCost(w);if(w.stock.assemblies<cost)return `Blueprint requires ${cost} assemblies`;
+ for(const [key,num] of Object.entries(blueprintHardware(w)))if((w.hardware[key]??0)<num)return `Blueprint requires manufactured hardware (${num} × ${key})`;
  const staged:Entity[]=[];const newIds=new Map<string,string>();
  for(const entity of blueprint.entities){
   const error=placementError(w,entity.kind,x+entity.x,y+entity.y,staged,entity.rotation);if(error)return error;
@@ -60,9 +68,15 @@ export function stampBlueprint(w:World,x:number,y:number,options:StampOptions={}
   staged.push({...newEntity(entity.kind,x+entity.x,y+entity.y,id,entity.rotation),phase:entity.phase});
  }
  let nextId=w.nextId+staged.length;
- const draft:World={...w,entities:[...w.entities,...staged],links:[...w.links],events:[],targets:[...w.targets],references:[...w.references],domains:[...w.domains],qualifications:w.qualifications.map(q=>({...q,dependencies:[...q.dependencies]})),nextId};
+ const draft:World={...w,entities:[...w.entities,...staged],links:[...w.links],pieces:[...w.pieces],events:[],targets:[...w.targets],references:[...w.references],domains:[...w.domains],qualifications:w.qualifications.map(q=>({...q,dependencies:[...q.dependencies]})),nextId};
  for(const link of blueprint.links){const from=newIds.get(link.a.node),to=newIds.get(link.b.node);if(!from||!to)return 'Blueprint route references missing equipment';
-  const error=connect(draft,link.type,{node:from,port:link.a.port},{node:to,port:link.b.port},{path:link.path.map(p=>({x:p.x+x,y:p.y+y})),radius:link.radius,diagonal:link.diagonal});if(error)return error;}
+   const error=connect(draft,link.type,{node:from,port:link.a.port},{node:to,port:link.b.port},{path:link.path.map(p=>({x:p.x+x,y:p.y+y})),radius:link.radius,diagonal:link.diagonal});if(error)return error;
+   if(!link.pieces?.length)continue;
+   const conn=draft.links.at(-1)!,pieceIdMap=new Map<string,string>(),bpPieceById=new Map((blueprint.pieces??[]).map(p=>[p.id,p]));
+   for(const id of link.pieces){const bpPiece=bpPieceById.get(id);if(!bpPiece)return 'Blueprint piece is missing from the template';const pid=`p${draft.nextId++}`;pieceIdMap.set(id,pid);draft.pieces.push({...bpPiece,id:pid,x:bpPiece.x+x,y:bpPiece.y+y,route:conn.id} as WavePiece);}
+   const remap=(e:{node:string;port:number})=>({node:pieceIdMap.get(e.node)??newIds.get(e.node)??e.node,port:e.port});
+   conn.pieces=link.pieces.map(id=>pieceIdMap.get(id)!);conn.interfaces=link.interfaces?.map(i=>({a:remap(i.a),b:remap(i.b)}));delete conn.legacy;
+  }
  nextId=draft.nextId;
  // Fresh identities for targets, references, domains and qualifications. Frontier identities are never copied.
  const targetId=new Map<string,string>();
@@ -78,5 +92,7 @@ export function stampBlueprint(w:World,x:number,y:number,options:StampOptions={}
   const internalReference=domain.reference?referenceId.get(domain.reference):undefined,reference=internalReference??resolvedReference??null;
   draft.domains.push({...domain,id,target,reference,tuners,sensor:domain.sensor?newIds.get(domain.sensor)??null:null,cursor:0,enabled:!!reference&&domain.enabled});
   draft.qualifications.push({id:`q${nextId++}`,domain:id,target,status:'idle',signature:'',elapsed:0,minimum:-1,counters:0,dependencies:[],reason:'Blueprint deployed — local qualification required',code:''});}
- w.nextId=nextId;w.entities=draft.entities;w.links=draft.links;w.targets=draft.targets;w.references=draft.references;w.domains=draft.domains;w.qualifications=draft.qualifications;w.stock.assemblies-=cost;invalidate(w,'Blueprint placed — local commissioning required');event(w,'Blueprint placed; resolve services and qualify at this site');return '';
+ w.nextId=nextId;w.entities=draft.entities;w.links=draft.links;w.pieces=draft.pieces;w.targets=draft.targets;w.references=draft.references;w.domains=draft.domains;w.qualifications=draft.qualifications;w.stock.assemblies-=cost;
+ for(const [key,num] of Object.entries(blueprintHardware(w)))w.hardware[key]=(w.hardware[key]??0)-num;
+ invalidate(w,'Blueprint placed — local commissioning required');event(w,'Blueprint placed; resolve services and qualify at this site');return '';
 }

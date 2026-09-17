@@ -1,0 +1,206 @@
+{
+  "generated": "2026-09-17T06:34:47.754Z",
+  "contract": {
+    "compact": {
+      "id": "elbow-compact",
+      "reach": 0.5
+    },
+    "swept": {
+      "id": "elbow-swept",
+      "reach": 1
+    },
+    "precision": {
+      "id": "elbow-precision",
+      "reach": 0.5
+    },
+    "clamp": "reach=min(canonical,inLeg/2,outLeg/2)",
+    "spansUnit": "half-tile, multiples of 0.5",
+    "deletion": "removePiece drops interfaces; neighbours separate by the bend reach"
+  },
+  "cases": [
+    {
+      "name": "canonical corner",
+      "part": "elbow-compact",
+      "canonicalReach": 0.5,
+      "pieces": [
+        {
+          "id": "p2",
+          "category": "straight",
+          "part": "straight-basic",
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "spans": 3
+        },
+        {
+          "id": "p1",
+          "category": "elbow",
+          "part": "elbow-compact",
+          "x": 2,
+          "y": 0,
+          "rotation": 0,
+          "spans": 2,
+          "reach": 0.5
+        },
+        {
+          "id": "p3",
+          "category": "straight",
+          "part": "straight-basic",
+          "x": 2,
+          "y": 0.5,
+          "rotation": 1,
+          "spans": 3
+        }
+      ],
+      "bom": {
+        "assemblies": 9,
+        "crystal": 0,
+        "precision": 0
+      },
+      "elbowPorts": [
+        [
+          {
+            "x": 1.5,
+            "y": 0,
+            "dir": 2
+          },
+          {
+            "x": 2,
+            "y": 0.5,
+            "dir": 1
+          }
+        ]
+      ]
+    },
+    {
+      "name": "short 0.5 leg",
+      "part": "elbow-compact",
+      "canonicalReach": 0.5,
+      "pieces": [
+        {
+          "id": "p3",
+          "category": "straight",
+          "part": "straight-basic",
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "spans": 3.5
+        },
+        {
+          "id": "p1",
+          "category": "elbow",
+          "part": "elbow-compact",
+          "x": 2,
+          "y": 0,
+          "rotation": 0,
+          "spans": 2,
+          "reach": 0.25
+        },
+        {
+          "id": "p2",
+          "category": "elbow",
+          "part": "elbow-compact",
+          "x": 2,
+          "y": 0.5,
+          "rotation": 1,
+          "spans": 2,
+          "reach": 0.25
+        },
+        {
+          "id": "p4",
+          "category": "straight",
+          "part": "straight-basic",
+          "x": 2.25,
+          "y": 0.5,
+          "rotation": 0,
+          "spans": 3.5
+        }
+      ],
+      "bom": {
+        "assemblies": 14,
+        "crystal": 0,
+        "precision": 0
+      },
+      "elbowPorts": [
+        [
+          {
+            "x": 1.75,
+            "y": 0,
+            "dir": 2
+          },
+          {
+            "x": 2,
+            "y": 0.25,
+            "dir": 1
+          }
+        ],
+        [
+          {
+            "x": 2,
+            "y": 0.25,
+            "dir": 3
+          },
+          {
+            "x": 2.25,
+            "y": 0.5,
+            "dir": 0
+          }
+        ]
+      ]
+    },
+    {
+      "name": "swept corner",
+      "part": "elbow-swept",
+      "canonicalReach": 1,
+      "pieces": [
+        {
+          "id": "p2",
+          "category": "straight",
+          "part": "straight-basic",
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "spans": 4
+        },
+        {
+          "id": "p1",
+          "category": "elbow",
+          "part": "elbow-swept",
+          "x": 3,
+          "y": 0,
+          "rotation": 0,
+          "spans": 2,
+          "reach": 1
+        },
+        {
+          "id": "p3",
+          "category": "straight",
+          "part": "straight-basic",
+          "x": 3,
+          "y": 1,
+          "rotation": 1,
+          "spans": 4
+        }
+      ],
+      "bom": {
+        "assemblies": 12,
+        "crystal": 0,
+        "precision": 0
+      },
+      "elbowPorts": [
+        [
+          {
+            "x": 2,
+            "y": 0,
+            "dir": 2
+          },
+          {
+            "x": 3,
+            "y": 1,
+            "dir": 1
+          }
+        ]
+      ]
+    }
+  ]
+}

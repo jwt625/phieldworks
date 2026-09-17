@@ -1,0 +1,86 @@
+{
+  "generated": "2026-09-17T06:32:42.091Z",
+  "node": "v23.7.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "cpu": "Apple M4 Pro",
+  "contract": [
+    {
+      "id": "straight-basic",
+      "version": 1,
+      "category": "straight",
+      "tier": "basic",
+      "reflectance": 0.005,
+      "loss": 0,
+      "ports": 2,
+      "transmission": 0.9940055387517259
+    },
+    {
+      "id": "elbow-compact",
+      "version": 1,
+      "category": "elbow",
+      "tier": "basic",
+      "reflectance": 0.1,
+      "loss": 0.09,
+      "ports": 2,
+      "transmission": 0.9486832980505138
+    },
+    {
+      "id": "junction-basic",
+      "version": 1,
+      "category": "junction",
+      "tier": "basic",
+      "reflectance": 0,
+      "loss": 0.12,
+      "ports": 4,
+      "transmission": 0
+    },
+    {
+      "id": "elbow-precision",
+      "version": 1,
+      "category": "elbow",
+      "tier": "precision",
+      "reflectance": 0.045,
+      "loss": 0.012,
+      "ports": 2,
+      "transmission": 0.9929627384751152
+    }
+  ],
+  "basic": {
+    "pieces": 19,
+    "area": 94,
+    "best": {
+      "phase": 80,
+      "useful": 20.88185716252169,
+      "guard": 0.8029268794423791,
+      "source": 100
+    },
+    "accept": {
+      "phase": 80,
+      "useful": 20.88185716252169,
+      "guard": 0.8029268794423791,
+      "source": 100
+    },
+    "ratio": 0.20881857162521691
+  },
+  "upgraded": {
+    "pieces": 19,
+    "area": 94,
+    "best": {
+      "phase": 14,
+      "useful": 27.028735369708016,
+      "guard": 1.1977602132471876,
+      "source": 100
+    },
+    "accept": {
+      "phase": 14,
+      "useful": 27.028735369708016,
+      "guard": 1.1977602132471876,
+      "source": 100
+    },
+    "ratio": 0.2702873536970802
+  },
+  "improvement": 0.29436453660925377,
+  "acceptedCycles": 12,
+  "qualified": true
+}

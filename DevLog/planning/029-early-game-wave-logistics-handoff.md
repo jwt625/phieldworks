@@ -3,6 +3,15 @@
 Date: 2026-09-16. Status: **specified; no implementation or visual acceptance**.
 User decision: **Physical pieces: straights, elbows, explicit junctions.** Dragging
 a route automatically places pieces; each piece can be inspected and upgraded.
+Asset production is tracked separately in [031](../production/031-wave-logistics-assets.md):
+pilot images are candidates, not approved geometry or runtime registrations.
+Read [032 modular seam contract](../production/032-modular-route-seams.md) before
+R-02/R-06: repeat bodies and shared capless interfaces must connect in assembled
+routes; endpoint caps and joint sleeves are separately owned renderer elements.
+Working reference: [pass10 kit](../../assets/production/pass-10-connected-kit/README.md)
+and [033 seam validation](../verification/033-connected-route-kit-review.md).
+Use the tested interface/assembly method; cardinal prototype junction needs an
+explicit adaptation to actual runtime machine ports before art promotion.
 The parent agent owns orchestration and independent multimodal validation. The
 coding agent implements the packages below and supplies reproducible evidence.
 
@@ -307,3 +316,17 @@ Report completed R IDs, revision, changed files, test/benchmark results, replay 
 evidence paths and outstanding defects. Distinguish implemented, code-verified and
 parent visually accepted. Stop at honest intermediate milestones; do not mark R-08 or
 R-10 complete merely because the first upgrade works with shared inventory.
+
+---
+
+## Coding-agent status 2026-09-16 (first implementation pass)
+
+**Implemented and code-verified:** R-01 (data contract + balance fixture), R-02 (physical construction/editing), R-03 (nonideal passive physics + exact two-port composition), R-04 (schema `v5`, piece/blueprint persistence, fingerprint), R-05 (spendable precision output + hardware manufacture). R-06 is partially implemented: a `Wave guide` build tool with piece/BOM preview and atomic commit, piece rendering/selection, a piece inspector with replace/delete, and assembler tooling manufacture; the legacy `field` tool is retained for compatibility.
+
+**Evidence:** `npm test` 143, `npm run build` pass, `npm run test:browser` 40/40, `git diff --check` clean. R-01 fixture: basic→upgraded useful/source ratio **+29.6%**, 12 accepted cycles, qualified; JSON at `DevLog/evidence/wave-logistics/r01-balance-fixture.json`. Journal entry in `../implementation/004-implementation-journal.md`.
+
+**Not implemented / delegated:** R-07 guided scenario; R-08 local belts; R-09 integrated route-heavy benchmark and delivered-fixture ≤16 ms gate; R-10 parent multimodal validation. R-06 is not visually accepted and does not yet implement the 032 renderer-owned seam/sleeve composition; crossing art is ungenerated. R-01 values are provisional; the fixture uses declared stock/frontier preconditions.
+
+**Integration decisions requested:** geometry/authoring-space/tier questions needed before any pass-10 art can be registered are consolidated in [034 integration request](../planning/034-wave-logistics-integration-request.md), with the companion asset brief [035](../production/035-wave-logistics-asset-request.md).
+
+**034 feedback pass (2026-09-16):** P9 finite-bend construction contract implemented (distinct elbow terminals, reach consumed once, deletion gap, short-leg clamp, exact trimmed spans); pass-11 straight-basic atlas registered and rendered by coding-owned composition; guide tool offers compact/swept before placement. Template evidence `DevLog/evidence/wave-logistics/p9-finite-bend-templates.json`. Elbow/junction/crossing art, condition overlays, terminal/sleeve composition, R-07 and R-09 remain open. Validation: 146 headless, 42/42 browser, build pass.

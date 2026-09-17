@@ -4,7 +4,9 @@ import {findRoute} from './routing';
 import {newEcology} from './ecology';
 import {FIELD_PORT_LIMIT} from './network';
 import type {NetworkResult} from './network';
-import {HEIGHT,LINK_LIMIT,LOT_LIMIT,MACHINE_LIMIT,WIDTH,type Blueprint,type BlueprintSlot,type Connection,type ControlDomain,type Entity,type ProcessInventory,type ProcessJob,type Qualification,type QualificationStatus,type ReferenceBinding,type Stats,type Target,type World} from './world-types';
+import {HEIGHT,LINK_LIMIT,LOT_LIMIT,MACHINE_LIMIT,WIDTH,type Blueprint,type BlueprintSlot,type Connection,type ControlDomain,type Entity,type ManufactureJob,type ProcessInventory,type ProcessJob,type Qualification,type QualificationStatus,type ReferenceBinding,type Stats,type Target,type WavePiece,type World} from './world-types';
+import {partDef} from './wave-parts';
+import {hardwareKey} from './wave-construction';
 
 export const emptyNet = ():NetworkResult=>({ports:{},absorbed:{},sourcePower:0,linkLoss:0,escaped:0,residual:0});
 export const emptyStats = ():Stats=>({network:emptyNet(),targetPower:0,targets:{},protectiveAbsorption:0,offTarget:0,radiated:0,heat:0,leaked:0,supply:0,demand:0,overload:0,wireOverload:0,controlCursor:0,bendRadiation:0,propagationLoss:0,error:'',emitterFields:{}});
@@ -22,15 +24,41 @@ function validateEntities(raw:unknown,fail:()=>never):Entity[]{
   if(!e||typeof e.id!=='string'||!/^e\d+$/.test(e.id)||ids.has(e.id)||!Object.hasOwn(DEFS,e.kind)||![0,1,2,3].includes(e.rotation)||!Number.isInteger(e.x)||!Number.isInteger(e.y)||!['phase','temperature','health','ore','progress'].every(k=>finite((e as unknown as Record<string,unknown>)[k]))||e.health<0||e.health>100||e.ore<0||e.progress<0||Math.abs(e.phase)>180||e.temperature<0||typeof e.protection!=='boolean'||typeof e.tripped!=='boolean'||typeof e.powered!=='boolean')fail();
   ids.add(e.id);const d=footprint(e);if(e.x<0||e.y<0||e.x+d.w>WIDTH||e.y+d.h>HEIGHT)fail();
  }
- if((raw as Entity[]).reduce((n,e)=>n+DEFS[e.kind].ports.length,0)>FIELD_PORT_LIMIT)fail();
- for(let i=0;i<(raw as Entity[]).length;i++)for(let j=0;j<i;j++){const a=(raw as Entity[])[i],b=(raw as Entity[])[j],ad=footprint(a),bd=footprint(b);if(overlap(a.x,a.y,ad.w,ad.h,{...b,w:bd.w,h:bd.h}))fail();}
- return raw as Entity[];
+  if((raw as Entity[]).reduce((n,e)=>n+DEFS[e.kind].ports.length,0)>FIELD_PORT_LIMIT)fail();
+  for(const e of raw as Entity[]){if(e.variant!==undefined&&!partDef(e.variant,1))fail();if(e.mode!==undefined&&!['ore','tooling'].includes(e.mode))fail();}
+  for(let i=0;i<(raw as Entity[]).length;i++)for(let j=0;j<i;j++){const a=(raw as Entity[])[i],b=(raw as Entity[])[j],ad=footprint(a),bd=footprint(b);if(overlap(a.x,a.y,ad.w,ad.h,{...b,w:bd.w,h:bd.h}))fail();}
+  return raw as Entity[];
+}
+
+/** Validate the authoritative physical piece list. Route membership is cross-checked after links rebuild. */
+function validatePieces(raw:unknown,fail:()=>never):WavePiece[]{
+ if(raw===undefined)return [];
+ if(!Array.isArray(raw)||raw.length>LINK_LIMIT*4)fail();
+ const ids=new Set<string>();const out:WavePiece[]=[];
+ for(const p of raw as WavePiece[]){
+  if(!p||typeof p.id!=='string'||!/^p\d+$/.test(p.id)||ids.has(p.id))fail();
+  const def=partDef(p.part,p.version);if(!def||def.category!==p.category||def.tier!==p.tier)fail();
+  if(![0,1,2,3].includes(p.rotation)||!Number.isInteger(p.spans*2)||p.spans<.5||p.spans>64||![-1,0,1].includes(p.turn))fail();
+  if(p.category==='elbow'&&(p.reach===undefined||!finite(p.reach)||p.reach<=0||p.reach>2||!Number.isInteger(p.reach*4)))fail();
+  if(p.category==='straight'&&p.reach!==undefined)fail();
+  if(!Number.isInteger(p.x*4)||!Number.isInteger(p.y*4)||p.x<0||p.y<0||p.x>WIDTH||p.y>HEIGHT)fail();
+  if(!Number.isInteger(p.condition)||p.condition<0||p.condition>3)fail();
+  if(typeof p.route!=='string'||!/^l\d+$/.test(p.route))fail();
+  ids.add(p.id);out.push({...p});
+ }
+ return out;
 }
 
 /** Rebuild saved routes through the shared geometry/route validation so occupied ports and bad paths stay rejected. */
-function buildLinks(entities:Entity[],raw:unknown,legacy:boolean,fail:()=>never):Connection[]{
+function buildLinks(entities:Entity[],pieces:WavePiece[],raw:unknown,legacy:boolean,fail:()=>never):Connection[]{
  if(!Array.isArray(raw)||raw.length>LINK_LIMIT)fail();
  const links:Connection[]=[];const linkIds=new Set<string>();const byId=(id:string)=>entities.find(e=>e.id===id);
+ const pieceById=(id:string)=>pieces.find(p=>p.id===id);
+ const validEndpoint=(e:{node:string;port:number}):boolean=>{
+  if(!e||typeof e.node!=='string'||!Number.isInteger(e.port)||e.port<0)return false;
+  const piece=pieceById(e.node);if(piece)return e.port<2;
+  const entity=byId(e.node);return !!entity&&!!ports(entity,'field')[e.port];
+ };
  for(const l of raw as Connection[]){
   if(!l||typeof l.id!=='string'||!/^l\d+$/.test(l.id)||linkIds.has(l.id)||!['field','material','power'].includes(l.type)||!l.a||!l.b)fail();linkIds.add(l.id);
   if(!legacy&&(!Array.isArray(l.path)||typeof l.diagonal!=='boolean'||!finite(l.radius)||!Array.isArray(l.packets)))fail();
@@ -42,6 +70,15 @@ function buildLinks(entities:Entity[],raw:unknown,legacy:boolean,fail:()=>never)
   const path=findRoute(pa,pb,entities,WIDTH,HEIGHT,legacy?{}:{path:l.path,diagonal:l.diagonal,radius:l.radius});if(!path)fail();
   const conn:Connection={id:l.id,type:l.type,a:{...l.a},b:{...l.b},path,diagonal:legacy?false:l.diagonal,radius,packets:[]};
   if(!legacy){const length=routeMetrics(path).length;if(l.packets.length>length*2+1||l.packets.some((v,i)=>!nonnegative(v)||v>length||(i>0&&l.packets[i-1]-v<.5-1e-8))||(l.type!=='material'&&l.packets.length))fail();conn.packets=[...l.packets];}
+  if(l.type==='field'){
+   if(l.pieces!==undefined){
+    if(!Array.isArray(l.pieces)||!l.pieces.length||l.pieces.length>LINK_LIMIT*4||new Set(l.pieces).size!==l.pieces.length)fail();
+    if(!Array.isArray(l.interfaces)||!l.interfaces.length)fail();
+    for(const id of l.pieces){const piece=pieceById(id);if(!piece||piece.route!==l.id)fail();}
+    for(const iface of l.interfaces){if(!iface||!validEndpoint(iface.a)||!validEndpoint(iface.b))fail();}
+    conn.pieces=[...l.pieces];conn.interfaces=l.interfaces.map(i=>({a:{...i.a},b:{...i.b}}));
+   }else conn.legacy=true;
+  }
   links.push(conn);
  }
  return links;
@@ -62,15 +99,17 @@ function legacyPowerWires(entities:Entity[],links:Connection[],fail:()=>never){
 function pushEvent(w:World,text:string){w.events.unshift({time:w.time,text});w.events=w.events.slice(0,30);}
 
 function normalizeBlueprint(raw:unknown,legacy:boolean,fail:()=>never):Blueprint{
- const bp=raw as {entities?:unknown;links?:unknown;version?:unknown;targets?:unknown;references?:unknown;domains?:unknown;slots?:unknown};
+  const bp=raw as {entities?:unknown;links?:unknown;pieces?:unknown;version?:unknown;targets?:unknown;references?:unknown;domains?:unknown;slots?:unknown};
  if(!bp||!Array.isArray(bp.entities)||!bp.entities.length||!Array.isArray(bp.links))fail();
  const source=legacy?(bp.entities as Entity[]).map(e=>({...e,x:e.x+1,y:e.y+1,rotation:0 as const})):bp.entities;
  const entities=validateEntities(source,fail);
- const links=buildLinks(entities,bp.links,legacy,fail);
+ const bpPieces=bp.pieces as unknown;
+ const pieces=legacy?[]:validatePieces(bpPieces,fail);
+ const links=buildLinks(entities,pieces,bp.links,legacy,fail);
  if(legacy)legacyPowerWires(entities,links,fail);
  const points=links.flatMap(l=>l.path);
- const width=Math.ceil(Math.max(...entities.map(e=>e.x+footprint(e).w),...points.map(p=>p.x)));
- const height=Math.ceil(Math.max(...entities.map(e=>e.y+footprint(e).h),...points.map(p=>p.y)));
+ const width=Math.ceil(Math.max(...entities.map(e=>e.x+footprint(e).w),...points.map(p=>p.x),...pieces.map(p=>p.x)));
+ const height=Math.ceil(Math.max(...entities.map(e=>e.y+footprint(e).h),...points.map(p=>p.y),...pieces.map(p=>p.y)));
  const ids=new Set(entities.map(e=>e.id));
  let targets:Target[]=[],references:ReferenceBinding[]=[],domains:ControlDomain[]=[],slots:BlueprintSlot[]=[];
  if(bp.version===2){
@@ -85,7 +124,7 @@ function normalizeBlueprint(raw:unknown,legacy:boolean,fail:()=>never):Blueprint
   if(bp.slots!==undefined&&!Array.isArray(bp.slots))fail();
   for(const s of (bp.slots??[]) as BlueprintSlot[]){if(!s||typeof s.id!=='string'||!['power','reference','controller'].includes(s.kind)||typeof s.label!=='string'||typeof s.required!=='boolean'||!(s.binding===null||typeof s.binding==='string'))fail();slots.push({...s});}
  }
- return {version:2,entities,links,targets,references,domains,slots,width,height};
+ return {version:2,entities,links,pieces,targets,references,domains,slots,width,height};
 }
 
 function loadRecords(s:Record<string,unknown>,w:World,fail:()=>never){
@@ -157,6 +196,37 @@ function freshenOnLoad(w:World){
  }
 }
 
+function validateUnlocked(raw:unknown,fail:()=>never):string[]{
+ if(raw===undefined)return [];
+ if(!Array.isArray(raw)||raw.length>64)fail();
+ const out:string[]=[];const seen=new Set<string>();
+ for(const id of raw as string[]){if(typeof id!=='string'||!partDef(id,1)||seen.has(id))fail();seen.add(id);out.push(id);}
+ return out;
+}
+function validateHardware(raw:unknown,fail:()=>never):Record<string,number>{
+ if(raw===undefined)return {};
+ if(typeof raw!=='object'||raw===null||Array.isArray(raw))fail();
+ const out:Record<string,number>={};
+ for(const [key,value] of Object.entries(raw as Record<string,unknown>)){
+  const match=/^([a-z-]+)@(\d+)$/.exec(key);if(!match||!partDef(match[1],Number(match[2]))||!Number.isInteger(value)||(value as number)<0||(value as number)>10000)fail();
+  out[key]=value as number;
+ }
+ return out;
+}
+function validateManufacture(raw:unknown,entityIds:Set<string>,fail:()=>never):ManufactureJob[]{
+ if(raw===undefined)return [];
+ if(!Array.isArray(raw)||raw.length>MACHINE_LIMIT)fail();
+ const ids=new Set<string>();const out:ManufactureJob[]=[];
+ for(const j of raw as ManufactureJob[]){
+  if(!j||typeof j.id!=='string'||!/^m\d+$/.test(j.id)||ids.has(j.id))fail();
+  const def=partDef(j.output,1);if(!def||def.buildable||!def.recipe)fail();
+  if(!(j.cell===null||(typeof j.cell==='string'&&entityIds.has(j.cell)))||!['reserved','running','suspended','complete'].includes(j.stage)||!(j.outcome===null||['done','cancelled','scrapped'].includes(j.outcome)))fail();
+  if(!j.inputs||!nonnegative(j.inputs.assemblies)||!nonnegative(j.inputs.crystal)||!nonnegative(j.inputs.precision)||typeof j.consumed!=='boolean'||!nonnegative(j.elapsed)||!nonnegative(j.started)||!Number.isInteger(j.count)||j.count<0||!Number.isInteger(j.event)||j.event<0||(j.stage==='complete')!==(j.event>0))fail();
+  ids.add(j.id);out.push({...j,inputs:{...j.inputs}});
+ }
+ return out;
+}
+
 export function serialize(w:World){const {stats,statsRevision,...save}=w;return JSON.stringify(save);}
 
 /** Reject malformed saves rather than allowing NaNs, missing endpoints or unbounded solves. Returns an unevaluated world. */
@@ -164,25 +234,29 @@ export function deserializeCore(raw:string):World{
  const s=JSON.parse(raw);const fail=():never=>{throw new Error('Invalid or unsupported save');};
  const legacy=s?.version===1;if(legacy&&Array.isArray(s.entities)){s.version=2;for(const e of s.entities)if(e)e.rotation=0;}
  if(s?.version===2){s.version=3;s.ecology=newEcology();}
- const isV4=s?.version===4;
- if(!isV4&&s?.version!==3)fail();
- if(!Array.isArray(s.entities)||s.entities.length>MACHINE_LIMIT||!Array.isArray(s.links)||s.links.length>LINK_LIMIT||!Array.isArray(s.deposits)||s.deposits.length>20||!nonnegative(s.time)||!Number.isSafeInteger(s.nextId)||s.nextId<1||!s.stock||!['assemblies','crystal','scrap'].every(k=>nonnegative(s.stock[k]))||!nonnegative(s.produced)||typeof s.frontier!=='boolean'||!nonnegative(s.revision))fail();
- if(!isV4&&(!s.target||!nonnegative(s.target.health)||!finite(s.target.x)||!finite(s.target.y)||typeof s.controller!=='boolean'))fail();
+ const isV4=s?.version===4, isV5=s?.version===5;
+ if(!isV4&&!isV5&&s?.version!==3)fail();
+ const stockKeys=isV5?['assemblies','crystal','scrap','precision']:['assemblies','crystal','scrap'];
+ if(!Array.isArray(s.entities)||s.entities.length>MACHINE_LIMIT||!Array.isArray(s.links)||s.links.length>LINK_LIMIT||!Array.isArray(s.deposits)||s.deposits.length>20||!nonnegative(s.time)||!Number.isSafeInteger(s.nextId)||s.nextId<1||!s.stock||!stockKeys.every(k=>nonnegative(s.stock[k]))||!nonnegative(s.produced)||typeof s.frontier!=='boolean'||!nonnegative(s.revision))fail();
+ if(!isV4&&!isV5&&(!s.target||!nonnegative(s.target.health)||!finite(s.target.x)||!finite(s.target.y)||typeof s.controller!=='boolean'))fail();
  const eco=s.ecology;
  if(!eco||typeof eco.defenseReady!=='boolean'||!nonnegative(eco.grace)||eco.grace>30||!nonnegative(eco.threat)||eco.threat>60||!Array.isArray(eco.creatures)||eco.creatures.length>20)fail();
  const creatureIds=new Set<string>();for(const c of eco.creatures){if(!c||typeof c.id!=='string'||!/^c\d+$/.test(c.id)||creatureIds.has(c.id)||!['patrol','investigate','attack','flee'].includes(c.state)||![0,1,2,3].includes(c.heading)||!['x','y','health','exposure'].every(k=>nonnegative(c[k]))||c.x>WIDTH||c.y>HEIGHT||c.health>30||c.exposure>60||!c.target||!finite(c.target.x)||!finite(c.target.y))fail();creatureIds.add(c.id);}eco.shots=[];
  const entities=validateEntities(s.entities,fail);
- const clean:World={version:4,ecology:eco,time:s.time,nextId:s.nextId,entities,links:[],deposits:[],stock:s.stock,produced:s.produced,targets:[],references:[],domains:[],qualifications:[],process:newProcess(),jobs:[],eventSeq:0,frontier:s.frontier,revision:s.revision,statsRevision:-1,blueprint:null,events:[],stats:emptyStats()};
+ const pieces=isV5?validatePieces(s.pieces,fail):[];
+ const clean:World={version:5,ecology:eco,time:s.time,nextId:s.nextId,entities,links:[],pieces,deposits:[],stock:{assemblies:s.stock.assemblies,crystal:s.stock.crystal,scrap:s.stock.scrap,precision:isV5?s.stock.precision:0},unlocked:isV5?validateUnlocked(s.unlocked,fail):[],manufacture:isV5?validateManufacture(s.manufacture,new Set(entities.map(e=>e.id)),fail):[],hardware:isV5?validateHardware(s.hardware,fail):{},produced:s.produced,targets:[],references:[],domains:[],qualifications:[],process:newProcess(),jobs:[],eventSeq:0,frontier:s.frontier,revision:s.revision,statsRevision:-1,blueprint:null,events:[],stats:emptyStats()};
  for(const dep of s.deposits)if(!dep||!['ore','crystal'].includes(dep.kind)||!['x','y','w','h','remaining'].every(k=>nonnegative(dep[k]))||dep.w<1||dep.h<1||dep.x+dep.w>WIDTH||dep.y+dep.h>HEIGHT||!Number.isInteger(dep.remaining))fail();
  clean.deposits=s.deposits;
- clean.links=buildLinks(entities,s.links,legacy,fail);
+ clean.links=buildLinks(entities,pieces,s.links,legacy,fail);
  if(legacy)legacyPowerWires(clean.entities,clean.links,fail);
+ if(pieces.length){for(const piece of pieces){const link=clean.links.find(l=>l.id===piece.route);if(!link||!link.pieces?.includes(piece.id))fail();}}
+ const covered=clean.links.reduce((n,l)=>n+(l.pieces?.length??0),0);if(covered!==pieces.length)fail();
  clean.revision=s.revision;
- if(isV4)loadRecords(s,clean,fail);else migrateRecords(s,clean);
+ if(isV4||isV5)loadRecords(s,clean,fail);else migrateRecords(s,clean);
  freshenOnLoad(clean);
  if(s.blueprint!=null)clean.blueprint=normalizeBlueprint(s.blueprint,legacy,fail);
  const seen=new Set<string>();
- for(const arr of [clean.entities,clean.links,clean.targets,clean.references,clean.domains,clean.qualifications,clean.process.lots])for(const r of arr){const m=/^[a-z]+(\d+)$/.exec(r.id);if(m)seen.add(m[1]);}
+ for(const arr of [clean.entities,clean.links,clean.targets,clean.references,clean.domains,clean.qualifications,clean.process.lots,clean.pieces,clean.manufacture])for(const r of arr)if(r&&typeof (r as {id?:unknown}).id==='string'){const m=/^[a-z]+(\d+)$/.exec((r as {id:string}).id);if(m)seen.add(m[1]);}
  clean.nextId=Math.max(clean.nextId,...[...seen].map(Number).filter(Number.isSafeInteger).map(v=>v+1));
  if(Array.isArray(s.events))clean.events=s.events.filter((e:{time:unknown;text:unknown})=>e&&nonnegative(e.time)&&typeof e.text==='string'&&e.text.length<=1000).slice(0,30);
  pushEvent(clean,'Save loaded. Installation restored; qualification requires a fresh test.');

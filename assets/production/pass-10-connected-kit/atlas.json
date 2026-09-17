@@ -1,0 +1,754 @@
+{
+  "version": 1,
+  "status": "render-prototype-not-gameplay",
+  "tileSize": 128,
+  "textureSource": "../pass-09-wave-logistics/straight-h-repeat-v1.png",
+  "entries": [
+    {
+      "kind": "h",
+      "tier": "basic",
+      "rect": [
+        2,
+        2,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "E"
+        ]
+      ]
+    },
+    {
+      "kind": "h",
+      "tier": "precision",
+      "rect": [
+        2,
+        134,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "E"
+        ]
+      ]
+    },
+    {
+      "kind": "v",
+      "tier": "basic",
+      "rect": [
+        134,
+        2,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "N",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "v",
+      "tier": "precision",
+      "rect": [
+        134,
+        134,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "N",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "bend-ws",
+      "tier": "basic",
+      "rect": [
+        266,
+        2,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "bend-ws",
+      "tier": "precision",
+      "rect": [
+        266,
+        134,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "bend-nw",
+      "tier": "basic",
+      "rect": [
+        398,
+        2,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "N",
+          "W"
+        ]
+      ]
+    },
+    {
+      "kind": "bend-nw",
+      "tier": "precision",
+      "rect": [
+        398,
+        134,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "N",
+          "W"
+        ]
+      ]
+    },
+    {
+      "kind": "bend-ne",
+      "tier": "basic",
+      "rect": [
+        530,
+        2,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "N",
+          "E"
+        ]
+      ]
+    },
+    {
+      "kind": "bend-ne",
+      "tier": "precision",
+      "rect": [
+        530,
+        134,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "N",
+          "E"
+        ]
+      ]
+    },
+    {
+      "kind": "bend-es",
+      "tier": "basic",
+      "rect": [
+        662,
+        2,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "E",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "bend-es",
+      "tier": "precision",
+      "rect": [
+        662,
+        134,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "E",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "junction",
+      "tier": "basic",
+      "rect": [
+        794,
+        2,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "N",
+          "E",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "junction",
+      "tier": "precision",
+      "rect": [
+        794,
+        134,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "N",
+          "E",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "cross-h",
+      "tier": "basic",
+      "rect": [
+        926,
+        2,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "E"
+        ],
+        [
+          "N",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "cross-h",
+      "tier": "precision",
+      "rect": [
+        926,
+        134,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "E"
+        ],
+        [
+          "N",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "cross-v",
+      "tier": "basic",
+      "rect": [
+        1058,
+        2,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "E"
+        ],
+        [
+          "N",
+          "S"
+        ]
+      ]
+    },
+    {
+      "kind": "cross-v",
+      "tier": "precision",
+      "rect": [
+        1058,
+        134,
+        128,
+        128
+      ],
+      "gutter": 2,
+      "ports": [
+        {
+          "dir": "W",
+          "position": [
+            0,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "N",
+          "position": [
+            64,
+            0
+          ],
+          "width": 32
+        },
+        {
+          "dir": "E",
+          "position": [
+            128,
+            64
+          ],
+          "width": 32
+        },
+        {
+          "dir": "S",
+          "position": [
+            64,
+            128
+          ],
+          "width": 32
+        }
+      ],
+      "channels": [
+        [
+          "W",
+          "E"
+        ],
+        [
+          "N",
+          "S"
+        ]
+      ]
+    }
+  ]
+}
