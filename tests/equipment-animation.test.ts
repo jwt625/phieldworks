@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {createWorld,newEntity,center} from '../src/sim/world';
+import {createWorld,newEntity,center,evaluate} from '../src/sim/world';
 import {equipmentState} from '../src/equipment-state';
 import {equipmentAnimation} from '../src/equipment-animation';
 
@@ -27,4 +27,33 @@ test('generator needs load; sentry needs actual shots; service failure uses cond
  w.ecology.shots[0].ttl=.02;assert.equal(equipmentAnimation(s,equipmentState(w,s),50)!.frame,2);
  w.ecology.shots=[];assert.equal(equipmentAnimation(s,equipmentState(w,s),50)!.frame,0);
  s.powered=false;assert.equal(equipmentAnimation(s,equipmentState(w,s),50),undefined);
+});
+
+test('reference stabilizer follows source field activity and dump fans spin only under powered cooling',()=>{
+ const w=createWorld(),ref=w.entities.find(e=>e.kind==='reference')!,dump=w.entities.find(e=>e.kind==='dump')!;
+ // Starter reference is powered and field-active.
+ const r=equipmentAnimation(ref,equipmentState(w,ref),1)!;
+ assert.equal(r.clip.asset,'reference-r0-cycle-v2');
+ assert.equal(equipmentAnimation(ref,equipmentState(w,ref),0)!.frame,0);
+ assert.equal(equipmentAnimation(ref,equipmentState(w,ref),2)!.frame,3);
+ assert.equal(equipmentAnimation(ref,equipmentState(w,ref),2,true)!.frame,0);
+ // Unpowered reference keeps the dark condition fallback.
+ ref.powered=false;assert.equal(equipmentAnimation(ref,equipmentState(w,ref),2),undefined);ref.powered=true;
+ // Starter dump is powered and cooling; it spins with real activity.
+ assert.equal(equipmentAnimation(dump,equipmentState(w,dump),1)!.clip.asset,'dump-r0-cycle-v2');
+ // Idle (no field, below 30 C) holds frame zero; unpowered stays UNCOOLED and static.
+ w.links=w.links.filter(l=>!(l.type==='field'&&(l.a.node===dump.id||l.b.node===dump.id)));dump.temperature=10;evaluate(w);
+ assert.equal(equipmentAnimation(dump,equipmentState(w,dump),1)!.frame,0);
+ assert.equal(equipmentAnimation(dump,equipmentState(w,dump),1,true)!.frame,0);
+ dump.powered=false;assert.equal(equipmentAnimation(dump,equipmentState(w,dump),1),undefined);
+});
+
+test('recipe frame selection freezes at reduced motion and clamps simulation progress',async()=>{
+ const {recipeFrame}=await import('../src/equipment-animation');
+ for(const count of [4,6]){
+  assert.equal(recipeFrame(.8,1,count),Math.floor(.8*count));
+  assert.equal(recipeFrame(.8,1,count,true),0);
+  assert.equal(recipeFrame(-.1,1,count),0);
+  assert.equal(recipeFrame(2,1,count),count-1);
+ }
 });

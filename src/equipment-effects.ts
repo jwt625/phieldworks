@@ -1,6 +1,8 @@
 import type {EquipmentState} from './equipment-state';
 /** Dynamic status light and thermal effects, independent of baked chassis condition. */
-export function equipmentEffects(c:CanvasRenderingContext2D,state:EquipmentState,x:number,y:number,width:number,height:number,time:number){
+export function equipmentEffects(c:CanvasRenderingContext2D,state:EquipmentState,x:number,y:number,width:number,height:number,time:number,reducedMotion=false){
+ // Freeze decorative motion while keeping thermal and failure warnings visible.
+ if(reducedMotion)time=0;
  const lampX=x+width*.72,lampY=y+height*.56;
  c.save();const lit=state.passive?state.field:state.powered;
  // A dark inset remains at the same position when power is removed.

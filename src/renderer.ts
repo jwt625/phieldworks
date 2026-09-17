@@ -1,6 +1,6 @@
 import {equipmentState,type EquipmentState} from './equipment-state';
 import {equipmentEffects} from './equipment-effects';
-import {equipmentAnimation} from './equipment-animation';
+import {equipmentAnimation,recipeFrame} from './equipment-animation';
 import frameMap from '../assets/animations/frame-map.json';
 import {createTerrain} from './terrain';
 import {APPEARANCE} from './presentation';
@@ -79,11 +79,11 @@ export class Renderer {
  if(!sprites[a.asset]&&!a.sheet&&!a.views&&!a.animation){this.placeholder(e,alpha);return;}
  const off=state&&(state.condition===3||state.work==='tripped'||(!state.powered&&!state.passive)||(state.passive&&!state.field));
  const dynamicAsset=damagedCycle&&sprites[damagedCycle]?damagedCycle:a.animation?.asset;
- if(state&&!off&&dynamicAsset&&sprites[dynamicAsset]&&e.progress!==undefined&&(state.condition===0||damagedCycle&&sprites[damagedCycle])){const anim=a.animation!,frame=state.moving?Math.min(3,Math.floor(e.progress/anim.period*4)):0;this.atlas(dynamicAsset,e.rotation*4+frame,e.x+f.w/2-size/2,e.y+f.h/2-size/2,size,alpha,4,4);return;}
+ if(state&&!off&&dynamicAsset&&sprites[dynamicAsset]&&e.progress!==undefined&&(state.condition===0||damagedCycle&&sprites[damagedCycle])){const anim=a.animation!,frame=recipeFrame(e.progress,anim.period,4,this.motionPreference.matches||!state.moving);this.atlas(dynamicAsset,e.rotation*4+frame,e.x+f.w/2-size/2,e.y+f.h/2-size/2,size,alpha,4,4);return;}
  const serviceCycle=e.kind==='generator'?'generator-cycle-v1':e.kind==='sentry'?'sentry-fire-v1':null;
- if(state&&!off&&state.condition===0&&serviceCycle&&sprites[serviceCycle]){this.atlas(serviceCycle,e.rotation*4+(state.moving?Math.floor(time*(e.kind==='sentry'?20:8))%4:0),e.x+f.w/2-size/2,e.y+f.h/2-size/2,size,alpha,4,4);return;}
+ if(state&&!off&&state.condition===0&&serviceCycle&&sprites[serviceCycle]){this.atlas(serviceCycle,e.rotation*4+(state.moving&&!this.motionPreference.matches?Math.floor(time*(e.kind==='sentry'?20:8))%4:0),e.x+f.w/2-size/2,e.y+f.h/2-size/2,size,alpha,4,4);return;}
  if(state&&sprites[conditionAsset]&&(off||state.condition>0)){this.atlas(conditionAsset,state.condition*4+e.rotation,e.x+f.w/2-size/2,e.y+f.h/2-size/2,size,alpha,4,4);return;}
- if(!state&&a.animation&&sprites[a.animation.asset]&&e.progress!==undefined){const anim=a.animation;this.atlas(anim.asset,e.rotation*4+Math.min(3,Math.floor(e.progress/anim.period*4)),e.x+f.w/2-size/2,e.y+f.h/2-size/2,size,alpha,4,4);return;}
+ if(!state&&a.animation&&sprites[a.animation.asset]&&e.progress!==undefined){const anim=a.animation;this.atlas(anim.asset,e.rotation*4+recipeFrame(e.progress,anim.period,4,this.motionPreference.matches),e.x+f.w/2-size/2,e.y+f.h/2-size/2,size,alpha,4,4);return;}
  if(a.sheet&&sprites[a.sheet]){this.atlas(a.sheet,e.rotation,e.x+f.w/2-size/2+(a.offset?.x??0),e.y+f.h/2-size/2+(a.offset?.y??0),size,alpha);return;}this.sprite(a.views?.[e.rotation]??a.asset,e.x,e.y,f.w,f.h,alpha);}
  /** Visibly labeled placeholder until reviewed cell art exists; never borrow an unrelated generator sprite. */
  placeholder(e:{kind:Kind;x:number;y:number;rotation:Rotation},alpha=1){const f=footprint(e),p=this.screen(e.x,e.y),ctx=this.ctx,s=this.scale;ctx.save();ctx.globalAlpha=alpha;ctx.fillStyle='#26383a';ctx.fillRect(p.x,p.y,f.w*s,f.h*s);ctx.strokeStyle='#d6bf89';ctx.setLineDash([5,4]);ctx.lineWidth=1.5;ctx.strokeRect(p.x+1.5,p.y+1.5,f.w*s-3,f.h*s-3);ctx.setLineDash([]);ctx.restore();this.label(p.x+f.w*s/2,p.y+f.h*s/2-.5,'FAB CELL','#e7d9a6',9);this.label(p.x+f.w*s/2,p.y+f.h*s/2+9,'PLACEHOLDER','#b9a97f',8);}
