@@ -1,0 +1,126 @@
+{
+  "status": "candidate-not-runtime-approved",
+  "registration": "Alpha >=128 bounds plus 3px padding; horizontal bounds center and bottom foundation baseline; common per-clip scale. Original pixels unmodified. Extent drift is silhouette measurement, not internal landmark certification.",
+  "clips": [
+    {
+      "asset": "reference-r0-cycle-v2",
+      "kind": "reference",
+      "condition": 0,
+      "rotation": 0,
+      "logicalSize": 613.333,
+      "frames": [
+        {
+          "source": [
+            67,
+            93,
+            557,
+            515
+          ],
+          "anchor": [
+            278.5,
+            512
+          ]
+        },
+        {
+          "source": [
+            681,
+            92,
+            558,
+            515
+          ],
+          "anchor": [
+            279.0,
+            512
+          ]
+        },
+        {
+          "source": [
+            67,
+            693,
+            557,
+            520
+          ],
+          "anchor": [
+            278.5,
+            517
+          ]
+        },
+        {
+          "source": [
+            681,
+            692,
+            558,
+            521
+          ],
+          "anchor": [
+            279.0,
+            518
+          ]
+        }
+      ],
+      "sha256": "126fd794f731bf7eedaf97fd3a221927aedb787ad3a16e43bc6a7a6cf3ead63e",
+      "alphaZeroFraction": 0.5648457630955742,
+      "silhouetteExtentDriftAt96px": 0.939
+    },
+    {
+      "asset": "dump-r0-cycle-v2",
+      "kind": "dump",
+      "condition": 0,
+      "rotation": 0,
+      "logicalSize": 558.889,
+      "frames": [
+        {
+          "source": [
+            112,
+            77,
+            462,
+            505
+          ],
+          "anchor": [
+            231.0,
+            502
+          ]
+        },
+        {
+          "source": [
+            738,
+            77,
+            461,
+            505
+          ],
+          "anchor": [
+            230.5,
+            502
+          ]
+        },
+        {
+          "source": [
+            112,
+            692,
+            462,
+            509
+          ],
+          "anchor": [
+            231.0,
+            506
+          ]
+        },
+        {
+          "source": [
+            737,
+            692,
+            463,
+            509
+          ],
+          "anchor": [
+            231.5,
+            506
+          ]
+        }
+      ],
+      "sha256": "5b641a7be828a6c0e38f6a1e1e1971a95f6f656d53107a0cceb6f90581084f79",
+      "alphaZeroFraction": 0.6283083924106336,
+      "silhouetteExtentDriftAt96px": 0.687
+    }
+  ]
+}

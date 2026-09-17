@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0ab9f-31e1-78c0-ab5e-431687f78115/exec-d89c1055-77a0-4c97-b5f8-3b48e1d79f31.png",
+  "prompt": "Use case: precise-object-edit. Correct this animation sheet for a game. Output square 2x2 equal-cell sheet, 4 complete smaller machines, ONE SINGLE DIRECTION. CRITICAL: machine in each quadrant must occupy at most 65% of that quadrant width AND height, centered. Huge 17.5% transparent padding on all four sides INSIDE EACH quadrant. All four foundations completely inside their cells. No touching outer image edges or central axes. The previous image is rejected because machines are too large and cropped. True transparent background; no text, grid, checkerboard, ground or shadows. Keep all four chassis identical with no body drift, same scale, same view, lamps/screens dark. Animate ONLY the existing top fan with four clearly different blade positions: 0, 30, 60, 90 degrees clockwise. Existing five-blade rotor, fixed fan shaft center; no changes to hub, casing, radiator, pipes or base. Each blade orientation must visibly change between adjacent frames; frame 4 returns toward frame 1.",
+  "reference_inputs": [
+    "assets/production/pass-08/dump-r0-cycle-v1.png"
+  ],
+  "path": "assets/production/pass-08/dump-r0-cycle-v2.png",
+  "source_pixels": "unmodified",
+  "status": "candidate-pending-review",
+  "sha256": "5b641a7be828a6c0e38f6a1e1e1971a95f6f656d53107a0cceb6f90581084f79"
+}

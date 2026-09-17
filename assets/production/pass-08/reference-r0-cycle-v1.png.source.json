@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0ab9f-31e1-78c0-ab5e-431687f78115/exec-70625103-790d-4ea9-b164-be449076761b.png",
+  "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS equipment mechanism animation candidate. Use the reference as the exact machine identity, materials, camera and lighting. Create a 2 by 2 equal-cell sprite sheet of FOUR chronological frames of ONE SINGLE FIXED DIRECTION, reading left-to-right then top-to-bottom. True transparent RGBA background, no painted checkerboard or matte. Every frame has identical scale, fixed foundation, fixed enclosure and connectors, identical camera and upper-left lighting, generous transparent margins. Weathered steel, ivory ceramic, copper, orthographic oblique game art. No text, grid, ground, drop shadow, beams, smoke, glow or lit LEDs/screens. Screens and lamps fully dark. Only the specified internal mechanism changes, never rotate the entire machine. Reference station: preserve tall ivory cylinder on left and console on right. Animate only the small exposed mechanical stabilizer collar directly BELOW the ivory cylinder, inside the existing open lower gap: a visibly keyed copper collar rotates through 0, 90, 180, 270 degree positions about the vertical cylinder axis. All exterior cylinder panels, top lid, pipes, support legs, base bolts and console remain perfectly stationary. This is an active reference-source mechanism loop, not a glowing display animation.",
+  "reference_inputs": [
+    "assets/sprites/reference-control-station-v1.png"
+  ],
+  "path": "assets/production/pass-08/reference-r0-cycle-v1.png",
+  "source_pixels": "unmodified",
+  "status": "candidate-pending-review",
+  "sha256": "68548074bb6f9e93435df63a457c38a1772d7e2b9c12416de6a372e368553127"
+}

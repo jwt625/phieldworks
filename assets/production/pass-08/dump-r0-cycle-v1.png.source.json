@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "original_output": "/Users/wentaojiang/.codex/generated_images/01a0ab9f-31e1-78c0-ab5e-431687f78115/exec-48f34031-6c41-43de-8b36-e6c9c7c0f086.png",
+  "prompt": "Use case: precise-object-edit. Asset type: PHIELDWORKS equipment mechanism animation candidate. Use the reference as the exact machine identity, materials, camera and lighting. Create a 2 by 2 equal-cell sprite sheet of FOUR chronological frames of ONE SINGLE FIXED DIRECTION, reading left-to-right then top-to-bottom. True transparent RGBA background, no painted checkerboard or matte. Every frame has identical scale, fixed foundation, fixed enclosure and connectors, identical camera and upper-left lighting, generous transparent margins. Weathered steel, ivory ceramic, copper, orthographic oblique game art. No text, grid, ground, drop shadow, beams, smoke, glow or lit LEDs/screens. Screens and lamps fully dark. Only the specified internal mechanism changes, never rotate the entire machine. Cooled dump: preserve the twin vertical radiator banks, central ivory fan housing, front-left field connector and lower-right auxiliary fan box. Animate ONLY the exposed main top cooling fan blades. Four successive angular offsets 0, 22.5, 45, 67.5 degrees about the fan shaft. Keep a recognizable asymmetric blade detail so motion is visible. Do not change blade count. Fan shroud, grille, hub center, pipes, radiators, feet and ports perfectly fixed. No whole-machine rotation. Auxiliary fan casing remains fixed.",
+  "reference_inputs": [
+    "assets/sprites/cooled-dump-v1.png"
+  ],
+  "path": "assets/production/pass-08/dump-r0-cycle-v1.png",
+  "source_pixels": "unmodified",
+  "status": "candidate-pending-review",
+  "sha256": "14e836cb3e071284b6a599f8dd64d249259642c7941408a246d5b61279fcb10e"
+}

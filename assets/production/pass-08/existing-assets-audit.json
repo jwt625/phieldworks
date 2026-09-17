@@ -1,0 +1,237 @@
+{
+  "date": "2026-09-16",
+  "scope": "Existing state sheets, loaded animation sheets and directional turnarounds; alpha measurement only, not visual approval",
+  "assets": [
+    {
+      "path": "assets/animations/assembler-cycle-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "15c5c260adac6d838dd87e7361afcddbcfa35ac919ab0d07927b80e443ed8d32"
+    },
+    {
+      "path": "assets/animations/crawler-walk-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "43714c92be9ee748e82a04598c856ad481fef1429249b2d6f633c26ceda212ac"
+    },
+    {
+      "path": "assets/animations/extractor-cycle-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "4aaf69fb4693619854683a9b19c393b9ce5dc09394702997d3b057cf8b258b00"
+    },
+    {
+      "path": "assets/states/assembler-condition-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "471da4c80daedbb01bb452f420e81c742aed57180b66fcce703929726b91c2a6"
+    },
+    {
+      "path": "assets/states/dump-condition-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "610d2ee603478d3239898cb4fbd4d7af67001164c6b9db2dd70e9d86ccacd0ad"
+    },
+    {
+      "path": "assets/states/emitter-condition-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "dabe88b5351550c6faf634fa6dfd78c894a5f2ea1c9a1f92696b5d360c0638e9"
+    },
+    {
+      "path": "assets/states/extractor-condition-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "5fc4c5d46965263ef478f5796bd8cd3ee808927f4faddbd26b07f56ee2bf8148"
+    },
+    {
+      "path": "assets/states/extractor-light-cycle-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "028f855b8fe0db540ebca14229233de8ae9c113c1a8824ea0ac1fa15e4adc6c0"
+    },
+    {
+      "path": "assets/states/generator-condition-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "4b5b31abe0b6079e4924eb842a299367bba32b9ef0d03bd2c71ed4031283f7e0"
+    },
+    {
+      "path": "assets/states/junction-condition-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "b110fce71597685134d5c984b16e07fde5c26c0080665f2ea1f3a4049675ec3c"
+    },
+    {
+      "path": "assets/states/reference-condition-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "ace1a74fddac50979f7d53008277520e21fe53e41df0fb27ad580cc92b9744ed"
+    },
+    {
+      "path": "assets/states/sentry-condition-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "88f8a6c4618d8926f2f6446184a9b32a932d75b8bc32f8543617f25ba8837e3d"
+    },
+    {
+      "path": "assets/states/tuner-condition-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "d7d7c3cd293a5cf5d0dbb8c28d61b17b170455ac2be394287e5bf9d9dbeb7f40"
+    },
+    {
+      "path": "assets/world/compact-assembler-turnaround-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "211cb88de075e7c514fed1b8cdab393e22d754be50d9eb30d0010238cd190d75"
+    },
+    {
+      "path": "assets/world/cooled-dump-turnaround-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "886602c1a4ca852fb849fcf2f80b44f62761e4c841e392a7e1f29460e1a15948"
+    },
+    {
+      "path": "assets/world/field-emitter-turnaround-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "ec439a7521567d3550507c1e52b14c0888c51a9ff0e9eeb999c2e55b6e12de67"
+    },
+    {
+      "path": "assets/world/four-port-junction-turnaround-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "1d3e44ea36918ccf8a96547b23d0dbc4b0cd3c3bc035662653eb3e44dcea412a"
+    },
+    {
+      "path": "assets/world/phase-tuner-turnaround-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "3f3fe5101127b9be85b5c581763c68ae1e6b6e09c291c4aa9c1ff6cd83743995"
+    },
+    {
+      "path": "assets/world/power-unit-turnaround-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "6d21d6f149892efaef1bddf0c7966ad33c5b2e04b76061c5e5376707fbacb9a9"
+    },
+    {
+      "path": "assets/world/reference-control-station-turnaround-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "cc2e3cb86d6db07fb25d206762f137df2fa8d9b382c80a006c3017c00367f1f7"
+    },
+    {
+      "path": "assets/world/starter-extractor-turnaround-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "transparent_fraction": 0.0,
+      "zero_alpha_fraction": 0.0,
+      "sha256": "d297b06bab9c2bda4a60784320c8dbc9476447e321a42283b07ff3b7fbd286c1"
+    }
+  ]
+}

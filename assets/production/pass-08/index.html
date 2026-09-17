@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pass 08 equipment animation candidates</title>
+<style>body{font:15px system-ui;background:#17232b;color:#eee;margin:24px}article{border:1px solid #678;padding:16px;margin:20px 0}.sheet{max-width:100%;max-height:440px;object-fit:contain;background:var(--bg,#26343d)}canvas{background:var(--bg,#26343d);margin:12px;outline:1px solid #789}a{color:#8df}button{padding:8px;margin:4px}header{position:sticky;top:0;background:#17232b;padding:8px;z-index:1}figure{display:inline-block;margin:0}figcaption{text-align:center}</style>
+<h1>Pass 08 — reference and cooling candidates</h1><p>Review only. These sources are not registered in gameplay. Check fixed chassis/ports, mechanical motion, alpha edges and loop continuity at all three sizes. V2 uses candidate-clips.json crop/anchor registration; rejected V1 retains equal-grid crops.</p>
+<header><button id="pause">Pause</button><button id="step">Step</button><button data-bg="#eee">Light</button><button data-bg="#26343d">Dark</button><button data-bg="#b6af98">Terrain</button><span id="frame"></span></header><main></main>
+<script type="module">
+let paused=matchMedia('(prefers-reduced-motion: reduce)').matches,tick=0;const players=[];
+const registration=await (await fetch('candidate-clips.json')).json();
+for(const version of [2,1])for(const kind of ['reference','dump']){
+ const id=`${kind}-r0-cycle-v${version}`,article=document.createElement('article');
+ article.innerHTML=`<h2>${id}</h2><p>${version===1?'Rejected: clipped chassis and insufficient mechanical motion.':'Candidate: awaiting visual review; no runtime approval.'}</p><img class="sheet" src="${id}.png" alt="${id}"><div class="players"></div><a href="${id}.png.source.json">Prompt and provenance</a>`;
+ document.querySelector('main').append(article);const im=article.querySelector('img');
+ im.onerror=()=>{article.querySelector('p').textContent='Source not available yet; reload after generation completes.';};
+ for(const size of [48,96,256]){const figure=document.createElement('figure'),c=document.createElement('canvas'),caption=document.createElement('figcaption');c.width=c.height=size;caption.textContent=`${size} px`;figure.append(c,caption);article.querySelector('.players').append(figure);players.push({im,c,cols:2,rows:2,frames:4,clip:registration.clips.find(c=>c.asset===id)});}
+}
+function draw(){document.querySelector('#frame').textContent=`Frame ${tick%4+1}/4`;for(const p of players){if(!p.im.complete||!p.im.naturalWidth)continue;const i=tick%p.frames,w=p.im.naturalWidth/p.cols,h=p.im.naturalHeight/p.rows,scale=p.c.width/Math.max(w,h),ctx=p.c.getContext('2d');ctx.clearRect(0,0,p.c.width,p.c.height);if(p.clip){const entry=p.clip.frames[i],k=p.c.width/p.clip.logicalSize,[sx,sy,sw,sh]=entry.source;ctx.drawImage(p.im,sx,sy,sw,sh,p.c.width/2-entry.anchor[0]*k,p.c.height*.93-entry.anchor[1]*k,sw*k,sh*k);}else ctx.drawImage(p.im,(i%p.cols)*w,Math.floor(i/p.cols)*h,w,h,(p.c.width-w*scale)/2,(p.c.height-h*scale)/2,w*scale,h*scale);}}
+const button=document.querySelector('#pause');function label(){button.textContent=paused?'Play':'Pause'}label();button.onclick=()=>{paused=!paused;label()};document.querySelector('#step').onclick=()=>{paused=true;tick++;label();draw()};for(const b of document.querySelectorAll('[data-bg]'))b.onclick=()=>document.body.style.setProperty('--bg',b.dataset.bg);setInterval(()=>{if(!paused&&!document.hidden)tick++;draw()},250);
+</script></html>
