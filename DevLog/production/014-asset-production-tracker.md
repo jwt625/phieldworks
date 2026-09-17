@@ -1,6 +1,8 @@
 # Asset production and review status
 
-> Latest: [pass 07 equipment animation](024-equipment-animation-continuation.md) adds seven single-direction pilot/correction sources for damaged extractor/assembler, generator and sentry. All have measured real alpha. Five selected clips are now integrated for rotation 0 with explicit crops and state bindings; remaining views and final registration polish stay open. Historical review outcomes below apply to earlier sources.
+> Latest (2026-09-16): [027 all-equipment audit/pass08](027-equipment-animation-audit.md) checks missing reference/cooling motion, opaque condition sheets and every runtime equipment kind. [028](../planning/028-equipment-animation-handoff.md) defines production/integration gates.
+
+> Prior pass: [pass 07 equipment animation](024-equipment-animation-continuation.md) adds seven single-direction pilot/correction sources for damaged extractor/assembler, generator and sentry. All have measured real alpha. Five selected clips are now integrated for rotation 0 with explicit crops and state bindings; remaining views and final registration polish stay open. Historical review outcomes below apply to earlier sources.
 
 > Pass 05 continuation from `58b7db4`: [seven preserved sources](../../assets/production/pass-05/README.md) add four precision-workpiece state candidates with verified real alpha. Two right-side cell attempts and the first accepted-part attempt fail alpha review. No source is registered or integrated; carrier/projection consistency remains open. [Catalog requirements](../../assets/planning/catalog-asset-coverage.json) now enumerate all 99 products, with existing-source mapping explicitly pending. Exact prompts, hashes, dimensions and alpha measurements accompany the [review gallery](../../assets/production/pass-05/index.html).
 

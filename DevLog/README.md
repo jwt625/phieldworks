@@ -5,7 +5,7 @@ history, asset production, forward plans and verification. Documents are grouped
 by **role** into folders, and every folder has a `README.md` briefing so you can
 judge whether to open its contents.
 
-Numeric prefixes (`000`–`022`) are stable chronological **IDs**, not folder
+Numeric prefixes (`000`–`030`) are stable chronological **IDs**, not folder
 ordering. Cross-references and external links use them, so keep them stable.
 
 > **If you read only one file, read [`briefing.md`](briefing.md).** It is the
@@ -19,8 +19,8 @@ ordering. Cross-references and external links use them, so keep them stable.
 | [`design/`](design/README.md) | What the game is and should become | 016, 018 (current authority) |
 | [`implementation/`](implementation/README.md) | What actually exists and how it behaves | 004 (journal), 003 |
 | [`production/`](production/README.md) | Asset/animation contracts, history and review status | 014, 008 |
-| [`planning/`](planning/README.md) | What to build next, in what order, with what contracts | 017, `tranche-a/` 019–021 |
-| [`verification/`](verification/README.md) | Independent findings that constrain later work | 013, 015 |
+| [`planning/`](planning/README.md) | What to build next, in what order, with what contracts | 029 (early-game wave logistics), 026 (UI cleanup), 017, `tranche-a/` 019–021 |
+| [`verification/`](verification/README.md) | Independent findings that constrain later work | 025 (UI review), 013, 015 |
 | [`evidence/`](evidence/README.md) | Raw machine-readable benchmark/report JSON | — |
 | [`references/`](references/README.md) | Cached external sources behind decisions | `tranche-a/` |
 

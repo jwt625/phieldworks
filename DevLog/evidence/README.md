@@ -7,6 +7,7 @@ human-readable interpretation belongs in `../verification/`,
 
 | File | Source |
 | --- | --- |
+| `ui-cleanup/baseline.json` | 025 browser-measured viewport/canvas/HUD rectangles; screenshots in `verification/ui-cleanup/` |
 | `012-p0-solver-after.json` | `npm run bench:review` after the P0 solver remedy |
 | `013-performance-baseline.json`, `013-state-and-render-baseline.json` | 013 capacity/render baseline |
 | `015-connected-world.json`, `015-connected-browser.json` | Connected step and real-app pacing (P0.1 baseline) |

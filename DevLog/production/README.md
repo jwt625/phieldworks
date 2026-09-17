@@ -5,7 +5,8 @@ runtime never imports image knowledge; these files define contracts and tracking
 
 | Doc | What it is |
 | --- | --- |
-| [024 — Equipment animation continuation](024-equipment-animation-continuation.md) | Latest: five damaged-operation/generator/sentry clips integrated for rotation 0; live ledger, motion gallery and validation |
+| [027 — All-equipment animation audit](027-equipment-animation-audit.md) | Latest: reference/cooling generation, ten-kind coverage audit, state-art defects and coding handoff |
+| [024 — Equipment animation continuation](024-equipment-animation-continuation.md) | Five damaged-operation/generator/sentry clips integrated for rotation 0; live ledger, motion gallery and validation |
 | [023 — Catalog asset continuation](023-asset-generation-continuation.md) | Pass 06 inventory-icon production ledger |
 | [002 — Asset plan](002-asset-plan.md) | Visual language, first-build allocation, backlog by milestone, runtime-effects/UI proposal, asset contract |
 | [008 — Animation production plan](008-animation-production-plan.md) | Frame budgets, four-direction atlases, per-machine/creature state clips, playback integration, generation order |

@@ -1,6 +1,6 @@
 # PHIELDWORKS — current briefing
 
-Last updated: 2026-09-13. This is the orientation file. It summarizes the current
+Last updated: 2026-09-16 (UI review/planning added; implementation snapshot unchanged). This is the orientation file. It summarizes the current
 state; the linked documents are authoritative for detail.
 
 ## What the project is
@@ -47,7 +47,31 @@ manufacturing, fusion energy and a beam-driven lightsail.
   [014](production/014-asset-production-tracker.md)).
 - Unprompted human first-expedition playtest ([013](verification/013-verification-review.md)).
 
+## Frontend cleanup queued
+
+- [025 UI review](verification/025-compact-ui-review.md): measured raw canvas share
+  is 24.7% at 1366 × 768 and 32.5% at 1440 × 1000.
+- [026 compact UI tranche](planning/026-compact-ui-tranche.md): icon-first HUD,
+  single-row build strip, contextual inspector, text reduction and independent
+  validation. **U-01–U-07 implemented and validated** (`npm test` 120,
+  `npm run test:browser` 38/38; evidence under `DevLog/evidence/ui-cleanup/`).
+  **U-08 independent visual/interaction acceptance is pending** — automated results
+  are not visual approval.
+
+## Parallel equipment animation work
+
+- [027 audit/pass08](production/027-equipment-animation-audit.md) covers all ten
+  equipment kinds, new reference/cooling sources and existing condition-art defects.
+- [028 handoff](planning/028-equipment-animation-handoff.md) tracks generation,
+  registration, event bindings and cross-state validation separately. Refer to 027
+  for current promotions and validation; full direction/condition coverage remains open.
+
 ## Where to go next
 
+- **Early-game physical routing:** user selected automatically placed, individually
+  upgradeable straights/elbows and explicit junctions. [029 coding handoff](planning/029-early-game-wave-logistics-handoff.md)
+  specifies physical construction, manufactured upgrades and local cell belts across
+  R-01–R-10. [030](verification/030-wave-logistics-validation.md) is the parent
+  multimodal validation protocol. Both are planning only; implementation and review pending.
 - Concrete tasks: [`planning/tranche-a/021`](planning/tranche-a/021-tranche-a-coding-tasks.md).
 - Everything else: [`README.md`](README.md).
