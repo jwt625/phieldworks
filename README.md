@@ -103,3 +103,5 @@ The written record is organized by role under **[DevLog/](DevLog/README.md)**; s
 - [Asset proposal](DevLog/production/002-asset-plan.md), [asset gallery](assets/index.html)
 
 Tooling references used during implementation: [Vite guide](https://vite.dev/guide/), [Playwright test configuration](https://playwright.dev/docs/test-configuration), [Node test runner](https://nodejs.org/api/test.html).
+
+Latest asset continuation: [pass 13 route states](assets/production/pass-13-route-states/README.md) adds belt condition candidates and wave-guide damage/overheat/repair effects, with an [animated review gallery](assets/production/pass-13-route-states/index.html). Sources are saved and alpha-audited; runtime registration and conveyor seam acceptance remain pending.

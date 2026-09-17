@@ -1,0 +1,29 @@
+[
+  {
+    "file": "belt-conditions-v1.png",
+    "sha256": "fe93a073e4dbf8977345ea11eb91701d8fc7bee8be4db5ad88984e5518e29718",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixels": 726336,
+    "opaquePixels": 0,
+    "totalPixels": 1572864
+  },
+  {
+    "file": "belt-conditions-v2.png",
+    "sha256": "2b60f29a394fd961291e888b36197f5d398bfc4ef4e9d5acd587fa9c8ede69e8",
+    "width": 1448,
+    "height": 1086,
+    "transparentPixels": 1062589,
+    "opaquePixels": 3285,
+    "totalPixels": 1572528
+  },
+  {
+    "file": "wave-condition-effects-v1.png",
+    "sha256": "d1f3bea3a16d28abd18b6e27ecf5e7720073e8fd4cf422d5b2fac0ea57daf052",
+    "width": 1448,
+    "height": 1086,
+    "transparentPixels": 1413757,
+    "opaquePixels": 0,
+    "totalPixels": 1572528
+  }
+]

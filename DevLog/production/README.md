@@ -25,3 +25,7 @@ the first precision-cell asset job contract; machine-readable jobs live in
 Most animation candidates are **opaque/incomplete and not world-integrated**.
 `014` names which sheets need motion or registration correction. Do not mark
 generated art as integrated or approved on the strength of a test.
+
+## Latest route-state continuation
+
+[Pass 13 — route conditions and event effects](../../assets/production/pass-13-route-states/README.md) adds four-direction belt condition concepts and wave-guide damage/overheat/repair sources, with a browser animation preview and decoded alpha audit. Source candidates only; runtime opacity, registration and seam gates remain open.

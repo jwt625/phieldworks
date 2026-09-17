@@ -1,0 +1,16 @@
+{
+  "id": "dossiers-and-tooling",
+  "name": "Dossiers and expedition tooling",
+  "rows": 2,
+  "columns": 2,
+  "kind": "inventory",
+  "directions": [
+    "industrial / precision",
+    "systems / construction"
+  ],
+  "prompt": "Use case: stylized-concept. PHIELDWORKS game asset source atlas. A 2 by 2 inventory icon atlas: top-left industrial dossier as a rugged copper-clasp dark folio with steel sample; top-right precision dossier as ivory folio containing a small optical disk; bottom-left systems dossier as charcoal folio containing an optical control module; bottom-right expedition construction toolkit as open rugged toolbox with spanner, compact drill and assembly fasteners. No writing, letters, badges, checkmarks or numbers. All four icons separately centered, equal scale, ample transparent gutters. Style: grounded industrial game art, weathered charcoal steel, ivory ceramic and copper; natural resources use geological materials. Fixed orthographic oblique camera except pipe routes explicitly overhead. Upper-left world lighting. Actual transparent RGBA background with alpha ZERO outside silhouettes; opaque objects. No matte, floor, cast shadows, haze, checkerboard or text. 15% empty margin per cell.",
+  "references": [],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-489c4f67-4c3f-4d06-8a2a-68ee47445229.png",
+  "status": "generated-awaiting-review"
+}

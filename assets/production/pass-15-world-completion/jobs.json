@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "jobs": [
+    {
+      "id": "crawler-idle",
+      "name": "Crawler idle",
+      "rows": 4,
+      "columns": 2,
+      "frames": 2,
+      "sequence": "settle body slightly then raise feelers; subtle two-frame loop, feet anchored",
+      "ref": "assets/world/investigator-crawler-v1.png",
+      "kind": "wildlife",
+      "file": "crawler-idle-v3.png",
+      "states": [
+        "frame-0",
+        "frame-1"
+      ],
+      "directions": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "crawler-walk",
+      "name": "Crawler walk",
+      "rows": 4,
+      "columns": 6,
+      "frames": 6,
+      "sequence": "six alternating-tripod gait phases: left tripod planted/right lift, push, passing, opposite tripod planted/left lift, push, passing; identical shell and no root translation",
+      "ref": "assets/world/investigator-crawler-v1.png",
+      "kind": "wildlife",
+      "file": "crawler-walk-v3.png",
+      "states": [
+        "frame-0",
+        "frame-1",
+        "frame-2",
+        "frame-3",
+        "frame-4",
+        "frame-5"
+      ],
+      "directions": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "crawler-attack",
+      "name": "Crawler attack",
+      "rows": 4,
+      "columns": 4,
+      "frames": 4,
+      "sequence": "brace, raise front limbs, strike forward, recoil; keep same facing throughout each row, fixed shell identity",
+      "ref": "assets/world/investigator-crawler-v1.png",
+      "kind": "wildlife",
+      "file": "crawler-attack-v3.png",
+      "states": [
+        "frame-0",
+        "frame-1",
+        "frame-2",
+        "frame-3"
+      ],
+      "directions": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "crawler-hit",
+      "name": "Crawler hit",
+      "rows": 4,
+      "columns": 2,
+      "frames": 2,
+      "sequence": "brief compress and recover from impact, NO injury gore or detached body parts",
+      "ref": "assets/world/investigator-crawler-v1.png",
+      "kind": "wildlife",
+      "file": "crawler-hit-v3.png",
+      "states": [
+        "frame-0",
+        "frame-1"
+      ],
+      "directions": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "crawler-death",
+      "name": "Crawler death",
+      "rows": 4,
+      "columns": 4,
+      "frames": 4,
+      "sequence": "legs buckle, body lowers, legs fold under shell, settled dead shell static final remains; no gore",
+      "ref": "assets/world/investigator-crawler-v1.png",
+      "kind": "wildlife",
+      "file": "crawler-death-v3.png",
+      "states": [
+        "frame-0",
+        "frame-1",
+        "frame-2",
+        "frame-3"
+      ],
+      "directions": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "guardian-idle",
+      "name": "Guardian breathing",
+      "rows": 1,
+      "columns": 4,
+      "frames": 4,
+      "sequence": "subtle inhale, expanded armored body, exhale, neutral pose. Rock-armored amber organism fixed at same footprint. No locomotion",
+      "ref": "assets/sprites/armored-frontier-organism-v1.png",
+      "kind": "wildlife",
+      "file": "guardian-idle-v3.png",
+      "states": [
+        "frame-0",
+        "frame-1",
+        "frame-2",
+        "frame-3"
+      ],
+      "directions": [
+        "anchored"
+      ],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "guardian-stress",
+      "name": "Guardian field stress",
+      "rows": 1,
+      "columns": 3,
+      "frames": 3,
+      "sequence": "three ascending stress poses: subtle armor flex, small cracks opening, bright amber narrow crack interiors. Creature remains upright in exact original view; no external beam or large glow",
+      "ref": "assets/sprites/armored-frontier-organism-v1.png",
+      "kind": "wildlife",
+      "file": "guardian-stress-v3.png",
+      "states": [
+        "frame-0",
+        "frame-1",
+        "frame-2"
+      ],
+      "directions": [
+        "anchored"
+      ],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "guardian-collapse",
+      "name": "Guardian collapse",
+      "rows": 1,
+      "columns": 6,
+      "frames": 6,
+      "sequence": "six chronological frames: buckle, front plates sink, armor splits, body collapses, plates settle, static rubble remains. No locomotion, no fire or gore",
+      "ref": "assets/sprites/armored-frontier-organism-v1.png",
+      "kind": "wildlife",
+      "file": "guardian-collapse-v3.png",
+      "states": [
+        "frame-0",
+        "frame-1",
+        "frame-2",
+        "frame-3",
+        "frame-4",
+        "frame-5"
+      ],
+      "directions": [
+        "anchored"
+      ],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "dossiers-and-tooling",
+      "name": "Dossiers and expedition tooling",
+      "rows": 2,
+      "columns": 2,
+      "kind": "inventory",
+      "directions": [
+        "industrial / precision",
+        "systems / construction"
+      ],
+      "prompt": "A 2 by 2 inventory icon atlas: top-left industrial dossier as a rugged copper-clasp dark folio with steel sample; top-right precision dossier as ivory folio containing a small optical disk; bottom-left systems dossier as charcoal folio containing an optical control module; bottom-right expedition construction toolkit as open rugged toolbox with spanner, compact drill and assembly fasteners. No writing, letters, badges, checkmarks or numbers. All four icons separately centered, equal scale, ample transparent gutters.",
+      "file": "dossiers-and-tooling-v1.png",
+      "states": [],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "resource-depletion",
+      "name": "Resource deposits and depletion",
+      "rows": 5,
+      "columns": 3,
+      "kind": "deposit",
+      "directions": [
+        "ore",
+        "raw-crystal",
+        "copper-ore",
+        "silica",
+        "carbon"
+      ],
+      "prompt": "Exactly 5 rows by 3 columns of isolated natural resource deposit sprites. Row 1 iron-rich charcoal rocks with rusty orange seams. Row 2 clear cool blue crystal cluster. Row 3 copper-rich dark rocks with copper orange metallic seams. Row 4 ivory translucent silica gravel. Row 5 near-black carbon nodules. Columns: full deposit, half-mined deposit, exhausted deposit with only low matching rubble and empty central depression. Preserve exact footprint center and camera within each row. No machinery or tools, no soil disks or square terrain tiles, no item containers.",
+      "file": "resource-depletion-v1.png",
+      "states": [],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "process-workpieces",
+      "name": "Precision and sail process states",
+      "rows": 3,
+      "columns": 4,
+      "kind": "process",
+      "directions": [
+        "precision-part",
+        "sail-panel",
+        "flight-sail"
+      ],
+      "prompt": "Exactly 3 rows by 4 columns of isolated process-item sprites. Row 1: round precision optical disk in a small four-tab steel carrier, columns blank / accepted polished concentric disk / intact half-processed recoverable reject / broken disk fragments in same carrier. Row 2: square delicate metallic membrane stretched on four corner tabs, columns unfinished wrinkled film / smooth accepted sail panel / visibly flawed intact film / torn accounted scrap. Row 3: folded silver flight sail in a compact ivory shipping frame, columns loose unfinished fold / neat inspected fold / visibly mis-tensioned intact fold / torn scrap inside frame. Lock carrier/frame shape, camera, scale and center across each row. No green checkmarks, red X marks, labels, status glow or invented item quality meters.",
+      "file": "process-workpieces-v1.png",
+      "states": [],
+      "status": "planned",
+      "runtimeReady": false
+    },
+    {
+      "id": "coolant-route-source",
+      "name": "Coolant pipe route conditions",
+      "rows": 3,
+      "columns": 8,
+      "kind": "route-source",
+      "directions": [
+        "intact",
+        "light-damage",
+        "severe-damage"
+      ],
+      "prompt": "Exactly 8 columns by 3 rows of orthographic directly overhead pipe routing sprite concepts. Copper pipe center with charcoal steel edge and ivory reinforcement. Columns: horizontal straight, vertical straight, elbow west-to-south, elbow west-to-north, elbow north-to-east, elbow east-to-south, three-way tee west-east-south, four-way junction. Rows intact / scratched / severely dented with localized crack but same path and interface. Exactly correct number of open arms, flat uncapped connection ends, equal tube width, no bulbous sockets or end rollers. No blue fluid or flow arrows, no leaking water, no active glow. Generous true transparent space between isolated pieces.",
+      "file": "coolant-route-source-v1.png",
+      "states": [],
+      "status": "planned",
+      "runtimeReady": false
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "tuner",
+  "name": "Phase tuner",
+  "file": "tuner-family-v1.png",
+  "kind": "equipment-family",
+  "rows": 4,
+  "columns": 8,
+  "states": [
+    "intact-off",
+    "light-damage-off",
+    "severe-damage-off",
+    "wreck",
+    "operation-0",
+    "operation-1",
+    "operation-2",
+    "operation-3"
+  ],
+  "directions": [
+    "r0-front-left",
+    "r1-front-right",
+    "r2-rear-right",
+    "r3-rear-left"
+  ],
+  "operation": "Passive ±180° trim; thermal drift changes phase.",
+  "mechanism": "phase-adjustment carriage shifting through four distinct positions; these are phase poses, not an idle loop",
+  "status": "generated-awaiting-review",
+  "runtimeReady": false,
+  "prompt": "Use case: stylized-concept. Asset type: production game sprite atlas for PHIELDWORKS. True transparent RGBA background; opaque solid machinery interiors. No ground, cast shadow, matte, haze, checkerboard, labels, borders or text. Fixed orthographic oblique game camera looking down 45 degrees; weathered charcoal steel, ivory ceramic panels, copper mechanisms. Upper-left lighting stays fixed in world across directions. Clear chunky silhouette readable at 48 px. All sprites fully contained with generous transparent gutters. Exactly FOUR ROWS, each a distinct physical quarter-turn of the SAME equipment: front-left, front-right, rear-right, rear-left. Each row keeps direction, camera, scale, foundation center and fixed service connectors exactly constant across every column. Redraw opposite sides, never mirror lighting. Columns 1-4 = intact powered OFF (dark screen/lamps), light damage (scratches and a dent), severe damage (broken panel exposing internals, still operational), destroyed static collapsed wreck inside same footprint. Remaining columns are consecutive INTACT operation frames: keep chassis perfectly locked, change ONLY named moving mechanism. Do not bake smoke, flames, beams, muzzle flashes, UI or status lights into any frame. Damage during operation will use separately clipped damage treatment; no extra power/status combinations. Output a wide high-resolution sheet with equal square cells.\nEquipment: Phase tuner. Function: Passive ±180° trim; thermal drift changes phase.. Mechanism: phase-adjustment carriage shifting through four distinct positions; these are phase poses, not an idle loop. EXACT 8 columns x 4 rows. 4 operation frames after the 4 condition columns in EVERY row. Each sprite occupies at most 75% of its cell: leave 12.5% empty margin on EVERY edge. Use reference identity but darken its lamps. For the junction show exactly four physical terminal branches; all are stationary.",
+  "references": [
+    "assets/sprites/phase-tuner-v1.png"
+  ],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-77f25208-7918-4588-af23-039d0137476e.png"
+}

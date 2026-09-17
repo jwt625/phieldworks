@@ -69,3 +69,7 @@ packed sources, implement cropping and whole-route fallbacks, load the item allo
 and provide the numerical seam/scale fixture. Parent: review those actual renders.
 No belt source is promoted until the report's open gates pass. Machine aprons,
 diagonal sprites, animated surfaces and damaged belts are outside v1.
+
+## Follow-up
+
+[Pass 13](../pass-13-route-states/README.md) adds condition candidates and event-effect sources with an animation preview. It does not supersede the v1 static-body decision or close the opaque packed-atlas/seam gates.

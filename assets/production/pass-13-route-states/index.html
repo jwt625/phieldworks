@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Pass 13 — Route states</title>
+<style>body{font:16px system-ui;background:#20252c;color:#eee;margin:32px}canvas{border:1px solid #888;max-width:100%}img{width:100%;max-width:1000px;background:repeating-conic-gradient(#ddd 0 25%,#999 0 50%) 0/24px 24px}button,select{font:inherit;margin:8px}section{max-width:1000px}</style>
+<h1>Route states — source review</h1><p>Candidates only. No runtime promotion. Equal-cell effect crops are preview assumptions, not registered frames.</p>
+<label>Background <select id="bg"><option value="#20252c">Dark</option><option value="#eee">Light</option><option value="#756c4a">Terrain color</option></select></label><button id="play">Pause</button>
+<p>Overheat and repair sequence preview, 8 fps. Stops for reduced motion or hidden tab; no gameplay binding.</p><canvas width="640" height="260" id="preview"></canvas>
+<section><h2>Wave condition / event sources</h2><img src="wave-condition-effects-v1.png"><h2>Belt condition correction</h2><img src="belt-conditions-v2.png"><details><summary>Rejected v1 — background haze</summary><img src="belt-conditions-v1.png"></details></section>
+<script>
+const c=document.querySelector('canvas'),x=c.getContext('2d'),im=new Image();im.src='wave-condition-effects-v1.png';let running=!matchMedia('(prefers-reduced-motion: reduce)').matches,frame=0,last=0;const button=document.querySelector('#play');button.textContent=running?'Pause':'Play';button.onclick=()=>{running=!running;button.textContent=running?'Pause':'Play'};
+function draw(t){if(running&&!document.hidden&&t-last>=125){frame=(frame+1)%4;last=t}x.fillStyle=document.querySelector('#bg').value;x.fillRect(0,0,c.width,c.height);if(im.complete&&im.naturalWidth){for(let r=1;r<3;r++){const w=im.width/4,h=im.height/3;x.drawImage(im,frame*w,r*h,w,h,(r-1)*320+40,10,240,240)}}requestAnimationFrame(draw)}requestAnimationFrame(draw);
+</script>

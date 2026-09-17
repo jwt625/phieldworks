@@ -1,0 +1,16 @@
+{
+  "id": "crawler-walk",
+  "name": "Crawler walk",
+  "rows": 4,
+  "columns": 6,
+  "frames": 6,
+  "sequence": "six alternating-tripod gait phases: left tripod planted/right lift, push, passing, opposite tripod planted/left lift, push, passing; identical shell and no root translation",
+  "ref": "assets/world/investigator-crawler-v1.png",
+  "prompt": "Use case: stylized-concept. Production animation sprite atlas for PHIELDWORKS. Reference image establishes creature identity ONLY, discard its background. Exactly 6 columns x 4 rows. Columns are chronological frames. Rows are four true quarter-turn world directions: head towards bottom-left, bottom-right, top-right, top-left. In last two rows see rear shell, eyes hidden, do not duplicate front views. Crawler walk: six alternating-tripod gait phases: left tripod planted/right lift, push, passing, opposite tripod planted/left lift, push, passing; identical shell and no root translation. Six-legged mineral-plated beetle-like crawler, dark basalt and ochre armor, small copper joints and two subtle cyan eyes, maintain anatomy. Fixed orthographic oblique game camera and upper-left light. Keep same shell silhouette, scale, root anchor and facing within each row, animate limbs only except death body lowering. Genuine transparent RGBA background with zero-alpha empty space, opaque creature. No ground shadow, matte, haze, checkerboard, frame lines, labels or text. 15% empty gutter inside every cell; never touch sheet edges.",
+  "references": [
+    "assets/world/investigator-crawler-v1.png"
+  ],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-2e15587b-62e2-48cb-8106-84d45d44fc2b.png",
+  "status": "generated-awaiting-review"
+}

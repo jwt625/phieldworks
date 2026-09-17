@@ -1,0 +1,16 @@
+{
+  "id": "guardian-collapse",
+  "name": "Guardian collapse",
+  "rows": 1,
+  "columns": 6,
+  "frames": 6,
+  "sequence": "six chronological frames: buckle, front plates sink, armor splits, body collapses, plates settle, static rubble remains. No locomotion, no fire or gore",
+  "ref": "assets/sprites/armored-frontier-organism-v1.png",
+  "prompt": "Use case: stylized-concept. PHIELDWORKS anchored guardian animation source. Reference identity and view: dark jagged basalt plates over an amber mineral organism. Generate exactly ONE horizontal row of 6 chronological frames. six chronological frames: buckle, front plates sink, armor splits, body collapses, plates settle, static rubble remains. No locomotion, no fire or gore. Keep original camera and facing unchanged across every frame. Match scale, center and fixed foot/root contacts; no new faces or eyes. Hold final rubble as static remains. Real transparent RGBA background, solid opaque body, NO ground, drop shadow, haze, checkerboard, labels or dividers. 15% clear gutters inside every equal square cell, all limbs and plates contained. Fixed overhead-oblique game camera and upper-left world light.",
+  "references": [
+    "assets/sprites/armored-frontier-organism-v1.png"
+  ],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-93526a65-2107-4607-93c5-f0b78b4d6812.png",
+  "status": "generated-awaiting-review"
+}

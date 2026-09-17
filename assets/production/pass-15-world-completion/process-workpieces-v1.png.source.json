@@ -1,0 +1,17 @@
+{
+  "id": "process-workpieces",
+  "name": "Precision and sail process states",
+  "rows": 3,
+  "columns": 4,
+  "kind": "process",
+  "directions": [
+    "precision-part",
+    "sail-panel",
+    "flight-sail"
+  ],
+  "prompt": "Use case: stylized-concept. PHIELDWORKS game asset source atlas. Exactly 3 rows by 4 columns of isolated process-item sprites. Row 1: round precision optical disk in a small four-tab steel carrier, columns blank / accepted polished concentric disk / intact half-processed recoverable reject / broken disk fragments in same carrier. Row 2: square delicate metallic membrane stretched on four corner tabs, columns unfinished wrinkled film / smooth accepted sail panel / visibly flawed intact film / torn accounted scrap. Row 3: folded silver flight sail in a compact ivory shipping frame, columns loose unfinished fold / neat inspected fold / visibly mis-tensioned intact fold / torn scrap inside frame. Lock carrier/frame shape, camera, scale and center across each row. No green checkmarks, red X marks, labels, status glow or invented item quality meters. Style: grounded industrial game art, weathered charcoal steel, ivory ceramic and copper; natural resources use geological materials. Fixed orthographic oblique camera except pipe routes explicitly overhead. Upper-left world lighting. Actual transparent RGBA background with alpha ZERO outside silhouettes; opaque objects. No matte, floor, cast shadows, haze, checkerboard or text. 15% empty margin per cell.",
+  "references": [],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-099041ce-cf13-4eb4-8fe3-cfc080e94ba4.png",
+  "status": "generated-awaiting-review"
+}

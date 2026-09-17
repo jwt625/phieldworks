@@ -1,0 +1,5 @@
+{
+  "mode": "built-in image_gen",
+  "reference": null,
+  "prompt": "Create a transparent-background PNG game sprite sheet, exactly 4 columns by 3 rows, twelve isolated conveyor belt sprites. Actual alpha=0 background, no colored background, no floor, no haze, no cast shadows, no checkerboard graphic. Orthographic directly overhead, realistic compact industrial sprites. Each cell square and equal. Columns are travel right, left, down, up. Rows are intact, scratched, severely scorched/cracked. All sprites are same length and width, same locked silhouette and center across rows, upper-left light. Horizontal belts in first 2 columns; vertical belts in last 2. Dark charcoal rubber with three large gold direction chevrons, narrow brushed steel rails. Flat open ends, NO end caps or rollers. Damage concentrated at center, preserve rails and ends. Generous empty transparent space between sprites. Crisp isolated game assets, no text."
+}

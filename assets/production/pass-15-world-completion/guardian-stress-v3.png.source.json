@@ -1,0 +1,16 @@
+{
+  "id": "guardian-stress",
+  "name": "Guardian field stress",
+  "rows": 1,
+  "columns": 3,
+  "frames": 3,
+  "sequence": "three ascending stress poses: subtle armor flex, small cracks opening, bright amber narrow crack interiors. Creature remains upright in exact original view; no external beam or large glow",
+  "ref": "assets/sprites/armored-frontier-organism-v1.png",
+  "prompt": "Use case: stylized-concept. PHIELDWORKS anchored guardian animation source. Reference identity and view: dark jagged basalt plates over an amber mineral organism. Generate exactly ONE horizontal row of 3 chronological frames. three ascending stress poses: subtle armor flex, small cracks opening, bright amber narrow crack interiors. Creature remains upright in exact original view; no external beam or large glow. Keep original camera and facing unchanged across every frame. Match scale, center and fixed foot/root contacts; no new faces or eyes. Footprint and anchored body remain fixed, motion localized to armor flex. Real transparent RGBA background, solid opaque body, NO ground, drop shadow, haze, checkerboard, labels or dividers. 15% clear gutters inside every equal square cell, all limbs and plates contained. Fixed overhead-oblique game camera and upper-left world light.",
+  "references": [
+    "assets/sprites/armored-frontier-organism-v1.png"
+  ],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-26b02f2d-3527-4411-9742-a46d0107732d.png",
+  "status": "generated-awaiting-review"
+}

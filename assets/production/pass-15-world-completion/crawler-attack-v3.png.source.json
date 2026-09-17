@@ -1,0 +1,16 @@
+{
+  "id": "crawler-attack",
+  "name": "Crawler attack",
+  "rows": 4,
+  "columns": 4,
+  "frames": 4,
+  "sequence": "brace, raise front limbs, strike forward, recoil; keep same facing throughout each row, fixed shell identity",
+  "ref": "assets/world/investigator-crawler-v1.png",
+  "prompt": "Use case: stylized-concept. Production animation sprite atlas for PHIELDWORKS. Reference image establishes creature identity ONLY, discard its background. Exactly 4 columns x 4 rows. Columns are chronological frames. Rows are four true quarter-turn world directions: head towards bottom-left, bottom-right, top-right, top-left. In last two rows see rear shell, eyes hidden, do not duplicate front views. Crawler attack: brace, raise front limbs, strike forward, recoil; keep same facing throughout each row, fixed shell identity. Six-legged mineral-plated beetle-like crawler, dark basalt and ochre armor, small copper joints and two subtle cyan eyes, maintain anatomy. Fixed orthographic oblique game camera and upper-left light. Keep same shell silhouette, scale, root anchor and facing within each row, animate limbs only except death body lowering. Genuine transparent RGBA background with zero-alpha empty space, opaque creature. No ground shadow, matte, haze, checkerboard, frame lines, labels or text. 15% empty gutter inside every cell; never touch sheet edges.",
+  "references": [
+    "assets/world/investigator-crawler-v1.png"
+  ],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-f233c5ca-292e-4e80-8276-9cb09eecc1f5.png",
+  "status": "generated-awaiting-review"
+}

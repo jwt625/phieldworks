@@ -1,0 +1,17 @@
+{
+  "id": "coolant-route-source",
+  "name": "Coolant pipe route conditions",
+  "rows": 3,
+  "columns": 8,
+  "kind": "route-source",
+  "directions": [
+    "intact",
+    "light-damage",
+    "severe-damage"
+  ],
+  "prompt": "Use case: stylized-concept. PHIELDWORKS game asset source atlas. Exactly 8 columns by 3 rows of orthographic directly overhead pipe routing sprite concepts. Copper pipe center with charcoal steel edge and ivory reinforcement. Columns: horizontal straight, vertical straight, elbow west-to-south, elbow west-to-north, elbow north-to-east, elbow east-to-south, three-way tee west-east-south, four-way junction. Rows intact / scratched / severely dented with localized crack but same path and interface. Exactly correct number of open arms, flat uncapped connection ends, equal tube width, no bulbous sockets or end rollers. No blue fluid or flow arrows, no leaking water, no active glow. Generous true transparent space between isolated pieces. Style: grounded industrial game art, weathered charcoal steel, ivory ceramic and copper; natural resources use geological materials. Fixed orthographic oblique camera except pipe routes explicitly overhead. Upper-left world lighting. Actual transparent RGBA background with alpha ZERO outside silhouettes; opaque objects. No matte, floor, cast shadows, haze, checkerboard or text. 15% empty margin per cell.",
+  "references": [],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-ccc1a970-5c00-41e3-9952-16e301bca07c.png",
+  "status": "generated-awaiting-review"
+}

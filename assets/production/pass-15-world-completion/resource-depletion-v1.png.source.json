@@ -1,0 +1,19 @@
+{
+  "id": "resource-depletion",
+  "name": "Resource deposits and depletion",
+  "rows": 5,
+  "columns": 3,
+  "kind": "deposit",
+  "directions": [
+    "ore",
+    "raw-crystal",
+    "copper-ore",
+    "silica",
+    "carbon"
+  ],
+  "prompt": "Use case: stylized-concept. PHIELDWORKS game asset source atlas. Exactly 5 rows by 3 columns of isolated natural resource deposit sprites. Row 1 iron-rich charcoal rocks with rusty orange seams. Row 2 clear cool blue crystal cluster. Row 3 copper-rich dark rocks with copper orange metallic seams. Row 4 ivory translucent silica gravel. Row 5 near-black carbon nodules. Columns: full deposit, half-mined deposit, exhausted deposit with only low matching rubble and empty central depression. Preserve exact footprint center and camera within each row. No machinery or tools, no soil disks or square terrain tiles, no item containers. Style: grounded industrial game art, weathered charcoal steel, ivory ceramic and copper; natural resources use geological materials. Fixed orthographic oblique camera except pipe routes explicitly overhead. Upper-left world lighting. Actual transparent RGBA background with alpha ZERO outside silhouettes; opaque objects. No matte, floor, cast shadows, haze, checkerboard or text. 15% empty margin per cell.",
+  "references": [],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-4e837144-be9b-41ff-ac9d-09bb23207c9a.png",
+  "status": "generated-awaiting-review"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "dump",
+  "name": "Cooled dump",
+  "file": "dump-family-v1.png",
+  "kind": "equipment-family",
+  "rows": 4,
+  "columns": 8,
+  "states": [
+    "intact-off",
+    "light-damage-off",
+    "severe-damage-off",
+    "wreck",
+    "operation-0",
+    "operation-1",
+    "operation-2",
+    "operation-3"
+  ],
+  "directions": [
+    "r0-front-left",
+    "r1-front-right",
+    "r2-rear-right",
+    "r3-rear-left"
+  ],
+  "operation": "2 cooling power; absorbs rejected field, trips at 85 °C.",
+  "mechanism": "two cooling fans",
+  "status": "generated-awaiting-review",
+  "runtimeReady": false,
+  "prompt": "Use case: stylized-concept. Asset type: production game sprite atlas for PHIELDWORKS. True transparent RGBA background; opaque solid machinery interiors. No ground, cast shadow, matte, haze, checkerboard, labels, borders or text. Fixed orthographic oblique game camera looking down 45 degrees; weathered charcoal steel, ivory ceramic panels, copper mechanisms. Upper-left lighting stays fixed in world across directions. Clear chunky silhouette readable at 48 px. All sprites fully contained with generous transparent gutters. Exactly FOUR ROWS, each a distinct physical quarter-turn of the SAME equipment: front-left, front-right, rear-right, rear-left. Each row keeps direction, camera, scale, foundation center and fixed service connectors exactly constant across every column. Redraw opposite sides, never mirror lighting. Columns 1-4 = intact powered OFF (dark screen/lamps), light damage (scratches and a dent), severe damage (broken panel exposing internals, still operational), destroyed static collapsed wreck inside same footprint. Remaining columns are consecutive INTACT operation frames: keep chassis perfectly locked, change ONLY named moving mechanism. Do not bake smoke, flames, beams, muzzle flashes, UI or status lights into any frame. Damage during operation will use separately clipped damage treatment; no extra power/status combinations. Output a wide high-resolution sheet with equal square cells.\nEquipment: Cooled dump. Function: 2 cooling power; absorbs rejected field, trips at 85 °C.. Mechanism: two cooling fans. EXACT 8 columns x 4 rows. 4 operation frames after the 4 condition columns in EVERY row. Each sprite occupies at most 70% of its cell: leave 15% empty margin on EVERY edge. Use reference identity only. ALL lamps and displays BLACK, no cyan painted light. Back views show rear service panels instead of repeating the front.",
+  "references": [
+    "assets/sprites/cooled-dump-v1.png"
+  ],
+  "tool": "built-in image_gen",
+  "source": "/Users/sophia/.codex/generated_images/01a0b021-748d-7a82-9be3-d7c02a68038a/exec-7d611e63-beda-45af-a59d-744250bff909.png"
+}
